@@ -4,7 +4,7 @@ import LogInButton from "./LogInButton";
 import LogInForm from "./LogInForm";
 import RegistrationButton from "./RegistrationButton";
 import RegistrationForm from "./RegistrationForm";
-
+import NavigationBar from "./NavigationBar";
 export {
   HomePageCard,
   HomePageGrid,
@@ -12,4 +12,5 @@ export {
   LogInForm,
   RegistrationButton,
   RegistrationForm,
+  NavigationBar,
 };
