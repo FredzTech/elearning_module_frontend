@@ -1,9 +1,11 @@
 import "./App.css";
-import { Navbar } from "./components";
+import { NavigationBar, HomePageGrid } from "./components";
+
 function App() {
   return (
-    <div className="App">
-      <Navbar />
+    <div className="App flex flex-col items-center justify-center gap-5">
+      <NavigationBar />
+      <HomePageGrid />
     </div>
   );
 }
