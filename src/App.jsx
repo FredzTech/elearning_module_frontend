@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import { NavigationBar, HomePageCard } from "./components";
 
