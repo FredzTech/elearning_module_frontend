@@ -1,12 +1,11 @@
 import React from "react";
-import cardImage from "../assets/course-display.png";
-const HomePageCard = ({ heading, paragraph, image }) => {
+const HomePageCard = ({ heading, text, src }) => {
   return (
-    <div class="w-72 rounded shadow-md debug">
-      <img class="w-full" src={image} alt="Course Card" />
-      <div class="px-6 py-4">
-        <div class="font-bold text-lg mb-2">{Heading}</div>
-        <p class="text-gray-700 text-base w-full truncate">{paragraph}</p>
+    <div className="w-72 rounded shadow-md debug">
+      <img className="w-full" src={src} alt="Course Card" />
+      <div className="px-6 py-4">
+        <div className="font-bold text-lg mb-2">{heading}</div>
+        <p className="text-gray-700 text-base w-full truncate">{text}</p>
       </div>
     </div>
   );

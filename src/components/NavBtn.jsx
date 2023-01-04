@@ -2,8 +2,6 @@ import React from "react";
 
 const NavBtn = ({ border, name, background }) => {
   // We shall add the link later.
-  console.log(border);
-  console.log(background);
   return (
     <button
       className={`${

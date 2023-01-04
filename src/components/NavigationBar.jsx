@@ -3,7 +3,7 @@ import { NavBtn } from "../components";
 const NavigationBar = () => {
   return (
     // We can utilize the gap property with flexbox.
-    <div className="flex bg-primary text-plain items-center w-full p-1">
+    <header className="flex bg-primary text-plain items-center w-full p-1">
       <div className="brand mr-auto">
         <NavBtn name="brand" />
       </div>
@@ -15,7 +15,7 @@ const NavigationBar = () => {
         <NavBtn name="Login" border="true" background="white" />
         <NavBtn name="Register" border="true" />
       </div>
-    </div>
+    </header>
   );
 };
 
