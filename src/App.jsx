@@ -1,16 +1,13 @@
 import "./App.css";
-import { NavigationBar, HomePageGrid } from "./components";
-
+import { HomePage, CoursePage, UnitPage } from "./pages";
 function App() {
-  const text = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-          quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-          nihil.`;
-  console.log(text);
-
   return (
-    <div className="App flex flex-col items-center justify-center gap-5">
-      <NavigationBar />
-      <HomePageGrid />
+    <div className="flex flex-col  gap-10 items-center justify-center">
+      {/* SHOULD RETURN MY PAGES
+       */}
+      <HomePage />
+      <CoursePage />
+      <UnitPage />
     </div>
   );
 }

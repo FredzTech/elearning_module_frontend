@@ -4,8 +4,14 @@ import RegistrationButton from "./RegistrationButton";
 import RegistrationForm from "./RegistrationForm";
 import NavigationBar from "./NavigationBar";
 import NavBtn from "./NavBtn";
-import HomePageCard from "./HomePageCard";
-import HomePageGrid from "./HomePageGrid";
+import HomePageCard from "./HomePage/HomePageCard";
+import HomePageGrid from "./HomePage/HomePageGrid";
+import Chapter from "./CoursePage/Chapter";
+import Pointer from "./CoursePage/Pointer";
+import SubNav from "./CoursePage/SubNav";
+import CourseHeading from "./CoursePage/CourseHeading";
+import SubTopic from "./UnitPage/SubTopic";
+import UnitHeading from "./UnitPage/UnitHeading";
 export {
   LogInButton,
   LogInForm,
@@ -15,4 +21,10 @@ export {
   NavBtn,
   HomePageCard,
   HomePageGrid,
+  Chapter,
+  Pointer,
+  SubNav,
+  CourseHeading,
+  SubTopic,
+  UnitHeading,
 };
