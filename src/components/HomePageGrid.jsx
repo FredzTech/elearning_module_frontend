@@ -143,6 +143,13 @@ const HomePageGrid = () => {
           src={cardImage}
         />
       </article>
+      <article>
+        <HomePageCard
+          text={text}
+          heading="discrete mathematics"
+          src={cardImage}
+        />
+      </article>
     </main>
   );
 };
