@@ -1,14 +1,21 @@
 import React from "react";
 
-const NavBtn = ({ border, background, text }) => {
+const NavBtn = ({ border, name, background }) => {
+  // We shall add the link later.
   return (
-    <div
-      className={`px-7 py-4 mx-2 text-plain capitalize ${
-        border === "true" ? "border-2 border-plain" : "border-none"
-      } ${background === "true" ? "hover:bg-secondary text-black" : ""} `}
+    <button
+      className={`${
+        border === "true"
+          ? " border-2 border-plain text-plain hover:bg-plain hover:text-black"
+          : " border-none text-plain hover:bg-plain hover:text-black"
+      } ${
+        background === "white"
+          ? "bg-white text-black hover:bg-primary hover:text-plain"
+          : ""
+      } px-10 py-3 mx-2 my-2 capitalize `}
     >
-      {text}
-    </div>
+      {name}
+    </button>
   );
 };
 

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
 
 @layer components {
     .debug{
@@ -9,3 +10,5 @@
 
     
 }
+=======
+>>>>>>> homePage
