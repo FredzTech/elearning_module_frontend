@@ -2,23 +2,17 @@ import LogInButton from "./LogInButton";
 import LogInForm from "./LogInForm";
 import RegistrationButton from "./RegistrationButton";
 import RegistrationForm from "./RegistrationForm";
-<<<<<<< HEAD
-import Navbar from "./Navbar";
-import NavBtn from "./NavBtn";
-=======
 import NavigationBar from "./NavigationBar";
 import NavBtn from "./NavBtn";
-
->>>>>>> grids
+import HomePageCard from "./HomePageCard";
+import HomePageGrid from "./HomePageGrid";
 export {
   LogInButton,
   LogInForm,
   RegistrationButton,
   RegistrationForm,
-<<<<<<< HEAD
-  Navbar,
-=======
   NavigationBar,
->>>>>>> grids
   NavBtn,
+  HomePageCard,
+  HomePageGrid,
 };
