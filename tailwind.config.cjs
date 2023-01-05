@@ -1,3 +1,4 @@
+
 /**  @type {import('tailwindcss').Config} */ 
 module.exports = {
   content: [
@@ -16,7 +17,10 @@ module.exports = {
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
       'blue':'#0068D9',
-      'light-grey':'#CDCDCD'
+      'light-grey':'#CDCDCD',
+       primary: "#0068D9",
+        secondary: "#F0F7FF",
+        plain: "#FFFFFF",
 
     },
     screens: {
@@ -34,6 +38,11 @@ module.exports = {
 
       '2xl': {'min': '1536px'},
       // => @media (min-width: 1536px) { ... }
+      phone: { max: "640px" },
+      tablet: "600px",
+      laptop: "1024px",
+      desktop: "1280px",
+      "2xl": "1536px",
     },
     extend:{
       height:{
