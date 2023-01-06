@@ -1,7 +1,7 @@
 import "./App.css";
 import { HomePage, CoursePage, UnitPage } from "./pages";
-import { NavigationBar, HomePageGrid } from "./components";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { NavigationBar } from "./components";
+import { Routes, Route } from "react-router-dom";
 import LogInPage from "./pages/LogInPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import PricingPage from "./pages/PricingPage";
