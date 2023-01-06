@@ -1,5 +1,7 @@
 import React from "react";
 import { NavBtn } from "../components";
+
+
 const NavigationBar = () => {
   return (
     // We can utilize the gap property with flexbox.
@@ -8,12 +10,12 @@ const NavigationBar = () => {
         <NavBtn name="brand" />
       </div>
       <div className="navigation mx-auto my-auto">
-        <NavBtn name="About Us" />
-        <NavBtn name="Courses" />
+        <NavBtn name="About Us" goto="about" />
+        <NavBtn name="Courses" goto="courses"/>
       </div>
       <div className="CTAButtons ml-auto">
-        <NavBtn name="Login" border="true" background="white" />
-        <NavBtn name="Register" border="true" />
+        <NavBtn name="Login" border="true" goto="login"/>
+        <NavBtn name="Register" border="true" goto="register"/>
       </div>
     </header>
   );

@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const NavBtn = ({ border, name, background }) => {
+const NavBtn = ({ border, name,goto, background }) => {
   // We shall add the link later.
   return (
     <button
@@ -14,7 +15,8 @@ const NavBtn = ({ border, name, background }) => {
           : ""
       } px-10 py-3 mx-2 my-2 capitalize `}
     >
-      {name}
+      <Link to={goto}>{name}</Link>
+      
     </button>
   );
 };
