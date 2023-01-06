@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer components {
-    .debug {
-        @apply border-2 border-red-600
-    }
-
-
-} */
+@layer components {
+  .debug {
+    @apply border-2 border-red-600;
+  }
+}
