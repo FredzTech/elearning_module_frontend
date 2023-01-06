@@ -1,15 +1,16 @@
 import "./App.css";
-import { HomePage, CoursePage, UnitPage } from "./pages";
+import {
+  HomePage,
+  CoursePage,
+  UnitPage,
+  LogInPage,
+  RegistrationPage,
+  PricingPage,
+} from "./pages";
 import { NavigationBar } from "./components";
 import { Routes, Route } from "react-router-dom";
-import LogInPage from "./pages/LogInPage";
-import RegistrationPage from "./pages/RegistrationPage";
-import PricingPage from "./pages/PricingPage";
+
 function App() {
-  // const text = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-  //         quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-  //         nihil.`;
-  // console.log(text);
   return (
     <div className="flex flex-col gap-10 items-center justify-center">
       <NavigationBar />
