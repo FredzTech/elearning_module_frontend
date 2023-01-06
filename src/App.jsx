@@ -5,9 +5,9 @@ function App() {
     <div className="flex flex-col  gap-10 items-center justify-center">
       {/* SHOULD RETURN MY PAGES
        */}
-      <HomePage />
+      {/* <HomePage /> */}
       <CoursePage />
-      <UnitPage />
+      {/* <UnitPage /> */}
     </div>
   );
 }

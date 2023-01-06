@@ -6,7 +6,7 @@ const CoursePage = () => {
   return (
     <div className="w-full h-screen">
       <main className="flex flex-row gap-5 w-full h-full border-2 border-primary">
-        <article className="w-1/3 flex flex-col gap-5 items-center rounded-lg m-2 shadow-lg shadow-primary bg-secondary ">
+        <article className="w-1/3 h-full py-1 flex flex-col gap-5 items-center rounded-lg m-2 shadow-lg shadow-primary bg-secondary ">
           <div className="w-full p-4 box-border ">
             <div className="w-full bg-slate-500 h-[200px]">
               <img className="w-full" src={cardImage} alt="" />
