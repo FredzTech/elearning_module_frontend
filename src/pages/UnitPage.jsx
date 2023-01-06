@@ -1,5 +1,6 @@
 import React from "react";
 import { SubTopic, UnitHeading, SubNav } from "../components";
+import videoPlayer from "../assets/video-player.png";
 const UnitPage = () => {
   return (
     <div className="w-full h-screen">
@@ -21,7 +22,13 @@ const UnitPage = () => {
         </article>
 
         <article className=" border-2 border-primary mt-2 w-2/3 flex px-2 flex-col  m-2 rounded-lg pb-2">
-          <div className="video-content mt-4 bg-gray-700 w-full h-72 rounded-md"></div>
+          <div className="video-content mt-4 w-full h-72 rounded-md">
+            <img
+              src={videoPlayer}
+              className="w-full"
+              alt="video player image"
+            />
+          </div>
           <SubNav />
           <div className="unit-content bg-gray-300 w-full h-1/2 rounded-md"></div>
         </article>
