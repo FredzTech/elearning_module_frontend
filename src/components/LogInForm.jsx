@@ -43,7 +43,7 @@ const LogInForm = () => {
         </div>
 
         <div className="mt-8  w-full sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+          <div className=" py-8 px-6 shadow rounded-lg sm:px-10">
             <form
               className="mb-0 space-y-6"
               action="register"
