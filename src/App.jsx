@@ -12,7 +12,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex flex-col gap-10 items-center justify-center">
+    <div className="flex flex-col  items-center justify-center">
       <NavigationBar />
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>

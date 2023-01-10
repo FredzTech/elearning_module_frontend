@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import axios from "../axios";
+import axios from "../../../axios";
 import { CustomNav, Button } from "../../CustomForm";
 import { useNavigate } from "react-router-dom";
+import { ModalWrap } from "../../../Wrapper";
 const LessonForm = ({ hideModal }) => {
   let navigate = useNavigate();
   // DECLARATION OF VARIABLES

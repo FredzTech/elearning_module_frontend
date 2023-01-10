@@ -4,8 +4,6 @@ import RegistrationButton from "./RegistrationButton";
 import RegistrationForm from "./RegistrationForm";
 import NavigationBar from "./NavigationBar";
 import NavBtn from "./NavBtn";
-import Title from "./Title";
-import Icons from "./Icons";
 
 import HomePageCard from "./HomePage/HomePageCard";
 import HomePageGrid from "./HomePage/HomePageGrid";
@@ -54,6 +52,5 @@ export {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  Title,
-  Icons,
+  UnitCard,
 };
