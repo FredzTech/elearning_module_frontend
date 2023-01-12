@@ -1,22 +1,29 @@
 import React from "react";
 import { NavBtn } from "../components";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   return (
     // We can utilize the gap property with flexbox.
-    <header className="flex bg-primary text-plain items-center w-full p-1">
-      <div className="brand mr-auto">
-        <NavBtn name="Home" goto="/" />
+    <nav className="flex justify-between bg-primary text-plain items-center w-full p-1">
+      <div className="border-2 border-white ml-4">
+        <Link to="/">
+          <p className="uppercase text-2xl font-extrabold px-5 py-4">
+            {" "}
+            e-module
+          </p>
+        </Link>
       </div>
-      <div className="navigation mx-auto my-auto">
+      <div className="navigation ml-16">
         <NavBtn name="Courses" goto="courses" />
         <NavBtn name="Units" goto="units" />
+        <NavBtn name="Courses(N)" goto="newCourses" />
       </div>
-      <div className="CTAButtons ml-auto">
+      <div className="CTAButtons">
         <NavBtn name="Login" border="true" goto="login" />
         <NavBtn name="Register" border="true" goto="register" />
       </div>
-    </header>
+    </nav>
   );
 };
 

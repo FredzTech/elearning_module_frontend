@@ -5,7 +5,7 @@ const ChapterCard = ({ number, heading, summary }) => {
     <article className="hover:cursor-pointer chapter w-full bg-white h-[200px] flex flex-col gap-2  px-2 pt-3 rounded-md shadow-lg shadow-slate-400">
       <section className="flex items-center justify-start gap-3 ">
         <div className="w-20  rounded-r-3xl h-12 bg-primary flex-row-centered text-white ">
-          <span>{number}</span>
+          <span className="font-extraLight">{number}.</span>
         </div>
         <h1 className="uppercase text-xl font-extrabold">{heading}</h1>
       </section>

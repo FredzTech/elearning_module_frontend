@@ -17,14 +17,14 @@ import CourseHeading from "./CoursePage/CourseHeading";
 
 // UNIT PAGE COMPONENTS
 import {
-  SideBar,
   SubTopic,
   UnitHeading,
   VideoComponent,
   UnitCard,
   ChapterCard,
   TutorCard,
-  Accordion,
+  AccordionOld,
+  UnitsCard,
 } from "./UnitPage";
 import { Button, CustomNav } from "./CustomForm";
 // Form are to be consumed internally hence no need for importation in this file.
@@ -35,6 +35,7 @@ import {
   ResourcesModal,
   UnitModal,
 } from "./TutorPage/Modals";
+import { Accordion, SideNavNew } from "./TutorPage/Accordion";
 export {
   LogInButton,
   LogInForm,
@@ -50,17 +51,19 @@ export {
   CourseHeading,
   SubTopic,
   UnitHeading,
-  SideBar,
   VideoComponent,
   Button,
   CustomNav,
   UnitCard,
   ChapterCard,
   TutorCard,
-  Accordion,
+  AccordionOld,
   ChapterModal,
   CourseModal,
   LessonModal,
   ResourcesModal,
   UnitModal,
+  Accordion,
+  SideNavNew,
+  UnitsCard,
 };
