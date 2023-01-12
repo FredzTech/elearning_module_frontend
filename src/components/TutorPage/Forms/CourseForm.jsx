@@ -152,12 +152,16 @@ const CourseForm = ({ hideModal }) => {
           <Button
             type="button"
             text="Complete Transaction"
-            onClick={mpesaExpress}
+            onClick={() => {
+              mpesaExpress;
+            }}
           />
           <Button
             type="button"
             text="Complete Transaction"
-            onClick={hideModal()}
+            onClick={() => {
+              hideModal();
+            }}
           />
         </div>
       </form>

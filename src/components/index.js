@@ -24,6 +24,7 @@ import {
   UnitCard,
   ChapterCard,
   TutorCard,
+  Accordion,
 } from "./UnitPage";
 import { Button, CustomNav } from "./CustomForm";
 import {
@@ -32,7 +33,7 @@ import {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  Complete,
+  CourseModal,
 } from "./TutorPage/Forms";
 export {
   LogInButton,
@@ -58,8 +59,9 @@ export {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  Complete,
+  CourseModal,
   UnitCard,
   ChapterCard,
   TutorCard,
+  Accordion,
 };
