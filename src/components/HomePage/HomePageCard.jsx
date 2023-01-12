@@ -1,5 +1,8 @@
 import React from "react";
+
 const HomePageCard = ({ heading, text, src }) => {
+  // heading = 'lorem ipsum'
+//  src = HomeImage;
   return (
     <article>
       <div className="w-[200px] rounded border-2 border-primary shadow-xs shadow-primary flex flex-col">
