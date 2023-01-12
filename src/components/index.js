@@ -27,14 +27,14 @@ import {
   Accordion,
 } from "./UnitPage";
 import { Button, CustomNav } from "./CustomForm";
+// Form are to be consumed internally hence no need for importation in this file.
 import {
-  ChapterForm,
-  CourseForm,
-  LessonForm,
-  ResourcesForm,
-  UnitForm,
+  ChapterModal,
   CourseModal,
-} from "./TutorPage/Forms";
+  LessonModal,
+  ResourcesModal,
+  UnitModal,
+} from "./TutorPage/Modals";
 export {
   LogInButton,
   LogInForm,
@@ -54,14 +54,13 @@ export {
   VideoComponent,
   Button,
   CustomNav,
-  ChapterForm,
-  CourseForm,
-  LessonForm,
-  ResourcesForm,
-  UnitForm,
-  CourseModal,
   UnitCard,
   ChapterCard,
   TutorCard,
   Accordion,
+  ChapterModal,
+  CourseModal,
+  LessonModal,
+  ResourcesModal,
+  UnitModal,
 };

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { CourseForm } from "../..";
-const CourseModal = ({ view, hideModal, handleClose }) => {
+import React from "react";
+import { ChapterForm } from "../Forms";
+const ChapterModal = ({ view, hideModal, handleClose }) => {
   if (view == false) {
     return null;
   }
@@ -15,8 +15,6 @@ const CourseModal = ({ view, hideModal, handleClose }) => {
     >
       <div
         onClick={() => {
-          console.log("Click event acknowledged");
-
           hideModal();
         }}
         className="absolute top-2 right-2 "
@@ -24,10 +22,10 @@ const CourseModal = ({ view, hideModal, handleClose }) => {
         <span className="w-8 h-8 bg-white">X</span>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <CourseForm hideModal={hideModal} />
+        <ChapterForm hideModal={hideModal} />
       </div>
     </div>
   );
 };
 
-export default CourseModal;
+export default ChapterModal;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "../../../axios";
 import { CustomNav, Button } from "../../CustomForm";
 import { useNavigate } from "react-router-dom";
-import { ModalWrap } from "../../../Wrapper";
+
 const UnitForm = ({ hideModal }) => {
   let navigate = useNavigate();
   // DECLARATION OF VARIABLES
@@ -76,7 +76,7 @@ const UnitForm = ({ hideModal }) => {
           " "
         )}
         <div className="flex phone:flex-col justify-around items-center my-10">
-          <label for="contact" className="w-1/5 phone:w-full">
+          <label htmlFor="contact" className="w-1/5 phone:w-full">
             Names
           </label>
           <input
@@ -105,7 +105,7 @@ const UnitForm = ({ hideModal }) => {
         </div>
         <div className="flex phone:flex-col  items-center justify-center my-5">
           <div className="w-2/3 flex phone:w-full  phone:my-1  phone:flex-col items-center justify-center ">
-            <label for="contact" className="w-1/5 phone:w-full">
+            <label htmlFor="contact" className="w-1/5 phone:w-full">
               Contact
             </label>
             <div className=" phone:flex phone:w-full phone:items-center">
@@ -130,7 +130,7 @@ const UnitForm = ({ hideModal }) => {
             </div>
           </div>
           <div className="w-1/3 phone:w-full phone:my-1  phone:flex flex items-center">
-            <label for="contact" className=" w-2/5">
+            <label htmlFor="contact" className=" w-2/5">
               Amount
             </label>
             <input
@@ -151,12 +151,16 @@ const UnitForm = ({ hideModal }) => {
           <Button
             type="button"
             text="Complete Transaction"
-            onClick={mpesaExpress}
+            onClick={() => {
+              mpesaExpress;
+            }}
           />
           <Button
             type="button"
             text="Complete Transaction"
-            onClick={hideModal()}
+            onClick={() => {
+              hideModal();
+            }}
           />
         </div>
       </form>
@@ -164,4 +168,4 @@ const UnitForm = ({ hideModal }) => {
   );
 };
 
-export default ModalWrap(UnitForm);
+export default UnitForm;

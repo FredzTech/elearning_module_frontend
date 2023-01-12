@@ -6,6 +6,7 @@ import CoursePage from "./CoursePage";
 import UnitPage from "./UnitPage";
 import DraftPage from "./DraftPage";
 import ChapterPage from "./ChapterPage";
+import ModalTriggerPage from "./ModalTriggerPage";
 export {
   HomePage,
   LogInPage,
@@ -15,4 +16,5 @@ export {
   UnitPage,
   DraftPage,
   ChapterPage,
+  ModalTriggerPage,
 };

@@ -6,7 +6,7 @@ import {
   ResourcesModal,
   UnitModal,
 } from "../components";
-const DraftPage = () => {
+const ModalTriggerPage = () => {
   let [view, setView] = useState(false);
   const showModal = () => {
     setView(true);
@@ -105,4 +105,4 @@ const DraftPage = () => {
   );
 };
 
-export default DraftPage;
+export default ModalTriggerPage;
