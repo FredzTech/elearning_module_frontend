@@ -1,4 +1,5 @@
 import { Chevron } from "../Icons";
+import { useState } from "react";
 import { sidebarData } from "../../constants";
 import {
   Accordion,
@@ -8,6 +9,7 @@ import {
 } from "react-headless-accordion";
 
 const Sidebar = () => {
+  const { open, setOpen } = useState(true);
   const appendAccordionItem = (item, index) => {
     //Its our first point of contact to any object with the type attribute.
     // By default it return a nav item be it the title , link or a accordion children themselves depending on the case presented.

@@ -9,6 +9,7 @@ import {
 } from "../components";
 import sampleVideo from "../assets/sample-video.mp4";
 import posterImage from "../assets/video-player.png";
+
 const UnitPage = () => {
   return (
     <main className="flex flex-row w-full h-full">
@@ -17,7 +18,6 @@ const UnitPage = () => {
         <SideBar />
         <UnitCard />
       </article>
-
       <article className="h-full border-2 border-primary mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
         <div className="video-content mt-4 w-full h-[550px] rounded-md border-red-700 border-2">
           {/* REPLACE WITH THE VIDEO COMPONENT. */}

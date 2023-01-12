@@ -1,3 +1,4 @@
+// GENERAL COMPONENTS
 import LogInButton from "./LogInButton";
 import LogInForm from "./LogInForm";
 import RegistrationButton from "./RegistrationButton";
@@ -5,20 +6,24 @@ import RegistrationForm from "./RegistrationForm";
 import NavigationBar from "./NavigationBar";
 import NavBtn from "./NavBtn";
 
-import HomePageCard from "./HomePage/HomePageCard";
-import HomePageGrid from "./HomePage/HomePageGrid";
+// HOMEPAGE COMPONENTS
+import { HomePageCard, HomePageGrid } from "./HomePage";
 
+// COURSE PAGE COMPONENTS
 import Chapter from "./CoursePage/Chapter";
 import Pointer from "./CoursePage/Pointer";
 import SubNav from "./CoursePage/SubNav";
 import CourseHeading from "./CoursePage/CourseHeading";
 
+// UNIT PAGE COMPONENTS
 import {
   SideBar,
   SubTopic,
   UnitHeading,
   VideoComponent,
   UnitCard,
+  ChapterCard,
+  TutorCard,
 } from "./UnitPage";
 import { Button, CustomNav } from "./CustomForm";
 import {
@@ -27,6 +32,7 @@ import {
   LessonForm,
   ResourcesForm,
   UnitForm,
+  Complete,
 } from "./TutorPage/Forms";
 export {
   LogInButton,
@@ -52,5 +58,8 @@ export {
   LessonForm,
   ResourcesForm,
   UnitForm,
+  Complete,
   UnitCard,
+  ChapterCard,
+  TutorCard,
 };

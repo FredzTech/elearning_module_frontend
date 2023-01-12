@@ -6,4 +6,11 @@
   .debug {
     @apply border-2 border-red-600;
   }
+
+  .flex-row-centered{
+    @apply flex items-center justify-center
+  }
+     .flex-col-centered {
+       @apply flex flex-col items-center justify-center
+     }
 }

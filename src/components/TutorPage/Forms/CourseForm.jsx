@@ -3,6 +3,7 @@ import axios from "../../../axios";
 import { CustomNav, Button } from "../../CustomForm";
 import { useNavigate } from "react-router-dom";
 import { ModalWrap } from "../../../Wrapper";
+
 const CourseForm = ({ hideModal }) => {
   let navigate = useNavigate();
   // DECLARATION OF VARIABLES
@@ -164,4 +165,4 @@ const CourseForm = ({ hideModal }) => {
   );
 };
 
-export default ModalWrap(CourseForm);
+export default CourseForm;

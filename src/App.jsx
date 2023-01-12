@@ -6,6 +6,8 @@ import {
   LogInPage,
   RegistrationPage,
   PricingPage,
+  DraftPage,
+  ChapterPage,
 } from "./pages";
 import { NavigationBar } from "./components";
 import { Routes, Route } from "react-router-dom";
@@ -21,6 +23,9 @@ function App() {
         <Route exact path="/register" element={<RegistrationPage />}></Route>
         <Route exact path="/courses" element={<CoursePage />}></Route>
         <Route exact path="/units" element={<UnitPage />}></Route>
+        <Route exact path="/chapters" element={<ChapterPage />}></Route>
+
+        <Route exact path="/draft" element={<DraftPage />}></Route>
       </Routes>
     </div>
   );
