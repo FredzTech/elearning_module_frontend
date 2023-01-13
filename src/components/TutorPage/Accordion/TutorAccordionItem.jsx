@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
-const AccordionItem = ({ faq, onToggle, active }) => {
+const TutorAccordionItem = ({ faq, onToggle, active }) => {
   const { question, answer } = faq;
   console.log(active);
   return (
@@ -37,10 +37,9 @@ const AccordionItem = ({ faq, onToggle, active }) => {
             </li>
           );
         })}
-        <li className="button">Add Lesson</li>
       </ul>
     </div>
   );
 };
 
-export default AccordionItem;
+export default TutorAccordionItem;

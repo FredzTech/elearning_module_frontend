@@ -11,12 +11,16 @@ body {
   color: #444;
 } 
 
+/* Directive to group tailwincss css utilitie together. */
 @layer components {
-  *{
+  /* LIST OF CSS PROPERTIES */
+  *{ 
+     /*Directive to use tailwincss utilities inside css extended.  */
     @apply m-0 p-0 box-border
   }
 
   .debug {
+
     @apply border-2 border-red-600;
   }
     

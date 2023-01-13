@@ -24,6 +24,7 @@ module.exports = {
         radium: "#C5E30C",
         plutonium: "#0068D9",
         primaryLight: "#278eff",
+        tutorCard: "#d90068",
       },
       screens: {
         sm: { min: "300px", max: "767px" },

@@ -10,6 +10,9 @@ import {
   ChapterPage,
   ModalTriggerPage,
   UnitsPage,
+  TutorPage,
+  TutorUnitPage,
+  TutorUnitsPage,
 } from "./pages";
 import { NavigationBar } from "./components";
 import { Routes, Route } from "react-router-dom";
@@ -29,6 +32,9 @@ function App() {
         <Route exact path="/units" element={<UnitsPage />}></Route>
         <Route exact path="/modals" element={<ModalTriggerPage />}></Route>
         <Route exact path="/draft" element={<DraftPage />}></Route>
+        <Route exact path="/tutor/dashboard" element={<TutorPage />}></Route>
+        <Route exact path="/tutor/units" element={<TutorUnitsPage />}></Route>
+        <Route exact path="/tutor/unit" element={<TutorUnitPage />}></Route>
       </Routes>
     </div>
   );

@@ -1,11 +1,11 @@
 import React from "react";
 import { UnitsCard } from "../components";
-const UnitsPage = () => {
+const TutorUnitsPage = () => {
   return (
     <div className="w-full relative h-full flex flex-col ">
       <header className="bg-slate-400 h-[300px] relative flex items-center justify-center">
         <h1 className="text-white font-bold text-center text-4xl uppercase">
-          MECHANICAL ENGINEERING
+          DISCRETE MATHEMATICS
         </h1>
       </header>
       <section className="relative w-full h-full bg-secondary">
@@ -48,4 +48,4 @@ const UnitsPage = () => {
   );
 };
 
-export default UnitsPage;
+export default TutorUnitsPage;

@@ -16,8 +16,8 @@ const NavigationBar = () => {
       </div>
       <div className="navigation ml-16">
         <NavBtn name="Courses" goto="courses" />
-        <NavBtn name="Units" goto="units" />
-        <NavBtn name="Courses(N)" goto="newCourses" />
+        <NavBtn name="Course" goto="units" />
+        <NavBtn name="Unit" goto="newCourses" />
       </div>
       <div className="CTAButtons">
         <NavBtn name="Login" border="true" goto="login" />

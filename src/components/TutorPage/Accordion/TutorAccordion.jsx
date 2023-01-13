@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { faqs } from "./data";
-import AccordionItem from "./AccordionItem";
+import TutorAccordionItem from "./TutorAccordionItem";
 import { AiOutlineAppstore } from "react-icons/ai";
 
-const Accordion = () => {
+const TutorAccordion = () => {
   const [clicked, setClicked] = useState("0"); //WE can argue ndo inatumika kujua which item is active.
 
   const handleToggle = (index) => {
@@ -29,15 +29,16 @@ const Accordion = () => {
       </div>
       {faqs.map((faq, index) => (
         //Map inakuja inarudia immediately the state changes... So we should see only active==true on one class.But the logic is repeated to all.
-        <AccordionItem
+        <TutorAccordionItem
           key={index}
           faq={faq}
           onToggle={() => handleToggle(index)}
           active={clicked === index} //Returns a true/false.Used in styling.
         />
       ))}
+      <div className="button">Add Chapter</div>
     </div>
   );
 };
 
-export default Accordion;
+export default TutorAccordion;

@@ -8,6 +8,9 @@ import DraftPage from "./DraftPage";
 import ChapterPage from "./ChapterPage";
 import ModalTriggerPage from "./ModalTriggerPage";
 import UnitsPage from "./UnitsPage";
+import TutorPage from "./TutorPage";
+import TutorUnitPage from "./TutorUnitPage";
+import TutorUnitsPage from "./TutorUnitsPage";
 export {
   HomePage,
   LogInPage,
@@ -19,4 +22,7 @@ export {
   ChapterPage,
   ModalTriggerPage,
   UnitsPage,
+  TutorPage,
+  TutorUnitsPage,
+  TutorUnitPage,
 };

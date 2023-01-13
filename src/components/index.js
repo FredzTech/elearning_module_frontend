@@ -19,11 +19,11 @@ import CourseHeading from "./CoursePage/CourseHeading";
 import {
   VideoComponent,
   ChapterCard,
-  TutorCard,
   AccordionOld,
   UnitsCard,
   UnitNav,
   QuillEditorStudent,
+  TutorCard,
 } from "./UnitPage";
 import { Button, CustomNav } from "./CustomForm";
 // Form are to be consumed internally hence no need for importation in this file.
@@ -34,8 +34,17 @@ import {
   ResourcesModal,
   UnitModal,
 } from "./TutorPage/Modals";
-import { Accordion, SideNavNew } from "./TutorPage/Accordion";
-import { QuillEditorTutor } from "./TutorPage/General";
+import {
+  Accordion,
+  SideNavNew,
+  TutorAccordion,
+  TutorSideNav,
+} from "./TutorPage/Accordion";
+import {
+  QuillEditorTutor,
+  TutorCardHome,
+  TutorSideBar,
+} from "./TutorPage/General";
 export {
   LogInButton,
   LogInForm,
@@ -66,4 +75,8 @@ export {
   UnitNav,
   QuillEditorTutor,
   QuillEditorStudent,
+  TutorSideBar,
+  TutorAccordion,
+  TutorSideNav,
+  TutorCardHome,
 };
