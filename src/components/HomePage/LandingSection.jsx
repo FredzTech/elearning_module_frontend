@@ -13,7 +13,7 @@ const LandingSection = () => {
 
   return (
     <>
-    <div className="flex w-screen gap-60 pl-16 h-100 ">
+    <div className="flex w-screen gap-60 pl-16 h-100 sm:flex-col md:flex-col sm:gap-8 md:gap-10">
         <div className='h-48'>
             <h3 className="text-4xl mb-3">Make Studying at School Easier </h3>
             <p>With access to well curated study materials from :</p>
@@ -24,12 +24,12 @@ const LandingSection = () => {
                 <li>A chance to interact with qualified tutors</li>
             </ul>
             <p> Enrol to get access to this and so much more.</p>
-            <div className="mt-16 z-10 flex gap-20">
+            <div className="mt-16 z-0 flex gap-20">
               <button className="ml-10 bg-white border-blue text-blue ring-4 ring-blue font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Try free</button>
               <button className="block text-white bg-blue hover:bg-blue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center " >Enroll</button>
             </div>
         </div>
-        <div className='object-none object-right'>
+        <div className='object-none object-right z-10'>
             <img src={HomeImage} alt="" className=''/>
         </div>
     </div>
