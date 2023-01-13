@@ -11,7 +11,7 @@ const UnitsCard = ({ number, heading, summary }) => {
       </section>
       <section className="w-full h-full flex flex-col">
         <p className="text-dark text-lg w-full h-full px-4 mt-3">{summary}</p>
-        <Link to="/unit">
+        <Link to="/newCourses">
           <div className="flex w-28 justify-between bg-primary text-white py-2 px-2 rounded-bl-md rounded-tr-md">
             <p>Learn More</p>
             <span>{`>`}</span>
