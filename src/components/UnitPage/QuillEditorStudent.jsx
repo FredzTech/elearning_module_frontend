@@ -6,7 +6,7 @@ const QuillEditorStudent = () => {
   return (
     <div
       id="unit content"
-      className="w-full h-[800px] rounded-md p-2 border-2 border-slate-400 overflow-y-scroll"
+      className="w-full h-[400px] rounded-md p-2 border-2 border-slate-400 overflow-y-scroll"
     >
       <h1 className="font-bold underline">
         INTRODUCTION TO DISCRETE MATHEMATICS

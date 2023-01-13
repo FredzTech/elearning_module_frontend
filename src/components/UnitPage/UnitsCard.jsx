@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const UnitsCard = ({ number, heading, summary }) => {
   return (
     <article className="hover:cursor-pointer chapter w-[510px] bg-white h-[200px] flex flex-col gap-2  pt-3 rounded-md shadow-lg shadow-slate-400">
@@ -11,10 +11,12 @@ const UnitsCard = ({ number, heading, summary }) => {
       </section>
       <section className="w-full h-full flex flex-col">
         <p className="text-dark text-lg w-full h-full px-4 mt-3">{summary}</p>
-        <div className="flex w-28 justify-between bg-primary text-white py-2 px-2 rounded-bl-md rounded-tr-md">
-          <p>Learn More</p>
-          <span>{`>`}</span>
-        </div>
+        <Link to="/unit">
+          <div className="flex w-28 justify-between bg-primary text-white py-2 px-2 rounded-bl-md rounded-tr-md">
+            <p>Learn More</p>
+            <span>{`>`}</span>
+          </div>
+        </Link>
       </section>
     </article>
   );
