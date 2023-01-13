@@ -1,47 +1,18 @@
 export const faqs = [
   {
     question: "Chapter 1",
-    answer: ["answer 1", "answer 2", "answer 3"],
+    answer: ["Lesson 1", "Lesson 2", "Lesson 3"],
   },
   {
     question: "Chapter 2",
-    answer: ["answer 1", "answer 2", "answer 3"],
-  },
-
-  {
-    question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
+    answer: ["Lesson 1", "Lesson 2", "Lesson 3"],
   },
   {
     question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
+    answer: ["Lesson 1", "Lesson 2", "Lesson 3"],
   },
   {
-    question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
-  },
-  {
-    question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
-  },
-  {
-    question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
-  },
-  {
-    question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
-  },
-  {
-    question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
-  },
-  {
-    question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
-  },
-  {
-    question: "Chapter 3",
-    answer: ["answer 1", "answer 2", "answer 3"],
+    question: "Chapter 4",
+    answer: ["Lesson 1", "Lesson 2", "Lesson 3"],
   },
 ];

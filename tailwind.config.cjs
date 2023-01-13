@@ -23,6 +23,7 @@ module.exports = {
         uranium: "#9747FF",
         radium: "#C5E30C",
         plutonium: "#0068D9",
+        primaryLight: "#278eff",
       },
       screens: {
         sm: { min: "300px", max: "767px" },

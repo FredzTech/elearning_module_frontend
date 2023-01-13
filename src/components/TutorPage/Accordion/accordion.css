@@ -15,17 +15,3 @@ body {
     background: #fff;
     color: #444;
 } */
-
-.container {
-    max-width: 600px;
-    margin: 6rem auto 4rem;
-    padding: 0 10px;
-}
-
-.heading {
-    font-size: 23px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
-
