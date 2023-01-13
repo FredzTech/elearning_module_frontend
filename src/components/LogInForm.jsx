@@ -2,14 +2,18 @@ import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
 // import Cancel from '../assets/remove-icon.png'
+import Cancel from '../assets/remove-icon.png'
 
 import { ReactPasswordStrength } from "react-password-strength";
+import { useContext } from "react";
+import { ModalContext } from "./modals/ModalProvider";
 
 const LogInForm = () => {
+   const {closeModal} = useContext(ModalContext)
   
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
-   const [role, setRole] = useState('Student');
+   
    const [message, setMessage] = useState('');
  
 
@@ -44,20 +48,21 @@ const LogInForm = () => {
       .then((data) => {
         console.log(data, "userRegister");
         if (data.status == "ok") {
-          ()=>{setMessage("login successful")};
+          setMessage("login successful");
           window.localStorage.setItem("token", data.data);
-          window.location.href = "/";
+          window.location.href = "";
+          loseModal();
         }
       });
     } catch (error) {
-      (e)=>{setMessage(e.error)};
+      setMessage(e.error);
       console.log(error);
     }
    }
   return (
   <div>
   <div className=" bg-gray-100 flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-lg">
-  
+  <button className="text-center ml-96" ><img src={Cancel} onClick={()=>closeModal()} alt="cancel" height={20} width={20}/></button>
   <div className="sm:mx-auto sm:w-full sm:max-w-md">
     
     <h2 className="lg: mt-6 text-center text-3xl font-extrabold text-gray-900">Log in</h2>

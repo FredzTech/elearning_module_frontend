@@ -10,7 +10,7 @@ import {
   NotFound
 } from "./pages";
 import { Footer , LogInForm, NavigationBar } from "./components";
-import Modal from "./components/modals/Modal";
+import { ModalProvider } from "./components/modals";
 import { AuthContextProvider } from "./context";
 
 import { Routes, Route } from "react-router-dom";
@@ -18,10 +18,11 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="flex flex-col gap-10 items-center justify-center">
+      {/* // <div> */}
       <AuthContextProvider>
        
         <NavigationBar />
-         <Modal>
+         <ModalProvider>
         <Routes>
           <Route exact path="/" element={<HomePage />}></Route>
           <Route exact path="/pricing" element={<PricingPage />}></Route>
@@ -33,7 +34,7 @@ function App() {
           
 
         </Routes>
-        </Modal>
+        </ModalProvider>
         <Footer />
         
       </AuthContextProvider>

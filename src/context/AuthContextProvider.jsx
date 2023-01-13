@@ -17,7 +17,7 @@ export const AuthContextProvider = ({children}) => {
   const logout =()=>{
     window.localStorage.clear();
     
-     window.location.href = "./login"
+     window.location.href = "/"
   }
   useEffect(()=>{
 		if(user ){

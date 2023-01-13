@@ -1,58 +1,32 @@
-import React, { Component, createContext,useState } from "react";
-import "./modal.css";
+import React, { useEffect } from 'react'
+import { useContext } from 'react'
+import { ModalContext } from './ModalProvider'
+import Cancel from '../../assets/remove-icon.png'
 
-import { Routes, useLocation, Route  } from "react-router";
-
-import { LogInPage,RegistrationPage } from "../../pages";
-
-
-export const ModalContext = React.createContext();
-
-
-export default function Modal (props){
-  
-  const [modal, setModal] = useState(false);
- 
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
-  if(modal) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
-  }
-
-
-    return (
-    <>
-        <ModalContext.Provider value={{setModal }}>
-          {modal?
-          <div className="modal">
-            <div onClick={toggleModal} className="overlay"></div>
-            <div className="modal-content">
+export default function Modal ({children}) {
+    const {isOpen , modalContent , closeModal , openModal} = useContext(ModalContext);
+    useEffect(()=>{
+		openModal()
+   
+	}, [])
+  return (
+    
+     <>
+     
+     {isOpen &&
+      <div className='modal' >
+         <div className="overlay" onClick={closeModal} ></div> 
+                <div className="modal-content" >
+                       
+                    
+                            {children}
+                        
+                        
+                </div>
             
-              
-              {props.children}
-            </div>
-          </div>
-          : <div>{props.children}</div> 
-          }
-
-        </ModalContext.Provider>
-      
-      
-      {/* <Routes>
-        <Route path={location.pathname}>
-          <Route  path="login" element={<LogInPage/>}></Route>
-          <Route path="register" element={<RegistrationPage />}></Route> 
-        </Route>
-      </Routes> */}
-      
-      
+         
+        </div>
+    }
     </>
-  
   )
- 
 }

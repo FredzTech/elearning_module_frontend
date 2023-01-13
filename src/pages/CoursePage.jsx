@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Chapter, CourseHeading, SubNav } from "../components";
 import cardImage from "../assets/course-display.png";
 
@@ -46,9 +47,12 @@ const CoursePage = () => {
               <span className="capitalize text-black text-xs">English</span>
             </div>
           </div>
-          <button className="px-10 py-2 my-5 bg-primary text-white capitalize">
-            <span>Enroll</span>
-          </button>
+          <Link to="/pricing">
+            <button className="px-10 py-2 my-5 bg-primary text-white capitalize">
+              <span>Enroll</span>
+            </button>
+          </Link>
+          
           <div className="w-full text-center description px-2">
             <p className="w-full truncate">
               Discrete mathematics is the study of mathematical structures that
