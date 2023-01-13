@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import LogInForm from "../components/LogInForm";
-import {Welcome} from "../components/Welcome";
-const LogInPage = () => {
-  return (
-  <div className="flex  mx-10 my-8 sm:flex sm:flex-wrap md:flex-wrap">
-    {/* LogInPage */}
-    <div className="laptop:w-3/6 phone:w-screen"><Welcome/></div>
-    <div><LogInForm/></div>
-    
-  
+import { Modal } from "../components/modals";
+import { ModalContext } from "../components/modals/ModalProvider";
 
-  </div>)
+
+
+
+const LogInPage = () => {
+// const {openModal, isOpen} = useContext(ModalContext);
+  return (
+
+     <>
+
+        {/* <button onClick={()=>openModal(content)} >Login</button>         */}
+      <Modal>
+         <LogInForm/>
+      </Modal>
+
+      
+
+     </>
+  
+  )
 };
 
 export default LogInPage;

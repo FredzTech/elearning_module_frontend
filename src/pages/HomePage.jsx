@@ -1,10 +1,19 @@
 import React from "react";
-import { HomePageGrid } from "../components";
+import { LandingSection, HomePageGrid } from "../components";
+import Login from "./Login";
+
+
 const HomePage = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-5">
-      <HomePageGrid />
+    <>
+    <div className="flex flex-col items-center justify-center gap-5 w-screen">
+
+      <LandingSection />
+  
+      {/* <HomePageGrid /> */}
     </div>
+    
+    </>
   );
 };
 
