@@ -1,7 +1,6 @@
 import "./App.css";
 import {
   HomePage,
-  CoursePage,
   UnitPage,
   LogInPage,
   RegistrationPage,
@@ -26,7 +25,6 @@ function App() {
         <Route exact path="/pricing" element={<PricingPage />}></Route>
         <Route exact path="/login" element={<LogInPage />}></Route>
         <Route exact path="/register" element={<RegistrationPage />}></Route>
-        <Route exact path="/courses" element={<CoursePage />}></Route>
         <Route exact path="/newCourses" element={<ChapterPage />}></Route>
         <Route exact path="/unit" element={<UnitPage />}></Route>
         <Route exact path="/units" element={<UnitsPage />}></Route>

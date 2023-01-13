@@ -9,13 +9,11 @@ const NavigationBar = () => {
       <div className="border-2 border-white ml-4">
         <Link to="/">
           <p className="uppercase text-2xl font-extrabold px-5 py-4">
-            {" "}
             e-module
           </p>
         </Link>
       </div>
       <div className="navigation ml-16">
-        <NavBtn name="Courses" goto="courses" />
         <NavBtn name="Course" goto="units" />
         <NavBtn name="Unit" goto="newCourses" />
       </div>
