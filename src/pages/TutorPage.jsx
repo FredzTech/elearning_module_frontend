@@ -55,7 +55,7 @@ const TutorPage = () => {
         <TutorCardHome />
 
         {/* This is already a modal */}
-        <TestForm />
+        <TestForm Height="This is the height" />
 
         {/* Action Buttons */}
         <button

@@ -1,7 +1,7 @@
 import React from "react";
 import { ModalWrapper } from "../../../Wrappers";
-const TestForm = () => {
-  return <div className="text-white">TestForm</div>;
+const TestForm = ({ Height }) => {
+  return <div className="text-white">{Height}</div>;
 };
 
 export default ModalWrapper(TestForm);
