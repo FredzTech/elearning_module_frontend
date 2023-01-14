@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const ModalWrapper = (Component) => {
   return function HOC(props) {
+    // We are inside the new component we want to create.
     const testEvent = () => {
       console.log("Hello from test event.");
     };

@@ -4,9 +4,11 @@ const TestForm = ({ Height, testEvent, hideModal }) => {
   return (
     <div className="text-white">
       {Height}
-      <button className="button" onClick={() => hideModal()}>
-        {" "}
-        Toggle Modal
+      <button
+        className="button w-28  rounded-lg text-xs "
+        onClick={() => hideModal()}
+      >
+        Close Modal
       </button>
     </div>
   );
