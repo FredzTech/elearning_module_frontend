@@ -1,12 +1,12 @@
 import React from "react";
 import { ModalWrapper } from "../../../Wrappers";
-const TestForm = ({ Height, testEvent }) => {
+const TestForm = ({ Height, testEvent, hideModal }) => {
   return (
     <div className="text-white">
       {Height}
-      <button className="button" onClick={() => testEvent()}>
+      <button className="button" onClick={() => hideModal()}>
         {" "}
-        Test Addition Prop{" "}
+        Toggle Modal
       </button>
     </div>
   );
