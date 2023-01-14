@@ -1,26 +1,8 @@
 import React, { useState } from "react";
 import { ChapterForm } from "../Forms";
-const ChapterModal = () => {
-  const [chapterForm, setChapterForm] = useState(true);
-
-  function showModal() {
-    setChapterForm(true);
-  }
-  function hideModal() {
-    setChapterForm(false);
-  }
-  function handleClose(e) {
-    if (e.target.id == "container") {
-      hideModal();
-    }
-  }
-
+const ChapterModal = ({ chapterForm, hideModal, showModal, handleClose }) => {
   if (chapterForm == false) {
-    return (
-      <button className="button w-48 h-16" onClick={showModal}>
-        View Chapter Form
-      </button>
-    );
+    return null;
   }
 
   return (
