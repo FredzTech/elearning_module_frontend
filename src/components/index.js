@@ -48,7 +48,7 @@ import {
   TutorCardHome,
   TutorSideBar,
 } from "./TutorPage/General";
-import { CourseForm } from "./TutorPage/Forms";
+import { CourseForm, TestForm } from "./TutorPage/Forms";
 
 import Footer from "./Footer";
 
@@ -89,5 +89,5 @@ export {
   LandingSection,
   Footer,
   CourseForm,
+  TestForm,
 };
-export {};

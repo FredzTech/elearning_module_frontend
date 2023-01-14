@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "../../../axios";
 import { CustomNav, Button } from "../../CustomForm";
 import { useNavigate } from "react-router-dom";
-
-const LessonForm = ({ hideModal }) => {
+import { ModalWrapper } from "../../../Wrappers";
+const LessonForm = ({ showModal, hideModal, handleClose, view }) => {
   let navigate = useNavigate();
   // DECLARATION OF VARIABLES
   //=========================
@@ -60,7 +60,7 @@ const LessonForm = ({ hideModal }) => {
 
   return (
     <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-green-400 phone mt-5 rounded-lg">
-      <CustomNav />
+      <CustomNav text="Lesson Form" />
       <form className="flex-col items-center justify-center px-5 w-full phone:border-2 phone:border-green-200 phone:rounded-b-md">
         {responseTracker ? (
           <p
@@ -167,5 +167,7 @@ const LessonForm = ({ hideModal }) => {
     </div>
   );
 };
+
+// export default ModalWrapper(showModal, hideModal, handleClose, view);
 
 export default LessonForm;
