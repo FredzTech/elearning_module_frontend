@@ -1,7 +1,11 @@
 import React from "react";
 
 const ModalWrapper = (Component) => {
+  const testEvent = () => {
+    console.log("Hello from test event.");
+  };
   return function HOC(props) {
+    //Takes in the props that belonged to the component.
     //Returns improved component. Eliminates redundant code. Should wrap our form inside a modal.
     return (
       <>
@@ -13,7 +17,7 @@ const ModalWrapper = (Component) => {
             <span className="w-8 h-8 bg-white">X</span>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <Component {...props} />
+            <Component testEvent={testEvent} {...props} />
             {/* Passing the original props back to component after wrap */}
           </div>
         </div>
