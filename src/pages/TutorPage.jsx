@@ -5,38 +5,10 @@ import {
   ChapterModal,
   LessonModal,
   TestForm,
+  ChapterForm,
 } from "../components";
 
 const TutorPage = () => {
-  const [chapterForm, setChapterForm] = useState(false);
-  const [LessonForm, setLessonForm] = useState(false);
-
-  // CHAPTER CONTROLS
-  function showModal() {
-    setChapterForm(true);
-  }
-  function hideModal() {
-    setChapterForm(false);
-  }
-  function handleClose(e) {
-    if (e.target.id == "container") {
-      hideModal();
-    }
-  }
-
-  //  LESSON CONTROLS
-  function showLessonModal() {
-    setLessonForm(true);
-  }
-  function hideLessonModal() {
-    setLessonForm(false);
-  }
-  function handleLessonClose(e) {
-    if (e.target.id == "container") {
-      hideLessonModal();
-    }
-  }
-
   return (
     <main className="flex flex-row w-full h-screen">
       <article className="h-full flex  flex-col rounded-lg w-1/4 px-2 py-2 ">
@@ -55,40 +27,14 @@ const TutorPage = () => {
         <TutorCardHome />
 
         {/* This is already a modal */}
-        <TestForm Height="This is the height" />
-
-        {/* Action Buttons */}
-        <button
-          className="button w-48 h-16"
-          onClick={() => {
-            showLessonModal();
-          }}
-        >
-          Lesson Form
-        </button>
-        <button
-          className="button w-48 h-16"
-          onClick={() => {
-            showModal();
-          }}
-        >
-          Chapter Form
-        </button>
-
-        <ChapterModal
-          chapterForm={chapterForm}
-          hideModal={hideModal}
-          handleClose={handleClose}
-        />
-
-        <LessonModal
-          lessonForm={LessonForm}
-          hideModal={hideLessonModal}
-          handleClose={handleLessonClose}
-        />
+        <article className="flex flex-col gap-5">
+          <TestForm Height="This is the height" />
+          <ChapterForm />
+        </article>
       </article>
 
       {/* Our Modals need to be on standby. */}
+      {/* HOC helps us avoid all this repetition. */}
       {/* <article className="modals">
         <TestModal />
         <CourseModal />

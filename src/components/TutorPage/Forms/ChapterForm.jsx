@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "../../../axios";
 import { CustomNav, Button } from "../../CustomForm";
 import { useNavigate } from "react-router-dom";
+import { ModalWrapper } from "../../../Wrappers";
 
 const ChapterForm = ({ hideModal }) => {
   let navigate = useNavigate();
@@ -168,4 +169,4 @@ const ChapterForm = ({ hideModal }) => {
   );
 };
 
-export default ChapterForm;
+export default ModalWrapper(ChapterForm, "Chapter");
