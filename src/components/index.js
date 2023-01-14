@@ -8,7 +8,6 @@ import NavBtn from "./NavBtn";
 
 // HOMEPAGE COMPONENTS
 
-
 // COURSE PAGE COMPONENTS
 import HomePageCard from "./HomePage/HomePageCard";
 import HomePageGrid from "./HomePage/HomePageGrid";
@@ -20,74 +19,75 @@ import CourseHeading from "./CoursePage/CourseHeading";
 
 // UNIT PAGE COMPONENTS
 import {
-    VideoComponent,
-    ChapterCard,
-    AccordionOld,
-    UnitsCard,
-    UnitNav,
-    QuillEditorStudent,
-    TutorCard,
+  VideoComponent,
+  ChapterCard,
+  AccordionOld,
+  UnitsCard,
+  UnitNav,
+  QuillEditorStudent,
+  TutorCard,
 } from "./UnitPage";
+
 import { Button, CustomNav } from "./CustomForm";
 // Form are to be consumed internally hence no need for importation in this file.
 import {
-    ChapterModal,
-    CourseModal,
-    LessonModal,
-    ResourcesModal,
-    UnitModal,
+  ChapterModal,
+  CourseModal,
+  LessonModal,
+  ResourcesModal,
+  UnitModal,
 } from "./TutorPage/Modals";
 import {
-    Accordion,
-    SideNavNew,
-    TutorAccordion,
-    TutorSideNav,
+  Accordion,
+  SideNavNew,
+  TutorAccordion,
+  TutorSideNav,
 } from "./TutorPage/Accordion";
 import {
-    QuillEditorTutor,
-    TutorCardHome,
-    TutorSideBar,
+  QuillEditorTutor,
+  TutorCardHome,
+  TutorSideBar,
 } from "./TutorPage/General";
+import { CourseForm } from "./TutorPage/Forms";
 
 import Footer from "./Footer";
 
 export {
-    LogInButton,
-    LogInForm,
-    RegistrationButton,
-    RegistrationForm,
-    NavigationBar,
-    NavBtn,
-    HomePageCard,
-    HomePageGrid,
-    Chapter,
-    Pointer,
-    SubNav,
-    CourseHeading,
-    VideoComponent,
-    Button,
-    CustomNav,
-    ChapterCard,
-    TutorCard,
-    AccordionOld,
-    ChapterModal,
-    CourseModal,
-    LessonModal,
-    ResourcesModal,
-    UnitModal,
-    Accordion,
-    SideNavNew,
-    UnitsCard,
-    UnitNav,
-    QuillEditorTutor,
-    QuillEditorStudent,
-    TutorSideBar,
-    TutorAccordion,
-    TutorSideNav,
-    TutorCardHome,
-    LandingSection,
-    Footer,
+  LogInButton,
+  LogInForm,
+  RegistrationButton,
+  RegistrationForm,
+  NavigationBar,
+  NavBtn,
+  HomePageCard,
+  HomePageGrid,
+  Chapter,
+  Pointer,
+  SubNav,
+  CourseHeading,
+  VideoComponent,
+  Button,
+  CustomNav,
+  ChapterCard,
+  TutorCard,
+  AccordionOld,
+  ChapterModal,
+  CourseModal,
+  LessonModal,
+  ResourcesModal,
+  UnitModal,
+  Accordion,
+  SideNavNew,
+  UnitsCard,
+  UnitNav,
+  QuillEditorTutor,
+  QuillEditorStudent,
+  TutorSideBar,
+  TutorAccordion,
+  TutorSideNav,
+  TutorCardHome,
+  LandingSection,
+  Footer,
+  CourseForm,
 };
-export {
-
-};
+export {};

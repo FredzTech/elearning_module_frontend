@@ -1,5 +1,5 @@
 import React from "react";
-import { TutorSideBar, TutorCardHome } from "../components";
+import { TutorSideBar, TutorCardHome, ChapterModal } from "../components";
 
 const TutorPage = () => {
   return (
@@ -18,7 +18,19 @@ const TutorPage = () => {
         <TutorCardHome />
         <TutorCardHome />
         <TutorCardHome />
+
+        <ChapterModal />
       </article>
+
+      {/* Our Modals need to be on standby. */}
+      {/* <article className="modals">
+        <TestModal />
+        <CourseModal />
+        <ChapterModal />
+        <LessonModal />
+        <ResourcesModal />
+        <UnitModal />
+      </article> */}
     </main>
   );
 };
