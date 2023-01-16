@@ -4,6 +4,7 @@ import { CustomNav, Button } from "../../CustomForm";
 import { useNavigate } from "react-router-dom";
 
 const ChapterForm = ({ hideModal }) => {
+  // Using navigate prop as an action.
   let navigate = useNavigate();
   // DECLARATION OF VARIABLES
   //=========================
@@ -18,43 +19,9 @@ const ChapterForm = ({ hideModal }) => {
   const mpesaExpress = async (e) => {
     try {
       e.preventDefault();
-
-      const customerInfo = {
-        fName,
-        lName,
-        stkPushNo: `254${stkPushNo}`,
-        amount,
-      };
-      const { data, status } = await axios.post("/express", customerInfo);
-      if (status == 202) {
-        setStatusTracker(true);
-        setResponse("STK push has been sent successfully.");
-        setFName("");
-        setLName("");
-        setAmount("");
-        setStkPushNo("");
-        setResponseTracker(true);
-        setTimeout(() => {
-          setResponseTracker(false);
-        }, 3000);
-        navigate("/last-page");
-      }
+      console.log("Page action activated");
     } catch (error) {
-      // Destructuring the axios error which comes in 3 diff flavours
-      const { message, status, code, config } = error;
-      const { method, url, data } = config;
-      console.log(message, method, url, data);
-      console.log(status, code);
-      // Status is present but one cannot reach out to it.
-
-      setStatusTracker(false);
-      setResponse(
-        `Confirm that all details have been filled correctly or if you have stable internet.`
-      );
-      setResponseTracker(true);
-      setTimeout(() => {
-        setResponseTracker(false);
-      }, 3000);
+      console.log("Error Occured");
     }
   };
 
@@ -80,7 +47,7 @@ const ChapterForm = ({ hideModal }) => {
             Names
           </label>
           <input
-            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
+            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
             id="fName"
             type="Text"
             placeholder="First Name"
@@ -92,7 +59,7 @@ const ChapterForm = ({ hideModal }) => {
           ></input>
 
           <input
-            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
+            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
             id="lName"
             type="Text"
             placeholder="Last Name"
@@ -110,14 +77,14 @@ const ChapterForm = ({ hideModal }) => {
             </label>
             <div className=" phone:flex phone:w-full phone:items-center">
               <input
-                className="px-2 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 "
+                className="px-2 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple "
                 type="Text"
                 required
                 value="+254"
                 readOnly
               />
               <input
-                className="w-3/4 phone:w-full phone:ml-2  bg-white-200 appearance-none ml-2  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
+                className="w-3/4 phone:w-full phone:ml-2  bg-white-200 appearance-none ml-2  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                 id="contact"
                 type="Number"
                 placeholder="Safaricom No."
@@ -134,7 +101,7 @@ const ChapterForm = ({ hideModal }) => {
               Amount
             </label>
             <input
-              className="w-3/5 phone:w-3/5 phone:m-1 bg-white-200 appearance-none border-2 border-green-400 rounded  py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
+              className="w-3/5 phone:w-3/5 phone:m-1 bg-white-200 appearance-none border-2 border-green-400 rounded  py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
               id="amount"
               type="Number"
               placeholder=" Enter Amount"
@@ -151,13 +118,13 @@ const ChapterForm = ({ hideModal }) => {
           <Button
             type="button"
             text="Complete Transaction"
-            onClick={() => {
-              mpesaExpress;
+            onClick={(e) => {
+              mpesaExpress(e);
             }}
           />
           <Button
             type="button"
-            text="Complete Transaction"
+            text="Cancel"
             onClick={() => {
               hideModal();
             }}
@@ -168,4 +135,5 @@ const ChapterForm = ({ hideModal }) => {
   );
 };
 
+// export default ModalWrapper(ChapterForm, "Chapter");
 export default ChapterForm;
