@@ -7,7 +7,7 @@ export const useModal = () => {
 };
 
 export function ModalContextProvider({ children }) {
-  const [modal, setModal] = useState(0);
+  const [modal, setModal] = useState(false);
 
   return (
     <ModalContext.Provider value={{ modal, setModal }}>

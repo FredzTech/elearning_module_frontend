@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
-const StudentForm = () => {
+const TutorForm = () => {
   // DECLARATION OF OUR STATES
   //==========================
   const [fName, setFName] = useState("");
@@ -39,7 +39,7 @@ const StudentForm = () => {
       };
 
       try {
-        let { data } = await axios.post("/auth/registerTutor", studentData);
+        let { data } = await axios.post("/auth/registerStudent", studentData);
         // Clearing out the inputs
         console.log(JSON.stringify(data));
         setResponse("Student Registered Successfully");
@@ -72,7 +72,7 @@ const StudentForm = () => {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary phone mt-5 rounded-lg shadow-md shadow-primary">
-        <CustomNav text="tutor registration" />
+        <CustomNav text="student registration form" />
         {/* PROPOSED HEADER. */}
         {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
         <form className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md">
@@ -224,4 +224,4 @@ const StudentForm = () => {
   );
 };
 
-export default StudentForm;
+export default TutorForm;
