@@ -1,140 +1,177 @@
 import React, { useState } from "react";
-import axios from "../../../axios";
 import { CustomNav, Button } from "../../CustomForm";
-import { useNavigate } from "react-router-dom";
-import { ModalWrapper } from "../../../Wrappers";
-
-const ChapterForm = ({ hideModal }) => {
-  // Using navigate prop as an action.
-  let navigate = useNavigate();
+import axios from "../../../axios";
+const ChapterForm = () => {
   // DECLARATION OF VARIABLES
   //=========================
-  const [stkPushNo, setStkPushNo] = useState("");
-  const [amount, setAmount] = useState("");
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
-  const [responseTracker, setResponseTracker] = useState(false);
-  const [statusTracker, setStatusTracker] = useState(true);
-  const [response, setResponse] = useState("");
+  const [file, setFile] = useState();
+  const [unit, setUnit] = useState();
+  const [number, setNumber] = useState();
 
-  const mpesaExpress = async (e) => {
-    try {
-      e.preventDefault();
-      console.log("Page action activated");
-    } catch (error) {
-      console.log("Error Occured");
-    }
+  //   A FUNCTION THAT CREATES OUR POST OBJECT
+  //==========================================
+  async function createPostObject({ fName, lName, image }) {
+    console.log("Creating post object via formData instance. ");
+
+    // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
+    //=========================================================
+    const formData = new FormData();
+    formData.append("fName", fName);
+    formData.append("lName", lName);
+    // formData.append("document", image); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
+    formData.append("image", image); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
+
+    // ALTERNATIVE B : OUR GOOD OLD METHOD CAN ALSO WORK BUT WE USE WHAT IS RECOMMENDED.
+    //==================================================================================
+    // const formData = { fName, lName, video: file };
+
+    const config = {
+      headers: { "Content-Type": "multipart/form-data" },
+    };
+    const response = await axios.post("/s3/images", formData, config);
+
+    // const response = await axios.post("/upload", formData, config);
+    console.log(JSON.stringify(response));
+    return response;
+  }
+
+  //   TAKES THE FILE SELECTED(OBJECT) FROM FILE INSTANCE.
+  //=======================================================
+  const fileSelected = (e) => {
+    // console.log(e.target); //Will just display the attribute that causes the event to occur.
+    // console.log(e.target.files); // Returns a file list which is an object
+    const file = e.target.files[0];
+    setFile(file);
+    console.log(file);
+  };
+
+  const fileUploadHandler = async (e) => {
+    e.preventDefault();
+
+    // Create our post object.
+    const result = await createPostObject({ fName, lName, image: file });
+
+    console.log(result); //Returns to as the response from backend manifested under the data object.
+  };
+
+  const cancelRegistration = (e) => {
+    e.preventDefault();
+    console.log("Modal closed");
   };
 
   return (
-    <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-green-400 phone mt-5 rounded-lg">
-      <CustomNav text="Chapter Form" />
-      <form className="flex-col items-center justify-center px-5 w-full phone:border-2 phone:border-green-200 phone:rounded-b-md">
-        {responseTracker ? (
-          <p
-            className={`${
-              statusTracker
-                ? " bg-green-300 border-green-600"
-                : " bg-red-300 border-red-600"
-            } relative text-stone-600 text-center my-3 p-4 border-l-4`}
-          >
-            {response}
-          </p>
-        ) : (
-          " "
-        )}
-        <div className="flex phone:flex-col justify-around items-center my-10">
-          <label htmlFor="contact" className="w-1/5 phone:w-full">
-            Names
-          </label>
-          <input
-            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-            id="fName"
-            type="Text"
-            placeholder="First Name"
-            value={fName}
-            onChange={(e) => {
-              setFName(e.target.value);
-            }}
-            required
-          ></input>
-
-          <input
-            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-            id="lName"
-            type="Text"
-            placeholder="Last Name"
-            value={lName}
-            onChange={(e) => {
-              setLName(e.target.value);
-            }}
-            required
-          ></input>
-        </div>
-        <div className="flex phone:flex-col  items-center justify-center my-5">
-          <div className="w-2/3 flex phone:w-full  phone:my-1  phone:flex-col items-center justify-center ">
-            <label htmlFor="contact" className="w-1/5 phone:w-full">
-              Contact
-            </label>
-            <div className=" phone:flex phone:w-full phone:items-center">
-              <input
-                className="px-2 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple "
-                type="Text"
-                required
-                value="+254"
-                readOnly
-              />
-              <input
-                className="w-3/4 phone:w-full phone:ml-2  bg-white-200 appearance-none ml-2  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                id="contact"
-                type="Number"
-                placeholder="Safaricom No."
-                value={stkPushNo}
-                onChange={(e) => {
-                  setStkPushNo(e.target.value);
-                }}
-                required
-              />
+    <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary phone mt-5 rounded-lg shadow-md shadow-primary">
+        <CustomNav text="unit form" />
+        {/* PROPOSED HEADER. */}
+        {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
+        <form
+          encType="multipart/form-data"
+          className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md"
+        >
+          <div className="flex phone:flex-col justify-start items-center my-5 w-full">
+            {/* DROPDOWN */}
+            <div className=" phone:flex-col items-center justify-around">
+              <label htmlFor="id" className="w-full">
+                Select Unit
+              </label>
+              <div class=" mt-1 relative w-60 phone:m-1">
+                <select
+                  value={unit}
+                  onChange={(e) => setUnit(e.target.value)}
+                  className="relative w-64 appearance-none border-2 border-primary  px-4  py-2 rounded text-gray-700 leading-tight focus:outline-none focus:border-purple-500 placeholder:text-sm"
+                >
+                  {/* MAP DB FOR THE OPTIONS */}
+                  <option value="Unit A">Unit A</option>
+                  <option value="Unit B">Unit B</option>
+                  <option value="Unit C">Unit C</option>
+                  <option value="Unit D">Unit D</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700">
+                  <svg
+                    class="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
             </div>
+            {/* FILE */}
           </div>
-          <div className="w-1/3 phone:w-full phone:my-1  phone:flex flex items-center">
-            <label htmlFor="contact" className=" w-2/5">
-              Amount
+          <div className="flex-col-centered items-start my-10 gap-2">
+            <label htmlFor="cNumber" className="w-full ">
+              Chapter Details
             </label>
             <input
-              className="w-3/5 phone:w-3/5 phone:m-1 bg-white-200 appearance-none border-2 border-green-400 rounded  py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-              id="amount"
-              type="Number"
-              placeholder=" Enter Amount"
-              value={amount}
+              className="input-styling"
+              id="cNumber"
+              type="number"
+              placeholder="Chapter Number"
+              value={number}
               onChange={(e) => {
-                setAmount(e.target.value);
+                setNumber(e.target.value);
               }}
               required
+            ></input>
+            <input
+              className="input-styling"
+              id="fName"
+              type="Text"
+              placeholder="Chapter Name"
+              value={fName}
+              onChange={(e) => {
+                setFName(e.target.value);
+              }}
+              required
+            ></input>
+
+            <input
+              className="input-styling"
+              id="lName"
+              type="Text"
+              placeholder="Description"
+              value={lName}
+              onChange={(e) => {
+                setLName(e.target.value);
+              }}
+              required
+            ></input>
+          </div>
+
+          <div className="flex-col justify-center items-start my-10 ">
+            <label htmlFor="file" className="w-full ">
+              File Details
+            </label>
+            <input
+              type="file"
+              name="file"
+              onChange={fileSelected}
+              className="input-styling mt-2"
             />
           </div>
-        </div>
-
-        <div className="flex gap-5 justify-center items-center w-full mt-8 ">
-          <Button
-            type="button"
-            text="Complete Transaction"
-            onClick={(e) => {
-              mpesaExpress(e);
-            }}
-          />
-          <Button
-            type="button"
-            text="Cancel"
-            onClick={() => {
-              hideModal();
-            }}
-          />
-        </div>
-      </form>
+          {/* CTA BUTTONS */}
+          <div className="flex flex-col justify-center items-center w-full mt-8 ">
+            <Button
+              type="button"
+              text="Complete Transaction"
+              onClick={fileUploadHandler}
+            />
+            <Button
+              type="button"
+              text="Cancel"
+              onClick={(e) => {
+                cancelRegistration(e);
+              }}
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
-// export default ModalWrapper(ChapterForm, "Chapter");
 export default ChapterForm;

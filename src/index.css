@@ -26,7 +26,12 @@ body {
     
   .accordion_item.active .button {
       @apply bg-primary text-white
-  } 
+  }
+
+  .input-styling {
+    @apply w-64 px-4 bg-white appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm
+  }
+
   .flex-row-centered{
     @apply flex items-center justify-center
   }

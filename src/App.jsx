@@ -14,6 +14,7 @@ import {
   TutorUnitsPage,
   UserPage,
   NotFound,
+  CoursePage,
 } from "./pages";
 import {
   Footer,
