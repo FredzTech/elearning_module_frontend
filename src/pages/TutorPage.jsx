@@ -5,7 +5,6 @@ import {
   ChapterModal,
   LessonModal,
   TestForm,
-  ChapterForm,
 } from "../components";
 
 const TutorPage = () => {
@@ -29,7 +28,6 @@ const TutorPage = () => {
         {/* This is already a modal */}
         <article className="flex flex-col gap-5">
           <TestForm Height="This is the height" />
-          <ChapterForm />
         </article>
       </article>
 
