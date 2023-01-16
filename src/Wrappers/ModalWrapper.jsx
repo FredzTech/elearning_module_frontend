@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-
+import { useModal } from "../context/ModalContext";
 const ModalWrapper = (Component, UnitName) => {
   return function HOC(props) {
+    console.log(useModal());
+    const { modal, setModal } = useModal();
     // We are inside the new component we want to create.
     const [openForm, setOpenForm] = useState(false); // We use one state for all the components.
     // Qustion remains how I will extenalize this state and the externalization also means I externalize the methods.
-
     // CHAPTER CONTROLS
     function showModal() {
-      setOpenForm(true);
+      // setOpenForm(true);
+      setModal(true);
     }
     function hideModal() {
-      setOpenForm(false);
+      // setOpenForm(false);
+      setModal(false);
     }
     function handleClose(e) {
       if (e.target.id == "container") {
@@ -19,7 +22,7 @@ const ModalWrapper = (Component, UnitName) => {
       }
     }
 
-    if (openForm == false) {
+    if (modal == false) {
       return (
         <button
           className="button w-48 h-16"
