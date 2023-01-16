@@ -26,7 +26,7 @@ import {
   TutorCard,
 } from "./UnitPage";
 import { Button, CustomNav } from "./CustomForm";
-// TUTOR PAGE
+// Form are to be consumed internally hence no need for importation in this file.
 import {
   ChapterModal,
   CourseModal,
@@ -45,19 +45,6 @@ import {
   TutorCardHome,
   TutorSideBar,
 } from "./TutorPage/General";
-import {
-  CourseForm,
-  TestForm,
-  ChapterForm,
-  LessonForm,
-  ResourcesForm,
-  UnitForm,
-  TutorForm,
-  StudentForm,
-} from "./TutorPage/Forms";
-
-import Footer from "./Footer";
-
 export {
   LogInButton,
   LogInForm,
@@ -92,14 +79,4 @@ export {
   TutorAccordion,
   TutorSideNav,
   TutorCardHome,
-  LandingSection,
-  Footer,
-  CourseForm,
-  TestForm,
-  ChapterForm,
-  LessonForm,
-  ResourcesForm,
-  UnitForm,
-  TutorForm,
-  StudentForm,
 };
