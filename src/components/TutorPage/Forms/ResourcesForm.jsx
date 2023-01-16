@@ -10,16 +10,16 @@ const ResourcesForm = () => {
 
   //   A FUNCTION THAT CREATES OUR POST OBJECT
   //==========================================
-  async function createPostObject({ fName, lName, image }) {
-    console.log("Creating post object via formData instance. ");
+  async function createPostObject({ chapter, unit, file }) {
+    // console.log("Creating post object via formData instance. ");
 
     // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
     //=========================================================
     const formData = new FormData();
-    formData.append("fName", fName);
-    formData.append("lName", lName);
+    formData.append("chapter", chapter);
+    formData.append("unit", unit);
     // formData.append("document", image); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
-    formData.append("image", image); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
+    formData.append("resource", file); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
 
     // ALTERNATIVE B : OUR GOOD OLD METHOD CAN ALSO WORK BUT WE USE WHAT IS RECOMMENDED.
     //==================================================================================
@@ -28,7 +28,7 @@ const ResourcesForm = () => {
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-    const response = await axios.post("/s3/images", formData, config);
+    const response = await axios.post("/s3/resources", formData, config);
 
     // const response = await axios.post("/upload", formData, config);
     console.log(JSON.stringify(response));
@@ -49,7 +49,7 @@ const ResourcesForm = () => {
     e.preventDefault();
 
     // Create our post object.
-    const result = await createPostObject({ fName, lName, image: file });
+    const result = await createPostObject({ chapter, unit, file });
 
     console.log(result); //Returns to as the response from backend manifested under the data object.
   };
@@ -83,10 +83,12 @@ const ResourcesForm = () => {
                   className="relative w-64 appearance-none border-2 border-primary  px-4  py-2 rounded text-gray-700 leading-tight focus:outline-none focus:border-purple-500 placeholder:text-sm"
                 >
                   {/* MAP DB FOR THE OPTIONS */}
-                  <option value="Unit A">Chapter A</option>
-                  <option value="Unit B">Chapter B</option>
-                  <option value="Unit C">Chapter C</option>
-                  <option value="Unit D">Chapter D</option>
+                  <option value="Chapter A" selected>
+                    Chapter A
+                  </option>
+                  <option value="Chapter B">Chapter B</option>
+                  <option value="Chapter C">Chapter C</option>
+                  <option value="Chapter D">Chapter D</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700">
                   <svg
@@ -112,7 +114,9 @@ const ResourcesForm = () => {
                   {/* MAP DB FOR THE OPTIONS */}
                   <option value="Unit A">Unit A</option>
                   <option value="Unit B">Unit B</option>
-                  <option value="Unit C">Unit C</option>
+                  <option value="Unit C" selected>
+                    Unit C
+                  </option>
                   <option value="Unit D">Unit D</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700">

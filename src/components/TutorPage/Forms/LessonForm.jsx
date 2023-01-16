@@ -11,7 +11,7 @@ const LessonForm = () => {
   const [unit, setUnit] = useState();
   const [lNumber, setLNumber] = useState();
   const [lNotes, setLNotes] = useState();
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
 
   //   A FUNCTION THAT CREATES OUR POST OBJECT
   //==========================================
@@ -149,23 +149,12 @@ const LessonForm = () => {
             <label htmlFor="id" className="w-full">
               Lecture Notes
             </label>
-            {/* <input
-              className="input-styling"
-              id="lName"
-              type="Text"
-              placeholder="Add Lesson Notes"
-              value={lNotes}
-              onChange={(e) => {
-                setLNotes(e.target.value);
-              }}
-              required
-            ></input> */}
             <div className="mt-2 h-28">
               <ReactQuill
                 className=""
                 theme="snow"
-                value={value}
-                onChange={setValue}
+                value={lNotes}
+                onChange={setLNotes}
               />
             </div>
           </div>

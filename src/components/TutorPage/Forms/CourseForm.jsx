@@ -1,36 +1,31 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
-const Form = () => {
+const ResourcesForm = () => {
   // DECLARATION OF VARIABLES
   //=========================
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
   const [file, setFile] = useState();
+  const [courseTitle, setCourseTitle] = useState("");
 
   //   A FUNCTION THAT CREATES OUR POST OBJECT
   //==========================================
-  async function createPostObject({ fName, lName, image }) {
-    console.log("Creating post object via formData instance. ");
+  async function createPostObject({ courseTitle, file }) {
+    // console.log("Creating post object via formData instance. ");
 
     // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
     //=========================================================
     const formData = new FormData();
-    formData.append("fName", fName);
-    formData.append("lName", lName);
-    // formData.append("document", image); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
-    formData.append("image", image); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
-
-    // ALTERNATIVE B : OUR GOOD OLD METHOD CAN ALSO WORK BUT WE USE WHAT IS RECOMMENDED.
-    //==================================================================================
-    // const formData = { fName, lName, video: file };
+    formData.append("Course Title", courseTitle);
+    formData.append("Course", file);
 
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-    const response = await axios.post("/s3/images", formData, config);
-
-    // const response = await axios.post("/upload", formData, config);
+    const response = await axios.post(
+      "/course/upload-courses",
+      formData,
+      config
+    );
     console.log(JSON.stringify(response));
     return response;
   }
@@ -49,68 +44,58 @@ const Form = () => {
     e.preventDefault();
 
     // Create our post object.
-    const result = await createPostObject({ fName, lName, image: file });
+    const result = await createPostObject({ courseTitle, file });
 
     console.log(result); //Returns to as the response from backend manifested under the data object.
   };
 
-  const cancelRegistation = (e) => {
+  const cancelRegistration = (e) => {
     e.preventDefault();
-    console.log("Modal should be closed.");
+    console.log("Modal closed");
   };
 
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary phone mt-5 rounded-lg shadow-md shadow-primary">
-        <CustomNav />
+        <CustomNav text="resources form" />
         {/* PROPOSED HEADER. */}
         {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
         <form
           encType="multipart/form-data"
           className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md"
         >
-          <div className="flex phone:flex-col justify-around items-center my-10">
-            <label for="contact" className="w-1/5 phone:w-full">
-              Names
+          <div className="flex-col-centered items-start my-10 gap-2">
+            <label htmlFor="course" className="w-full ">
+              Course Details
             </label>
             <input
-              className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
-              id="fName"
-              type="Text"
-              placeholder="First Name"
-              value={fName}
+              className="input-styling"
+              id="course"
+              type="text"
+              placeholder="Course Title"
+              value={courseTitle}
               onChange={(e) => {
-                setFName(e.target.value);
-              }}
-              required
-            ></input>
-
-            <input
-              className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
-              id="lName"
-              type="Text"
-              placeholder="Last Name"
-              value={lName}
-              onChange={(e) => {
-                setLName(e.target.value);
+                setCourseTitle(e.target.value);
               }}
               required
             ></input>
           </div>
-
-          <div className="flex phone:flex-col justify-around items-center my-10">
+          <div className="flex-col justify-center items-start my-10 ">
+            <label htmlFor="file" className="w-full">
+              Course Display Image
+            </label>
             <input
               type="file"
-              name="avatar"
+              name="file"
               onChange={fileSelected}
-              className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
+              className="input-styling mt-2"
             />
           </div>
-
+          {/* CTA BUTTONS */}
           <div className="flex flex-col justify-center items-center w-full mt-8 ">
             <Button
               type="button"
-              text="Complete Transaction"
+              text="Add Resource"
               onClick={fileUploadHandler}
             />
             <Button
@@ -127,4 +112,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default ResourcesForm;
