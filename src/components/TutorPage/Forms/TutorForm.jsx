@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../../CustomForm";
+import { AlertBox } from "../../../components";
 import axios from "../../../axios";
 const TutorForm = () => {
   // DECLARATION OF OUR STATES
   //==========================
   const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
+  const [surname, setSurname] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,22 +32,22 @@ const TutorForm = () => {
       }, 4500);
     } else {
       let studentData = {
-        fName,
-        lName,
+        firstName: fName,
+        surname,
         password,
         contact: `254${contact}`,
         email,
       };
 
       try {
-        let { data } = await axios.post("/auth/registerTutor", studentData);
+        let { data } = await axios.post("/auth/register-tutor", studentData);
         // Clearing out the inputs
         console.log(JSON.stringify(data));
         setResponse("Student Registered Successfully");
         setStatusTracker(true);
         setResponseTracker(true);
         setFName("");
-        setLName("");
+        setSurname("");
         setEmail("");
         setContact("");
         setPassword("");
@@ -98,9 +99,9 @@ const TutorForm = () => {
               id="lName"
               type="Text"
               placeholder="Last Name"
-              value={lName}
+              value={surname}
               onChange={(e) => {
-                setLName(e.target.value);
+                setSurname(e.target.value);
               }}
               required
             ></input>
@@ -187,21 +188,8 @@ const TutorForm = () => {
             ></input>
           </div>
           {/* THE ALERT BOX */}
-          <div>
-            {responseTracker ? (
-              <p
-                className={`${
-                  statusTracker
-                    ? " bg-green-300 border-green-600"
-                    : " bg-red-300 border-red-600"
-                } fixed top-2 right-5 text-stone-600 text-center p-4 border-l-4`}
-              >
-                {response}
-              </p>
-            ) : (
-              " "
-            )}
-          </div>
+          <AlertBox responseTracker statusTracker response />
+
           <div className="flex flex-col justify-center items-center w-full mt-8 ">
             <Button
               type="button"

@@ -5,6 +5,7 @@ import RegistrationButton from "./RegistrationButton";
 import RegistrationForm from "./RegistrationForm";
 import NavigationBar from "./NavigationBar";
 import NavBtn from "./NavBtn";
+import AlertBox from "./AlertBox";
 
 // HOMEPAGE COMPONENTS
 
@@ -105,4 +106,5 @@ export {
   UnitForm,
   TutorForm,
   StudentForm,
+  AlertBox,
 };

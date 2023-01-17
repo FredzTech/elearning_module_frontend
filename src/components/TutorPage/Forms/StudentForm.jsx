@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { AlertBox } from "../../../components";
 import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
 const TutorForm = () => {
   // DECLARATION OF OUR STATES
   //==========================
   const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
+  const [surname, setSurname] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,22 +32,22 @@ const TutorForm = () => {
       }, 4500);
     } else {
       let studentData = {
-        fName,
-        lName,
+        firstName: fName,
+        surname,
         password,
         contact: `254${contact}`,
         email,
       };
 
       try {
-        let { data } = await axios.post("/auth/registerStudent", studentData);
+        let { data } = await axios.post("/auth/register-student", studentData);
         // Clearing out the inputs
         console.log(JSON.stringify(data));
         setResponse("Student Registered Successfully");
         setStatusTracker(true);
         setResponseTracker(true);
         setFName("");
-        setLName("");
+        setSurname("");
         setEmail("");
         setContact("");
         setPassword("");
@@ -84,7 +85,7 @@ const TutorForm = () => {
             <input
               className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
               id="fName"
-              type="Text"
+              type="text"
               placeholder="First Name"
               value={fName}
               onChange={(e) => {
@@ -96,11 +97,11 @@ const TutorForm = () => {
             <input
               className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
               id="lName"
-              type="Text"
-              placeholder="Last Name"
-              value={lName}
+              type="text"
+              placeholder="Enter surname"
+              value={surname}
               onChange={(e) => {
-                setLName(e.target.value);
+                setSurname(e.target.value);
               }}
               required
             ></input>
@@ -114,7 +115,7 @@ const TutorForm = () => {
               <div className=" phone:flex phone:w-full phone:items-center">
                 <input
                   className="px-4 mr-4 w-1/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                  type="Text"
+                  type="text"
                   required
                   value="+254"
                   readOnly
@@ -187,21 +188,7 @@ const TutorForm = () => {
             ></input>
           </div>
           {/* THE ALERT BOX */}
-          <div>
-            {responseTracker ? (
-              <p
-                className={`${
-                  statusTracker
-                    ? " bg-green-300 border-green-600"
-                    : " bg-red-300 border-red-600"
-                } fixed top-2 right-5 text-stone-600 text-center p-4 border-l-4`}
-              >
-                {response}
-              </p>
-            ) : (
-              " "
-            )}
-          </div>
+          <AlertBox responseTracker statusTracker response />
           <div className="flex flex-col justify-center items-center w-full mt-8 ">
             <Button
               type="button"

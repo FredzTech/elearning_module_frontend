@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
-const ResourcesForm = () => {
+const CourseForm = () => {
   // DECLARATION OF VARIABLES
   //=========================
   const [file, setFile] = useState();
@@ -15,19 +15,24 @@ const ResourcesForm = () => {
     // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
     //=========================================================
     const formData = new FormData();
-    formData.append("Course Title", courseTitle);
-    formData.append("Course", file);
+    formData.append("courseTitle", courseTitle);
+    formData.append("course", file);
 
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-    const response = await axios.post(
-      "/course/upload-courses",
-      formData,
-      config
-    );
-    console.log(JSON.stringify(response));
-    return response;
+    try {
+      const response = await axios.post("/course/new-course", formData, config);
+      console.log("After everything is said and done.");
+      console.log(JSON.stringify(response));
+      return response;
+    } catch (err) {
+      console.log(err);
+      let { data } = err.response;
+      console.log(JSON.stringify(data));
+      // Display the error as you will
+      return err;
+    }
   }
 
   //   TAKES THE FILE SELECTED(OBJECT) FROM FILE INSTANCE.
@@ -56,10 +61,7 @@ const ResourcesForm = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary phone mt-5 rounded-lg shadow-md shadow-primary">
-        <CustomNav text="resources form" />
-        {/* PROPOSED HEADER. */}
-        {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
+      <div className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md">
         <form
           encType="multipart/form-data"
           className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md"
@@ -112,4 +114,4 @@ const ResourcesForm = () => {
   );
 };
 
-export default ResourcesForm;
+export default CourseForm;
