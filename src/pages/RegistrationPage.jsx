@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "../components/modals/Modal";
-import RegistrationForm from "../components/RegistrationForm";
+
+import RegistrationForm from '../components/Logins-Registration/RegistrationForm'
 // import {Welcome} from "../components/Welcome";
 const RegistrationPage = () => {
   return (

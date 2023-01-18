@@ -1,20 +1,42 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import HomeImage from '../../assets/homeimage.png'
-import Mechatronic from '../../assets/mechatronic.jpeg'
-import Mechanical from '../../assets/mechanical.jpeg'
-import CompScience from '../../assets/computer-science.jpeg'
-import Electrical from '../../assets/electrical.jpeg'
+import Mechatronic from '../../assets/courses/mechatronic.jpeg'
+import Mechanical from '../../assets/courses/mechanical.jpeg'
+import CompScience from '../../assets/courses/computer-science.jpeg'
+import Electrical from '../../assets/courses/electrical.jpeg'
 import Tutor1 from '../../assets/Screenshot from 2023-01-13 04-58-06 .png'
 import Tutor2 from '../../assets/Screenshot from 2023-01-13 04-58-49.png'
-import Whatsapp from '../../assets/whatsapp.png'
-import Twitter from '../../assets/twitter.png'
+import Whatsapp from '../../assets/socials/whatsapp.png'
+import Twitter from '../../assets/socials/twitter.png'
+
+const courses = [
+  { name: 'Mechatronics Engineering', image: Mechatronic,  },
+  { name: 'Mechanical Engineering', image: Mechanical, },
+  { name: 'Electrical Engineering', image: Electrical, },
+  { name: 'Computer Science', image: CompScience, },
+]
+const tutors =[
+  {name: 'Prof. Eugine Maina', image: Tutor1 ,
+   course:'Mechatronic Engineering',
+   text:'“The ideal engineer is a composite … He is not a scientist, he is not a mathematician, he is not a sociologist or a writer; but he may use the knowledge and techniques of any or all of these disciplines in solving engineering problems.”' , 
+   whatsapp:'#' ,
+   twitter:'#'
+  },
+  {name: 'Dr. Evelyne Chemboi', image: Tutor2 ,
+  course:'Electrical Engineering',
+   text:'“We need to understand that if we all work on inclusion together, it’s going to be faster, broader, better, and more thorough than anything we can do on our own.”' , 
+   whatsapp:'#' ,
+   twitter:'#'
+  }
+]
+
 const LandingSection = () => {
 
   return (
     <>
-    <div className="flex w-screen gap-60 pl-16 h-100 sm:flex-col md:flex-col sm:gap-8 md:gap-10">
-        <div className='h-48'>
+    <div className="flex w-screen gap-60 pt-10 pl-16 sm:p-4 h-100 sm:flex-col md:flex-col sm:gap-8 md:gap-10">
+        <div className='h-full z-20 sm:bg-silver sm:bg-opacity-50 sm:p-1 sm:-mb-96 md:-mb-96 md:-mr-28' >
             <h3 className="text-4xl mb-3">Make Studying at School Easier </h3>
             <p>With access to well curated study materials from :</p>
             <ul className='list-disc p-6'>
@@ -29,23 +51,24 @@ const LandingSection = () => {
               <button className="block text-white bg-blue hover:bg-blue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center " >Enroll</button>
             </div>
         </div>
-        <div className='object-none object-right z-10'>
-            <img src={HomeImage} alt="" className=''/>
+        <div className=' z-10 '>
+            <img src={HomeImage} alt="" className='absolete float-right'/>
         </div>
     </div>
-    {/* lead tutors cection */}
+    {/* Courses Section */}
     <div className='bg-silver  w-screen'>
       <h3 className='text-6xl font-bold text-center mt-3'>Get Started</h3>
       <p className='mb-6 text-center'>Explore the courses</p>
-    <div className="flex flex-wrap gap-10 sm:flex-col sm:gap-4 " >
-        
+      <div className="flex flex-wrap gap-10 sm:flex-col sm:gap-4 " >
+      {courses.map((course)=>{return(
+
         <div className="flex flex-col justify-center items-center max-w-sm mx-auto my-8">
-          <div style={{ backgroundImage: `url(${Mechatronic})` }}
-              className="bg-gray-300 h-64 w-64 rounded-lg shadow-md bg-cover bg-center">
+          <div style={{ backgroundImage: `url(${course.image})` }}
+              className="bg-gray-300 h-48 w-48 rounded-lg shadow-md bg-cover bg-center">
 
           </div>
-          <div className="w-56 md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
-            <div className="py-2 text-center font-bold uppercase tracking-wide text-gray-800">Mechatronic Engineering</div>
+          <div className="w-44  md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
+            <div className="py-2 text-center font-bold uppercase tracking-wide text-gray-800">{course.name}</div>
             <div className="flex items-center justify-center py-2 px-3 bg-gray-400">
               <Link to="courses">
                 <button className=" bg-gray-800 text-xs text-white px-2 py-1 font-semibold rounded uppercase hover:bg-gray-700">View the course</button>
@@ -54,103 +77,41 @@ const LandingSection = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center max-w-sm mx-auto my-8">
-          <div style={{ backgroundImage: `url(${Mechanical})` }}
-              className="bg-gray-300 h-64 w-64 rounded-lg shadow-md bg-cover bg-center">
-
-          </div>
-          <div className="w-56 md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
-            <div className="py-2 text-center font-bold uppercase tracking-wide text-gray-800">Mechanical Engineering</div>
-            <div className="flex items-center justify-center py-2 px-3 bg-gray-400">
-              <Link to="courses">
-                <button className=" bg-gray-800 text-xs text-white px-2 py-1 font-semibold rounded uppercase hover:bg-gray-700">View the course</button>
-              </Link>
-              
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-center max-w-sm mx-auto my-8">
-          <div style={{ backgroundImage: `url(${Electrical})` }}
-              className="bg-gray-300 h-64 w-64 rounded-lg shadow-md bg-cover bg-center">
-
-          </div>
-          <div className="w-56 md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
-            <div className="py-2 text-center font-bold uppercase tracking-wide text-gray-800">Electrical Engineering</div>
-            <div className="flex items-center justify-center py-2 px-3 bg-gray-400">
-              <Link to="courses">
-                <button className=" bg-gray-800 text-xs text-white px-2 py-1 font-semibold rounded uppercase hover:bg-gray-700">View the course</button>
-              </Link>
-              
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-center max-w-sm mx-auto my-8">
-          <div style={{ backgroundImage: `url(${CompScience})` }}
-              className="bg-gray-300 h-64 w-64 rounded-lg shadow-md bg-cover bg-center">
-
-          </div>
-          <div className="w-56 md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
-            <div className="py-2 text-center font-bold uppercase tracking-wide text-gray-800">Computer Science</div>
-            <div className="flex items-center justify-center py-2 px-3 bg-gray-400">
-              <Link to="courses">
-                <button className=" bg-gray-800 text-xs text-white px-2 py-1 font-semibold rounded uppercase hover:bg-gray-700">View the course</button>
-              </Link>
-              
-            </div>
-          </div>
-        </div>
+       )})} 
     </div>
     </div>
     <div className='bg-white  w-screen'>
       <h3 className='text-5xl font-bold text-center mt-3'>Our Team</h3>
       <p className='mb-6 text-center'>Meet our lead Tutors</p>
-      <div className="flex gap-20 px-10 mt-10 sm:flex-col">
-      <div className="flex flex-col justify-center items-center pb-6 mx-auto my-8 ">
+      <div className="flex gap-20 px-10 mt-10 sm:flex-col sm:px-4 sm:gap-2 sm:mt-2">
+    
+        {tutors.map((tutor,index)=>{return(
+
+       
+        <div className="flex flex-col justify-center items-center pb-6 mx-auto my-8 " key={index}>
             <div className='flex '>
               
-               <img src={Tutor1} alt="" className='h-48 -mr-16 -mt-16 rounded-lg shadow-lg'/>
+               <img src={tutor.image} alt="" className='h-48 -mr-16 -mt-16 rounded-lg shadow-lg sm:-mr-4 sm:h-24 sm:mt-20' />
               
             
-              <div className='w-auto shadow-md  pl-24 pr-4 py-4 h-auto flex flex-col'>
+              <div className='w-auto shadow-md  pl-24 pr-4 py-4 h-auto flex flex-col sm:p-6'>
                 <div>
-                  <p className='text-blue text-bold mb-1 text-lg'>Prof. Eugine Maina</p>
-                  <p className='text-bold mb-2 text-md'>Mechatronic Enginnering</p>
-                  <p className='text-xs'>“The ideal engineer is a composite … He is not a scientist, he is not a mathematician, he is not a sociologist or a writer; but he may use the knowledge and techniques of any or all of these disciplines in solving engineering problems.”</p>
+                  <p className='text-blue text-bold mb-1 text-lg'>{tutor.name}</p>
+                  <p className='text-bold mb-2 text-md'>{tutor.course}</p>
+                  <p className='text-xs'>{tutor.text}</p>
                
                 </div>
-                <div className='text-center pt-4'>
                 <div className='text-center pt-4 flex gap-3'>
-                  <img src={Whatsapp} alt="" className='h-8 ' />
-                  <img src={Twitter} alt="" className='h-8 '  />
-                </div>
+                  <a href={tutor.whatsapp}><img src={Whatsapp} alt="" className='h-8 ' /></a>
+                  <a href={tutor.twitter}><img src={Twitter} alt="" className='h-8 '  /></a>
+                  
                 </div>
               </div>
               
             </div>
            
         </div>
-        <div className="flex flex-col justify-center items-center pb-6 mx-auto my-8 ">
-            <div className='flex '>
-              
-               <img src={Tutor2} alt="" className='h-48 -mr-16 -mt-16 rounded-lg shadow-lg'/>
-              
-            
-              <div className='w-auto shadow-md  pl-24 pr-4 py-4 h-auto flex flex-col'>
-                <div>
-                  <p className='text-blue text-bold mb-1 text-lg'>Dr. Evelyne Chemboi</p>
-                  <p className='text-bold mb-2 text-md'>Electrical Enginnering</p>
-                  <p className='text-xs'>“We need to understand that if we all work on inclusion together, it’s going to be faster, broader, better, and more thorough than anything we can do on our own.”</p>
-               
-                </div>
-                <div className='text-center pt-4 flex gap-3'>
-                  <img src={Whatsapp} alt="" className='h-8 ' />
-                  <img src={Twitter} alt="" className='h-8 '  />
-                </div>
-              </div>
-              
-            </div>
-           
-        </div>
+         )})}
       </div>
       
       

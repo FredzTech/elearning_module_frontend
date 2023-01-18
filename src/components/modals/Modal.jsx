@@ -16,8 +16,10 @@ export default function Modal ({children}) {
      {isOpen &&
       <div className='modal' >
          <div className="overlay" onClick={closeModal} ></div> 
-                <div className="modal-content" >
-                       
+                <div className="modal-content z-50" >
+                
+                <button className="float-right -mb-10  z-100 bg-inherit"><img src={Cancel}onClick={()=>closeModal()} alt="cancel" height={20} width={20}/></button>
+ 
                     
                             {children}
                         

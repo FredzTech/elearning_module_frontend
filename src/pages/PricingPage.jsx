@@ -5,6 +5,11 @@ import Uranium from '../assets/uranium.png'
 import Checked from '../assets/checked.png'
 import Unchecked from '../assets/unchecked.png'
 
+const payments =[
+  {title:'Radium', image: Radium , color: 'radium' , monthly:'KES500',total:'KES500' , duration:'for 1 month' },
+{title:'Plutonium', image: Plutonium , color: 'plutonium' , monthly:'KES400',total:'KES1200' , duration:'for 3 months' },
+{title:'Uranium', image: Uranium , color: 'uranium' , monthly:'KES300',total:'KES1800' , duration:'for 6 months' },
+]
 const PricingPage = () => {
   return (
     <div className="pt-8">
@@ -14,46 +19,24 @@ const PricingPage = () => {
       
       </div>
       {/* 1 month subscription */}
-     <div className="flex flex-wrap mt-6 p-10 gap-8 justify-center items-center sm:flex flex-column">
-        <div className="w-1/4 h-2/5 border border-radium  p-8">
-          <img src={Radium} alt="radium" height={100} width={300}/>
+      <div className="flex flex-wrap mt-6 p-10 gap-8 justify-center items-center sm:flex sm:flex-col">
+      {payments.map((payment,index)=>{return(
+         
+        <div className="w-1/4 h-2/5 border border-radium  p-8" key={index}>
+          <img src={payment.image} alt={payment.title} height={100} width={300}/>
           <div className="py-20 font-2 text-center">
-            <p className="font-family-roboto "><span className="text-4xl">KES500/</span> month</p>
-            <p>for 1 month</p>
+            <p className="font-family-roboto "><span className="text-4xl">{payment.monthly}/</span> month</p>
+            <p>{payment.duration}</p>
           </div> 
 
-
-          <div>
-            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-radium hover:bg-silver focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">KES500</button>
+          <div >
+          {/* style={{backgroundColor:{payment.color}}} */}
+            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm bg-blue text-sm font-medium text-white  hover:bg-silver hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" >{payment.total}</button>
           </div>
         </div>
-        {/* 3 month subscription */}
-        <div className="w-1/4 h-2/5 border border-plutonium p-8">
-          <img src={Plutonium} alt="plutonium" height={100} width={300}/>
-          <div className="py-20 font-2 text-center">
-            <p className="font-family-roboto "><span className="text-4xl">KES400/</span> month</p>
-            <p>for 3 month</p>
-          </div> 
-
-
-          <div>
-            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue hover:bg-silver focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">KES1200</button>
-          </div>
-        </div>
-
-        {/* 6 month subscription */}
-        <div className="w-1/4 h-2/5 border border-uranium  p-8">
-          <img src={Uranium} alt="uranium" height={100} width={300}/>
-          <div className="py-20 font-2 text-center">
-            <p className="font-family-roboto "><span className="text-4xl">KES300/</span> month</p>
-            <p>for 6 month</p>
-          </div> 
-
-
-          <div>
-            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-uranium hover:bg-silver focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">KES1800</button>
-          </div>
-        </div>
+      )})}
+    
+        
 
 
       </div>

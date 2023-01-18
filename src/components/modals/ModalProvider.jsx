@@ -25,7 +25,9 @@ export default function ModalProvider ({children}){
   const closeModal =()=>{
     setIsOpen(false);
     setModalContent(null);
-    window.history.back()
+    
+    window.location.reload(false)
+    window.history.back(-1)
   };
  
 
@@ -41,17 +43,7 @@ export default function ModalProvider ({children}){
     return (
   
         <ModalContext.Provider value={{isOpen, openModal,closeModal,modalContent }}>
-          {/* {isOpen?
-          <div className="modal">
-            <div onClick={toggleModal} className="overlay"></div>
-            <div className="modal-content">
-            
-              
-              {children}
-            </div>
-          </div>
-          : <div>{children}</div> 
-          } */}
+         
         {children}
         </ModalContext.Provider>
       

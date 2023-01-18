@@ -1,26 +1,48 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
-import Cancel from '../assets/remove-icon.png'
-// import { UserContext } from "../context/AuthContextProvider";
+import PasswordStrengthBar from 'react-password-strength-bar' 
+import Validation from "./Validation";
+import { ModalContext } from "../modals/ModalProvider";
 import { useContext } from "react";
-import { ModalContext } from "./modals/ModalProvider";
 
 const RegistrationForm = () => {
-  const {closeModal} = useContext(ModalContext)
-
+  const {closeModal }= useContext(ModalContext)
 
    const [name, setName] = useState('');
+   const [phone, setPhone] = useState('');
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
-  
+   const [confirmpassword, setConfirmPassword] = useState('');
+   const [doNotMatch, setDoNotMatch] = useState();
+   const [doNotMatchResponse, setDoNotMatchResponse] = useState('');
    const [role, setRole] = useState('Student');
+   const [errors , setErrors] = useState('');
    const [message, setMessage] = useState('');
- 
+   const[response,setResponse] = useState()
+  
+   //check the users password
+   const handleChange = (event)=>{
+    setPassword(event.target.value);
+   }
+   const handleConfirmPassword = (event)=>{
+    setConfirmPassword(event.target.value);
+    if(confirmpassword != password){
+      setDoNotMatch(true)
+      setDoNotMatchResponse('password does not match')
+    }else{
+      setDoNotMatch(false)
+      setDoNotMatchResponse('confirmed')
+    }
+    
+   }
+
 
    const handleSubmit=(e)=>{
     e.preventDefault();
     const user = {name,role,email,password};
+    setErrors(Validation(email,password));
     try {
+      
         fetch("http://localhost:5000/register",{
       method: 'POST',
       headers:{
@@ -32,11 +54,13 @@ const RegistrationForm = () => {
     })
     .then((res)=> res.json())
       .then((data)=> {
-        // 
+        
         if (data.status === "ok") {
            console.log("Registered Successfully");
            window.localStorage.setItem("token",data.data);
-           history.push(-1)
+           closeModal();
+        }else if(data.status === 400){
+          setResponse(data.error)
         }
       }).then(()=>{setMessage("Registered Successfully");});
     } catch (error) {
@@ -46,18 +70,18 @@ const RegistrationForm = () => {
    }
   return (
   <div>
-  <div className="max-h-screen bg-gray-100 flex flex-col justify-center  px-6 lg:px-8 py-12">
-  <button className="text-center ml-96"><img src={Cancel}onClick={()=>closeModal()} alt="cancel" height={20} width={20}/></button>
+  <div className="max-h-screen bg-gray-100 flex flex-col justify-center  px-6 lg:px-8 py-6">
+  {/* <button className="text-center ml-96"><img src={Cancel}onClick={()=>closeModal()} alt="cancel" height={20} width={20}/></button> */}
   <div className="sm:mx-auto sm:w-full sm:max-w-md">
     
     <h2 className="lg: mt-6 text-center text-3xl font-extrabold text-gray-900">Create an account</h2>
     
   </div>
-
+ 
   <div className="mt-8  w-full sm:mx-auto sm:w-full sm:max-w-md">
     <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
       <form className="mb-0 space-y-6" action="register" method="POST" onSubmit={handleSubmit}>
-      
+       {response && <p className="text-red">weak password</p> }
           <div className="mt-1">
             <label htmlFor="name">Full Name</label>
             <input id="name" name="name" placeholder="Enter your full name" type="text" autoComplete="name" required 
@@ -76,6 +100,7 @@ const RegistrationForm = () => {
             value={email}
             onChange={(e)=> setEmail(e.target.value)}
             />
+            {errors.email && <p className="text-red-600 text-xs">*{errors.email}</p> }
           </div>
 
           <div className="mt-1">
@@ -83,9 +108,22 @@ const RegistrationForm = () => {
             <input id="password" name="password" placeholder="Enter password" type="password" autoComplete="new-password" className="w-full border border-light-grey rounded-lg shadow-sm px-3 py-0.5 
             focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             value={password}
-            onChange={(e)=> setPassword(e.target.value)}
+            onChange={handleChange}
             />
-            <p>*Atleast 8 characters</p>
+            <PasswordStrengthBar password={password} minLength={8} />
+            {errors.password ? <p className="text-red-600 text-xs">*{errors.password}</p> :<p className="text-xs">*Atleast 8 characters</p>}
+            
+          </div>
+          <div className="mt-1">
+            <label htmlFor="password">Confirm Password</label>
+            <input id="password" name="password" placeholder="Confirm password" type="password" autoComplete="confirm-password" className="w-full border border-light-grey rounded-lg shadow-sm px-3 py-0.5 
+            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+            value={confirmpassword}
+            onChange={handleConfirmPassword}
+            />
+            
+            {doNotMatch ? <p className="text-red-600 text-xs">*{doNotMatchResponse}</p> :<p className="text-xs text-green-100">{doNotMatchResponse}</p>}
+            
           </div>
           
 
