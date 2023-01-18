@@ -1,6 +1,2 @@
 import { AuthContextProvider } from "./AuthContextProvider";
-
-
-export {
-    AuthContextProvider,
-}
+export { AuthContextProvider };

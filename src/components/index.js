@@ -3,9 +3,11 @@ import LogInButton from "./Logins-Registration/LogInButton";
 import LogInForm from "./Logins-Registration/LogInForm";
 
 
+// import LogInButton from "./LogInButton";
+// import LogInForm from "./LogInForm";
+import AlertBox from "./AlertBox";
 
 // HOMEPAGE COMPONENTS
-
 
 // COURSE PAGE COMPONENTS
 import HomePageCard from "./HomePage/HomePageCard";
@@ -26,8 +28,9 @@ import {
     QuillEditorStudent,
     TutorCard,
 } from "./UnitPage";
+
 import { Button, CustomNav } from "./CustomForm";
-// Form are to be consumed internally hence no need for importation in this file.
+// TUTOR PAGE
 import {
     ChapterModal,
     CourseModal,
@@ -46,16 +49,22 @@ import {
     TutorCardHome,
     TutorSideBar,
 } from "./TutorPage/General";
+import {
+    CourseForm,
+    TestForm,
+    ChapterForm,
+    LessonForm,
+    ResourcesForm,
+    UnitForm,
+    TutorForm,
+    StudentForm,
+} from "./TutorPage/Forms";
 
 import Footer from "./Footer";
 
 export {
     LogInButton,
     LogInForm,
-
-
-
-
     HomePageCard,
     HomePageGrid,
     Chapter,
@@ -85,7 +94,13 @@ export {
     TutorCardHome,
     LandingSection,
     Footer,
-};
-export {
-
+    CourseForm,
+    TestForm,
+    ChapterForm,
+    LessonForm,
+    ResourcesForm,
+    UnitForm,
+    TutorForm,
+    StudentForm,
+    AlertBox,
 };

@@ -32,7 +32,7 @@ const Navbar = ({content}) => {
   const isAuthenticated  = useContext(UserContext);
   const logout = Logout();
   return (
-    <Disclosure as="nav" className="bg-grey">
+    <Disclosure as="nav" className="bg-primary">
       {({ open }) => (
         <>
           <div className="mx-auto w-screen sm:max-w-7xl px-2 sm:px-6 lg:px-8">

@@ -9,7 +9,6 @@ import Tutor1 from '../../assets/Screenshot from 2023-01-13 04-58-06 .png'
 import Tutor2 from '../../assets/Screenshot from 2023-01-13 04-58-49.png'
 import Whatsapp from '../../assets/socials/whatsapp.png'
 import Twitter from '../../assets/socials/twitter.png'
-
 const courses = [
   { name: 'Mechatronics Engineering', image: Mechatronic,  },
   { name: 'Mechanical Engineering', image: Mechanical, },
@@ -31,8 +30,8 @@ const tutors =[
   }
 ]
 
-const LandingSection = () => {
 
+const LandingSection = () => {
   return (
     <>
     <div className="flex w-screen gap-60 pt-10 pl-16 sm:p-4 h-100 sm:flex-col md:flex-col sm:gap-8 md:gap-10">
@@ -113,12 +112,9 @@ const LandingSection = () => {
         </div>
          )})}
       </div>
-      
-      
-      
-    </div>
+             </div>
     </>
-  )
-}
+  );
+};
 
-export default LandingSection
+export default LandingSection;

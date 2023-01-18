@@ -1,170 +1,183 @@
-import React, { useState } from "react";
-import axios from "../../../axios";
+import React, { useState, useEffect } from "react";
 import { CustomNav, Button } from "../../CustomForm";
-import { useNavigate } from "react-router-dom";
-
-const ChapterForm = ({ hideModal }) => {
-  let navigate = useNavigate();
+import axios from "../../../axios";
+const ChapterForm = () => {
   // DECLARATION OF VARIABLES
-  //=========================
-  const [stkPushNo, setStkPushNo] = useState("");
-  const [amount, setAmount] = useState("");
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
-  const [responseTracker, setResponseTracker] = useState(false);
-  const [statusTracker, setStatusTracker] = useState(true);
-  const [response, setResponse] = useState("");
-
-  const mpesaExpress = async (e) => {
-    try {
-      e.preventDefault();
-
-      const customerInfo = {
-        fName,
-        lName,
-        stkPushNo: `254${stkPushNo}`,
-        amount,
-      };
-      const { data, status } = await axios.post("/express", customerInfo);
-      if (status == 202) {
-        setStatusTracker(true);
-        setResponse("STK push has been sent successfully.");
-        setFName("");
-        setLName("");
-        setAmount("");
-        setStkPushNo("");
-        setResponseTracker(true);
-        setTimeout(() => {
-          setResponseTracker(false);
-        }, 3000);
-        navigate("/last-page");
+  //==========================
+  const [units, setUnits] = useState([]);
+  const [unitName, setUnitName] = useState("");
+  const [chapterNumber, setChapterNumber] = useState("");
+  const [chapterName, setChapterName] = useState("");
+  const [chapterDescription, setChapterDescription] = useState("");
+  //FETCHES ALL UNITS WHEN COMPONENT MOUNTS
+  //========================================
+  useEffect(() => {
+    const fetchUnitData = async () => {
+      try {
+        console.log("use effect kicked in ");
+        const { data } = await axios.get("/unit/all-units");
+        console.log(data);
+        setUnits(data);
+        setUnitName(`${data[0].unitName}`);
+        console.log(units);
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      // Destructuring the axios error which comes in 3 diff flavours
-      const { message, status, code, config } = error;
-      const { method, url, data } = config;
-      console.log(message, method, url, data);
-      console.log(status, code);
-      // Status is present but one cannot reach out to it.
+    };
 
-      setStatusTracker(false);
-      setResponse(
-        `Confirm that all details have been filled correctly or if you have stable internet.`
+    fetchUnitData();
+  }, []);
+
+  //   A FUNCTION THAT CREATES OUR POST OBJECT
+  //==========================================
+  async function createPostObject({
+    unitName,
+    chapterNumber,
+    chapterName,
+    chapterDescription,
+  }) {
+    console.log("Creating post object via formData instance. ");
+
+    // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
+    //=========================================================
+    const formData = new FormData();
+    formData.append("unitName", unitName);
+    formData.append("chapterNumber", chapterNumber);
+    formData.append("chapterName", chapterName);
+    formData.append("chapterDescription", chapterDescription);
+    console.log(formData);
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    try {
+      const response = await axios.post(
+        "/chapter/new-chapter",
+        formData,
+        config
       );
-      setResponseTracker(true);
-      setTimeout(() => {
-        setResponseTracker(false);
-      }, 3000);
+      console.log(JSON.stringify(response));
+      return response;
+    } catch (err) {
+      let { data } = err.response;
+      console.log(JSON.stringify(data));
+      // Display the error as you will
+      return err;
     }
+  }
+
+  const fileUploadHandler = async (e) => {
+    e.preventDefault();
+
+    // Create our post object.
+    const result = await createPostObject({
+      unitName,
+      chapterNumber,
+      chapterName,
+      chapterDescription,
+    });
+
+    console.log(result); //Returns to as the response from backend manifested under the data object.
+  };
+
+  const cancelRegistration = (e) => {
+    e.preventDefault();
+    console.log("Modal closed");
   };
 
   return (
-    <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-green-400 phone mt-5 rounded-lg">
-      <CustomNav />
-      <form className="flex-col items-center justify-center px-5 w-full phone:border-2 phone:border-green-200 phone:rounded-b-md">
-        {responseTracker ? (
-          <p
-            className={`${
-              statusTracker
-                ? " bg-green-300 border-green-600"
-                : " bg-red-300 border-red-600"
-            } relative text-stone-600 text-center my-3 p-4 border-l-4`}
-          >
-            {response}
-          </p>
-        ) : (
-          " "
-        )}
-        <div className="flex phone:flex-col justify-around items-center my-10">
-          <label htmlFor="contact" className="w-1/5 phone:w-full">
-            Names
+    // <div className="flex flex-col justify-center items-center">
+    <div className="form-elements-wrap">
+      <CustomNav text="chapter form" />
+      {/* PROPOSED HEADER. */}
+      {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
+      <form className="form-styling">
+        {/* DROPDOWN */}
+        <div className="input-wrap">
+          <label htmlFor="id" className="w-full">
+            Select Unit
           </label>
-          <input
-            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
-            id="fName"
-            type="Text"
-            placeholder="First Name"
-            value={fName}
-            onChange={(e) => {
-              setFName(e.target.value);
-            }}
-            required
-          ></input>
-
-          <input
-            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
-            id="lName"
-            type="Text"
-            placeholder="Last Name"
-            value={lName}
-            onChange={(e) => {
-              setLName(e.target.value);
-            }}
-            required
-          ></input>
-        </div>
-        <div className="flex phone:flex-col  items-center justify-center my-5">
-          <div className="w-2/3 flex phone:w-full  phone:my-1  phone:flex-col items-center justify-center ">
-            <label htmlFor="contact" className="w-1/5 phone:w-full">
-              Contact
-            </label>
-            <div className=" phone:flex phone:w-full phone:items-center">
-              <input
-                className="px-2 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 "
-                type="Text"
-                required
-                value="+254"
-                readOnly
-              />
-              <input
-                className="w-3/4 phone:w-full phone:ml-2  bg-white-200 appearance-none ml-2  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
-                id="contact"
-                type="Number"
-                placeholder="Safaricom No."
-                value={stkPushNo}
-                onChange={(e) => {
-                  setStkPushNo(e.target.value);
-                }}
-                required
-              />
+          {/* THE PARENT SELECT DIV */}
+          <div className="select-parent">
+            <select
+              value={unitName}
+              onChange={(e) => setUnitName(e.target.value)}
+              className="select-input"
+            >
+              {/* MAP DB FOR THE OPTIONS */}
+              {units.map((unit, index) => {
+                return (
+                  <option key={`unit-${index}`} value={unit.unitName}>
+                    {unit.unitName}
+                  </option>
+                );
+              })}
+            </select>
+            <div className="select-svg-wrapper">
+              <svg
+                className="fill-current w-full h-full"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
             </div>
           </div>
-          <div className="w-1/3 phone:w-full phone:my-1  phone:flex flex items-center">
-            <label htmlFor="contact" className=" w-2/5">
-              Amount
-            </label>
-            <input
-              className="w-3/5 phone:w-3/5 phone:m-1 bg-white-200 appearance-none border-2 border-green-400 rounded  py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
-              id="amount"
-              type="Number"
-              placeholder=" Enter Amount"
-              value={amount}
-              onChange={(e) => {
-                setAmount(e.target.value);
-              }}
-              required
-            />
-          </div>
         </div>
-
-        <div className="flex gap-5 justify-center items-center w-full mt-8 ">
-          <Button
-            type="button"
-            text="Complete Transaction"
-            onClick={() => {
-              mpesaExpress;
+        {/* FILE */}
+        <div className="input-wrap">
+          <label htmlFor="cNumber" className="w-full ">
+            Chapter Details
+          </label>
+          <input
+            className="input-styling"
+            id="cNumber"
+            type="number"
+            placeholder="Chapter Number"
+            value={chapterNumber}
+            onChange={(e) => {
+              setChapterNumber(e.target.value);
             }}
-          />
+            required
+          ></input>
+          <input
+            className="input-styling"
+            id="fName"
+            type="Text"
+            placeholder="Chapter Name"
+            value={chapterName}
+            onChange={(e) => {
+              setChapterName(e.target.value);
+            }}
+            required
+          ></input>
+
+          <input
+            className="input-styling"
+            id="lName"
+            type="Text"
+            placeholder="Description"
+            value={chapterDescription}
+            onChange={(e) => {
+              setChapterDescription(e.target.value);
+            }}
+            required
+          ></input>
+        </div>
+        {/* CTA BUTTONS */}
+        <div className="cta-wrap">
+          <Button type="button" text="Save" onClick={fileUploadHandler} />
           <Button
             type="button"
-            text="Complete Transaction"
-            onClick={() => {
-              hideModal();
+            text="Cancel"
+            onClick={(e) => {
+              cancelRegistration(e);
             }}
           />
         </div>
       </form>
     </div>
+    // </div>
   );
 };
 

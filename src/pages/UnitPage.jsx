@@ -24,7 +24,6 @@ const UnitPage = () => {
           title="Introduction to Discrete Mathematics"
         />
         <UnitNav />
-
         <QuillEditorStudent />
       </article>
     </main>
