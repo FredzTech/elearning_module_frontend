@@ -60,57 +60,53 @@ const CourseForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md">
-        <form
-          encType="multipart/form-data"
-          className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md"
-        >
-          <div className="flex-col-centered items-start my-10 gap-2">
-            <label htmlFor="course" className="w-full ">
-              Course Details
-            </label>
-            <input
-              className="input-styling"
-              id="course"
-              type="text"
-              placeholder="Course Title"
-              value={courseTitle}
-              onChange={(e) => {
-                setCourseTitle(e.target.value);
-              }}
-              required
-            ></input>
-          </div>
-          <div className="flex-col justify-center items-start my-10 ">
-            <label htmlFor="file" className="w-full">
-              Course Display Image
-            </label>
-            <input
-              type="file"
-              name="file"
-              onChange={fileSelected}
-              className="input-styling mt-2"
-            />
-          </div>
-          {/* CTA BUTTONS */}
-          <div className="flex flex-col justify-center items-center w-full mt-8 ">
-            <Button
-              type="button"
-              text="Add Resource"
-              onClick={fileUploadHandler}
-            />
-            <Button
-              type="button"
-              text="Cancel"
-              onClick={(e) => {
-                cancelRegistration(e);
-              }}
-            />
-          </div>
-        </form>
-      </div>
+    // <div className="flex flex-col justify-center items-center debug w-full">
+    <div className="form-elements-wrap">
+      <CustomNav text="lesson form" />
+      <form encType="multipart/form-data" className="form-styling">
+        <div className="input-wrap">
+          <label htmlFor="course" className="w-full ">
+            Course Details
+          </label>
+          <input
+            className="input-styling"
+            id="course"
+            type="text"
+            placeholder="Course Title"
+            value={courseTitle}
+            onChange={(e) => {
+              setCourseTitle(e.target.value);
+            }}
+            required
+          ></input>
+        </div>
+        <div className="input-wrap">
+          <label htmlFor="file">Course Display Image</label>
+          <input
+            type="file"
+            name="file"
+            onChange={fileSelected}
+            className="input-styling mt-2"
+          />
+        </div>
+        {/* CTA BUTTONS */}
+        <div className="cta-wrap">
+          <Button
+            type="button"
+            text="Add Resource"
+            onClick={fileUploadHandler}
+          />
+          <Button
+            type="button"
+            text="Cancel"
+            onClick={(e) => {
+              cancelRegistration(e);
+            }}
+          />
+        </div>
+      </form>
     </div>
+    // </div>
   );
 };
 
