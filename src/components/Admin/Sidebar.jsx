@@ -13,7 +13,7 @@ import Settings from '../../assets/settings.png'
 import LogoutBtn from '../../assets/Logout.png'
 
 const lists = [
-	{ name: 'Dashboard', link: 'admin', icon: Dashboard  },
+	{ name: 'Dashboard', link: 'dashboard', icon: Dashboard  },
 	{ name: 'Users', link: 'users', icon: Users  },
 	{ name: 'Students', link: '#', icon: Students  },
 	{ name: 'Tutors', link: '#', icon: Tutors  },
@@ -26,7 +26,7 @@ export const Sidebar = () => {
 	const userData = useContext(UserdataContext)
   return (
     <div>
-        <div className="h-100 p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100 sm:w-screen sm:text-center">
+        <div className="h-full ml-0 p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100 sm:w-screen sm:text-center">
 	<div className="flex items-center p-2 space-x-4">
 		<img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
 		<div>

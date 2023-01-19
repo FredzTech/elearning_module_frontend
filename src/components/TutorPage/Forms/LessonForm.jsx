@@ -3,6 +3,7 @@ import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { Modal } from "../../modals";
 const LessonForm = () => {
   // DECLARATION OF VARIABLES
   //=========================
@@ -93,16 +94,17 @@ const LessonForm = () => {
 
   const cancelRegistration = (e) => {
     e.preventDefault();
-    console.log("Modal closed");
+    closeModal();
   };
 
   return (
-    // <div className="flex flex-col justify-center items-center">
-    <div className="form-elements-wrap">
-      <CustomNav text="lesson form" />
+    <Modal>
+    
+    <div className="">
+      <CustomNav  />
       {/* PROPOSED HEADER. */}
       {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
-      <form encType="multipart/form-data" className="form-styling">
+      <form encType="multipart/form-data" className="form-styling" text="Lesson form" >
         {/* DROPDOWN */}
         <div className="input-wrap">
           <label htmlFor="id" className="w-full">
@@ -174,7 +176,7 @@ const LessonForm = () => {
           />
         </div>
 
-        <div className="input-wrap">
+        {/* <div className="input-wrap">
           <label htmlFor="id" className="w-full">
             Lecture Notes
           </label>
@@ -188,7 +190,7 @@ const LessonForm = () => {
               onChange={setLessonNotes}
             />
           </div>
-        </div>
+        </div> */}
         <h1>PREVIEW</h1>
         {/* PREVIEWING THE CONTENT. */}
         <div
@@ -198,17 +200,12 @@ const LessonForm = () => {
         {/* CTA BUTTONS */}
         <div className="cta-wrap">
           <Button type="button" text="Save" onClick={fileUploadHandler} />
-          <Button
-            type="button"
-            text="Cancel"
-            onClick={(e) => {
-              cancelRegistration(e);
-            }}
-          />
+         
         </div>
       </form>
     </div>
-    // </div>
+    
+    </Modal>
   );
 };
 

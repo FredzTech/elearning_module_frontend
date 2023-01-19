@@ -7,8 +7,8 @@ import CompScience from '../../assets/courses/computer-science.jpeg'
 import Electrical from '../../assets/courses/electrical.jpeg'
 import Tutor1 from '../../assets/Screenshot from 2023-01-13 04-58-06 .png'
 import Tutor2 from '../../assets/Screenshot from 2023-01-13 04-58-49.png'
-import Whatsapp from '../../assets/socials/whatsapp.png'
-import Twitter from '../../assets/socials/twitter.png'
+import{ FaTwitter,FaWhatsapp , FaLinkedin} from 'react-icons/fa'
+
 const courses = [
   { name: 'Mechatronics Engineering', image: Mechatronic,  },
   { name: 'Mechanical Engineering', image: Mechanical, },
@@ -20,13 +20,15 @@ const tutors =[
    course:'Mechatronic Engineering',
    text:'“The ideal engineer is a composite … He is not a scientist, he is not a mathematician, he is not a sociologist or a writer; but he may use the knowledge and techniques of any or all of these disciplines in solving engineering problems.”' , 
    whatsapp:'#' ,
-   twitter:'#'
+   twitter:'#',
+   linkedin:'#'
   },
   {name: 'Dr. Evelyne Chemboi', image: Tutor2 ,
   course:'Electrical Engineering',
    text:'“We need to understand that if we all work on inclusion together, it’s going to be faster, broader, better, and more thorough than anything we can do on our own.”' , 
    whatsapp:'#' ,
-   twitter:'#'
+   twitter:'#',
+   linkedin:'#'
   }
 ]
 
@@ -58,10 +60,10 @@ const LandingSection = () => {
     <div className='bg-silver  w-screen'>
       <h3 className='text-6xl font-bold text-center mt-3'>Get Started</h3>
       <p className='mb-6 text-center'>Explore the courses</p>
-      <div className="flex flex-wrap gap-10 sm:flex-col sm:gap-4 " >
+      <div className="flex p-6 gap-8 w-full overflow-x-scroll" >
       {courses.map((course)=>{return(
 
-        <div className="flex flex-col justify-center items-center max-w-sm mx-auto my-8">
+        <div className="flex flex-col justify-center items-center max-w-sm mx-auto ">
           <div style={{ backgroundImage: `url(${course.image})` }}
               className="bg-gray-300 h-48 w-48 rounded-lg shadow-md bg-cover bg-center">
 
@@ -82,15 +84,15 @@ const LandingSection = () => {
     <div className='bg-white  w-screen'>
       <h3 className='text-5xl font-bold text-center mt-3'>Our Team</h3>
       <p className='mb-6 text-center'>Meet our lead Tutors</p>
-      <div className="flex gap-20 px-10 mt-10 sm:flex-col sm:px-4 sm:gap-2 sm:mt-2">
+      <div className="flex  px-10 mt-10 sm:flex-col md:flex-col sm:px-4 sm:gap-2 sm:mt-2 ">
     
         {tutors.map((tutor,index)=>{return(
 
        
-        <div className="flex flex-col justify-center items-center pb-6 mx-auto my-8 " key={index}>
+        <div className="flex flex-col justify-center items-center p-6 mx-auto my-8 " key={index}>
             <div className='flex '>
               
-               <img src={tutor.image} alt="" className='h-48 -mr-16 -mt-16 rounded-lg shadow-lg sm:-mr-4 sm:h-24 sm:mt-20' />
+               <img src={tutor.image} alt="" className='h-48 -mr-16 -mt-16 rounded-r-full shadow-lg md:-mr-4 md:h-24 md:mt-20 sm:-mr-4 sm:h-24 sm:mt-20' />
               
             
               <div className='w-auto shadow-md  pl-24 pr-4 py-4 h-auto flex flex-col sm:p-6'>
@@ -101,9 +103,9 @@ const LandingSection = () => {
                
                 </div>
                 <div className='text-center pt-4 flex gap-3'>
-                  <a href={tutor.whatsapp}><img src={Whatsapp} alt="" className='h-8 ' /></a>
-                  <a href={tutor.twitter}><img src={Twitter} alt="" className='h-8 '  /></a>
-                  
+                  {/* <a href={tutor.whatsapp}><FaWhatsapp className='h-8 w-8'/> </a> */}
+                  <a href={tutor.twitter}><FaTwitter className='h-8 w-8'/></a>
+                  <a href={tutor.linkedin}><FaLinkedin className='h-8 w-8'/></a>
                 </div>
               </div>
               

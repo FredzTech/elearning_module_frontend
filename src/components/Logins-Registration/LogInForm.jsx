@@ -29,67 +29,30 @@ const LogInForm = () => {
    const handleSubmit= async (e)=>{
     e.preventDefault();
      setErrors(Validation(email,password));
-    // try {
-    //   const user = {email,password};
-    //   const{data} = await axios.post("http://localhost:5000/login",user)
-    //     .then(res=>{
-    //       setMessage("login successful");
-    //       window.localStorage.setItem("token", data.data);
-        
-    //       const timeout = setTimeout(() => {
-
-            
-    //         window.location.href = "";
-    //         window.location.reload()
-    //       }, 300);
-        
-    //      closeModal();
-    //     })
-    //     .catch(err =>{
-    //       setMessage(err);
-    //       console.log(err);
-    //     })
-    // } catch (error) {
-      
-    //   console.log(error);
-    // }
-    
     try {
-      fetch("http://localhost:5000/login", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        
-        if (data.status == "ok") {
-          
-          window.localStorage.setItem("token", data.data);
-              setMessage("Logging...")
-              const timeout = setTimeout(() => {
+      const user = {email,password};
+      const{data} = await axios.post("http://localhost:5600/login",user)
+      if (data.status == "ok") {
+            window.localStorage.setItem("token", data.data);
+            
+            setMessage("Logging...")
+            const timeout = setTimeout(() => {
                 
-                window.location.reload();
-                closeModal();
-              }, 3000);
-        
-        }else{
-
-          setMessage(data.error)
+              window.location.reload();
+              closeModal();
+            }, 3000);
+      
+      }else{
+        setMessage(data.error)
+        }}
+        catch(err){
+          setMessage(err);
+          console.log(err);
         }
-      });
-    } catch (error) {
-      // setMessage(e.error);
-     
-    }
+
+        
+        
+   
    }
   return (
   <div>

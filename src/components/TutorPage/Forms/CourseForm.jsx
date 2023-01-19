@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../../CustomForm";
+import { Modal } from "../../modals";
 import axios from "../../../axios";
 const CourseForm = () => {
   // DECLARATION OF VARIABLES
@@ -60,9 +61,14 @@ const CourseForm = () => {
   };
 
   return (
+    <>
+    <Modal>
+
+   
+    
     // <div className="flex flex-col justify-center items-center debug w-full">
-    <div className="form-elements-wrap">
-      <CustomNav text="lesson form" />
+    <div className="">
+      <CustomNav text="Course form" />
       <form encType="multipart/form-data" className="form-styling">
         <div className="input-wrap">
           <label htmlFor="course" className="w-full ">
@@ -96,17 +102,13 @@ const CourseForm = () => {
             text="Add Resource"
             onClick={fileUploadHandler}
           />
-          <Button
-            type="button"
-            text="Cancel"
-            onClick={(e) => {
-              cancelRegistration(e);
-            }}
-          />
+         
         </div>
       </form>
     </div>
     // </div>
+     </Modal>
+    </>
   );
 };
 

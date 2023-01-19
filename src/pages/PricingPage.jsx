@@ -6,10 +6,11 @@ import Checked from '../assets/checked.png'
 import Unchecked from '../assets/unchecked.png'
 
 const payments =[
-  {title:'Radium', image: Radium , color: 'radium' , monthly:'KES500',total:'KES500' , duration:'for 1 month' },
-{title:'Plutonium', image: Plutonium , color: 'plutonium' , monthly:'KES400',total:'KES1200' , duration:'for 3 months' },
-{title:'Uranium', image: Uranium , color: 'uranium' , monthly:'KES300',total:'KES1800' , duration:'for 6 months' },
+  {title:'Radium', image: Radium , color: 'radium' , backgroundColor: 'radium', monthly:'KES500',total:'KES500' , duration:'for 1 month' },
+{title:'Plutonium', image: Plutonium , color: 'plutonium' , backgroundColor: 'plutonium', monthly:'KES400',total:'KES1200' , duration:'for 3 months' },
+{title:'Uranium', image: Uranium , color: 'uranium' , backgroundColor: 'uranium', monthly:'KES300',total:'KES1800' , duration:'for 6 months' },
 ]
+
 const PricingPage = () => {
   return (
     <div className="pt-8">
@@ -19,19 +20,19 @@ const PricingPage = () => {
       
       </div>
       {/* 1 month subscription */}
-      <div className="flex flex-wrap mt-6 p-10 gap-8 justify-center items-center sm:flex sm:flex-col">
+      <div className="flex flex-wrap mt-6 p-10 gap-8 justify-center items-center overflow-x-scroll scroll whitespace-no-wrap scroll-smooth sm:flex sm:flex-col sm:mt-2 sm:p-2 sm:gap-2">
       {payments.map((payment,index)=>{return(
          
-        <div className="w-1/4 h-2/5 border border-radium  p-8" key={index}>
+        <div className="w-[240px] h-[300px]   border border-radium  p-8 hover:scale-110 ease-in-out duration-300 sm:w-[300px] sm:p-2 sm:h-auto" key={index}>
           <img src={payment.image} alt={payment.title} height={100} width={300}/>
-          <div className="py-20 font-2 text-center">
+          <div className="py-10 font-2 text-center sm:p-3">
             <p className="font-family-roboto "><span className="text-4xl">{payment.monthly}/</span> month</p>
             <p>{payment.duration}</p>
           </div> 
 
           <div >
-          {/* style={{backgroundColor:{payment.color}}} */}
-            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm bg-blue text-sm font-medium text-white  hover:bg-silver hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" >{payment.total}</button>
+
+            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm  text-sm font-medium text-white  hover:bg-silver hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue"  >{payment.total}</button>
           </div>
         </div>
       )})}

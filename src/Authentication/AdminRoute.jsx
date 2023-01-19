@@ -17,7 +17,7 @@ export const AdminRoute = () => {
     } 
     },[])
    
-return !isAdmin  ?   <div className='flex sm:flex-col'><Sidebar/> <Outlet/></div> : <Navigate to="forbidden" />;
+return !isAdmin  ?   <div className='flex sm:flex-col'> <Sidebar/> <Outlet/></div> : <Navigate to="forbidden" />;
       
     
     

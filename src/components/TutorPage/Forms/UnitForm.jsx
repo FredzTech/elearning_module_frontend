@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import { postObject } from "../../../Modules/postUnitObject";
 import axios from "../../../axios";
+import { Modal } from "../../modals";
 const UnitForm = () => {
   // LOADS COURSES DATA WHEN COMPONENT LOADS.
   //==========================================
@@ -54,7 +55,8 @@ const UnitForm = () => {
 
   return (
     // <div className="flex flex-col justify-center items-center">
-    <div className="form-elements-wrap">
+    <Modal>
+    <div className="">
       <CustomNav text="unit form" />
       {/* PROPOSED HEADER. */}
       {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
@@ -149,7 +151,8 @@ const UnitForm = () => {
         </div>
       </form>
     </div>
-    // </div>
+    {/* // </div> */}
+    </Modal>
   );
 };
 

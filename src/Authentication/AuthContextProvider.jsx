@@ -12,8 +12,9 @@ export const AuthContextProvider = ({children}) => {
   const [isAuthenticated , setAuthentication] = useState(false)
   const [userData , setUserData] = useState('')
   useEffect(() => {
+    
   
-      fetch("http://localhost:5000/userData", {
+      fetch("http://localhost:5600/userData", {
         method: "POST",
         crossDomain: true,
         headers: {

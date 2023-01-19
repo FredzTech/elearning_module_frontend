@@ -15,7 +15,7 @@ const UnitPage = () => {
   return (
     <main className="flex flex-row w-full h-screen overflow-y-scroll">
       <article className="h-full flex  flex-col rounded-lg ">
-        <SideNavNew />
+        {/* <SideNavNew /> */}
       </article>
       <article className="h-screen overflow-y-scroll border-2 border-primary mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
         <VideoComponent

@@ -33,8 +33,9 @@ body.active-modal {
     background: #f1f1f1;
     padding: 10px;
     border-radius: 5px;
-    max-width: 600px;
+    max-width: auto;
     min-width: 300px;
+    overflow-y: scroll;
 }
 
 .close-modal {

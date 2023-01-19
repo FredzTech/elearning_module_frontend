@@ -16,8 +16,8 @@ import { UserdataContext } from "../../Authentication/AuthContextProvider";
 
 const navigation = [
   { name: 'Home', href: '/', current: false },
-  { name: 'Courses', href: 'units', current: false },
-  { name: 'Units', href: 'newCourses', current: false },
+  { name: 'Courses', href: 'courses', current: false },
+  { name: 'Units', href: 'units', current: false },
   { name: 'Users', href: 'admin/users', current: false },
 ]
 
@@ -78,16 +78,18 @@ const Navbar = ({content}) => {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              {!isAuthenticated? <Link className="text-white text-1xl p-2 radius-md hover:bg-grey"  to="register"> Register</Link> :
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  
                 </button>
-
+               }
                 {/* Profile dropdown */}
-                {!isAuthenticated? <NavBtn name="Login" border="true" goto="login" /> :
+                {!isAuthenticated?  <Link className="text-white text-1xl p-2 radius-md hover:bg-grey"  to="login">Login</Link>  :
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">

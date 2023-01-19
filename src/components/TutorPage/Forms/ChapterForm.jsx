@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
+import { Modal } from "../../modals";
 const ChapterForm = () => {
   // DECLARATION OF VARIABLES
   //==========================
@@ -86,8 +87,8 @@ const ChapterForm = () => {
   };
 
   return (
-    // <div className="flex flex-col justify-center items-center">
-    <div className="form-elements-wrap">
+   <Modal>
+    <div className="">
       <CustomNav text="chapter form" />
       {/* PROPOSED HEADER. */}
       {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
@@ -165,19 +166,13 @@ const ChapterForm = () => {
           ></input>
         </div>
         {/* CTA BUTTONS */}
-        <div className="cta-wrap">
+        <div className="cta-wrap ">
           <Button type="button" text="Save" onClick={fileUploadHandler} />
-          <Button
-            type="button"
-            text="Cancel"
-            onClick={(e) => {
-              cancelRegistration(e);
-            }}
-          />
+         
         </div>
       </form>
     </div>
-    // </div>
+   </Modal>
   );
 };
 

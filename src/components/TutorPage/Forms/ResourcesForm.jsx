@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
+import { Modal } from "../../modals";
 const ResourcesForm = () => {
   // DECLARATION OF VARIABLES
   //=========================
@@ -60,6 +61,7 @@ const ResourcesForm = () => {
   };
 
   return (
+    <Modal>
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary phone mt-5 rounded-lg shadow-md shadow-primary">
         <CustomNav text="resources form" />
@@ -161,6 +163,7 @@ const ResourcesForm = () => {
         </form>
       </div>
     </div>
+    </Modal>
   );
 };
 
