@@ -13,20 +13,22 @@ import TutorUnitPage from "./TutorUnitPage";
 import TutorUnitsPage from "./TutorUnitsPage";
 import UserPage from "./UserPage";
 import { NotFound } from "./404";
+import AdminPage from "./AdminPage";
 export {
-    HomePage,
-    LogInPage,
-    PricingPage,
-    RegistrationPage,
-    CoursePage,
-    UnitPage,
-    DraftPage,
-    ChapterPage,
-    ModalTriggerPage,
-    UnitsPage,
-    TutorPage,
-    TutorUnitsPage,
-    TutorUnitPage,
-    UserPage,
-    NotFound
+  HomePage,
+  LogInPage,
+  PricingPage,
+  RegistrationPage,
+  CoursePage,
+  UnitPage,
+  DraftPage,
+  ChapterPage,
+  ModalTriggerPage,
+  UnitsPage,
+  TutorPage,
+  TutorUnitsPage,
+  TutorUnitPage,
+  UserPage,
+  NotFound,
+  AdminPage,
 };

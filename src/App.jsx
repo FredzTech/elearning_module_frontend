@@ -15,6 +15,7 @@ import {
   UserPage,
   NotFound,
   CoursePage,
+  AdminPage,
 } from "./pages";
 import {
   Footer,
