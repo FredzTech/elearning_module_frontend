@@ -65,7 +65,7 @@ const LandingSection = () => {
 
         <div className="flex flex-col justify-center items-center max-w-sm mx-auto ">
           <div style={{ backgroundImage: `url(${course.image})` }}
-              className="bg-gray-300 h-48 w-48 rounded-lg shadow-md bg-cover bg-center">
+              className="bg-gray-300 h-48 lg:w-56 w-48 rounded-lg shadow-md bg-cover bg-center">
 
           </div>
           <div className="w-44  md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
@@ -92,7 +92,7 @@ const LandingSection = () => {
         <div className="flex flex-col justify-center items-center p-6 mx-auto my-8 " key={index}>
             <div className='flex '>
               
-               <img src={tutor.image} alt="" className='h-48 -mr-16 -mt-16 rounded-r-full shadow-lg md:-mr-4 md:h-24 md:mt-20 sm:-mr-4 sm:h-24 sm:mt-20' />
+               <img src={tutor.image} alt="" className='h-48 -mr-16 -mt-16 rounded-full shadow-lg md:-mr-4 md:h-24 md:mt-20 sm:-mr-4 sm:h-24 sm:mt-20' />
               
             
               <div className='w-auto shadow-md  pl-24 pr-4 py-4 h-auto flex flex-col sm:p-6'>
@@ -104,8 +104,8 @@ const LandingSection = () => {
                 </div>
                 <div className='text-center pt-4 flex gap-3'>
                   {/* <a href={tutor.whatsapp}><FaWhatsapp className='h-8 w-8'/> </a> */}
-                  <a href={tutor.twitter}><FaTwitter className='h-8 w-8'/></a>
-                  <a href={tutor.linkedin}><FaLinkedin className='h-8 w-8'/></a>
+                  <a href={tutor.twitter}><FaTwitter className='h-8 w-8 text-primary'/></a>
+                  <a href={tutor.linkedin}><FaLinkedin className='h-8 w-8 text-zaffre'/></a>
                 </div>
               </div>
               

@@ -47,16 +47,16 @@ export default function Footer() {
             <FaTwitter className="w-10 h-10" />
           </a>
           <a href="">
-            <FaWhatsapp className="w-10 h-10" />
+            <FaWhatsapp className="w-10 h-10 text-jade" />
           </a>
           <a href="">
-            <FaFacebook className="w-10 h-10" />
+            <FaFacebook className="w-10 h-10 text-navy-blue" />
           </a>
           <a href="">
-            <FaLinkedinIn className="w-10 h-10" />
+            <FaLinkedinIn className="w-10 h-10 text-zaffre" />
           </a>
           <a href="">
-            <FaDiscord className="w-10 h-10" />
+            <FaDiscord className="w-10 h-10 text-white bg-blue rounded-full" />
           </a>
         </div>
       </div>
