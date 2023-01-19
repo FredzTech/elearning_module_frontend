@@ -33,7 +33,6 @@ import {
 import { ModalProvider } from "./components/modals";
 import { AuthContextProvider } from "./Authentication";
 import { AdminRoute } from "./Authentication/AdminRoute";
-import { AdminDashboard } from "./components/Admin/AdminDashboard";
 import Users from "./pages/UserPage";
 import { Routes, Route } from "react-router-dom";
 import IdleTimer from "./Authentication/IdleTimer";
@@ -69,6 +68,21 @@ function App() {
                   <Route exact path="course" element={<CourseForm />} />
                   <Route exact path="unitForm" element={<UnitForm />} />
                   <Route exact path="tutor-reg" element={<TutorForm />} />
+                  <Route
+                    exact
+                    path="dashboard"
+                    element={<AdminDashboard />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="students"
+                    element={<StudentsPageAdmin />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="tutors"
+                    element={<TutorsPageAdmin />}
+                  ></Route>
                 </Route>
 
                 {/* tutor routes */}
@@ -80,6 +94,8 @@ function App() {
                   <Route exact path="lesson" element={<LessonForm />} />
                   <Route exact path="resources" element={<ResourcesForm />} />
                 </Route>
+
+                {/* <Route exact path="admin" element={<AdminPage />}></Route> */}
               </Routes>
             </IdleTimer>
           </ModalProvider>

@@ -2,7 +2,6 @@
 import LogInButton from "./Logins-Registration/LogInButton";
 import LogInForm from "./Logins-Registration/LogInForm";
 
-
 // import LogInButton from "./LogInButton";
 // import LogInForm from "./LogInForm";
 import AlertBox from "./AlertBox";
@@ -19,58 +18,39 @@ import CourseHeading from "./CoursePage/CourseHeading";
 
 // UNIT PAGE COMPONENTS
 import {
-    VideoComponent,
-    ChapterCard,
-    AccordionOld,
-    UnitsCard,
-    UnitNav,
-    QuillEditorStudent,
-    TutorCard,
+  VideoComponent,
+  ChapterCard,
+  AccordionOld,
+  UnitsCard,
+  UnitNav,
+  QuillEditorStudent,
+  TutorCard,
 } from "./UnitPage";
 
 import { Button, CustomNav } from "./CustomForm";
 // TUTOR PAGE
 import {
-    ChapterModal,
-    CourseModal,
-    LessonModal,
-    ResourcesModal,
-    UnitModal,
+  ChapterModal,
+  CourseModal,
+  LessonModal,
+  ResourcesModal,
+  UnitModal,
 } from "./TutorPage/Modals";
-<<<<<<< HEAD
-import {
-    Accordion,
-    SideNavNew,
-    TutorAccordion,
-    TutorSideNav,
-} from "./TutorPage/Accordion";
-=======
 import { Accordion, TutorAccordion, TutorSideNav } from "./TutorPage/Accordion";
->>>>>>> adminSection
 import {
-    QuillEditorTutor,
-    TutorCardHome,
-    TutorSideBar,
+  QuillEditorTutor,
+  TutorCardHome,
+  TutorSideBar,
 } from "./TutorPage/General";
 import {
-<<<<<<< HEAD
-    CourseForm,
-    TestForm,
-    ChapterForm,
-    LessonForm,
-    ResourcesForm,
-    UnitForm,
-    TutorForm,
-    StudentForm,
-=======
   CourseForm,
+  TestForm,
   ChapterForm,
   LessonForm,
   ResourcesForm,
   UnitForm,
   TutorForm,
   StudentForm,
->>>>>>> adminSection
 } from "./TutorPage/Forms";
 
 import Footer from "./Footer";
@@ -92,55 +72,8 @@ import {
 } from "./AdminPage";
 
 export {
-<<<<<<< HEAD
-    LogInButton,
-    LogInForm,
-    HomePageCard,
-    HomePageGrid,
-    Chapter,
-    Pointer,
-    SubNav,
-    CourseHeading,
-    VideoComponent,
-    Button,
-    CustomNav,
-    ChapterCard,
-    TutorCard,
-    AccordionOld,
-    ChapterModal,
-    CourseModal,
-    LessonModal,
-    ResourcesModal,
-    UnitModal,
-    Accordion,
-    SideNavNew,
-    UnitsCard,
-    UnitNav,
-    QuillEditorTutor,
-    QuillEditorStudent,
-    TutorSideBar,
-    TutorAccordion,
-    TutorSideNav,
-    TutorCardHome,
-    LandingSection,
-    Footer,
-    CourseForm,
-    TestForm,
-    ChapterForm,
-    LessonForm,
-    ResourcesForm,
-    UnitForm,
-    TutorForm,
-    StudentForm,
-    AlertBox,
-};
-=======
   LogInButton,
   LogInForm,
-  RegistrationButton,
-  RegistrationForm,
-  NavigationBar,
-  NavBtn,
   HomePageCard,
   HomePageGrid,
   Chapter,
@@ -170,6 +103,7 @@ export {
   LandingSection,
   Footer,
   CourseForm,
+  TestForm,
   ChapterForm,
   LessonForm,
   ResourcesForm,
@@ -177,6 +111,10 @@ export {
   TutorForm,
   StudentForm,
   AlertBox,
+  // RegistrationButton,
+  // RegistrationForm,
+  // NavigationBar,
+  // NavBtn,
   AdminButton,
   AdminCard,
   AdminSideNav,
@@ -192,4 +130,3 @@ export {
   PageTitle,
   UnitsAdminTable,
 };
->>>>>>> adminSection

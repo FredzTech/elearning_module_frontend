@@ -1,9 +1,5 @@
-import React, {  createContext,useState } from "react";
+import React, { createContext, useState } from "react";
 import "./modal.css";
-
-
-
-
 
 export const ModalContext = createContext();
 
@@ -11,44 +7,33 @@ export const ModalContext = createContext();
 //   return useContext(ModalContext)
 // }
 
+export default function ModalProvider({ children }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
-export default function ModalProvider ({children}){
-  
- 
-  const [isOpen , setIsOpen] = useState(false);
-  const [modalContent , setModalContent] = useState(null);
-
-  const openModal =(content)=>{
+  const openModal = (content) => {
     setIsOpen(true);
     setModalContent(content);
   };
-  const closeModal =()=>{
+  const closeModal = () => {
     setIsOpen(false);
     setModalContent(null);
-    
-    window.location.reload(false)
-    window.history.back(-1)
+
+    window.location.reload(false);
+    window.history.back(-1);
   };
- 
 
-  
-
-  if(isOpen) {
-    document.body.classList.add('active-modal')
+  if (isOpen) {
+    document.body.classList.add("active-modal");
   } else {
-    document.body.classList.remove('active-modal')
+    document.body.classList.remove("active-modal");
   }
 
-
-    return (
-  
-        <ModalContext.Provider value={{isOpen, openModal,closeModal,modalContent }}>
-         
-        {children}
-        </ModalContext.Provider>
-      
-    
-  
-  )
- 
+  return (
+    <ModalContext.Provider
+      value={{ isOpen, openModal, closeModal, modalContent }}
+    >
+      {children}
+    </ModalContext.Provider>
+  );
 }
