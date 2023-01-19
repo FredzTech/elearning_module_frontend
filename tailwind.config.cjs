@@ -27,6 +27,10 @@ module.exports = {
         primaryLight: "#bfdbfe",
         tutorCard: "#d90068",
         grey: "#808080",
+        jade: 	"#00A36C",
+        'navy-blue' :	"#000080",
+        'dark-blue ':	"#00008B",
+        'zaffre': 	"#0818A8"
       },
       screens: {
         sm: { min: "300px", max: "767px" },
