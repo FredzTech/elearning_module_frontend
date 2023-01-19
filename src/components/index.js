@@ -6,7 +6,6 @@ import LogInForm from "./Logins-Registration/LogInForm";
 // import LogInButton from "./LogInButton";
 // import LogInForm from "./LogInForm";
 import AlertBox from "./AlertBox";
-
 // HOMEPAGE COMPONENTS
 
 // COURSE PAGE COMPONENTS
@@ -38,18 +37,23 @@ import {
     ResourcesModal,
     UnitModal,
 } from "./TutorPage/Modals";
+<<<<<<< HEAD
 import {
     Accordion,
     SideNavNew,
     TutorAccordion,
     TutorSideNav,
 } from "./TutorPage/Accordion";
+=======
+import { Accordion, TutorAccordion, TutorSideNav } from "./TutorPage/Accordion";
+>>>>>>> adminSection
 import {
     QuillEditorTutor,
     TutorCardHome,
     TutorSideBar,
 } from "./TutorPage/General";
 import {
+<<<<<<< HEAD
     CourseForm,
     TestForm,
     ChapterForm,
@@ -58,11 +62,37 @@ import {
     UnitForm,
     TutorForm,
     StudentForm,
+=======
+  CourseForm,
+  ChapterForm,
+  LessonForm,
+  ResourcesForm,
+  UnitForm,
+  TutorForm,
+  StudentForm,
+>>>>>>> adminSection
 } from "./TutorPage/Forms";
 
 import Footer from "./Footer";
+import {
+  AdminButton,
+  AdminCard,
+  AdminSideNav,
+  CoursesTable,
+  PaymentsTable,
+  StudentsTable,
+  NavigateBtn,
+  StatusPill,
+  CTAButton,
+  TutorsAdminTable,
+  StudentsAdminTable,
+  CoursesAdminTable,
+  PageTitle,
+  UnitsAdminTable,
+} from "./AdminPage";
 
 export {
+<<<<<<< HEAD
     LogInButton,
     LogInForm,
     HomePageCard,
@@ -104,3 +134,62 @@ export {
     StudentForm,
     AlertBox,
 };
+=======
+  LogInButton,
+  LogInForm,
+  RegistrationButton,
+  RegistrationForm,
+  NavigationBar,
+  NavBtn,
+  HomePageCard,
+  HomePageGrid,
+  Chapter,
+  Pointer,
+  SubNav,
+  CourseHeading,
+  VideoComponent,
+  Button,
+  CustomNav,
+  ChapterCard,
+  TutorCard,
+  AccordionOld,
+  ChapterModal,
+  CourseModal,
+  LessonModal,
+  ResourcesModal,
+  UnitModal,
+  Accordion,
+  UnitsCard,
+  UnitNav,
+  QuillEditorTutor,
+  QuillEditorStudent,
+  TutorSideBar,
+  TutorAccordion,
+  TutorSideNav,
+  TutorCardHome,
+  LandingSection,
+  Footer,
+  CourseForm,
+  ChapterForm,
+  LessonForm,
+  ResourcesForm,
+  UnitForm,
+  TutorForm,
+  StudentForm,
+  AlertBox,
+  AdminButton,
+  AdminCard,
+  AdminSideNav,
+  CoursesTable,
+  PaymentsTable,
+  StudentsTable,
+  NavigateBtn,
+  StatusPill,
+  TutorsAdminTable,
+  CTAButton,
+  StudentsAdminTable,
+  CoursesAdminTable,
+  PageTitle,
+  UnitsAdminTable,
+};
+>>>>>>> adminSection

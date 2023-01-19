@@ -4,7 +4,6 @@ import {
   TutorCardHome,
   ChapterModal,
   LessonModal,
-  TestForm,
 } from "../components";
 
 const TutorPage = () => {
@@ -26,9 +25,7 @@ const TutorPage = () => {
         <TutorCardHome />
 
         {/* This is already a modal */}
-        <article className="flex flex-col gap-5">
-          <TestForm Height="This is the height" />
-        </article>
+        <article className="flex flex-col gap-5"></article>
       </article>
 
       {/* Our Modals need to be on standby. */}
