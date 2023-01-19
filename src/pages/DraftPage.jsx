@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SideNavNew, CourseForm } from "../components";
+import { CourseForm } from "../components";
 import { ModalWrapper } from "../Wrappers";
 import "../components/TutorPage/Accordion/accordion.css";
 const DraftPage = () => {

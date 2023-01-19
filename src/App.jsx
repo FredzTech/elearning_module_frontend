@@ -16,6 +16,9 @@ import {
   NotFound,
   CoursePage,
   AdminPage,
+  AdminDashboard,
+  StudentsPageAdmin,
+  TutorsPageAdmin,
 } from "./pages";
 import {
   Footer,
@@ -26,7 +29,6 @@ import {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  TestForm,
   TutorForm,
   StudentForm,
 } from "./components";
@@ -89,6 +91,20 @@ function App() {
               path="/tutor/resources"
               element={<ResourcesForm />}
             ></Route>
+
+            <Route exact path="admin" element={<AdminPage />}>
+              <Route
+                exact
+                path="dashboard"
+                element={<AdminDashboard />}
+              ></Route>
+              <Route
+                exact
+                path="students"
+                element={<StudentsPageAdmin />}
+              ></Route>
+              <Route exact path="tutors" element={<TutorsPageAdmin />}></Route>
+            </Route>
           </Routes>
         </ModalProvider>
         <Footer />

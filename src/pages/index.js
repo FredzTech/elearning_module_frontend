@@ -14,6 +14,9 @@ import TutorUnitsPage from "./TutorUnitsPage";
 import UserPage from "./UserPage";
 import { NotFound } from "./404";
 import AdminPage from "./AdminPage";
+import AdminDashboard from "./Admin/AdminDashboard";
+import StudentsPageAdmin from "./Admin/StudentsPageAdmin";
+import TutorsPageAdmin from "./Admin/TutorsPageAdmin";
 export {
   HomePage,
   LogInPage,
@@ -31,4 +34,7 @@ export {
   UserPage,
   NotFound,
   AdminPage,
+  AdminDashboard,
+  StudentsPageAdmin,
+  TutorsPageAdmin,
 };

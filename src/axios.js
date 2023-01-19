@@ -4,6 +4,7 @@ import axios from "axios";
 const instance = axios.create({
   // # CHANGING THE REPORTING OFFICER
   //   baseURL: "https://daraja-integration.herokuapp.com/",
-  baseURL: "http://localhost:4000/",
+  // baseURL: "http://localhost:4000/",
+  baseURL: "https://qwertz-rent.herokuapp.com/",
 });
 export default instance;

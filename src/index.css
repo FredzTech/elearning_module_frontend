@@ -60,8 +60,15 @@ body {
   .flex-col-centered {
        @apply flex flex-col items-center justify-center
      }
+    .sidebar-button {
+           @apply uppercase hover:bg-slate-200 hover:text-black text-white font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
+         }
+
+     .sidebar-action-button {
+       @apply uppercase hover:bg-slate-200 hover:text-black text-white font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
+     }
   .button{
-    @apply  uppercase bg-primary hover:bg-primaryLight hover:text-white text-white font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
+    @apply  uppercase bg-primary hover:bg-primaryLight text-white font-bold flex justify-between w-full items-center py-3 pr-4 pl-8 cursor-pointer
   }
 
     .answer_wrapper.open {

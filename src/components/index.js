@@ -6,7 +6,6 @@ import RegistrationForm from "./RegistrationForm";
 import NavigationBar from "./NavigationBar";
 import NavBtn from "./NavBtn";
 import AlertBox from "./AlertBox";
-
 // HOMEPAGE COMPONENTS
 
 // COURSE PAGE COMPONENTS
@@ -38,12 +37,7 @@ import {
   ResourcesModal,
   UnitModal,
 } from "./TutorPage/Modals";
-import {
-  Accordion,
-  SideNavNew,
-  TutorAccordion,
-  TutorSideNav,
-} from "./TutorPage/Accordion";
+import { Accordion, TutorAccordion, TutorSideNav } from "./TutorPage/Accordion";
 import {
   QuillEditorTutor,
   TutorCardHome,
@@ -51,7 +45,6 @@ import {
 } from "./TutorPage/General";
 import {
   CourseForm,
-  TestForm,
   ChapterForm,
   LessonForm,
   ResourcesForm,
@@ -61,6 +54,22 @@ import {
 } from "./TutorPage/Forms";
 
 import Footer from "./Footer";
+import {
+  AdminButton,
+  AdminCard,
+  AdminSideNav,
+  CoursesTable,
+  PaymentsTable,
+  StudentsTable,
+  NavigateBtn,
+  StatusPill,
+  CTAButton,
+  TutorsAdminTable,
+  StudentsAdminTable,
+  CoursesAdminTable,
+  PageTitle,
+  UnitsAdminTable,
+} from "./AdminPage";
 
 export {
   LogInButton,
@@ -87,7 +96,6 @@ export {
   ResourcesModal,
   UnitModal,
   Accordion,
-  SideNavNew,
   UnitsCard,
   UnitNav,
   QuillEditorTutor,
@@ -99,7 +107,6 @@ export {
   LandingSection,
   Footer,
   CourseForm,
-  TestForm,
   ChapterForm,
   LessonForm,
   ResourcesForm,
@@ -107,4 +114,18 @@ export {
   TutorForm,
   StudentForm,
   AlertBox,
+  AdminButton,
+  AdminCard,
+  AdminSideNav,
+  CoursesTable,
+  PaymentsTable,
+  StudentsTable,
+  NavigateBtn,
+  StatusPill,
+  TutorsAdminTable,
+  CTAButton,
+  StudentsAdminTable,
+  CoursesAdminTable,
+  PageTitle,
+  UnitsAdminTable,
 };
