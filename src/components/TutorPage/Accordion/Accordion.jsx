@@ -20,11 +20,11 @@ const Accordion = () => {
   };
 
   return (
-    <div>
-      <div className="bg-primary px-2 py-2 font-bold text-lg text-slate-200 text-center flex justify-start items-center gap-4">
+    <div className="flex-col-centered justify-start debug w-full h-full bg-primary">
+      <div className="w-full px-2 py-2 font-bold text-lg text-slate-200 text-center flex justify-start items-center gap-4">
         <span className="text-white text-3xl">
           <AiOutlineAppstore />
-        </span>{" "}
+        </span>
         <h1>DISCRETE MATHEMATICS</h1>
       </div>
       {faqs.map((faq, index) => (

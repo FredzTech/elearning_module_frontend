@@ -6,9 +6,9 @@ const AccordionItem = ({ faq, onToggle, active }) => {
   console.log(active);
   return (
     // If active is true , active class is added to the panel
-    <div className={`mt-0.5 ${active ? "active" : ""}`}>
+    <div className={` w-full mt-0.5 ${active ? "active" : ""}`}>
       <button
-        className="button px-2 border-b-2 border-b-white"
+        className="sidebar-button px-2 border-b-2 border-b-white"
         onClick={onToggle}
       >
         {question}
@@ -37,7 +37,7 @@ const AccordionItem = ({ faq, onToggle, active }) => {
             </li>
           );
         })}
-        <li className="button">Add Lesson</li>
+        <li className="sidebar-action-button">Add Lesson</li>
       </ul>
     </div>
   );

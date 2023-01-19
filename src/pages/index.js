@@ -12,19 +12,27 @@ import TutorUnitPage from "./TutorUnitPage";
 import TutorUnitsPage from "./TutorUnitsPage";
 import UserPage from "./UserPage";
 import { NotFound } from "./404";
+import AdminPage from "./AdminPage";
+import AdminDashboard from "./Admin/AdminDashboard";
+import StudentsPageAdmin from "./Admin/StudentsPageAdmin";
+import TutorsPageAdmin from "./Admin/TutorsPageAdmin";
 export {
-    HomePage,
-    LogInPage,
-    PricingPage,
-    RegistrationPage,
-    CoursePage,
-    UnitPage,
-    ChapterPage,
-    ModalTriggerPage,
-    UnitsPage,
-    TutorPage,
-    TutorUnitsPage,
-    TutorUnitPage,
-    UserPage,
-    NotFound
+  HomePage,
+  LogInPage,
+  PricingPage,
+  RegistrationPage,
+  CoursePage,
+  UnitPage,
+  ChapterPage,
+  ModalTriggerPage,
+  UnitsPage,
+  TutorPage,
+  TutorUnitsPage,
+  TutorUnitPage,
+  UserPage,
+  NotFound,
+  AdminPage,
+  AdminDashboard,
+  StudentsPageAdmin,
+  TutorsPageAdmin,
 };
