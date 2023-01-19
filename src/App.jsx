@@ -102,8 +102,6 @@ function App() {
           </ModalProvider>
         </div>
       </AuthContextProvider>
-
-      <Footer className="flex" />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import {
   TutorsAdminTable,
   UnitsAdminTable,
   PageTitle,
+  Footer,
 } from "../../components";
 const AdminDashboard = () => {
   return (
@@ -25,6 +26,8 @@ const AdminDashboard = () => {
 
         <UnitsAdminTable />
         {/* <TutorsAdminTable /> */}
+
+        <Footer className="flex" />
       </div>
     </div>
   );
