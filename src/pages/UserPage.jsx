@@ -20,7 +20,7 @@ export default function Users (){
   )
  
   useEffect(()=>{
-      axios.get('http://localhost:5600/users')
+      axios.get('http://localhost:5000/users')
       // .then((res)=> res.json())
       .then(res => {
         
@@ -89,9 +89,9 @@ const handleDelete = () =>{
     return (
       <>
       
-<div className="p-1.5 w-auto items-center justify-center  mb-10">
+<div className="p-1.5 sm:w-screen items-center justify-center  mb-10">
     <h3 className='text-center text-2xl text-bold m-2'>USERS</h3>
-                    <div className=" overflow-x-scroll w-full border rounded-lg">
+                    <div className=" overflow-x-auto w-full border rounded-lg">
                         <table className=" divide-y divide-gray-200 ">
                             <thead className="bg-gray-50">
                                 <tr>

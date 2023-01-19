@@ -31,7 +31,7 @@ const LogInForm = () => {
      setErrors(Validation(email,password));
     try {
       const user = {email,password};
-      const{data} = await axios.post("http://localhost:5600/login",user)
+      const{data} = await axios.post("http://localhost:5000/login",user)
       if (data.status == "ok") {
             window.localStorage.setItem("token", data.data);
             

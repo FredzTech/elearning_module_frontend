@@ -66,7 +66,7 @@ const CourseForm = () => {
 
    
     
-    // <div className="flex flex-col justify-center items-center debug w-full">
+  <div className="flex flex-col justify-center items-center debug w-full">
     <div className="">
       <CustomNav text="Course form" />
       <form encType="multipart/form-data" className="form-styling">
@@ -106,7 +106,7 @@ const CourseForm = () => {
         </div>
       </form>
     </div>
-    // </div>
+    </div>
      </Modal>
     </>
   );

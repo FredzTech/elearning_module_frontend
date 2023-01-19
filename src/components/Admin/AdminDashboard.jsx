@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
 const data = [
     { title: 'Total Users', number:200,  },
@@ -20,6 +21,8 @@ export const AdminDashboard = () => {
                 </div>
             )
         })}
+        <Link to="/admin/tutor-reg"><button>ADD TUTOR</button></Link>
+        <Link to="/admin/course"><button>ADD Course</button></Link>
     </div>
   )
 }
