@@ -68,16 +68,148 @@ const UnitsAdminTable = () => {
       entryDate: { $date: "2022-10-11T06:56:55.877Z" },
       updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
     },
+    {
+      unitCode: "SMA 2173",
+      unitName: "CALCULUS I",
+      unitType: "paid",
+      unitChapters: ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      tutor: [
+        {
+          fName: "JANET",
+          surname: "NDICHU",
+          contact: "254122657095",
+          email: "lorem5@gmail.com",
+          status: "active",
+          units: ["unit 1", "unit 2", "unit 3"],
+          _id: { $oid: "634513b7b32aff941eef9f46" },
+          entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+          updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+        },
+        {
+          fName: "JANET",
+          surname: "NDICHU",
+          contact: "254122657095",
+          email: "lorem5@gmail.com",
+          status: "active",
+          units: ["unit 1", "unit 2", "unit 3"],
+          _id: { $oid: "634513b7b32aff941eef9f46" },
+          entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+          updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+        },
+      ],
+      _id: { $oid: "634513b7b32aff941eef9f46" },
+      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+    },
+    {
+      unitCode: "SMA 2173",
+      unitName: "CALCULUS I",
+      unitType: "paid",
+      unitChapters: ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      tutor: [
+        {
+          fName: "JANET",
+          surname: "NDICHU",
+          contact: "254122657095",
+          email: "lorem5@gmail.com",
+          status: "active",
+          units: ["unit 1", "unit 2", "unit 3"],
+          _id: { $oid: "634513b7b32aff941eef9f46" },
+          entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+          updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+        },
+        {
+          fName: "JANET",
+          surname: "NDICHU",
+          contact: "254122657095",
+          email: "lorem5@gmail.com",
+          status: "active",
+          units: ["unit 1", "unit 2", "unit 3"],
+          _id: { $oid: "634513b7b32aff941eef9f46" },
+          entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+          updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+        },
+      ],
+      _id: { $oid: "634513b7b32aff941eef9f46" },
+      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+    },
+    {
+      unitCode: "SMA 2173",
+      unitName: "CALCULUS I",
+      unitType: "paid",
+      unitChapters: ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      tutor: [
+        {
+          fName: "JANET",
+          surname: "NDICHU",
+          contact: "254122657095",
+          email: "lorem5@gmail.com",
+          status: "active",
+          units: ["unit 1", "unit 2", "unit 3"],
+          _id: { $oid: "634513b7b32aff941eef9f46" },
+          entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+          updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+        },
+        {
+          fName: "JANET",
+          surname: "NDICHU",
+          contact: "254122657095",
+          email: "lorem5@gmail.com",
+          status: "active",
+          units: ["unit 1", "unit 2", "unit 3"],
+          _id: { $oid: "634513b7b32aff941eef9f46" },
+          entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+          updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+        },
+      ],
+      _id: { $oid: "634513b7b32aff941eef9f46" },
+      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+    },
+    {
+      unitCode: "SMA 2173",
+      unitName: "CALCULUS I",
+      unitType: "paid",
+      unitChapters: ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      tutor: [
+        {
+          fName: "JANET",
+          surname: "NDICHU",
+          contact: "254122657095",
+          email: "lorem5@gmail.com",
+          status: "active",
+          units: ["unit 1", "unit 2", "unit 3"],
+          _id: { $oid: "634513b7b32aff941eef9f46" },
+          entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+          updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+        },
+        {
+          fName: "JANET",
+          surname: "NDICHU",
+          contact: "254122657095",
+          email: "lorem5@gmail.com",
+          status: "active",
+          units: ["unit 1", "unit 2", "unit 3"],
+          _id: { $oid: "634513b7b32aff941eef9f46" },
+          entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+          updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+        },
+      ],
+      _id: { $oid: "634513b7b32aff941eef9f46" },
+      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
+      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
+    },
   ];
   return (
     <>
-      <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
+      <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full py-2 ">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
           <NavigateBtn destination="/Form" text="New Unit" icon="tenantIcon" />
         </div>
-        <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
+        <table className="flex flex-col items-start justify-center w-full text-md text-left bg-slate-100">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
-            <tr className="flex w-full items-center justify-center px-2 bg-primary h-12">
+            <tr className="flex w-full items-center justify-center px-2 bg-slate-500 h-12">
               <th className="flex w-16 px-2 ">No</th>
               <th className="justify-center items-start flex py-2 w-48">
                 Unit Code

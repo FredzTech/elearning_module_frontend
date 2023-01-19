@@ -7,10 +7,7 @@ const TutorAccordionItem = ({ faq, onToggle, active }) => {
   return (
     // If active is true , active class is added to the panel
     <div className={`mt-0.5 ${active ? "active" : ""}`}>
-      <button
-        className="button px-2 border-b-2 border-b-white"
-        onClick={onToggle}
-      >
+      <button className="button border-none px-2" onClick={onToggle}>
         {question}
         {/* Active class is use to update the sign. */}
         <span className="text-xl">

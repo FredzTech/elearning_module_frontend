@@ -6,11 +6,8 @@ const AccordionItem = ({ faq, onToggle, active }) => {
   console.log(active);
   return (
     // If active is true , active class is added to the panel
-    <div className={` w-full mt-0.5 ${active ? "active" : ""}`}>
-      <button
-        className="sidebar-button px-2 border-b-2 border-b-white"
-        onClick={onToggle}
-      >
+    <div className={` w-full my-1 ${active ? "active" : ""}`}>
+      <button className="button border-none px-2" onClick={onToggle}>
         {question}
         {/* Active class is use to update the sign. */}
         <span className="text-xl">
@@ -18,14 +15,14 @@ const AccordionItem = ({ faq, onToggle, active }) => {
         </span>
       </button>
       {/* Active also used to hide or close our accordion items body. */}
-      <ul
+      <div
         className={`${
           active ? "h-auto" : "overflow-hidden h-0"
-        }  flex-col-centered pl-10 pr-2 `}
+        }  flex-col-centered pl-3  list-none `}
       >
         {answer.map((item) => {
           return (
-            <li className="border-l-4 border-l-slate-600 hover:bg-slate-500 bg-slate-300  text-black w-full px-3 py-2 mt-0.5 capitalize">
+            <li className="hover:bg-slate-500 bg-slate-300  text-black w-full px-3 py-2 mt-0.5 capitalize">
               <Link to="./content">
                 <div className="w-72 h-full flex gap-5 items-center">
                   <span className="text-sm">
@@ -37,8 +34,8 @@ const AccordionItem = ({ faq, onToggle, active }) => {
             </li>
           );
         })}
-        <li className="sidebar-action-button">Add Lesson</li>
-      </ul>
+        <li className="button">Add Lesson</li>
+      </div>
     </div>
   );
 };
