@@ -7,8 +7,6 @@ const HomePage = () => {
     <>
       <div className="flex flex-col items-center justify-center gap-5 w-screen">
         <LandingSection />
-
-        {/* <HomePageGrid /> */}
       </div>
     </>
   );

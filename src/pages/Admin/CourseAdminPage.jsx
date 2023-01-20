@@ -4,10 +4,28 @@ const CoursesAdminPage = () => {
   // LIST OF CARDS.
   const coursesData = [
     {
-      couseImage: "",
-      courseTitle: "Mechatronic Engineering.",
-      units: ["unit 1", "unit 2", "unit 3"],
-      _id: { $oid: "634513b7b32aff941eef9f46" },
+      _id: { $oid: "63c6986fba70a7293a3fadbf" },
+      courseImage:
+        "https://image-handle.s3.amazonaws.com/warm-1673959532411.png",
+      courseTitle: "ANALYTICAL ENGINEERING",
+      units: [],
+      __v: 0,
+    },
+    {
+      _id: { $oid: "63c69910ba70a7293a3fadc5" },
+      courseImage:
+        "https://image-handle.s3.amazonaws.com/warm-1673959658905.jpeg",
+      courseTitle: "HOME SCIENCE",
+      units: [{ $oid: "63c699d8ba70a7293a3fadca" }],
+      __v: 0,
+    },
+    {
+      _id: { $oid: "63c8074abb14342b71afaf94" },
+      courseImage:
+        "https://image-handle.s3.amazonaws.com/warm-1674053449936.jpeg",
+      courseTitle: "LAWRENCE ENGINEERING",
+      units: [],
+      __v: 0,
     },
   ];
   return (
@@ -15,11 +33,15 @@ const CoursesAdminPage = () => {
       <div className="flex w-full items-center justify-end mb-3 pr-1">
         <NavigateBtn destination="/Form" text="New Tenant" icon="tenantIcon" />
       </div>
-
-      {/* SHOULD DISPLAY A LIST OF CARDS. */}
-      {coursesData.map((course, index) => {
-        <CourseAdminCard key={`Course-${index}`} course={course} />;
-      })}
+      <div className="grid grid-cols-4 gap-5">
+        {coursesData.map((course, index) => {
+          <CourseAdminCard
+            // key={`Course-${index}`}
+            courseTitle={course.courseTitle}
+            courseImage={course.courseImage}
+          />;
+        })}
+      </div>
     </div>
   );
 };

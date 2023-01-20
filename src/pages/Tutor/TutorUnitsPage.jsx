@@ -1,5 +1,5 @@
 import React from "react";
-import { UnitsCard } from "../components";
+import { UnitsCard } from "../../components";
 const TutorUnitsPage = () => {
   return (
     <div className="w-full relative h-full flex flex-col ">

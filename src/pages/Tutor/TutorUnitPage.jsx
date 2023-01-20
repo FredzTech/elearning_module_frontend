@@ -4,12 +4,12 @@ import {
   VideoComponent,
   QuillEditorTutor,
   TutorSideNav,
-} from "../components";
+} from "../../components";
 
 import "react-quill/dist/quill.snow.css";
 
-import sampleVideo from "../assets/sample-video.mp4";
-import posterImage from "../assets/video-player.png";
+import sampleVideo from "../../assets/sample-video.mp4";
+import posterImage from "../../assets/video-player.png";
 
 const TutorUnitPage = () => {
   return (

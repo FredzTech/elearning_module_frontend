@@ -12,8 +12,9 @@ import StudentsAdminTable from "./StudentsAdminTable";
 import CoursesAdminTable from "./CoursesAdminTable";
 import CourseAdminCard from "./CourseAdminCard";
 import UnitsAdminTable from "./UnitsAdminTable";
-
 import PageTitle from "./PageTitle";
+import CTAUnitButtonAdmin from "./CTAUnitButtonAdmin";
+import AdminNavItem from "./AdminNavItem";
 export {
   AdminButton,
   AdminCard,
@@ -30,4 +31,6 @@ export {
   CourseAdminCard,
   PageTitle,
   UnitsAdminTable,
+  CTAUnitButtonAdmin,
+  AdminNavItem,
 };

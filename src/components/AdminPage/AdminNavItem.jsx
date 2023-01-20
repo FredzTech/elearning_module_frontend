@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 const AdminNavItem = ({ to, text }) => {
   return (
-    <Link to={`/admin/${to}`}>
+    <Link to={to}>
       <div className="button debug ">
         {text}
         <span className="text-xl">

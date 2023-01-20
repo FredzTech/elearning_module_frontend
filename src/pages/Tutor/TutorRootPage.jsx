@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { Navigate, Outlet } from "react-router";
-import { UserdataContext } from "./AuthContextProvider";
-import { UserContext } from "./AuthContextProvider";
-import { Sidebar } from "../components/Admin/Sidebar";
+import { Navigate, Outlet } from "react-router-dom";
+import {
+  UserContext,
+  UserdataContext,
+} from "../../Authentication/AuthContextProvider";
+import { TutorSideBar } from "../../components";
 import { useEffect } from "react";
-import { Footer } from "../components";
-export const AdminRoute = () => {
+export const TutorRootPage = () => {
   const isAuthenticated = useContext(UserContext);
   const userData = useContext(UserdataContext);
   const [isAdmin, setAdmin] = useState(false);
@@ -19,7 +20,7 @@ export const AdminRoute = () => {
   return !isAdmin ? (
     <div className="flex w-screen h-screen sm:flex-col  ">
       <div className="container h-full mx-3 mt-2 w-1/4 sm:w-screen">
-        <Sidebar />
+        <TutorSideBar />
       </div>
       <div className="container w-3/4 h-screen overflow-y-scroll sm:w-screen">
         <div className="w-full text-lg text-center text-white bg-purple m-2 py-2 rounded-lg">

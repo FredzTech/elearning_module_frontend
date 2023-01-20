@@ -18,6 +18,8 @@ import {
   AdminDashboard,
   StudentsPageAdmin,
   TutorsPageAdmin,
+  CourseAdminPage,
+  TutorRootPage,
 } from "./pages";
 import { Navbar } from "./components/NavigationBar";
 import {
@@ -76,6 +78,11 @@ function App() {
                 ></Route>
                 <Route
                   exact
+                  path="courses"
+                  element={<CourseAdminPage />}
+                ></Route>
+                <Route
+                  exact
                   path="students"
                   element={<StudentsPageAdmin />}
                 ></Route>
@@ -87,14 +94,14 @@ function App() {
               </Route>
 
               {/* tutor routes */}
-              <Route exact path="/tutor">
+              <Route exact path="/tutor" element={<TutorRootPage />}>
                 <Route exact path="dashboard" element={<TutorPage />} />
                 <Route exact path="units" element={<TutorUnitsPage />} />
-                <Route exact path="unit" element={<TutorUnitPage />} />
                 <Route exact path="chapter" element={<ChapterForm />} />
                 <Route exact path="lesson" element={<LessonForm />} />
                 <Route exact path="resources" element={<ResourcesForm />} />
               </Route>
+              <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
 
               {/* <Route exact path="admin" element={<AdminPage />}></Route> */}
             </Routes>
