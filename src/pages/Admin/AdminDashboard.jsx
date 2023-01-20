@@ -22,6 +22,8 @@ const AdminDashboard = () => {
         <PageTitle text="units summary" />
 
         <UnitsAdminTable />
+
+        <Footer />
       </div>
     </div>
   );
