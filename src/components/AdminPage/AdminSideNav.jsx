@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AdminNavItem from "./AdminNavItem";
+import { AdminNavItem } from "../../components";
 const AdminSideNav = () => {
   return (
     <div className="flex-col-centered w-full h-full debug rounded-md shadow-lg shadow-slate-400">

@@ -20,8 +20,8 @@ const Accordion = () => {
   };
 
   return (
-    <div className="flex-col-centered justify-start debug w-full h-full bg-primary">
-      <div className="w-full px-2 py-2 font-bold text-lg text-slate-200 text-center flex justify-start items-center gap-4">
+    <div className="flex-col-centered justify-start w-full h-full bg-slate-200 m-1 rounded-lg">
+      <div className="w-full px-2 py-2 font-bold text-lg text-slate-200 bg-primary text-center flex justify-start items-center gap-4 rounded-t-lg">
         <span className="text-white text-3xl">
           <AiOutlineAppstore />
         </span>

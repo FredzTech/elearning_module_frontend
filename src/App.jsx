@@ -16,6 +16,8 @@ import {
   AdminDashboard,
   StudentsPageAdmin,
   TutorsPageAdmin,
+  CourseAdminPage,
+  TutorRootPage,
 } from "./pages";
 import { Navbar } from "./components/NavigationBar";
 import {
@@ -43,10 +45,11 @@ import { AdminLoginPage,
 
 function App() {
   return (
-    <div className="flex flex-col  items-center justify-center ">
+    <div className="flex flex-col w-screen h-full ">
       <AuthContextProvider>
         <Navbar className="flex" />
-        <div className=" flex flex-1 ">
+
+        {/* <div className=" flex flex-1 "> */}
           <ModalProvider>
             <IdleTimer>
               <Routes>
@@ -66,8 +69,8 @@ function App() {
                   <Route exact path="users" element={<Users />} />
                   <Route exact path="dashboard" element={<AdminDashboard />} />
                   <Route exact path="forbidden" element={<Forbidden />} />
-                  <Route exact path="course" element={<CourseForm />} />
-                  <Route exact path="unitForm" element={<UnitForm />} />
+                  <Route exact path="course-form" element={<CourseForm />} />
+                  <Route exact path="unit-form" element={<UnitForm />} />
                   <Route exact path="tutor-reg" element={<TutorRegistrationForm />} />
                   <Route
                     exact
@@ -85,23 +88,24 @@ function App() {
                     element={<TutorsPageAdmin />}
                   ></Route>
                 </Route>
+       {/* tutor routes */}
+              <Route exact path="/tutor" element={<TutorRootPage />}>
+                <Route exact path="dashboard" element={<TutorPage />} />
+                <Route exact path="units" element={<TutorUnitsPage />} />
+                <Route exact path="chapter" element={<ChapterForm />} />
+                <Route exact path="lesson" element={<LessonForm />} />
+                <Route exact path="resources" element={<ResourcesForm />} />
+               
+              </Route>
+               <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
 
-                {/* tutor routes */}
-                <Route exact path="/tutor">
-                  <Route exact path="dashboard" element={<TutorPage />} />
-                  <Route exact path="units" element={<TutorUnitsPage />} />
-                  <Route exact path="unit" element={<TutorUnitPage />} />
-                  <Route exact path="chapter" element={<ChapterForm />} />
-                  <Route exact path="lesson" element={<LessonForm />} />
-                  <Route exact path="resources" element={<ResourcesForm />} />
-                </Route>
-
-                {/* <Route exact path="admin" element={<AdminPage />}></Route> */}
-              </Routes>
-            </IdleTimer>
-          </ModalProvider>
-        </div>
+              {/* <Route exact path="admin" element={<AdminPage />}></Route> */}
+            </Routes>
+          </IdleTimer>
+        </ModalProvider>
+        {/* </div> */}
       </AuthContextProvider>
+      <Footer/>
     </div>
   );
 }

@@ -8,11 +8,8 @@ import {
 } from "../../components";
 const AdminDashboard = () => {
   return (
-    <div
-      id="main"
-      className="w-full h-full flex flex-col-centered justify-start"
-    >
-      <div id="grid" className="w-full p-5 grid gap-5 grid-cols-2 debug m-4">
+    <div id="main" className="w-full flex-col-centered justify-start">
+      <div id="grid" className="w-full p-5 grid gap-5 grid-cols-2 m-4">
         <AdminCard />
         <AdminCard />
         <AdminCard />
@@ -20,14 +17,11 @@ const AdminDashboard = () => {
       </div>
       <div
         id="table"
-        className="w-full flex flex-col jusitfy-start items-center h-full border-2 border-black"
+        className="w-full flex flex-col jusitfy-start items-center "
       >
         <PageTitle text="units summary" />
 
         <UnitsAdminTable />
-        {/* <TutorsAdminTable /> */}
-
-        <Footer className="flex" />
       </div>
     </div>
   );

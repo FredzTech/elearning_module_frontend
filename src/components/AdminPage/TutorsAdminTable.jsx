@@ -62,7 +62,7 @@ const TutorsAdminTable = () => {
     <>
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
-          <NavigateBtn destination="/Form" text="New tutor" icon="tenantIcon" />
+          <NavigateBtn destination="/admin/tutor-reg" text="New tutor" icon="tenantIcon" />
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
