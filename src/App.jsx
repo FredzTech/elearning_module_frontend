@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="flex flex-col w-screen h-full pb-2">
       <AuthContextProvider>
-        {/* <Navbar className="flex" /> */}
+        <Navbar className="flex" />
         {/* <div className=" flex flex-1 "> */}
         <ModalProvider>
           <IdleTimer>
