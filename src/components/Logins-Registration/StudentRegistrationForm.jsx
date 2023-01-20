@@ -1,19 +1,21 @@
 import React, { useState } from "react";
+import { CustomNav,Button } from "../CustomForm";
 import AlertBox from "../AlertBox";
-import { CustomNav, Button } from "../CustomForm";
 import { Modal } from "../modals";
 import axios from "../../axios";
-const StudentRegistrationForm = () => {
+const studentRegistrationForm = () => {
   // DECLARATION OF OUR STATES
-
+  //==========================
   const [fName, setFName] = useState("");
   const [surname, setSurname] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
-  const [responseTracker, setResponseTracker] = useState(false);
-  const [statusTracker, setStatusTracker] = useState(true);
+  // For showing or hiding the alertbox
+  const [responseTracker, setResponseTracker] = useState(true);
+  // For changing color of alertbox.
+  const [statusTracker, setStatusTracker] = useState(false);
   const [response, setResponse] = useState("");
 
   const cancelRegistation = (e) => {
@@ -73,57 +75,60 @@ const StudentRegistrationForm = () => {
 
   return (
     <Modal>
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary phone mt-5 rounded-lg shadow-md shadow-primary">
-        <CustomNav text="student registration form" />
+    <div className="flex flex-col justify-center ">
+      <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-[400px] phone:w-[360px]  phone:border-none border-2 phone:mt-2 rounded-lg shadow-md shadow-primary">
+        <CustomNav text="student registration" />
         {/* PROPOSED HEADER. */}
         {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
-        <form className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md">
+        <form className="flex-col  px-5 phone:px-2 w-full phone:border-2  phone:rounded-b-md">
           {/* NAMES SECTION */}
-          <div className="flex phone:flex-col justify-around items-center my-10">
-            <label htmlFor="contact" className="w-1/5 phone:w-full">
+          <div className="flex flex-col justify-around  my-2">
+            <label htmlFor="contact" className="mb-1">
               Names
             </label>
-            <input
-              className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-              id="fName"
-              type="text"
-              placeholder="First Name"
-              value={fName}
-              onChange={(e) => {
-                setFName(e.target.value);
-              }}
-              required
-            ></input>
+            <div className="flex">        
+              <input
+                className="w-1/2 phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                id="fName"
+                type="Text"
+                placeholder="First Name"
+                value={fName}
+                onChange={(e) => {
+                  setFName(e.target.value);
+                }}
+                required
+              ></input>
 
-            <input
-              className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-              id="lName"
-              type="text"
-              placeholder="Enter surname"
-              value={surname}
-              onChange={(e) => {
-                setSurname(e.target.value);
-              }}
-              required
-            ></input>
+              <input
+                className="w-1/2 phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                id="lName"
+                type="Text"
+                placeholder="Last Name"
+                value={surname}
+                onChange={(e) => {
+                  setSurname(e.target.value);
+                }}
+                required
+              ></input>
+            </div>
+    
           </div>
           {/* CONTACT SECTION */}
-          <div className="flex phone:flex-col  items-center justify-center my-5">
-            <div className="w-3/5 flex phone:w-full  phone:my-1  phone:flex-col items-center justify-center ">
-              <label htmlFor="contact" className="w-1/5 phone:w-full mr-3">
+          <div className="flex flex-col   my-5">
+            <div className=" flex flex-col w-full  phone:my-1  phone:flex-col  ">
+              <label htmlFor="contact" className="mb-1 mr-3">
                 Contact
               </label>
-              <div className=" phone:flex phone:w-full phone:items-center">
+              <div className="flex phone:w-full phone:">
                 <input
-                  className="px-4 mr-4 w-1/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                  type="text"
+                  className="px-4  w-1/4 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  type="Text"
                   required
                   value="+254"
                   readOnly
                 />
                 <input
-                  className="px-4 mr-4 w-3/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  className="px-4 w-3/4 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                   id="contact"
                   type="Number"
                   placeholder="Safaricom No."
@@ -135,15 +140,15 @@ const StudentRegistrationForm = () => {
                 />
               </div>
             </div>
-            <div className="w-2/5 phone:w-full  h-full phone:my-1  phone:items-center  flex items-center">
+            <div className=" w-full  h-full phone:my-1  my-2  flex flex-col ">
               <label
                 htmlFor="email"
-                className="phone:pl-0 pl-3 w-1/5 mr-2 h-full flex items-center justify-center py-1"
+                className="phone:pl-0 pl-3 w-1/5 mr-2 h-full flex  py-1"
               >
                 Email
               </label>
               <input
-                className="phone:w-full phone:my-1 px-4 mr-4 w-4/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                className="phone:w-full phone:my-1 px-4  w- bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                 id="email"
                 type="email"
                 placeholder="E-mail Address"
@@ -158,15 +163,16 @@ const StudentRegistrationForm = () => {
 
           {/* PASSWORD SECTION */}
 
-          <div className="flex phone:flex-col  justify-start items-center my-10 w-full ">
+          <div className="flex flex-col  justify-start  my-2 w-full ">
             <label
               htmlFor="password"
-              className="pl-3 w-24 mr-2 flex items-center justify-center phone:justify-start phone:pl-0 py-1 phone:w-full"
+              className="pl-3 w-24 mr-2 flex  phone:justify-start phone:pl-0 py-1 phone:w-full"
             >
               Password
             </label>
-            <input
-              className=" phone:mx-0 phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+            <div className="flex">
+               <input
+              className=" phone:mx-0 phone:w-full phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
               id="password"
               type="password"
               placeholder="Enter Password"
@@ -178,7 +184,7 @@ const StudentRegistrationForm = () => {
             ></input>
 
             <input
-              className="phone:w-full phone:mx-0 phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+              className="phone:w-full phone:mx-0 phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
               id="CPassword"
               type="password"
               placeholder="Confirm Password"
@@ -188,24 +194,21 @@ const StudentRegistrationForm = () => {
               }}
               required
             ></input>
+            </div>
+           
           </div>
           {/* THE ALERT BOX */}
-          <AlertBox responseTracker statusTracker response />
+          <AlertBox responseTracker={responseTracker} statusTracker={statusTracker} response={response} />
+
           <div className="flex flex-col justify-center items-center w-full mt-8 ">
             <Button
               type="button"
-              text="upload"
+              text="register"
               onClick={(e) => {
                 registerStudent(e);
               }}
             />
-            <Button
-              type="button"
-              text="cancel"
-              onClick={(e) => {
-                cancelRegistation(e);
-              }}
-            />
+          
           </div>
         </form>
       </div>
@@ -214,4 +217,4 @@ const StudentRegistrationForm = () => {
   );
 };
 
-export default StudentRegistrationForm;
+export default studentRegistrationForm;
