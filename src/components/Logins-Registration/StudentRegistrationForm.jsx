@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import { CustomNav, Button } from "../../CustomForm";
-import { AlertBox } from "../../../components";
-import { Modal } from "../../modals";
-import axios from "../../../axios";
-const TutorForm = () => {
+import AlertBox from "../AlertBox";
+import { CustomNav, Button } from "../CustomForm";
+import { Modal } from "../modals";
+import axios from "../../axios";
+const StudentRegistrationForm = () => {
   // DECLARATION OF OUR STATES
-  //==========================
+
   const [fName, setFName] = useState("");
   const [surname, setSurname] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
-  // For showing or hiding the alertbox
-  const [responseTracker, setResponseTracker] = useState(true);
-  // For changing color of alertbox.
-  const [statusTracker, setStatusTracker] = useState(false);
+  const [responseTracker, setResponseTracker] = useState(false);
+  const [statusTracker, setStatusTracker] = useState(true);
   const [response, setResponse] = useState("");
 
   const cancelRegistation = (e) => {
@@ -43,7 +41,7 @@ const TutorForm = () => {
       };
 
       try {
-        let { data } = await axios.post("/auth/register-tutor", studentData);
+        let { data } = await axios.post("/auth/register-student", studentData);
         // Clearing out the inputs
         console.log(JSON.stringify(data));
         setResponse("Student Registered Successfully");
@@ -77,7 +75,7 @@ const TutorForm = () => {
     <Modal>
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary phone mt-5 rounded-lg shadow-md shadow-primary">
-        <CustomNav text="tutor registration" />
+        <CustomNav text="student registration form" />
         {/* PROPOSED HEADER. */}
         {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
         <form className="flex-col items-center justify-center px-5 w-full phone:border-2  phone:rounded-b-md">
@@ -89,7 +87,7 @@ const TutorForm = () => {
             <input
               className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
               id="fName"
-              type="Text"
+              type="text"
               placeholder="First Name"
               value={fName}
               onChange={(e) => {
@@ -101,8 +99,8 @@ const TutorForm = () => {
             <input
               className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
               id="lName"
-              type="Text"
-              placeholder="Last Name"
+              type="text"
+              placeholder="Enter surname"
               value={surname}
               onChange={(e) => {
                 setSurname(e.target.value);
@@ -119,7 +117,7 @@ const TutorForm = () => {
               <div className=" phone:flex phone:w-full phone:items-center">
                 <input
                   className="px-4 mr-4 w-1/5 bg-white-200 appearance-none py-2 border-2 border-primary rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                  type="Text"
+                  type="text"
                   required
                   value="+254"
                   readOnly
@@ -192,8 +190,7 @@ const TutorForm = () => {
             ></input>
           </div>
           {/* THE ALERT BOX */}
-          <AlertBox responseTracker={responseTracker} statusTracker={statusTracker} response={response} />
-
+          <AlertBox responseTracker statusTracker response />
           <div className="flex flex-col justify-center items-center w-full mt-8 ">
             <Button
               type="button"
@@ -217,4 +214,4 @@ const TutorForm = () => {
   );
 };
 
-export default TutorForm;
+export default StudentRegistrationForm;

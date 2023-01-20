@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState ,useContext } from "react";
 import { Link } from "react-router-dom";
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -11,6 +11,7 @@ import Subscription from '../../assets/subscription.png'
 import Search from "./Search";
 import { ModalContext } from "../modals/ModalProvider";
 import { UserdataContext } from "../../Authentication/AuthContextProvider";
+import { MdArrowDropDown } from "react-icons/md";
 
 
 
@@ -25,8 +26,24 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 const Navbar = ({content}) => {
-  // const openModal = useContext(ModalContext);
-  // const openModal = openModal()
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const options = [
+    {name:'Student' , link:'student-login'}, 
+    {name:'Tutor' , link:'tutor-login'},
+    {name:'Admin' , link:'admin-login'},
+  ];
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const userData = useContext(UserdataContext)
   const isAuthenticated  = useContext(UserContext);
@@ -78,7 +95,22 @@ const Navbar = ({content}) => {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              {!isAuthenticated? <Link className="text-white text-1xl p-2 radius-lg hover:bg-black"  to="register"> Register</Link> :
+              {!isAuthenticated?   <div className="text-white text-1xl pl-2 w-24 py-2 radius-lg hover:bg-black" >
+                  <div onClick={toggleDropdown} className="hover:bg-black flex text-center items-center">
+                    {selectedOption || 'Login as'}<MdArrowDropDown className="text-2xl"/>
+                    
+                  </div>
+                  {isOpen && (
+                    <ul className="absolute bg-dark-grey p-1  mr-2">
+                      {options.map((option) => (
+                        <li key={option} onClick={() => handleOptionClick(option)}>
+                          <Link to={option.link}>{option.name}</Link>
+                          
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>:
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -89,7 +121,7 @@ const Navbar = ({content}) => {
                 </button>
                }
                 {/* Profile dropdown */}
-                {!isAuthenticated?  <Link className="text-white text-1xl p-2 radius-lg hover:bg-black"  to="login">Login</Link>  :
+                {!isAuthenticated?  <Link className="text-white text-1xl p-2 radius-lg hover:bg-black"  to="register"> Register</Link>   :
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">

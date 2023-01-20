@@ -63,11 +63,11 @@ const UnitForm = () => {
       <form encType="multipart/form-data" className="form-styling">
         <div className="flex phone:flex-col justify-start items-center my-5 w-full">
           {/* DROPDOWN */}
-          <div className="input-wrapper">
+          <div className="">
             <label htmlFor="id" className="w-full">
               Select Course
             </label>
-            <div class="select-parent">
+            <div className="select-parent w-3/4">
               <select
                 value={course}
                 onChange={(e) => setCourse(e.target.value)}

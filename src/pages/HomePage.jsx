@@ -1,6 +1,6 @@
 import React from "react";
 import { LandingSection, HomePageGrid } from "../components";
-import Login from "./Login";
+
 
 
 const HomePage = () => {
@@ -10,7 +10,6 @@ const HomePage = () => {
 
       <LandingSection />
   
-      {/* <HomePageGrid /> */}
     </div>
     
     </>

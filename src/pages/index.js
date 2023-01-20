@@ -1,11 +1,11 @@
 import HomePage from "./HomePage";
-import LogInPage from "./LogInPage";
+
 import PricingPage from "./PricingPage";
-import RegistrationPage from "./RegistrationPage";
+
 import CoursePage from "./CoursePage";
 import UnitPage from "./UnitPage";
 import ChapterPage from "./ChapterPage";
-import ModalTriggerPage from "./ModalTriggerPage";
+
 import UnitsPage from "./UnitsPage";
 import TutorPage from "./TutorPage";
 import TutorUnitPage from "./TutorUnitPage";
@@ -18,13 +18,13 @@ import StudentsPageAdmin from "./Admin/StudentsPageAdmin";
 import TutorsPageAdmin from "./Admin/TutorsPageAdmin";
 export {
   HomePage,
-  LogInPage,
+
   PricingPage,
-  RegistrationPage,
+
   CoursePage,
   UnitPage,
   ChapterPage,
-  ModalTriggerPage,
+
   UnitsPage,
   TutorPage,
   TutorUnitsPage,

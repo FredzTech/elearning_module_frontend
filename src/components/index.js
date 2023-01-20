@@ -1,9 +1,7 @@
 // GENERAL COMPONENTS
-import LogInButton from "./Logins-Registration/LogInButton";
-import LogInForm from "./Logins-Registration/LogInForm";
 
-// import LogInButton from "./LogInButton";
-// import LogInForm from "./LogInForm";
+import LogInForm from "./Logins-Registration/StudentLoginForm";
+
 import AlertBox from "./AlertBox";
 // HOMEPAGE COMPONENTS
 
@@ -49,8 +47,7 @@ import {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  TutorForm,
-  StudentForm,
+  
 } from "./TutorPage/Forms";
 
 import Footer from "./Footer";
@@ -72,7 +69,7 @@ import {
 } from "./AdminPage";
 
 export {
-  LogInButton,
+
   LogInForm,
   HomePageCard,
   HomePageGrid,
@@ -108,8 +105,7 @@ export {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  TutorForm,
-  StudentForm,
+  
   AlertBox,
   // RegistrationButton,
   // RegistrationForm,

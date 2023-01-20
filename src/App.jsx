@@ -2,19 +2,17 @@ import "./App.css";
 import {
   HomePage,
   UnitPage,
-  LogInPage,
-  RegistrationPage,
+ 
   PricingPage,
   ChapterPage,
-  ModalTriggerPage,
+
   UnitsPage,
   TutorPage,
   TutorUnitPage,
   TutorUnitsPage,
-  UserPage,
+
   NotFound,
-  CoursePage,
-  AdminPage,
+  
   AdminDashboard,
   StudentsPageAdmin,
   TutorsPageAdmin,
@@ -27,8 +25,8 @@ import {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  TutorForm,
-  StudentForm,
+  
+  
 } from "./components";
 import { ModalProvider } from "./components/modals";
 import { AuthContextProvider } from "./Authentication";
@@ -37,7 +35,12 @@ import Users from "./pages/UserPage";
 import { Routes, Route } from "react-router-dom";
 import IdleTimer from "./Authentication/IdleTimer";
 import Forbidden from "./pages/403";
-import { Sidebar } from "./components/Admin/Sidebar";
+import { AdminLoginPage,
+  TutorLoginForm,
+  StudentLoginForm,
+  StudentRegistrationForm,
+  TutorRegistrationForm, } from "./components/Logins-Registration";
+
 function App() {
   return (
     <div className="flex flex-col  items-center justify-center ">
@@ -50,16 +53,14 @@ function App() {
                 <Route exact path="/" element={<HomePage />}></Route>
                 <Route exact path="/pricing" element={<PricingPage />}></Route>
                 <Route exact path="*" element={<NotFound />}></Route>
-                <Route path="login" element={<LogInPage />}></Route>
-                <Route path="register" element={<RegistrationPage />}></Route>
+                <Route path="student-login" element={<StudentLoginForm />}></Route>
+                <Route path="tutor-login" element={<TutorLoginForm />}></Route>
+                <Route path="admin-login" element={<AdminLoginPage />}></Route>
+                <Route path="register" element={<StudentRegistrationForm/>}></Route>
                 <Route exact path="/units" element={<ChapterPage />}></Route>
                 <Route exact path="/unit" element={<UnitPage />}></Route>
                 <Route exact path="/courses" element={<UnitsPage />}></Route>
-                <Route
-                  exact
-                  path="/modals"
-                  element={<ModalTriggerPage />}
-                ></Route>
+               
                 {/* admin routes */}
                 <Route exact path="/admin" element={<AdminRoute />}>
                   <Route exact path="users" element={<Users />} />
@@ -67,7 +68,7 @@ function App() {
                   <Route exact path="forbidden" element={<Forbidden />} />
                   <Route exact path="course" element={<CourseForm />} />
                   <Route exact path="unitForm" element={<UnitForm />} />
-                  <Route exact path="tutor-reg" element={<TutorForm />} />
+                  <Route exact path="tutor-reg" element={<TutorRegistrationForm />} />
                   <Route
                     exact
                     path="dashboard"
