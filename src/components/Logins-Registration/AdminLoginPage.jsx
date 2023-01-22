@@ -52,7 +52,7 @@ const LogInForm = () => {
   return (
     <Modal>
   <div>
-  <div className=" bg-white flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm"text-2xl >
+  <div className=" bg-white flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm text-2xl ">
   
   <div className="sm:mx-auto sm:w-full sm:max-w-md">
     

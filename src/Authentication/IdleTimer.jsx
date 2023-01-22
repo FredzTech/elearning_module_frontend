@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 // import useReactRouter from 'use-react-router'
 import { useLocation } from 'react-router';
 import { connect } from 'react-redux';
-import { Logout } from './AuthContextProvider';
+// import { LogoutContext } from './AuthContextProvider';
 
 // const whitelist = [
 //   '/',

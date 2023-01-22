@@ -35,9 +35,12 @@ const StudentLoginForm = () => {
             setMessage("Logging...")
             const timeout = setTimeout(() => {
                 
-              window.location.reload();
+              
               closeModal();
-            }, 3000);
+            }, 2000);
+            setTimeout(()=>{
+               window.location.reload();
+            },3000)
       
       }else{
         setMessage(data.error)
@@ -54,7 +57,7 @@ const StudentLoginForm = () => {
   return (
     <Modal>
   <div>
-  <div className=" bg-white w-[400px] sm:w-[320px]flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm"text-2xl >
+  <div className=" bg-white w-[400px] sm:w-[320px]flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm text-2xl" >
   
   <div className="sm:mx-auto ">
     

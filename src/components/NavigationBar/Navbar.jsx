@@ -5,7 +5,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon , UserIcon } from '@heroicons/react/24/outline'
 
 import NavBtn from './NavBtn'
-import {UserContext , Logout} from "../../Authentication/AuthContextProvider";
+import {UserContext , LogoutContext} from "../../Authentication/AuthContextProvider";
 import CourseNav from "./CourseNav";
 import Subscription from '../../assets/subscription.png' 
 import Search from "./Search";
@@ -19,35 +19,39 @@ const navigation = [
   { name: 'Home', href: '/', current: false },
   { name: 'Courses', href: 'courses', current: false },
   { name: 'Units', href: 'units', current: false },
-  { name: 'Users', href: 'admin/users', current: false },
+  { name: 'Subscription', href: 'pricing', current: false },
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-const Navbar = ({content}) => {
+const Navbar = ({content}) => { 
+  const userData = useContext(UserdataContext)
+  const isAuthenticated  = useContext(UserContext);
+  const logout = useContext(LogoutContext);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
   const options = [
-    {name:'Student' , link:'student-login'}, 
-    {name:'Tutor' , link:'tutor-login'},
-    {name:'Admin' , link:'admin-login'},
-  ];
+    {name:"Student" , link:"student-login"}, 
+    {name:"Tutor" , link:"tutor-login"},
+    {name:"Admin" , link:"admin-login"},
+  ]
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-  };
+  // const handleOptionClick = (option) => {
+  //   setTimeout(()=>{
+  //      setSelectedOption(option);
+  //   setIsOpen(false);
+  //   },2000)
+   
+  // };
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const userData = useContext(UserdataContext)
-  const isAuthenticated  = useContext(UserContext);
-  const logout = Logout();
+
   return (
     <Disclosure as="nav" className="bg-primary">
       {({ open }) => (
@@ -67,11 +71,7 @@ const Navbar = ({content}) => {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center sm:ml-16">
-                  {/* <img
-                    className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  /> */}
+                 
                  <h3 className="text-2xl text-white">E-Module</h3>
                   
                 </div>
@@ -101,14 +101,15 @@ const Navbar = ({content}) => {
                     
                   </div>
                   {isOpen && (
-                    <ul className="absolute bg-dark-grey p-1  mr-2">
-                      {options.map((option) => (
-                        <li key={option} onClick={() => handleOptionClick(option)}>
-                          <Link to={option.link}>{option.name}</Link>
-                          
-                        </li>
+                    <div className="absolute bg-dark-grey p-1 flex flex-col gap-1 mr-2">
+                      {options.map((option, index) => (
+                        <Link to={option.link}
+                           key={index} onClick={() => handleOptionClick(option)}>
+                           
+                           {option.name}
+                        </Link>
                       ))}
-                    </ul>
+                    </div>
                   )}
                 </div>:
                 <button

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 export const UserContext = React.createContext();
-const LogoutContext = React.createContext();
+export const LogoutContext = React.createContext();
 export const UserdataContext = React.createContext();
 
 export function Logout() {
@@ -11,24 +11,24 @@ export function Logout() {
 export const AuthContextProvider = ({ children }) => {
   const [isAuthenticated, setAuthentication] = useState(false);
   const [userData, setUserData] = useState("");
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/userData", {
-  //     method: "POST",
-  //     crossDomain: true,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //       "Access-Control-Allow-Origin": "*",
-  //     },
-  //     body: JSON.stringify({
-  //       token: window.localStorage.getItem("token"),
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setUserData(data.data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch("http://localhost:5000/userData", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        token: window.localStorage.getItem("token"),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUserData(data.data);
+      });
+  }, []);
 
   const user = window.localStorage.getItem("token");
 
@@ -36,7 +36,7 @@ export const AuthContextProvider = ({ children }) => {
     window.localStorage.clear();
 
     window.location.pathname = "/login";
-    reload();
+    // reload();
   };
   const reload = () => {
     window.location.reload();

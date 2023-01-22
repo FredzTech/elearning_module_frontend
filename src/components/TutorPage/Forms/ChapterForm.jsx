@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
 import { Modal } from "../../modals";
+import { MdArrowDropDown } from "react-icons/md";
 const ChapterForm = () => {
   // DECLARATION OF VARIABLES
   //==========================
@@ -81,10 +82,7 @@ const ChapterForm = () => {
     console.log(result); //Returns to as the response from backend manifested under the data object.
   };
 
-  const cancelRegistration = (e) => {
-    e.preventDefault();
-    console.log("Modal closed");
-  };
+ 
 
   return (
    <Modal>
@@ -94,35 +92,27 @@ const ChapterForm = () => {
       {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
       <form className="form-styling">
         {/* DROPDOWN */}
-        <div className="input-wrap">
+        <div className="input-w">
           <label htmlFor="id" className="w-full">
             Select Unit
           </label>
           {/* THE PARENT SELECT DIV */}
-          <div className="select-parent">
+          <div className="">
             <select
-              value={unitName}
+              value="select unit"
               onChange={(e) => setUnitName(e.target.value)}
-              className="select-input"
+              
             >
               {/* MAP DB FOR THE OPTIONS */}
               {units.map((unit, index) => {
                 return (
-                  <option key={`unit-${index}`} value={unit.unitName}>
+                  <option className="text-black" key={`unit-${index}`} value={unit.unitName}>
                     {unit.unitName}
                   </option>
                 );
               })}
             </select>
-            <div className="select-svg-wrapper">
-              <svg
-                className="fill-current w-full h-full"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </div>
+            {/* <MdArrowDropDown/> */}
           </div>
         </div>
         {/* FILE */}

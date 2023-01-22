@@ -3,6 +3,7 @@ import { CustomNav,Button } from "../CustomForm";
 import AlertBox from "../AlertBox";
 import { Modal } from "../modals";
 import axios from "../../axios";
+import PasswordStrengthBar from 'react-password-strength-bar' 
 const studentRegistrationForm = () => {
   // DECLARATION OF OUR STATES
   //==========================
@@ -13,9 +14,9 @@ const studentRegistrationForm = () => {
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
   // For showing or hiding the alertbox
-  const [responseTracker, setResponseTracker] = useState(true);
+  const [responseTracker, setResponseTracker] = useState(false);
   // For changing color of alertbox.
-  const [statusTracker, setStatusTracker] = useState(false);
+  const [statusTracker, setStatusTracker] = useState(true);
   const [response, setResponse] = useState("");
 
   const cancelRegistation = (e) => {
@@ -76,7 +77,7 @@ const studentRegistrationForm = () => {
   return (
     <Modal>
     <div className="flex flex-col justify-center ">
-      <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-[400px] phone:w-[360px]  phone:border-none border-2 phone:mt-2 rounded-lg shadow-md shadow-primary">
+      <div className="flex flex-col   w-[400px] phone:w-[320px]  phone:border-none   rounded-lg shadow-md shadow-primary">
         <CustomNav text="student registration" />
         {/* PROPOSED HEADER. */}
         {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
@@ -170,30 +171,37 @@ const studentRegistrationForm = () => {
             >
               Password
             </label>
-            <div className="flex">
-               <input
-              className=" phone:mx-0 phone:w-full phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-              id="password"
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              required
-            ></input>
-
-            <input
-              className="phone:w-full phone:mx-0 phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-              id="CPassword"
-              type="password"
-              placeholder="Confirm Password"
-              value={cPassword}
-              onChange={(e) => {
-                setCPassword(e.target.value);
-              }}
-              required
-            ></input>
+            <div className="flex flex-col">
+              <div> 
+                <input
+                  className=" phone:mx-0 phone:w-full phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  id="password"
+                  type="password"
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  required
+                  />
+                  
+                  <PasswordStrengthBar password={password} minLength={8} />
+                </div>
+              
+                <div>
+                    <input
+                    className="phone:w-full phone:mx-0 phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                    id="CPassword"
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={cPassword}
+                    onChange={(e) => {
+                      setCPassword(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+           
             </div>
            
           </div>

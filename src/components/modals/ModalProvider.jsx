@@ -23,9 +23,9 @@ export default function ModalProvider({ children }) {
     setModalContent(null);
 
     navigate(-1);
-    setTimeout(() => {
-      window.location.reload(false);
-    }, 100);
+    // setTimeout(() => {
+    //   window.location.reload(false);
+    // }, 100);
   };
 
   if (isOpen) {

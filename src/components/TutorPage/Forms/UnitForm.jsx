@@ -48,10 +48,7 @@ const UnitForm = () => {
     console.log(result); //Returns to as the response from backend manifested under the data object.
   };
 
-  const cancelRegistration = (e) => {
-    e.preventDefault();
-    console.log("Modal should be closed");
-  };
+ 
 
   return (
     // <div className="flex flex-col justify-center items-center">
@@ -141,13 +138,7 @@ const UnitForm = () => {
         {/* CTA BUTTONS */}
         <div className="cta-wrap">
           <Button type="button" text="Save" onClick={fileUploadHandler} />
-          <Button
-            type="button"
-            text="Cancel"
-            onClick={(e) => {
-              cancelRegistration(e);
-            }}
-          />
+     
         </div>
       </form>
     </div>

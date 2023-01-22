@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { faqs } from "./data";
 import TutorAccordionItem from "./TutorAccordionItem";
 import { AiOutlineAppstore } from "react-icons/ai";
+import {Link} from 'react-router-dom'
 
 const TutorAccordion = () => {
   const [clicked, setClicked] = useState("0"); //WE can argue ndo inatumika kujua which item is active.
@@ -37,7 +38,8 @@ const TutorAccordion = () => {
         />
       ))}
       <div className="button bg-primary text-white justify-center">
-        <p>Add Chapter</p>
+        <Link to="/tutor/chapter"><button  >Add Chapter</button></Link>
+        
       </div>
     </div>
   );
