@@ -14,10 +14,10 @@ import LogoutBtn from "../../assets/Logout.png";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 
 const lists = [
-  { name: "Dashboard", link: "dashboard", icon: Dashboard },
-  { name: "Students", link: "#", icon: Students },
-  { name: "Tutors", link: "#", icon: Tutors },
-  { name: "Courses", link: "#", icon: Courses },
+  { name: "Dashboard", link: "/admin/dashboard", icon: Dashboard },
+  { name: "Students", link: "/admin/students", icon: Students },
+  { name: "Tutors", link: "/admin/tutors", icon: Tutors },
+  { name: "Courses", link: "/admin/courses", icon: Courses },
 ];
 
 export const Sidebar = () => {

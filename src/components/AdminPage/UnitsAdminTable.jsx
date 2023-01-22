@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusPill, CTAButton, NavigateBtn } from "../../components";
+import { StatusPill, CTAUnitButtonAdmin, NavigateBtn } from "../../components";
 const UnitsAdminTable = () => {
   const unitsData = [
     {
@@ -271,7 +271,7 @@ const UnitsAdminTable = () => {
                     <StatusPill status={unitType} />
                   </td>
                   <td className="py-1 w-64 ">
-                    <CTAButton _id={_id} contact={email} />
+                    <CTAUnitButtonAdmin _id={_id} contact={email} />
                   </td>
                 </tr>
               );

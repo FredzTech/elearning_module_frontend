@@ -7,15 +7,17 @@ import UnitPage from "./UnitPage";
 import ChapterPage from "./ChapterPage";
 
 import UnitsPage from "./UnitsPage";
-import TutorPage from "./TutorPage";
-import TutorUnitPage from "./TutorUnitPage";
-import TutorUnitsPage from "./TutorUnitsPage";
+import TutorPage from "./Tutor/TutorPage";
+import TutorUnitPage from "./Tutor/TutorUnitPage";
+import TutorUnitsPage from "./Tutor/TutorUnitsPage";
 import UserPage from "./UserPage";
 import { NotFound } from "./404";
 import AdminPage from "./AdminPage";
 import AdminDashboard from "./Admin/AdminDashboard";
 import StudentsPageAdmin from "./Admin/StudentsPageAdmin";
 import TutorsPageAdmin from "./Admin/TutorsPageAdmin";
+import CourseAdminPage from "./Admin/CourseAdminPage";
+import { TutorRootPage } from "./Tutor/TutorRootPage";
 export {
   HomePage,
 
@@ -35,4 +37,6 @@ export {
   AdminDashboard,
   StudentsPageAdmin,
   TutorsPageAdmin,
+  CourseAdminPage,
+  TutorRootPage,
 };

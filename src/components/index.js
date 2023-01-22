@@ -64,8 +64,11 @@ import {
   TutorsAdminTable,
   StudentsAdminTable,
   CoursesAdminTable,
+  CourseAdminCard,
   PageTitle,
   UnitsAdminTable,
+  CTAUnitButtonAdmin,
+  AdminNavItem,
 } from "./AdminPage";
 
 export {
@@ -125,4 +128,7 @@ export {
   CoursesAdminTable,
   PageTitle,
   UnitsAdminTable,
+  CourseAdminCard,
+  CTAUnitButtonAdmin,
+  AdminNavItem,
 };
