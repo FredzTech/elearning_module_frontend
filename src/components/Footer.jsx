@@ -16,8 +16,10 @@ import Whatsapp from "../assets/socials/whatsapp.png";
 
 export default function Footer() {
   return (
-    <div className="flex gap-56 h-auto bg-light-grey w-full text-center  p-8 md:gap-10 mb-0 sm:flex-col sm:gap-4 sm:p4">
-      <div className="text-4xl text-center align-center">E-MODULE</div>
+    <div className="flex h-64 bg-slate-200 w-full text-center px-4 md:gap-10 mb-0 sm:flex-col sm:gap-4 sm:p4 rounded-md ">
+      <div className="w-1/3 text-5xl flex items-center justify-center">
+        E-MODULE
+      </div>
 
       {/* <div className="br-blue">
             <h3 className='text-3xl pb-2'>App</h3>
@@ -25,22 +27,22 @@ export default function Footer() {
             <img src={GooglePlaystore} alt="" className='h-20 '  />
         </div> */}
 
-      <div className="flex flex-wrap gap-20 sm:gap-2 md:gap-2">
-        <div className="flex flex-col gap-3 sm:px-10 ">
+      <div className="w-1/3  flex justify-center sm:gap-2 md:gap-2 h-full pt-4">
+        <div className="w-1/3 flex flex-col gap-3 sm:px-10 text-2xl ">
           <Link to="courses">Courses</Link>
           <Link to="units">Units</Link>
           <Link to="pricing">Subscription</Link>
           <Link to="/">Home</Link>
         </div>
-        <div className="flex flex-col gap-3  ">
+        {/* <div className="flex flex-col gap-3  ">
           <Link to="courses">Courses</Link>
           <Link to="units">Units</Link>
           <Link to="pricing">Subscription</Link>
           <Link to="/">Home</Link>
-        </div>
+        </div> */}
       </div>
 
-      <div className="justify-center items-center">
+      <div className="w-1/3 flex-col-centered gap-10 justify-center items-center">
         <h3 className="text-3xl mb-4">Socials</h3>
         <div className="flex gap-8 justify-center items-center">
           <a href="" className="text-primary">

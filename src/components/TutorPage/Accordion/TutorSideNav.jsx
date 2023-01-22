@@ -4,7 +4,7 @@ import { TutorAccordion } from "../../../components";
 import "../../../components/TutorPage/Accordion/accordion.css";
 const SideNavNew = () => {
   return (
-    <div className="px-2 debug h-full flex flex-col justify-start items-start">
+    <div className="px-2 h-full flex flex-col justify-start items-start">
       <TutorAccordion />
     </div>
   );

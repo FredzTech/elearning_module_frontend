@@ -58,7 +58,7 @@
         @apply flex flex-col items-center justify-center
     }
     .button {
-        @apply uppercase bg-primary hover:bg-primaryLight hover:text-white text-white font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
+        @apply uppercase border-2 border-primary hover:bg-primary hover:text-white text-black font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
     }
     .answer_wrapper.open {
         height: auto;

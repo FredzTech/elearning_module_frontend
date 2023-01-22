@@ -43,7 +43,7 @@ import { AdminLoginPage,
 
 function App() {
   return (
-    <div className="flex flex-col  items-center justify-center ">
+    <div className="flex flex-col w-screen h-full pb-2">
       <AuthContextProvider>
         <Navbar className="flex" />
         <div className=" flex flex-1 ">
@@ -86,21 +86,21 @@ function App() {
                   ></Route>
                 </Route>
 
-                {/* tutor routes */}
-                <Route exact path="/tutor">
-                  <Route exact path="dashboard" element={<TutorPage />} />
-                  <Route exact path="units" element={<TutorUnitsPage />} />
-                  <Route exact path="unit" element={<TutorUnitPage />} />
-                  <Route exact path="chapter" element={<ChapterForm />} />
-                  <Route exact path="lesson" element={<LessonForm />} />
-                  <Route exact path="resources" element={<ResourcesForm />} />
-                </Route>
+              {/* tutor routes */}
+              <Route exact path="/tutor">
+                <Route exact path="dashboard" element={<TutorPage />} />
+                <Route exact path="units" element={<TutorUnitsPage />} />
+                <Route exact path="unit" element={<TutorUnitPage />} />
+                <Route exact path="chapter" element={<ChapterForm />} />
+                <Route exact path="lesson" element={<LessonForm />} />
+                <Route exact path="resources" element={<ResourcesForm />} />
+              </Route>
 
-                {/* <Route exact path="admin" element={<AdminPage />}></Route> */}
-              </Routes>
-            </IdleTimer>
-          </ModalProvider>
-        </div>
+              {/* <Route exact path="admin" element={<AdminPage />}></Route> */}
+            </Routes>
+          </IdleTimer>
+        </ModalProvider>
+        {/* </div> */}
       </AuthContextProvider>
     </div>
   );

@@ -17,16 +17,14 @@ export const AdminRoute = () => {
   }, []);
 
   return !isAdmin ? (
-    <div className="flex flex-col w-screen h-full sm:flex-col  ">
-      <div className="flex border-2 border-primary m-5">
-        <div className="container h-screen  w-1/5 debug sm:w-screen">
-          <Sidebar />
-        </div>
-        <div className="container w-4/5 h-screen overflow-auto sm:w-screen">
-          <Outlet />
+    <div className="flex w-screen h-screen sm:flex-col  ">
+      <div className="container h-full mx-3 mt-2 w-1/4 sm:w-screen">
+        <Sidebar />
+      </div>
+      <div className="container w-3/4 h-screen overflow-y-scroll sm:w-screen">
+        <Outlet />
 
-          {/* <Footer className="flex" /> */}
-        </div>
+        <Footer className="w-full" />
       </div>
     </div>
   ) : (
