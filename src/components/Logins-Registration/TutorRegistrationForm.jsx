@@ -212,13 +212,7 @@ const TutorRegistrationForm = () => {
                 registerTutor(e);
               }}
             />
-            <Button
-              type="button"
-              text="cancel"
-              onClick={(e) => {
-                cancelRegistation(e);
-              }}
-            />
+          
           </div>
         </form>
       </div>

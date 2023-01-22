@@ -5,12 +5,10 @@ import { Link } from "react-router-dom";
 import { UserdataContext } from "../../Authentication/AuthContextProvider";
 
 import Dashboard from "../../assets/dashboard.png";
-import Users from "../../assets/Students.png";
+
 import Students from "../../assets/Students.png";
 import Tutors from "../../assets/Tutors.png";
 import Courses from "../../assets/Courses.jpeg";
-import Settings from "../../assets/settings.png";
-import LogoutBtn from "../../assets/Logout.png";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 
 const lists = [

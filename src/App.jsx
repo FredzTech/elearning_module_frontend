@@ -2,17 +2,13 @@ import "./App.css";
 import {
   HomePage,
   UnitPage,
- 
   PricingPage,
   ChapterPage,
-
   UnitsPage,
   TutorPage,
   TutorUnitPage,
   TutorUnitsPage,
-
   NotFound,
-  
   AdminDashboard,
   StudentsPageAdmin,
   TutorsPageAdmin,
@@ -27,8 +23,6 @@ import {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  
-  
 } from "./components";
 import { ModalProvider } from "./components/modals";
 import { AuthContextProvider } from "./Authentication";
@@ -37,11 +31,14 @@ import Users from "./pages/UserPage";
 import { Routes, Route } from "react-router-dom";
 import IdleTimer from "./Authentication/IdleTimer";
 import Forbidden from "./pages/403";
-import { AdminLoginPage,
+import {
+  AdminLoginPage,
   TutorLoginForm,
   StudentLoginForm,
   StudentRegistrationForm,
-  TutorRegistrationForm, } from "./components/Logins-Registration";
+  TutorRegistrationForm,
+} from "./components/Logins-Registration";
+import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 
 function App() {
   return (
@@ -104,6 +101,7 @@ function App() {
         </ModalProvider>
         {/* </div> */}
       </AuthContextProvider>
+      <Footer />
     </div>
   );
 }

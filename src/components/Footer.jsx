@@ -16,8 +16,8 @@ import Whatsapp from "../assets/socials/whatsapp.png";
 
 export default function Footer() {
   return (
-    <div className="flex h-64 bg-slate-200 w-full text-center px-4 md:gap-10 mb-0 sm:flex-col sm:gap-4 sm:p4 rounded-md ">
-      <div className="w-1/3 text-5xl flex items-center justify-center">
+    <div className="flex h-auto bg-slate-200 w-full text-center px-4 md:gap-10 mb-0 sm:flex-col sm:gap-4 sm:p4 rounded-md ">
+      <div className="w-1/3 text-5xl flex items-center justify-center ">
         E-MODULE
       </div>
 
