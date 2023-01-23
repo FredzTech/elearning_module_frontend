@@ -99,22 +99,24 @@ const LessonForm = () => {
 
   return (
     <Modal>
-    
-    <div className="">
-      <CustomNav  />
-      {/* PROPOSED HEADER. */}
-      {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
-      <form encType="multipart/form-data" className="form-styling" text="Lesson form" >
-        {/* DROPDOWN */}
-        <div className="input-wrap">
-          <label htmlFor="id" className="w-full">
-            Select Chapter
-          </label>
-          <div class="select-parent">
+      <div className="">
+        <CustomNav />
+        {/* PROPOSED HEADER. */}
+        {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
+        <form
+          encType="multipart/form-data"
+          className="form-styling"
+          text="Lesson form"
+        >
+          {/* DROPDOWN */}
+          <div className="input-wrap">
+            <label htmlFor="id" className="w-full">
+              Select Chapter
+            </label>
             <select
               value={chapterName}
               onChange={(e) => setChapterName(e.target.value)}
-              className="select-input"
+              className="input-styling"
             >
               {chapters.map((chapter, index) => {
                 return (
@@ -124,59 +126,49 @@ const LessonForm = () => {
                 );
               })}
             </select>
-            <div class="select-svg-wrapper">
-              <svg
-                class="fill-current h-full w-full"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </div>
           </div>
-        </div>
-        {/* FILE */}
-        <div className="input-wrap">
-          <label htmlFor="lNumber" className="w-full ">
-            Lesson Details
-          </label>
-          <input
-            className="input-styling"
-            id="lNumber"
-            type="number"
-            placeholder="Lesson Number"
-            value={lessonNumber}
-            onChange={(e) => {
-              setLessonNumber(e.target.value);
-            }}
-            required
-          ></input>
-          <input
-            className="input-styling"
-            id="lName"
-            type="Text"
-            placeholder="Lesson Name"
-            value={lessonName}
-            onChange={(e) => {
-              setLessonName(e.target.value);
-            }}
-            required
-          ></input>
-        </div>
+          {/* FILE */}
+          <div className="input-wrap">
+            <label htmlFor="lNumber" className="w-full ">
+              Lesson Details
+            </label>
+            <input
+              className="input-styling"
+              id="lNumber"
+              type="number"
+              placeholder="Lesson Number"
+              value={lessonNumber}
+              onChange={(e) => {
+                setLessonNumber(e.target.value);
+              }}
+              required
+            ></input>
+            <input
+              className="input-styling"
+              id="lName"
+              type="Text"
+              placeholder="Lesson Name"
+              value={lessonName}
+              onChange={(e) => {
+                setLessonName(e.target.value);
+              }}
+              required
+            ></input>
+          </div>
 
-        <div className="input-wrap ">
-          <label htmlFor="file" className="w-full ">
-            File Details
-          </label>
-          <input
-            type="file"
-            name="file"
-            onChange={fileSelected}
-            className="input-styling mt-2"
-          />
-        </div>
+          <div className="input-wrap ">
+            <label htmlFor="file" className="w-full ">
+              File Details
+            </label>
+            <input
+              type="file"
+              name="file"
+              onChange={fileSelected}
+              className="input-styling mt-2"
+            />
+          </div>
 
-        {/* <div className="input-wrap">
+          {/* <div className="input-wrap">
           <label htmlFor="id" className="w-full">
             Lecture Notes
           </label>
@@ -191,20 +183,18 @@ const LessonForm = () => {
             />
           </div>
         </div> */}
-        <h1>PREVIEW</h1>
-        {/* PREVIEWING THE CONTENT. */}
-        <div
-          className="w-full debug"
-          dangerouslySetInnerHTML={{ __html: lessonNotes }}
-        ></div>
-        {/* CTA BUTTONS */}
-        <div className="cta-wrap">
-          <Button type="button" text="Save" onClick={fileUploadHandler} />
-         
-        </div>
-      </form>
-    </div>
-    
+          <h1>PREVIEW</h1>
+          {/* PREVIEWING THE CONTENT. */}
+          <div
+            className="w-full debug"
+            dangerouslySetInnerHTML={{ __html: lessonNotes }}
+          ></div>
+          {/* CTA BUTTONS */}
+          <div className="cta-wrap">
+            <Button type="button" text="Save" onClick={fileUploadHandler} />
+          </div>
+        </form>
+      </div>
     </Modal>
   );
 };

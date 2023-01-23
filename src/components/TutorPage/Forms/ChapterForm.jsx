@@ -87,23 +87,22 @@ const ChapterForm = () => {
   };
 
   return (
-   <Modal>
-    <div className="">
-      <CustomNav text="chapter form" />
-      {/* PROPOSED HEADER. */}
-      {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
-      <form className="form-styling">
-        {/* DROPDOWN */}
-        <div className="input-wrap">
-          <label htmlFor="id" className="w-full">
-            Select Unit
-          </label>
-          {/* THE PARENT SELECT DIV */}
-          <div className="select-parent">
+    <Modal>
+      <div className="">
+        <CustomNav text="chapter form" />
+        {/* PROPOSED HEADER. */}
+        {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
+        <form className="form-styling">
+          {/* DROPDOWN */}
+          <div className="input-wrap">
+            <label htmlFor="id" className="w-full">
+              Select Unit
+            </label>
+            {/* THE PARENT SELECT DIV */}
             <select
               value={unitName}
               onChange={(e) => setUnitName(e.target.value)}
-              className="select-input"
+              className="input-styling"
             >
               {/* MAP DB FOR THE OPTIONS */}
               {units.map((unit, index) => {
@@ -114,65 +113,54 @@ const ChapterForm = () => {
                 );
               })}
             </select>
-            <div className="select-svg-wrapper">
-              <svg
-                className="fill-current w-full h-full"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </div>
           </div>
-        </div>
-        {/* FILE */}
-        <div className="input-wrap">
-          <label htmlFor="cNumber" className="w-full ">
-            Chapter Details
-          </label>
-          <input
-            className="input-styling"
-            id="cNumber"
-            type="number"
-            placeholder="Chapter Number"
-            value={chapterNumber}
-            onChange={(e) => {
-              setChapterNumber(e.target.value);
-            }}
-            required
-          ></input>
-          <input
-            className="input-styling"
-            id="fName"
-            type="Text"
-            placeholder="Chapter Name"
-            value={chapterName}
-            onChange={(e) => {
-              setChapterName(e.target.value);
-            }}
-            required
-          ></input>
+          {/* FILE */}
+          <div className="input-wrap">
+            <label htmlFor="cNumber" className="w-full ">
+              Chapter Details
+            </label>
+            <input
+              className="input-styling"
+              id="cNumber"
+              type="number"
+              placeholder="Chapter Number"
+              value={chapterNumber}
+              onChange={(e) => {
+                setChapterNumber(e.target.value);
+              }}
+              required
+            ></input>
+            <input
+              className="input-styling"
+              id="fName"
+              type="Text"
+              placeholder="Chapter Name"
+              value={chapterName}
+              onChange={(e) => {
+                setChapterName(e.target.value);
+              }}
+              required
+            ></input>
 
-          <input
-            className="input-styling"
-            id="lName"
-            type="Text"
-            placeholder="Description"
-            value={chapterDescription}
-            onChange={(e) => {
-              setChapterDescription(e.target.value);
-            }}
-            required
-          ></input>
-        </div>
-        {/* CTA BUTTONS */}
-        <div className="cta-wrap ">
-          <Button type="button" text="Save" onClick={fileUploadHandler} />
-         
-        </div>
-      </form>
-    </div>
-   </Modal>
+            <input
+              className="input-styling"
+              id="lName"
+              type="Text"
+              placeholder="Description"
+              value={chapterDescription}
+              onChange={(e) => {
+                setChapterDescription(e.target.value);
+              }}
+              required
+            ></input>
+          </div>
+          {/* CTA BUTTONS */}
+          <div className="cta-wrap ">
+            <Button type="button" text="Save" onClick={fileUploadHandler} />
+          </div>
+        </form>
+      </div>
+    </Modal>
   );
 };
 
