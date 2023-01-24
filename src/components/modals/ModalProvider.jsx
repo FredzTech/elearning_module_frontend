@@ -2,15 +2,16 @@ import React, { createContext, useState } from "react";
 import "./modal.css";
 import { useNavigate } from "react-router-dom";
 
-export const ModalContext = createContext();
+const ModalContext = createContext();
 
 // export function openModal(){
 //   return useContext(ModalContext)
 // }
+export const useModal = () => {
+  return useContext(ModalContext);
+};
 
 export default function ModalProvider({ children }) {
-  const navigate = useNavigate();
-
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
@@ -35,9 +36,7 @@ export default function ModalProvider({ children }) {
   }
 
   return (
-    <ModalContext.Provider
-      value={{ isOpen, openModal, closeModal, modalContent }}
-    >
+    <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
       {children}
     </ModalContext.Provider>
   );

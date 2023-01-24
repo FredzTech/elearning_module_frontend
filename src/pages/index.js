@@ -1,5 +1,5 @@
 import HomePage from "./HomePage";
-
+import UsersLayout from "./UsersPage/UsersLayout";
 import PricingPage from "./PricingPage";
 
 import CoursePage from "./CoursePage";
@@ -12,21 +12,20 @@ import TutorUnitPage from "./Tutor/TutorUnitPage";
 import TutorUnitsPage from "./Tutor/TutorUnitsPage";
 import UserPage from "./UserPage";
 import { NotFound } from "./404";
+import AdminLayout from "./Admin/AdminLayout";
 import AdminPage from "./AdminPage";
 import AdminDashboard from "./Admin/AdminDashboard";
 import StudentsPageAdmin from "./Admin/StudentsPageAdmin";
 import TutorsPageAdmin from "./Admin/TutorsPageAdmin";
 import CourseAdminPage from "./Admin/CourseAdminPage";
-import { TutorRootPage } from "./Tutor/TutorRootPage";
+import TutorLayoutPage from "./Tutor/TutorLayout";
+import UnitsPageDynamic from "./Unit/UnitsPageDynamic";
 export {
   HomePage,
-
   PricingPage,
-
   CoursePage,
   UnitPage,
   ChapterPage,
-
   UnitsPage,
   TutorPage,
   TutorUnitsPage,
@@ -38,5 +37,8 @@ export {
   StudentsPageAdmin,
   TutorsPageAdmin,
   CourseAdminPage,
-  TutorRootPage,
+  TutorLayoutPage,
+  AdminLayout,
+  UsersLayout,
+  UnitsPageDynamic,
 };
