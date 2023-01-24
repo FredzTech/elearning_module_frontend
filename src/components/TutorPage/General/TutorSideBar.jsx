@@ -3,9 +3,12 @@ import { AdminNavItem } from "../../../components";
 const TutorSideBar = () => {
   const lists = [{ name: "Dashboard", link: "/tutor/dashboard" }];
   return (
-    <div className="flex-col-centered w-full h-full rounded-md shadow-lg shadow-slate-400">
+    <div className="h-full rounded-lg  p-3 space-y-2 w-full bg-slate-200 sm:w-full sm:text-center">
       <div className="flex-col-centered pt-5">
-        <img className="avatar rounded-full w-[170px] h-[170px] bg-slate-400"></img>
+        <img
+          src="https://source.unsplash.com/100x100/?portrait"
+          className="avatar rounded-full w-[170px] h-[170px]"
+        ></img>
         <div className="name capitalize mt-4 font-bold text-3xl">
           Amos Einstein
         </div>

@@ -8,13 +8,11 @@ const TutorLayout = () => {
       <div className="container h-full mx-3 mt-2 w-1/4 sm:w-screen">
         <TutorSideBar />
       </div>
-      <div className="container w-3/4 h-screen overflow-y-scroll sm:w-screen">
+      <div className="container w-3/4 h-full overflow-y-scroll sm:w-screen">
         <div className="w-full text-lg text-center text-white bg-purple m-2 py-2 rounded-lg">
           NAVBAR WITH ICONS
         </div>
         <Outlet />
-
-        {/* <Footer className="w-full" /> */}
       </div>
     </div>
   );

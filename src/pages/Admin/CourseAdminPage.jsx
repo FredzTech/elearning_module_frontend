@@ -1,10 +1,10 @@
 import axios from "../../axios";
-import React, { useEffect, useState ,useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { NavigateBtn, CourseAdminCard, CourseForm } from "../../components";
 import { ModalContext } from "../../components/modals/ModalProvider";
 
 const CoursesAdminPage = () => {
-  const{ openModal, isOpen} = useContext(ModalContext);
+  const { openModal, isOpen } = useContext(ModalContext);
 
   const [coursesData, setCoursesData] = useState([]);
   useEffect(() => {
@@ -30,13 +30,14 @@ const CoursesAdminPage = () => {
           text="New Course"
           icon="tenantIcon"
         />
-        {isOpen && <CourseForm/>}
+        {isOpen && <CourseForm />}
       </div>
       <div className="grid grid-cols-4 gap-5">
         {coursesData.map((course, index) => {
           return (
             <div key={`course-${index}`}>
               <CourseAdminCard
+                _id={course._id}
                 courseTitle={course.courseTitle}
                 courseImage={course.courseImage}
               />
