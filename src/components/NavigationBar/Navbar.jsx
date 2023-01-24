@@ -9,15 +9,6 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 
-<<<<<<< HEAD
-import NavBtn from './NavBtn'
-import {UserContext , LogoutContext} from "../../Authentication/AuthContextProvider";
-import CourseNav from "./CourseNav";
-import Subscription from '../../assets/subscription.png' 
-import Search from "./Search";
-import { ModalContext } from "../modals/ModalProvider";
-import { UserdataContext } from "../../Authentication/AuthContextProvider";
-=======
 // import NavBtn from "./NavBtn";
 // import { UserContext, Logout } from "../../Authentication/AuthContextProvider";
 // import CourseNav from "./CourseNav";
@@ -25,50 +16,27 @@ import { UserdataContext } from "../../Authentication/AuthContextProvider";
 // import Search from "./Search";
 // import { ModalContext } from "../modals/ModalProvider";
 // import { UserdataContext } from "../../Authentication/AuthContextProvider";
->>>>>>> polish_2
 import { MdArrowDropDown } from "react-icons/md";
 
 const navigation = [
-<<<<<<< HEAD
-  { name: 'Home', href: '/', current: false },
-  { name: 'Courses', href: 'courses', current: false },
-  { name: 'Units', href: 'units', current: false },
-  { name: 'Subscription', href: 'pricing', current: false },
-]
-=======
   { name: "Home", href: "/", current: false },
   { name: "Courses", href: "courses", current: false },
   { name: "Units", href: "units", current: false },
   { name: "Users", href: "admin/users", current: false },
 ];
->>>>>>> polish_2
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-<<<<<<< HEAD
-const Navbar = ({content}) => { 
-  const userData = useContext(UserdataContext)
-  const isAuthenticated  = useContext(UserContext);
-  const logout = useContext(LogoutContext);
-=======
 const Navbar = ({ content }) => {
->>>>>>> polish_2
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
   const options = [
-<<<<<<< HEAD
-    {name:"Student" , link:"student-login"}, 
-    {name:"Tutor" , link:"tutor-login"},
-    {name:"Admin" , link:"admin-login"},
-  ]
-=======
     { name: "Student", link: "student-login" },
     { name: "Tutor", link: "tutor-login" },
     { name: "Admin", link: "admin-login" },
   ];
->>>>>>> polish_2
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -79,7 +47,7 @@ const Navbar = ({ content }) => {
   //      setSelectedOption(option);
   //   setIsOpen(false);
   //   },2000)
-   
+
   // };
 
   const [navbarOpen, setNavbarOpen] = useState(false);
