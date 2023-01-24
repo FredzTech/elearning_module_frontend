@@ -1,6 +1,5 @@
 import React, { createContext, useState } from "react";
 import "./modal.css";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 const ModalContext = createContext();
@@ -13,21 +12,16 @@ export const useModal = () => {
 };
 
 export default function ModalProvider({ children }) {
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  // const [modalContent, setModalContent] = useState(null);
+  const [modalContent, setModalContent] = useState(null);
 
   const openModal = (content) => {
     setIsOpen(true);
-    // setModalContent(content);
+    setModalContent(content);
   };
   const closeModal = () => {
     setIsOpen(false);
-    // setModalContent(null);
-    navigate(-1);
-    // setTimeout(() => {
-    //   window.location.reload(false);
-    // }, 100);
+    setModalContent(null);
   };
 
   if (isOpen) {

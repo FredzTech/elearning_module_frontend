@@ -81,7 +81,7 @@ function App() {
           </Route>
 
           {/* Admin Protected routes */}
-          <Route element={<RequireAuth allowedRoles={[2002]} />}>
+          <Route element={<RequireAuth allowedRoles={[2002, 2000]} />}>
             <Route exact path="/admin" element={<AdminLayout />}>
               <Route exact path="users" element={<Users />} />
               <Route exact path="dashboard" element={<AdminDashboard />} />

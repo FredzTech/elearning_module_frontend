@@ -36,25 +36,20 @@ const TutorLoginForm = () => {
     try {
       const user = { email, password };
       const { data } = await axios.post("http://localhost:5000/login", user);
-      const { roles, accessToken, userName } = data;
-      if (data.status == "ok") {
+      if (data.status == 200) {
+        // const { roles, accessToken, userName } = data;
+        setAuth({ roles, accessToken, userName });
         window.localStorage.setItem("token", data.data);
-
         setMessage("Logging...");
-        const timeout = setTimeout(() => {
-          window.location.reload();
-          closeModal();
-        }, 3000);
-      } else {
-        setMessage(data.error);
+        navigate(from, { replace: true });
+        // const timeout = setTimeout(() => {
+        //   window.location.reload();
+        //   closeModal();
+        // }, 3000);
       }
-
-      setAuth({ roles, accessToken, userName });
-      navigate(from, { replace: true });
     } catch (err) {
-      setMessage(err);
-      dxx;
       console.log(err);
+      setMessage(err);
     }
   };
   return (

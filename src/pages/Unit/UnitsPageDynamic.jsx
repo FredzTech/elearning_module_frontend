@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { UnitsCard } from "../../components";
 import axios from "../../axios";
 const UnitsPageDynamic = () => {
+  const [fetchStatus, setFetchStatus] = useState(false);
   //  {
   //   _id: "63c69910ba70a7293a3fadc5",
   //   courseImage:
@@ -22,8 +23,25 @@ const UnitsPageDynamic = () => {
   //   ],
   // },
   const { courseId } = useParams();
-  const [courseData, setCourseData] = useState([]);
 
+  const [courseData, setCourseData] = useState({
+    _id: "63c69910ba70a7293a3fadc5",
+    courseImage:
+      "https://image-handle.s3.amazonaws.com/warm-1673959658905.jpeg",
+    courseTitle: "HOME SCIENCE",
+    units: [
+      {
+        unitType: "paid",
+        tutor: [],
+        _id: "63c699d8ba70a7293a3fadca",
+        unitCode: "FDE 3173",
+        unitName: "INTRODUCTION TO HOME SCIENCE",
+        unitDescription: "Get to know what home science is about.",
+        unitChapters: [],
+        __v: 0,
+      },
+    ],
+  });
   useEffect(() => {
     console.log("Use Effect running.");
 
@@ -51,10 +69,14 @@ const UnitsPageDynamic = () => {
         {/* When this is absolute the parent collapses. */}
         <div className="relative top-[-70px] w-full h-full px-20 ">
           <main className="relative main-content grid grid-cols-2 gap-10">
+            {console.log(courseData)}
+
+            {console.log(courseData.units)}
             {courseData.units.map((unit, index) => {
               const { unitName, unitDescription } = unit;
               return (
                 <UnitsCard
+                  key={index}
                   number={`${index + 1}`}
                   heading={unitName}
                   summary={unitDescription}
