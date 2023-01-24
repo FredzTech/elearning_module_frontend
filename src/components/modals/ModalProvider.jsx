@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import "./modal.css";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const ModalContext = createContext();
 
