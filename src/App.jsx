@@ -16,6 +16,7 @@ import {
   TutorLayoutPage,
   AdminLayout,
   UsersLayout,
+  UnitsPageDynamic,
 } from "./pages";
 import {
   Footer,
@@ -53,7 +54,7 @@ function App() {
         {/* <IdleTimer> */}
         <Routes>
           {/* Student Protected Routes */}
-          <Route element={<RequireAuth allowedRoles={[2001, 2000, 2002]} />}>
+          <Route element={<RequireAuth allowedRoles={[2000]} />}>
             <Route path="/" element={<UsersLayout />}>
               <Route exact path="/" element={<HomePage />}></Route>
               <Route exact path="pricing" element={<PricingPage />}></Route>
@@ -71,11 +72,16 @@ function App() {
               <Route exact path="/units" element={<ChapterPage />}></Route>
               <Route exact path="/unit" element={<UnitPage />}></Route>
               <Route exact path="/courses" element={<UnitsPage />}></Route>
+              <Route
+                exact
+                path="/courses/:courseId"
+                element={<UnitsPageDynamic />}
+              ></Route>
             </Route>
           </Route>
 
           {/* Admin Protected routes */}
-          <Route element={<RequireAuth allowedRoles={[2001, 2000, 2002]} />}>
+          <Route element={<RequireAuth allowedRoles={[2002]} />}>
             <Route exact path="/admin" element={<AdminLayout />}>
               <Route exact path="users" element={<Users />} />
               <Route exact path="dashboard" element={<AdminDashboard />} />
@@ -106,7 +112,7 @@ function App() {
             </Route>
           </Route>
           {/* Tutor Protected Routes */}
-          <Route element={<RequireAuth allowedRoles={[2002, 2001, 2000]} />}>
+          <Route element={<RequireAuth allowedRoles={[2001]} />}>
             <Route exact path="/tutor" element={<TutorLayoutPage />}>
               <Route exact path="dashboard" element={<TutorPage />} />
               <Route exact path="units" element={<TutorUnitsPage />} />

@@ -19,6 +19,7 @@ import StudentsPageAdmin from "./Admin/StudentsPageAdmin";
 import TutorsPageAdmin from "./Admin/TutorsPageAdmin";
 import CourseAdminPage from "./Admin/CourseAdminPage";
 import TutorLayoutPage from "./Tutor/TutorLayout";
+import UnitsPageDynamic from "./Unit/UnitsPageDynamic";
 export {
   HomePage,
   PricingPage,
@@ -39,4 +40,5 @@ export {
   TutorLayoutPage,
   AdminLayout,
   UsersLayout,
+  UnitsPageDynamic,
 };

@@ -60,8 +60,8 @@ const TutorLoginForm = () => {
     <Modal>
       <div>
         <div
-          className=" bg-white w-[400px] sm:w-[320px]flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm"
           text-2xl
+          className=" bg-white w-[400px] sm:w-[320px]flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm  text-2xl"
         >
           <div className="sm:mx-auto ">
             <h2 className="lg: mt-6 text-center text-3xl font-extrabold text-gray-900">
