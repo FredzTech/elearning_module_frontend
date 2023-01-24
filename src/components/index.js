@@ -1,7 +1,7 @@
 // GENERAL COMPONENTS
 
 import LogInForm from "./Logins-Registration/StudentLoginForm";
-
+import RequireAuth from "./RequireAuth";
 import AlertBox from "./AlertBox";
 // HOMEPAGE COMPONENTS
 
@@ -47,7 +47,6 @@ import {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  
 } from "./TutorPage/Forms";
 
 import Footer from "./Footer";
@@ -72,7 +71,6 @@ import {
 } from "./AdminPage";
 
 export {
-
   LogInForm,
   HomePageCard,
   HomePageGrid,
@@ -108,7 +106,6 @@ export {
   LessonForm,
   ResourcesForm,
   UnitForm,
-  
   AlertBox,
   // RegistrationButton,
   // RegistrationForm,
@@ -131,4 +128,5 @@ export {
   CourseAdminCard,
   CTAUnitButtonAdmin,
   AdminNavItem,
+  RequireAuth,
 };

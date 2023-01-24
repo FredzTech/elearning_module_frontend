@@ -160,19 +160,19 @@ const LessonForm = () => {
           ></input>
         </div>
 
-        <div className="input-wrap ">
-          <label htmlFor="file" className="w-full ">
-            File Details
-          </label>
-          <input
-            type="file"
-            name="file"
-            onChange={fileSelected}
-            className="input-styling mt-2"
-          />
-        </div>
+          <div className="input-wrap ">
+            <label htmlFor="file" className="w-full ">
+              File Details
+            </label>
+            <input
+              type="file"
+              name="file"
+              onChange={fileSelected}
+              className="input-styling mt-2"
+            />
+          </div>
 
-        {/* <div className="input-wrap">
+          {/* <div className="input-wrap">
           <label htmlFor="id" className="w-full">
             Lecture Notes
           </label>

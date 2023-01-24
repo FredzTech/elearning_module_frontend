@@ -9,7 +9,7 @@ const Accordion = () => {
   const handleToggle = (index) => {
     //Returns a boolean true/False
     if (clicked == index) {
-      // Tukiclick tena.... We set to false
+      // Tukiclick tena.... We set to active to false
       console.log("Option A running");
       return setClicked("0");
     } else {
@@ -17,6 +17,7 @@ const Accordion = () => {
       return setClicked(index);
     }
     //Tukiclick kwingine..... clicked is updated with new index.
+    //We are taking advantage of the rerenders.
   };
 
   return (

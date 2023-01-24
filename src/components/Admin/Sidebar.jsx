@@ -1,8 +1,8 @@
 import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-// import { LogoutContext } from "../../Authentication/AuthContextProvider";
-import { UserdataContext } from "../../Authentication/AuthContextProvider";
+// import { Logout } from "../../Authentication/AuthContextProvider";
+// import { UserdataContext } from "../../Authentication/AuthContextProvider";
 
 import Dashboard from "../../assets/dashboard.png";
 
@@ -19,7 +19,7 @@ const lists = [
 ];
 
 export const Sidebar = () => {
-  const userData = useContext(UserdataContext);
+  // const userData = useContext(UserdataContext);
   return (
     <div className="h-full rounded-lg  p-3 space-y-2 w-full bg-slate-200 sm:w-full sm:text-center">
       <div className="flex flex-col items-center p-2 space-x-4">

@@ -50,8 +50,6 @@ const UnitForm = () => {
     console.log(result); //Returns to as the response from backend manifested under the data object.
   };
 
- 
-
   return (
     <Modal>
     <div className="">

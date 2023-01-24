@@ -9,22 +9,22 @@ export default function Modal ({children}) {
     const {isOpen , modalContent , closeModal } = useContext(ModalContext);
   
   return (
-    
-     <>
-     
-     {isOpen &&
-      <div className='modal' >
-         <div className="overlay"  ></div> 
-                <div className="modal-content " >
-                    <button className="close-modal float-right   z-50 " onClick={()=>closeModal()}><MdCancel className='text-black text-4xl'/></button>
-                    
-                    {children}      
+    <>
+      {isOpen && (
+        <div className="modal">
+          <div className="overlay"></div>
+          <div className="modal-content ">
+            <button
+              className="close-modal float-right   z-50 "
+              onClick={() => closeModal()}
+            >
+              <MdCancel className="text-black text-4xl" />
+            </button>
 
-                </div>
-            
-         
+            {children}
+          </div>
         </div>
-    }
+      )}
     </>
-  )
+  );
 }

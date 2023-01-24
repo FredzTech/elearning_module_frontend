@@ -87,8 +87,6 @@ const ChapterForm = () => {
     console.log(result); //Returns to as the response from backend manifested under the data object.
   };
 
- 
-
   return (
    <Modal>
     <div className="">
@@ -106,7 +104,7 @@ const ChapterForm = () => {
            onChange={(e) => setUnitName(e.target.value)}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
           >
-            {/* <option selected className="text-grey">Choose the unit</option> */}
+            <option selected className="text-grey">Choose the unit</option>
             {units.map((unit, index) => {
                 return (
                   <option className="text-black" key={index} value={unit.unitName}>
