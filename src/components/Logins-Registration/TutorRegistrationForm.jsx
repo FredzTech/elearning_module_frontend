@@ -181,7 +181,7 @@ const TutorRegistrationForm = () => {
                   required
                   />
                   
-                  <PasswordStrengthBar password={password} minLength={8} />
+                  <PasswordStrengthBar password={password} minLength={8} className="w-full"/>
                 </div>
               
                 <div>

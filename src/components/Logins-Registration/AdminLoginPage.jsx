@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useModal } from "../modals/ModalProvider";
+import axios from "../../axios"
+// import { useModal } from "../modals/ModalProvider";
+import { ModalContext } from "../modals/ModalProvider";
 import Validation from "./Validation";
 import { Modal } from "../modals";
 
 const LogInForm = () => {
-  const { closeModal } = useModal;
+  const { closeModal } = useContext(ModalContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //  validating credentials
@@ -23,7 +24,7 @@ const LogInForm = () => {
     setErrors(Validation(email, password));
     try {
       const user = { email, password };
-      const { data } = await axios.post("http://localhost:5000/login", user);
+      const { data } = await axios.post("/login", user);
       if (data.status == "ok") {
         window.localStorage.setItem("token", data.data);
 
@@ -44,8 +45,8 @@ const LogInForm = () => {
     <Modal>
       <div>
         <div
-          className=" bg-white flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm"
-          text-2xl
+          className=" bg-white flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm text-2xl"
+          
         >
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <h2 className="lg: mt-6 text-center text-3xl font-extrabold text-gray-900">

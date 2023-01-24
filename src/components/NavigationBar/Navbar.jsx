@@ -9,26 +9,29 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 
-// import NavBtn from "./NavBtn";
-// import { UserContext, Logout } from "../../Authentication/AuthContextProvider";
-// import CourseNav from "./CourseNav";
-// import Subscription from "../../assets/subscription.png";
-// import Search from "./Search";
-// import { ModalContext } from "../modals/ModalProvider";
-// import { UserdataContext } from "../../Authentication/AuthContextProvider";
+import NavBtn from './NavBtn'
+import {UserContext , LogoutContext} from "../../Authentication/AuthContextProvider";
+import CourseNav from "./CourseNav";
+import Subscription from '../../assets/subscription.png' 
+import Search from "./Search";
+import { ModalContext } from "../modals/ModalProvider";
+import { UserdataContext } from "../../Authentication/AuthContextProvider";
 import { MdArrowDropDown } from "react-icons/md";
 
 const navigation = [
-  { name: "Home", href: "/", current: false },
-  { name: "Courses", href: "courses", current: false },
-  { name: "Units", href: "units", current: false },
-  { name: "Users", href: "admin/users", current: false },
-];
+  { name: 'Home', href: '/', current: false },
+  { name: 'Courses', href: 'courses', current: false },
+  { name: 'Units', href: 'units', current: false },
+  { name: 'Subscription', href: 'pricing', current: false },
+]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const Navbar = ({ content }) => {
+const Navbar = ({content}) => { 
+  const userData = useContext(UserdataContext)
+  const isAuthenticated  = useContext(UserContext);
+  const logout = useContext(LogoutContext);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -36,11 +39,9 @@ const Navbar = ({ content }) => {
     { name: "Student", link: "student-login" },
     { name: "Tutor", link: "tutor-login" },
     { name: "Admin", link: "admin-login" },
-  ];
-
+  ]
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-  };
 
   // const handleOptionClick = (option) => {
   //   setTimeout(()=>{
@@ -54,24 +55,24 @@ const Navbar = ({ content }) => {
   // const userData = useContext(UserdataContext);
   // const isAuthenticated = useContext(UserContext);
 
-  const userData = {
-    name: "John",
-    role: "student",
-  };
-  const isAuthenticated = true;
+  // const userData = {
+  //   name: "John",
+  //   role: "student",
+  // };
+  // const isAuthenticated = true;
 
-  // const logout = Logout();
+  // logout = Logout();
 
-  const logout = () => {
-    console.log("User logged out.");
-  };
+  // const logout = () => {
+  //   console.log("User logged out.");
+  // };
   return (
     <Disclosure as="nav" className="bg-primary">
       {({ open }) => (
         <>
           <div className="mx-auto w-screen sm:max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center hidden sm:block">
+              <div className="absolute inset-y-0 left-0  items-center hidden sm:block">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>

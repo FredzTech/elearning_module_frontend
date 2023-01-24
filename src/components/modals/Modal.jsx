@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
-import { MdCancel } from "react-icons/md";
-import { useModal } from "./ModalProvider";
-export default function Modal({ children }) {
-  const { isOpen, closeModal, openModal } = useModal();
-  useEffect(() => {
-    openModal();
-  }, []);
+import React, { useEffect } from 'react'
+import { useContext } from 'react'
+import { ModalContext } from './ModalProvider'
+import { useNavigate } from 'react-router'
+import {MdCancel} from 'react-icons/md'
+
+export default function Modal ({children}) {
+    
+    const {isOpen , modalContent , closeModal } = useContext(ModalContext);
+  
   return (
     <>
       {isOpen && (

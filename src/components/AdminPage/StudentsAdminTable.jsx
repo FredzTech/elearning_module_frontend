@@ -1,6 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
 import { StatusPill, CTAButton, NavigateBtn } from "../../components";
+import { StudentRegistrationForm } from "../Logins-Registration";
+import { ModalContext } from "../modals/ModalProvider";
 const StudentsAdminTable = () => {
+  const{ openModal, isOpen} = useContext(ModalContext);
+
   const studentsData = [
     {
       fName: "ANN",
@@ -48,15 +52,17 @@ const StudentsAdminTable = () => {
       updatedAt: "2022-10-11",
     },
   ];
+
   return (
     <>
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
           <NavigateBtn
-            destination="/register"
+            action={openModal}
             text="Add student"
             icon="tenantIcon"
           />
+          {isOpen && <StudentRegistrationForm/>}
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Modal } from "../modals";
-import { useModal } from "../modals/ModalProvider";
+// import { useModal } from "../modals/ModalProvider";
+import { ModalContext } from "../modals/ModalProvider";
 import Validation from "./Validation";
+import { useContext } from "react";
 
 const StudentLoginForm = () => {
-  const { closeModal } = useModal();
+ const {closeModal} = useContext(ModalContext)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
