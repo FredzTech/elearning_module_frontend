@@ -15,7 +15,7 @@ export const useAuth = () => {
 export const AuthContextProvider = ({ children }) => {
   const [auth, setAuth] = useState({ roles: [2000] });
   return (
-    <AuthContext.Provider value={(auth, setAuth)}>
+    <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
     </AuthContext.Provider>
   );

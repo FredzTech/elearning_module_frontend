@@ -15,8 +15,8 @@ import {
   CourseAdminPage,
   TutorLayoutPage,
   AdminLayout,
+  UsersLayout,
 } from "./pages";
-import { Navbar } from "./components/NavigationBar";
 import {
   Footer,
   CourseForm,
@@ -49,31 +49,34 @@ function App() {
   // }
   return (
     <div className="flex flex-col w-screen h-full ">
-      {/* <AuthContextProvider> */}
-      <Navbar className="flex" />
-
-      {/* <div className=" flex flex-1 "> */}
       <ModalProvider>
         {/* <IdleTimer> */}
         <Routes>
-          <Route element={<RequireAuth allowedRoles={[2000, 2001, 2002]} />}>
-            <Route exact path="/" element={<HomePage />}></Route>
-            <Route exact path="/pricing" element={<PricingPage />}></Route>
-            <Route exact path="*" element={<NotFound />}></Route>
-            <Route path="student-login" element={<StudentLoginForm />}></Route>
-            <Route path="tutor-login" element={<TutorLoginForm />}></Route>
-            <Route path="admin-login" element={<AdminLoginPage />}></Route>
-            <Route
-              path="register"
-              element={<StudentRegistrationForm />}
-            ></Route>
-            <Route exact path="/units" element={<ChapterPage />}></Route>
-            <Route exact path="/unit" element={<UnitPage />}></Route>
-            <Route exact path="/courses" element={<UnitsPage />}></Route>
+          {/* Student Protected Routes */}
+          <Route element={<RequireAuth allowedRoles={[2001, 2000, 2002]} />}>
+            <Route path="/" element={<UsersLayout />}>
+              <Route exact path="/" element={<HomePage />}></Route>
+              <Route exact path="pricing" element={<PricingPage />}></Route>
+              <Route exact path="*" element={<NotFound />}></Route>
+              <Route
+                path="student-login"
+                element={<StudentLoginForm />}
+              ></Route>
+              <Route path="tutor-login" element={<TutorLoginForm />}></Route>
+              <Route path="admin-login" element={<AdminLoginPage />}></Route>
+              <Route
+                path="register"
+                element={<StudentRegistrationForm />}
+              ></Route>
+              <Route exact path="/units" element={<ChapterPage />}></Route>
+              <Route exact path="/unit" element={<UnitPage />}></Route>
+              <Route exact path="/courses" element={<UnitsPage />}></Route>
+            </Route>
           </Route>
-          {/* admin routes */}
-          <Route exact path="/admin" element={<AdminLayout />}>
-            <Route element={<RequireAuth allowedRoles={[2001]} />}>
+
+          {/* Admin Protected routes */}
+          <Route element={<RequireAuth allowedRoles={[2001, 2000, 2002]} />}>
+            <Route exact path="/admin" element={<AdminLayout />}>
               <Route exact path="users" element={<Users />} />
               <Route exact path="dashboard" element={<AdminDashboard />} />
               <Route exact path="forbidden" element={<Forbidden />} />
@@ -102,9 +105,9 @@ function App() {
               ></Route>
             </Route>
           </Route>
-          {/* tutor routes */}
-          <Route exact path="/tutor" element={<TutorLayoutPage />}>
-            <Route element={<RequireAuth allowedRoles={[2002]} />}>
+          {/* Tutor Protected Routes */}
+          <Route element={<RequireAuth allowedRoles={[2002, 2001, 2000]} />}>
+            <Route exact path="/tutor" element={<TutorLayoutPage />}>
               <Route exact path="dashboard" element={<TutorPage />} />
               <Route exact path="units" element={<TutorUnitsPage />} />
               <Route exact path="chapter" element={<ChapterForm />} />
@@ -112,6 +115,7 @@ function App() {
               <Route exact path="resources" element={<ResourcesForm />} />
             </Route>
           </Route>
+
           <Route element={<RequireAuth allowedRoles={[2002]} />}>
             <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
           </Route>
@@ -119,9 +123,6 @@ function App() {
         </Routes>
         {/* </IdleTimer> */}
       </ModalProvider>
-      {/* </div> */}
-      {/* </AuthContextProvider> */}
-      <Footer />
     </div>
   );
 }

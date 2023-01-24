@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Modal } from "../modals";
-
-import { useContext } from "react";
-import { ModalContext } from "../modals/ModalProvider";
+import { useModal } from "../modals/ModalProvider";
 import Validation from "./Validation";
-
+import { useAuth } from "../../context/AuthContext";
 // AUTONOMOUS REROUTE.
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
@@ -19,7 +17,7 @@ const TutorLoginForm = () => {
   // We have to get where you are coming from.
   const from = location.state?.from?.pathname || "/";
 
-  const { closeModal } = useContext(ModalContext);
+  const { closeModal } = useModal();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,17 +37,17 @@ const TutorLoginForm = () => {
       const user = { email, password };
       const { data } = await axios.post("http://localhost:5000/login", user);
       const { roles, accessToken, userName } = data;
-      // if (data.status == "ok") {
-      //   window.localStorage.setItem("token", data.data);
+      if (data.status == "ok") {
+        window.localStorage.setItem("token", data.data);
 
-      //   setMessage("Logging...");
-      //   const timeout = setTimeout(() => {
-      //     window.location.reload();
-      //     closeModal();
-      //   }, 3000);
-      // } else {
-      //   setMessage(data.error);
-      // }
+        setMessage("Logging...");
+        const timeout = setTimeout(() => {
+          window.location.reload();
+          closeModal();
+        }, 3000);
+      } else {
+        setMessage(data.error);
+      }
 
       setAuth({ roles, accessToken, userName });
       navigate(from, { replace: true });

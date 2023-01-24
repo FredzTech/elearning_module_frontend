@@ -1,5 +1,5 @@
 import HomePage from "./HomePage";
-
+import UsersLayout from "./UsersPage/UsersLayout";
 import PricingPage from "./PricingPage";
 
 import CoursePage from "./CoursePage";
@@ -38,4 +38,5 @@ export {
   CourseAdminPage,
   TutorLayoutPage,
   AdminLayout,
+  UsersLayout,
 };
