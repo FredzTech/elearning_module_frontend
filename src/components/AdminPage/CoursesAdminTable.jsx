@@ -1,12 +1,13 @@
-import React from "react";
-import { useContext } from "react";
+import React,{ useContext }  from "react";
+
 import { StatusPill, CTAButton, NavigateBtn } from "..";
 import {CourseForm} from "..";
 import { useModal } from "../modals/ModalProvider";
 import { ModalContext } from "../modals/ModalProvider";
 const CoursesAdminTable = () => {
   // const {isOpen , openModal} = useModal();
-  const {isOpen, openModal} = useContext(ModalContext)
+  const{ openModal, isOpen} = useContext(ModalContext);
+
   // LIST OF CARDS.
   const tutorsData = [
     {
