@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import axios from "../../../axios";
 import { Modal } from "../../modals";
-import { MdArrowDropDown } from "react-icons/md";
+import LoadingBtn from "./LoadingBtn";
+
 const ChapterForm = () => {
   // DECLARATION OF VARIABLES
-  //==========================
+ 
   const [units, setUnits] = useState([]);
-  const [unitName, setUnitName] = useState("");
+  const [unitName, setUnitName] = useState("select unit");
   const [chapterNumber, setChapterNumber] = useState("");
   const [chapterName, setChapterName] = useState("");
   const [chapterDescription, setChapterDescription] = useState("");
+  const [submit, setSubmit] = useState();
+
   //FETCHES ALL UNITS WHEN COMPONENT MOUNTS
-  //========================================
+ 
   useEffect(() => {
     const fetchUnitData = async () => {
       try {
-        console.log("use effect kicked in ");
         const { data } = await axios.get("/unit/all-units");
         console.log(data);
         setUnits(data);
@@ -31,7 +33,7 @@ const ChapterForm = () => {
   }, []);
 
   //   A FUNCTION THAT CREATES OUR POST OBJECT
-  //==========================================
+  
   async function createPostObject({
     unitName,
     chapterNumber,
@@ -53,14 +55,17 @@ const ChapterForm = () => {
     };
 
     try {
+      setSubmit(true);
       const response = await axios.post(
         "/chapter/new-chapter",
         formData,
         config
       );
       console.log(JSON.stringify(response));
+
       return response;
     } catch (err) {
+      setSubmit(false);
       let { data } = err.response;
       console.log(JSON.stringify(data));
       // Display the error as you will
@@ -92,29 +97,26 @@ const ChapterForm = () => {
       {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
       <form className="form-styling">
         {/* DROPDOWN */}
-        <div className="input-w">
-          <label htmlFor="id" className="w-full">
+        <div className="flex flex-col">
+          <label htmlFor="id" className="w-full block my-2 text-sm font-medium text-gray-900">
             Select Unit
           </label>
-          {/* THE PARENT SELECT DIV */}
-          <div className="">
-            <select
-              value="select unit"
-              onChange={(e) => setUnitName(e.target.value)}
-              
-            >
-              {/* MAP DB FOR THE OPTIONS */}
-              {units.map((unit, index) => {
+          <select 
+           name={unitName}
+           onChange={(e) => setUnitName(e.target.value)}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+          >
+            {/* <option selected className="text-grey">Choose the unit</option> */}
+            {units.map((unit, index) => {
                 return (
-                  <option className="text-black" key={`unit-${index}`} value={unit.unitName}>
+                  <option className="text-black" key={index} value={unit.unitName}>
                     {unit.unitName}
                   </option>
                 );
               })}
-            </select>
-            {/* <MdArrowDropDown/> */}
-          </div>
+          </select>
         </div>
+      
         {/* FILE */}
         <div className="input-wrap">
           <label htmlFor="cNumber" className="w-full ">
@@ -157,7 +159,9 @@ const ChapterForm = () => {
         </div>
         {/* CTA BUTTONS */}
         <div className="cta-wrap ">
+        {!submit?
           <Button type="button" text="Save" onClick={fileUploadHandler} />
+         :<LoadingBtn action="Uploading"/> }
          
         </div>
       </form>

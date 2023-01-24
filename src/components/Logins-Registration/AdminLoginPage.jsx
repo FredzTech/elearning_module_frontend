@@ -30,7 +30,7 @@ const LogInForm = () => {
       if (data.status == "ok") {
             window.localStorage.setItem("token", data.data);
             
-            setMessage("Logging...")
+            setMessage("Logging in...")
             const timeout = setTimeout(() => {
                 
               window.location.reload();

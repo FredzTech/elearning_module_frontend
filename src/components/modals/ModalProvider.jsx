@@ -9,7 +9,7 @@ export const ModalContext = createContext();
 // }
 
 export default function ModalProvider({ children }) {
-  const navigate = useNavigate();
+ 
 
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
@@ -22,10 +22,7 @@ export default function ModalProvider({ children }) {
     setIsOpen(false);
     setModalContent(null);
 
-    navigate(-1);
-    // setTimeout(() => {
-    //   window.location.reload(false);
-    // }, 100);
+    
   };
 
   if (isOpen) {

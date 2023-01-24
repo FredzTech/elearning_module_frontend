@@ -87,9 +87,9 @@ const studentRegistrationForm = () => {
             <label htmlFor="contact" className="mb-1">
               Names
             </label>
-            <div className="flex">        
+            <div className="flex flex-col">        
               <input
-                className="w-1/2 phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                className=" phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                 id="fName"
                 type="Text"
                 placeholder="First Name"
@@ -101,7 +101,7 @@ const studentRegistrationForm = () => {
               ></input>
 
               <input
-                className="w-1/2 phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                className=" phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                 id="lName"
                 type="Text"
                 placeholder="Last Name"
@@ -171,10 +171,10 @@ const studentRegistrationForm = () => {
             >
               Password
             </label>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <div> 
                 <input
-                  className=" phone:mx-0 phone:w-full phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  className=" phone:mx-0 w-full phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                   id="password"
                   type="password"
                   placeholder="Enter Password"
@@ -190,7 +190,7 @@ const studentRegistrationForm = () => {
               
                 <div>
                     <input
-                    className="phone:w-full phone:mx-0 phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                    className="w-full phone:mx-0 phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                     id="CPassword"
                     type="password"
                     placeholder="Confirm Password"

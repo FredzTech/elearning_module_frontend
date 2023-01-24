@@ -66,7 +66,7 @@ function App() {
                   <Route exact path="dashboard" element={<AdminDashboard />} />
                   <Route exact path="forbidden" element={<Forbidden />} />
                   <Route exact path="course" element={<CourseForm />} />
-                  <Route exact path="unitForm" element={<UnitForm />} />
+                  <Route exact path="unit-form" element={<UnitForm />} />
                   <Route exact path="tutor-reg" element={<TutorRegistrationForm />} />
                   <Route
                     exact

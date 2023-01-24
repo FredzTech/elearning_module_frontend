@@ -6,11 +6,8 @@ import {MdCancel} from 'react-icons/md'
 
 export default function Modal ({children}) {
     
-    const {isOpen , modalContent , closeModal , openModal} = useContext(ModalContext);
-    useEffect(()=>{
-		openModal()
-   
-	}, [])
+    const {isOpen , modalContent , closeModal } = useContext(ModalContext);
+  
   return (
     
      <>

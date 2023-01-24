@@ -38,7 +38,8 @@ const TutorAccordion = () => {
         />
       ))}
       <div className="button bg-primary text-white justify-center">
-        <p>Add Chapter</p>
+        <Link to="/tutor/chapter"><p>Add Chapter</p></Link>
+        
       </div>
     </div>
   );

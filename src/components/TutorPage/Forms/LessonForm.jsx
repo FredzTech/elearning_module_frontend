@@ -4,6 +4,7 @@ import axios from "../../../axios";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Modal } from "../../modals";
+import LoadingBtn from "./LoadingBtn";
 const LessonForm = () => {
   // DECLARATION OF VARIABLES
   //=========================
@@ -13,6 +14,7 @@ const LessonForm = () => {
   const [lessonName, setLessonName] = useState("");
   const [lessonNotes, setLessonNotes] = useState();
   const [file, setFile] = useState();
+  const [submit, setSubmit] = useState();
   // const [value, setValue] = useState("");
   useEffect(() => {
     const fetchChapterData = async () => {
@@ -57,10 +59,12 @@ const LessonForm = () => {
     };
 
     try {
+      setSubmit(true)
       const response = await axios.post("/lesson/new-lesson", formData, config);
       console.log(JSON.stringify(response));
       return response;
     } catch (err) {
+      setSubmit(false)
       let { data } = err.response;
       console.log(JSON.stringify(data));
       // Display the error as you will
@@ -106,35 +110,27 @@ const LessonForm = () => {
       {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
       <form encType="multipart/form-data" className="form-styling" text="Lesson form" >
         {/* DROPDOWN */}
-        <div className="input-wrap">
-          <label htmlFor="id" className="w-full">
+        <div className="flex flex-col">
+          <label htmlFor="id" className="w-full block my-2 text-sm font-medium text-gray-900">
             Select Chapter
           </label>
-          <div class="select-parent">
-            <select
-              value={chapterName}
-              onChange={(e) => setChapterName(e.target.value)}
-              className="select-input"
-            >
-              {chapters.map((chapter, index) => {
+          <select 
+           value={chapterName}
+           onChange={(e) => setChapterName(e.target.value)}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+          >
+            <option selected className="text-grey">Choose the Chapter</option>
+            {chapters.map((chapter, index) => {
                 return (
-                  <option key={`chapter-${index}`} value={chapter.chapterName}>
+                  <option key={index} value={chapter.chapterName}>
                     {chapter.chapterName}
                   </option>
                 );
               })}
-            </select>
-            <div class="select-svg-wrapper">
-              <svg
-                class="fill-current h-full w-full"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </div>
-          </div>
+          </select>
         </div>
+        
+        
         {/* FILE */}
         <div className="input-wrap">
           <label htmlFor="lNumber" className="w-full ">
@@ -199,8 +195,10 @@ const LessonForm = () => {
         ></div>
         {/* CTA BUTTONS */}
         <div className="cta-wrap">
+        {!submit?
           <Button type="button" text="Save" onClick={fileUploadHandler} />
-         
+         :<LoadingBtn action="Uploading"/> }
+     
         </div>
       </form>
     </div>

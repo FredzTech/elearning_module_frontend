@@ -3,9 +3,10 @@ import { CustomNav, Button } from "../../CustomForm";
 import { postObject } from "../../../Modules/postUnitObject";
 import axios from "../../../axios";
 import { Modal } from "../../modals";
+import LoadingBtn from "./LoadingBtn";
 const UnitForm = () => {
   // LOADS COURSES DATA WHEN COMPONENT LOADS.
-  //==========================================
+
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -25,18 +26,19 @@ const UnitForm = () => {
   }, []);
 
   // DECLARATION OF VARIABLES
-  //=========================
+
   // const [course, setCourse] = useState(`${courses[0].courseTitle}`);
   const [course, setCourse] = useState();
   const [unitCode, setUnitCode] = useState("");
   const [unitName, setUnitName] = useState("");
   const [unitDescription, setUnitDescription] = useState("");
+  const [submit, setSubmit] = useState();
 
   // SUBMITS INFO.
   //==============
   const fileUploadHandler = async (e) => {
     e.preventDefault();
-
+    setSubmit(true);
     // Create our post object.
     const result = await postObject({
       course,
@@ -51,47 +53,39 @@ const UnitForm = () => {
  
 
   return (
-    // <div className="flex flex-col justify-center items-center">
     <Modal>
     <div className="">
       <CustomNav text="unit form" />
       {/* PROPOSED HEADER. */}
-      {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
       <form encType="multipart/form-data" className="form-styling">
-        <div className="flex phone:flex-col justify-start items-center my-5 w-full">
           {/* DROPDOWN */}
-          <div className="">
-            <label htmlFor="id" className="w-full">
+          <div className="flex flex-col">
+          <label htmlFor="id" className="w-full block my-2 text-sm font-medium text-gray-900">
               Select Course
             </label>
-            <div className="select-parent w-3/4">
-              <select
-                value={course}
-                onChange={(e) => setCourse(e.target.value)}
-                className="select-input"
-              >
-                {courses.map((course, index) => {
-                  // HOW DO I SET DEFAULT VALUE
+    
+
+          <select 
+           value={course}
+           onChange={(e) => setCourse(e.target.value)}
+           
+           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+           >
+            <option selected className="text-grey">Choose a course</option>
+            {courses.map((course, index) => {
+                  
                   return (
-                    <option key={`option-${index}`} value={courses.courseTitle}>
-                      {courses.courseTitle}
+                    <option key={index} value={course.courseTitle}>
+                      {course.courseTitle}
                     </option>
                   );
                 })}
-              </select>
-              <div class="select-svg-wrapper">
-                <svg
-                  class="fill-current w-full h-full"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                </svg>
-              </div>
-            </div>
+          </select>
+
+           
+            
           </div>
           {/* FILE */}
-        </div>
         <div className="input-wrap">
           <label htmlFor="unitCode" className="w-full ">
             Unit Details
@@ -136,13 +130,17 @@ const UnitForm = () => {
           ></textarea>
         </div>
         {/* CTA BUTTONS */}
+        
+       
         <div className="cta-wrap">
+          {!submit?
           <Button type="button" text="Save" onClick={fileUploadHandler} />
+         :<LoadingBtn action="Uploading"/> }
      
         </div>
+       
       </form>
     </div>
-    {/* // </div> */}
     </Modal>
   );
 };
