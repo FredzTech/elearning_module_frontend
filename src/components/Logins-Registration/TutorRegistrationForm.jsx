@@ -4,6 +4,8 @@ import AlertBox from "../AlertBox";
 import { Modal } from "../modals";
 import axios from "../../axios";
 import PasswordStrengthBar from "react-password-strength-bar";
+import { useModal } from "../modals/ModalProvider";
+
 const TutorRegistrationForm = () => {
   // DECLARATION OF OUR STATES
   //==========================
@@ -18,7 +20,7 @@ const TutorRegistrationForm = () => {
   // For changing color of alertbox.
   const [statusTracker, setStatusTracker] = useState(false);
   const [response, setResponse] = useState("");
-
+  const {closeModal} = use
   const registerTutor = async (e) => {
     e.preventDefault();
 
@@ -43,7 +45,7 @@ const TutorRegistrationForm = () => {
         let { data } = await axios.post("/auth/register-tutor", tutorData);
         // Clearing out the inputs
         console.log(JSON.stringify(data));
-        setResponse("Tutor Registered Successfully");
+        setResponse("Tutor Registered Successfully").then();
         setStatusTracker(true);
         setResponseTracker(true);
         setFName("");
@@ -52,7 +54,7 @@ const TutorRegistrationForm = () => {
         setContact("");
         setPassword("");
         setCPassword("");
-
+        
         setTimeout(() => {
           setResponseTracker(false);
         }, 4500);
