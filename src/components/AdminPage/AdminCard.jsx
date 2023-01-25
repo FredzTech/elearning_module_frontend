@@ -1,18 +1,16 @@
 import React from "react";
-import { BsFillPersonFill } from "react-icons/bs";
 
-const AdminCard = () => {
+const AdminCard = ({ Icon, Text, Number }) => {
   return (
-    <div className="text flex justify-start items-center gap-5 w-[450px] border-2 border-red-300 h-48 rounded-md ">
-      <div
-        id="icon"
-        className="flex-row-centered w-1/3 h-full text-8xl text-dark"
-      >
-        <BsFillPersonFill />
-      </div>
+    <div className="text flex justify-start items-center gap-7 w-[450px] border-2 border-primary h-48 rounded-md pl-5 ">
+      <img
+        className="flex-row-centered w-1/3 h-4/5 text-8xl text-dark"
+        src={Icon}
+        alt="Admin Section Icon"
+      />
       <div id="text" className="flex flex-col items-center">
-        <div className="number text-6xl">520</div>
-        <div className="text text-xl font-light">Students</div>
+        <div className="number text-6xl">{Number}</div>
+        <div className="text text-xl font-light">{Text}</div>
       </div>
     </div>
   );

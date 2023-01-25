@@ -54,7 +54,7 @@ function App() {
         {/* <IdleTimer> */}
         <Routes>
           {/* Student Protected Routes */}
-          <Route element={<RequireAuth allowedRoles={[2000]} />}>
+          <Route element={<RequireAuth allowedRoles={[2000, 2001, 2002]} />}>
             <Route path="/" element={<UsersLayout />}>
               <Route exact path="/" element={<HomePage />}></Route>
               <Route exact path="pricing" element={<PricingPage />}></Route>
@@ -81,7 +81,7 @@ function App() {
           </Route>
 
           {/* Admin Protected routes */}
-          <Route element={<RequireAuth allowedRoles={[2002, 2000]} />}>
+          <Route element={<RequireAuth allowedRoles={[2002, 2000, 2001]} />}>
             <Route exact path="/admin" element={<AdminLayout />}>
               <Route exact path="users" element={<Users />} />
               <Route exact path="dashboard" element={<AdminDashboard />} />
@@ -112,7 +112,7 @@ function App() {
             </Route>
           </Route>
           {/* Tutor Protected Routes */}
-          <Route element={<RequireAuth allowedRoles={[2001,2000,2002]} />}>
+          <Route element={<RequireAuth allowedRoles={[2001, 2000, 2002]} />}>
             <Route exact path="/tutor" element={<TutorLayoutPage />}>
               <Route exact path="dashboard" element={<TutorPage />} />
               <Route exact path="units" element={<TutorUnitsPage />} />
@@ -122,7 +122,7 @@ function App() {
             </Route>
           </Route>
 
-          <Route element={<RequireAuth allowedRoles={[2002,2000,2001]} />}>
+          <Route element={<RequireAuth allowedRoles={[2002, 2001, 2000]} />}>
             <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
           </Route>
           {/* <Route exact path="admin" element={<AdminPage />}></Route> */}

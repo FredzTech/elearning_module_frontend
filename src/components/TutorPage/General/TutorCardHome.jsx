@@ -7,7 +7,7 @@ import TimeIcon from "../../../assets/time_icon.png";
 const TutorCard = () => {
   return (
     <div className="flex-col-centered justify-start w-[300px] h-[300px] rounded-md shadow-md shadow-slate-400">
-      <div className="h-1/3 w-full bg-tutorCard flex-row-centered rounded-t-md">
+      <div className="h-1/3 w-full bg-primary flex-row-centered rounded-t-md">
         <h1 className="uppercase text-white font-extrabold">Thermodynamics</h1>
       </div>
       <div className="text h-1/3 flex-row-centered justify-evenly w-full">

@@ -6,9 +6,17 @@ import {Bars3Icon,XMarkIcon,UserIcon,} from "@heroicons/react/24/outline";
 import LogInForm from "../Logins-Registration/AdminLoginPage";
 import studentRegistrationForm from "../Logins-Registration/StudentRegistrationForm";
 
+<<<<<<< HEAD
 import {UserContext , LogoutContext} from "../../Authentication/AuthContextProvider";
+=======
+import NavBtn from "./NavBtn";
+import {
+  UserContext,
+  LogoutContext,
+} from "../../Authentication/AuthContextProvider";
+>>>>>>> 7fda6a2461a0bf1d7c266a81938f992fcc4655e8
 import CourseNav from "./CourseNav";
-import Subscription from '../../assets/subscription.png' 
+import Subscription from "../../assets/subscription.png";
 import Search from "./Search";
 import { ModalContext } from "../modals/ModalProvider";
 import { UserdataContext } from "../../Authentication/AuthContextProvider";
@@ -16,18 +24,18 @@ import { MdArrowDropDown } from "react-icons/md";
 import {FaUser,FaUserPlus} from 'react-icons/fa'
 
 const navigation = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'Courses', href: 'courses', current: false },
-  { name: 'Units', href: 'units', current: false },
-  { name: 'Subscription', href: 'pricing', current: false },
-]
+  { name: "Home", href: "/", current: false },
+  { name: "Courses", href: "courses", current: false },
+  { name: "Units", href: "units", current: false },
+  { name: "Subscription", href: "pricing", current: false },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const Navbar = ({content}) => { 
-  const userData = useContext(UserdataContext)
-  const isAuthenticated  = useContext(UserContext);
+const Navbar = ({ content }) => {
+  const userData = useContext(UserdataContext);
+  const isAuthenticated = useContext(UserContext);
   const logout = useContext(LogoutContext);
   const {isOpen, openModal} = useContext(ModalContext);
   const [openLogin, setOpenLogin] = useState();

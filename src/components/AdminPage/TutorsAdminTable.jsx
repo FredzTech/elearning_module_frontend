@@ -1,14 +1,13 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
-
+import axios from "../../axios";
 import { StatusPill, CTAButton, NavigateBtn } from "../../components";
 import { TutorRegistrationForm } from "../Logins-Registration";
 import { ModalContext } from "../modals/ModalProvider";
 
 const TutorsAdminTable = () => {
- 
-  const{ openModal, isOpen} = useContext(ModalContext);
-  const tutorsData = [
+  const { openModal, isOpen } = useContext(ModalContext);
+  const [tutorsData, setTutorsData] = useState([
     {
       fName: "JANET",
       surname: "NDICHU",
@@ -64,22 +63,33 @@ const TutorsAdminTable = () => {
       entryDate: { $date: "2022-10-11T06:56:55.877Z" },
       updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
     },
-  ];
-  
+  ]);
+  useEffect(() => {
+    let fetchTutorsData = async () => {
+      try {
+        let { data } = await axios.get("/auth/all-tutors");
+        console.log(data);
+        setTutorsData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
- 
-  
+    fetchTutorsData();
+  }, []);
+
   return (
     <>
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
-          <NavigateBtn 
-          // destination="/admin/tutor-reg" 
-          action={openModal}
-          text="New tutor" icon="tenantIcon" 
+          <NavigateBtn
+            // destination="/admin/tutor-reg"
+            action={openModal}
+            text="New tutor"
+            icon="tenantIcon"
           />
-          
-          {isOpen && <TutorRegistrationForm/>}
+
+          {isOpen && <TutorRegistrationForm />}
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
@@ -105,7 +115,14 @@ const TutorsAdminTable = () => {
 
           <tbody className="flex flex-col w-full items-center justify-start">
             {tutorsData.map((tutor, index) => {
-              let { fName, surname: lName, units, email, status, _id } = tutor;
+              let {
+                firstName: fName,
+                surname: lName,
+                units,
+                email,
+                status,
+                _id,
+              } = tutor;
               let numberOfUnits = units.length;
               return (
                 <tr
