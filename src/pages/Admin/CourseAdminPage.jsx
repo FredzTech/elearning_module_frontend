@@ -5,19 +5,17 @@ import { ModalContext } from "../../components/modals/ModalProvider";
 
 const CoursesAdminPage = () => {
   const { openModal, isOpen } = useContext(ModalContext);
-
   const [coursesData, setCoursesData] = useState([]);
+  const fetchCoursesData = async () => {
+    try {
+      const { data: coursesData } = await axios.get("/course/all-courses");
+      console.log(coursesData);
+      setCoursesData(coursesData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    const fetchCoursesData = async () => {
-      try {
-        const { data: coursesData } = await axios.get("/course/all-courses");
-        console.log(coursesData);
-        setCoursesData(coursesData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchCoursesData();
   }, []);
   // LIST OF CARDS.

@@ -9,7 +9,10 @@ const CTAButton = ({ contact, _id }) => {
   // My work in the front-end is simply to make the axios request to the backend ili ifanye haki
   const deleteTenant = async (_id) => {
     try {
-      await axios.delete("/rooms/deleteTenant", { _id });
+      await axios.delete("/auth/tutor", {
+        headers: {},
+        data: { _id },
+      });
       //   After deleting, it should trigger a rerender.
       console.log("Tenant successfully deleted and put under archives.");
     } catch (error) {
@@ -46,6 +49,7 @@ const CTAButton = ({ contact, _id }) => {
       <button
         className="flex items-center justify-center w-full rounded-r-3xl border-none bg-rose-600 text-secondary py-1 px-2"
         onClick={() => {
+          console.log(_id);
           deleteTenant(_id);
         }}
       >

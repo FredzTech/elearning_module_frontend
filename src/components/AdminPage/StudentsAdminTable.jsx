@@ -1,58 +1,70 @@
-import React,{useContext} from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { StatusPill, CTAButton, NavigateBtn } from "../../components";
 import { StudentRegistrationForm } from "../Logins-Registration";
 import { ModalContext } from "../modals/ModalProvider";
+import axios from "../../axios";
 const StudentsAdminTable = () => {
-  const{ openModal, isOpen} = useContext(ModalContext);
+  const { openModal, isOpen } = useContext(ModalContext);
+  const [studentsData, setStudentsData] = useState([
+    {
+      fName: "ANN",
+      surname: "MWANGI",
+      email: "lorem5@gmail.com",
+      status: "free",
+      _id: "634513b7b32aff941eef9f46",
+      entryDate: "2022-10-11",
+      updatedAt: "2022-10-11",
+    },
+    {
+      fName: "ANN",
+      surname: "MWANGI",
+      email: "lorem5@gmail.com",
+      status: "free",
+      _id: "634513b7b32aff941eef9f46",
+      entryDate: "2022-10-11",
+      updatedAt: "2022-10-11",
+    },
+    {
+      fName: "ANN",
+      surname: "MWANGI",
+      email: "lorem5@gmail.com",
+      status: "free",
+      _id: "634513b7b32aff941eef9f46",
+      entryDate: "2022-10-11",
+      updatedAt: "2022-10-11",
+    },
+    {
+      fName: "ANN",
+      surname: "MWANGI",
+      email: "lorem5@gmail.com",
+      status: "free",
+      _id: "634513b7b32aff941eef9f46",
+      entryDate: "2022-10-11",
+      updatedAt: "2022-10-11",
+    },
+    {
+      fName: "ANN",
+      surname: "MWANGI",
+      email: "lorem5@gmail.com",
+      status: "free",
+      _id: "634513b7b32aff941eef9f46",
+      entryDate: "2022-10-11",
+      updatedAt: "2022-10-11",
+    },
+  ]);
+  useEffect(() => {
+    let fetchStudentsData = async () => {
+      try {
+        let { data } = await axios.get("/auth/all-students");
+        console.log(data);
+        setStudentsData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  const studentsData = [
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-  ];
-
+    fetchStudentsData();
+  }, []);
   return (
     <>
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
@@ -62,7 +74,7 @@ const StudentsAdminTable = () => {
             text="Add student"
             icon="tenantIcon"
           />
-          {isOpen && <StudentRegistrationForm/>}
+          {isOpen && <StudentRegistrationForm />}
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
@@ -89,12 +101,12 @@ const StudentsAdminTable = () => {
           <tbody className="flex flex-col w-full items-center justify-start">
             {studentsData.map((student, index) => {
               let {
-                fName,
+                firstName: fName,
                 surname: lName,
                 email,
                 status,
                 _id,
-                entryDate: dateOfRegistration,
+                updatedAt: dateOfRegistration,
               } = student;
               return (
                 <tr
