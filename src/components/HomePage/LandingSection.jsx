@@ -10,12 +10,7 @@ import Tutor1 from "../../assets/Screenshot from 2023-01-13 04-58-06 .png";
 import Tutor2 from "../../assets/Screenshot from 2023-01-13 04-58-49.png";
 import { FaTwitter, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
-const courses = [
-  { name: "Mechatronics Engineering", image: Mechatronic },
-  { name: "Mechanical Engineering", image: Mechanical },
-  { name: "Electrical Engineering", image: Electrical },
-  { name: "Computer Science", image: CompScience },
-];
+
 const tutors = [
   {
     name: "Prof. Eugine Maina",
@@ -45,6 +40,7 @@ const LandingSection = () => {
         const { data: coursesData } = await axios.get("/course/all-courses");
         console.log(coursesData);
         setCoursesData(coursesData);
+       
       } catch (error) {
         console.error(error);
       }
@@ -54,9 +50,9 @@ const LandingSection = () => {
   }, []);
   return (
     <>
-      <div className="flex w-screen gap-60 pt-10 pl-16 sm:p-4 h-100 sm:flex-col md:flex-col sm:gap-8 md:gap-10">
-        <div className="h-full z-20 sm:bg-silver sm:bg-opacity-50 sm:p-1 sm:-mb-96 md:-mb-96 md:-mr-28">
-          <h3 className="text-4xl mb-3">Make Studying at School Easier </h3>
+      <div className="bg-gradient-to-r from-white  to-blue-300   flex w-screen  py-10 pl-16 sm:p-4 h-auto sm:flex-col md:flex-col sm:gap-8 md:gap-10">
+        <div className="text-3xl font-serif h-full w-full z-20 sm:bg-silver sm:bg-opacity-50 sm:p-1 sm:-mb-96 md:-mr-28">
+          <h3 className="text-[3.2rem] text-bold mb-3">Studying Made Easier </h3>
           <p>With access to well curated study materials from :</p>
           <ul className="list-disc p-6">
             <li>Videos</li>
@@ -66,17 +62,18 @@ const LandingSection = () => {
           </ul>
           <p> Enrol to get access to this and so much more.</p>
           <div className="mt-16 z-0 flex gap-20">
-            <button className="ml-10 bg-white border-blue text-blue ring-4 ring-blue font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+            <button className="ml-10 bg-white border-primary text-primary ring-4 ring-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
               Try free
             </button>
-            <button className="block text-white bg-blue hover:bg-blue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+            <button className="block text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
               Enroll
             </button>
           </div>
+
         </div>
-        <div className=" z-10 ">
-          <img src={HomeImage} alt="" className="absolete float-right" />
-        </div>
+          <img src={HomeImage} alt="" className="md:-mt-[80%]   z-10  object-right bg-cover mr-0 " />
+
+       
       </div>
       {/* Courses Section */}
       <div className="bg-silver  w-screen">
@@ -130,7 +127,7 @@ const LandingSection = () => {
 
                   <div className="w-auto shadow-md  pl-24 pr-4 py-4 h-auto flex flex-col sm:p-6">
                     <div>
-                      <p className="text-blue text-bold mb-1 text-lg">
+                      <p className="text-primary text-bold mb-1 text-lg">
                         {tutor.name}
                       </p>
                       <p className="text-bold mb-2 text-md">{tutor.course}</p>
@@ -139,7 +136,7 @@ const LandingSection = () => {
                     <div className="text-center pt-4 flex gap-3">
                       {/* <a href={tutor.whatsapp}><FaWhatsapp className='h-8 w-8'/> </a> */}
                       <a href={tutor.twitter}>
-                        <FaTwitter className="h-8 w-8 text-primary" />
+                        <FaTwitter className="h-8 w-8 text-primary " />
                       </a>
                       <a href={tutor.linkedin}>
                         <FaLinkedin className="h-8 w-8 text-zaffre" />

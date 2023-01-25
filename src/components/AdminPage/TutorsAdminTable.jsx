@@ -83,7 +83,7 @@ const TutorsAdminTable = () => {
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
-            <tr className="flex w-full items-center justify-center px-2 bg-primary h-12">
+            <tr className="flex w-full items-center justify-center px-2 bg-primary  h-12">
               <th className="flex w-28 px-2 ">No</th>
               <th className="justify-center items-start flex py-2 w-64">
                 F Name
@@ -110,7 +110,7 @@ const TutorsAdminTable = () => {
               return (
                 <tr
                   className={`${
-                    index % 2 == 0 ? "bg-primaryLight" : ""
+                    index % 2 == 0 ? "bg-primary  " : ""
                   } flex w-full items-center justify-start px-2 cursor-pointer font-normal text-xl`}
                   key={`tutor-${index}`}
                 >

@@ -29,7 +29,7 @@ const DraftPage = () => {
       />
 
       <div
-        className="bg-primary px-4 py-2 text-white rounded-md"
+        className="bg-primary  px-4 py-2 text-white rounded-md"
         onClick={() => {
           showModal();
         }}

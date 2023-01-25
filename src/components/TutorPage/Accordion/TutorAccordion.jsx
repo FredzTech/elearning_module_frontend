@@ -22,7 +22,7 @@ const TutorAccordion = () => {
 
   return (
     <div className="flex-col-centered justify-start w-full h-full bg-slate-200 m-1 rounded-lg">
-      <div className="w-full px-2 py-2 font-bold text-lg text-slate-200 bg-primary text-center flex justify-start items-center gap-4 rounded-t-lg">
+      <div className="w-full px-2 py-2 font-bold text-lg text-slate-200 bg-primary  text-center flex justify-start items-center gap-4 rounded-t-lg">
         <span className="text-white text-3xl">
           <AiOutlineAppstore />
         </span>{" "}
@@ -37,7 +37,7 @@ const TutorAccordion = () => {
           active={clicked === index} //Returns a true/false.Used in styling.
         />
       ))}
-      <div className="button bg-primary text-white justify-center">
+      <div className="button bg-primary  text-white justify-center">
         <Link to="/tutor/chapter"><p>Add Chapter</p></Link>
         
       </div>

@@ -12,7 +12,7 @@ import {
   AdminDashboard,
   StudentsPageAdmin,
   TutorsPageAdmin,
-  CourseAdminPage,
+  
   TutorLayoutPage,
   AdminLayout,
   UsersLayout,
@@ -112,7 +112,7 @@ function App() {
             </Route>
           </Route>
           {/* Tutor Protected Routes */}
-          <Route element={<RequireAuth allowedRoles={[2001]} />}>
+          <Route element={<RequireAuth allowedRoles={[2001,2000,2002]} />}>
             <Route exact path="/tutor" element={<TutorLayoutPage />}>
               <Route exact path="dashboard" element={<TutorPage />} />
               <Route exact path="units" element={<TutorUnitsPage />} />
@@ -122,7 +122,7 @@ function App() {
             </Route>
           </Route>
 
-          <Route element={<RequireAuth allowedRoles={[2002]} />}>
+          <Route element={<RequireAuth allowedRoles={[2002,2000,2001]} />}>
             <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
           </Route>
           {/* <Route exact path="admin" element={<AdminPage />}></Route> */}

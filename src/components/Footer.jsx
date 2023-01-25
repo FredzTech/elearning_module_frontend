@@ -45,7 +45,7 @@ export default function Footer() {
       <div className="w-1/3 flex-col-centered gap-10 justify-center items-center">
         <h3 className="text-3xl mb-4">Socials</h3>
         <div className="flex gap-8 justify-center items-center">
-          <a href="" className="text-primary">
+          <a href="" className="text-primary ">
             <FaTwitter className="w-10 h-10" />
           </a>
           <a href="">
@@ -58,7 +58,7 @@ export default function Footer() {
             <FaLinkedinIn className="w-10 h-10 text-zaffre" />
           </a>
           <a href="">
-            <FaDiscord className="w-10 h-10 text-white bg-blue rounded-full" />
+            <FaDiscord className="w-10 h-10 text-white bg-primary rounded-full" />
           </a>
         </div>
       </div>

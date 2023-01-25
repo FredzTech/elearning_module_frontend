@@ -24,7 +24,7 @@ const CTAUnitButtonAdmin = ({ contact, _id }) => {
   return (
     <div className="flex items-center justify-center w-full rounded-l-3xl rounded-r-3xl  border-none">
       <button
-        className="flex items-center justify-center w-full bg-primary border-none text-secondary py-1 px-2"
+        className="flex items-center justify-center w-full bg-primary  border-none text-secondary py-1 px-2"
         onClick={() => {
           navigate(`/TenantsInformation/${_id}`);
         }}

@@ -77,7 +77,7 @@ const studentRegistrationForm = () => {
   return (
     <Modal>
     <div className="flex flex-col justify-center ">
-      <div className="flex flex-col   w-[400px] phone:w-[320px]  phone:border-none   rounded-lg shadow-md shadow-primary">
+      <div className="flex flex-col   w-[400px] phone:w-[320px]  phone:border-none   rounded-lg shadow-md shadow-primary ">
         <CustomNav text="student registration" />
         {/* PROPOSED HEADER. */}
         {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}

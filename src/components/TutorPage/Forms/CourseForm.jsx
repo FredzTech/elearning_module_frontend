@@ -99,7 +99,7 @@ const CourseForm = () => {
         <div className="cta-wrap">
           <Button
             type="button"
-            text="Add Resource"
+            text="Add Course"
             onClick={fileUploadHandler}
           />
          

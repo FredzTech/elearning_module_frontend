@@ -63,7 +63,7 @@ const ResourcesForm = () => {
   return (
     <Modal>
     <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary phone mt-5 rounded-lg shadow-md shadow-primary">
+      <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-primary  phone mt-5 rounded-lg shadow-md shadow-primary ">
         <CustomNav text="resources form" />
         {/* PROPOSED HEADER. */}
         {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
@@ -82,7 +82,7 @@ const ResourcesForm = () => {
                 <select
                   value={chapter}
                   onChange={(e) => setChapter(e.target.value)}
-                  className="relative w-64 appearance-none border-2 border-primary  px-4  py-2 rounded text-gray-700 leading-tight focus:outline-none focus:border-purple-500 placeholder:text-sm"
+                  className="relative w-64 appearance-none border-2 border-primary   px-4  py-2 rounded text-gray-700 leading-tight focus:outline-none focus:border-purple-500 placeholder:text-sm"
                 >
                   {/* MAP DB FOR THE OPTIONS */}
                   <option value="Chapter A" selected>
@@ -111,7 +111,7 @@ const ResourcesForm = () => {
                 <select
                   value={unit}
                   onChange={(e) => setUnit(e.target.value)}
-                  className="relative w-64 appearance-none border-2 border-primary  px-4  py-2 rounded text-gray-700 leading-tight focus:outline-none focus:border-purple-500 placeholder:text-sm"
+                  className="relative w-64 appearance-none border-2 border-primary   px-4  py-2 rounded text-gray-700 leading-tight focus:outline-none focus:border-purple-500 placeholder:text-sm"
                 >
                   {/* MAP DB FOR THE OPTIONS */}
                   <option value="Unit A">Unit A</option>

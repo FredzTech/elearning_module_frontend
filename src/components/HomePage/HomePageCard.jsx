@@ -5,7 +5,7 @@ const HomePageCard = ({ heading, text, src }) => {
 //  src = HomeImage;
   return (
     <article>
-      <div className="w-[200px] rounded border-2 border-primary shadow-xs shadow-primary flex flex-col">
+      <div className="w-[200px] rounded border-2 border-primary  shadow-xs shadow-primary  flex flex-col">
         <img className="w-full" src={src} alt="Course Card" />
         <div className="px-2 py-4 w-full">
           <div className="font-bold text-md  mb-2 capitalize">{heading}</div>

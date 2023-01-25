@@ -46,10 +46,10 @@
         @apply flex-col items-center justify-center px-5 w-full sm:border-2 sm:rounded-b-md
     }
     .accordion_item.active .button {
-        @apply bg-primary text-white
+        @apply bg-primary  text-white
     }
     .input-styling {
-        @apply w-64 px-4 bg-white appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm
+        @apply w-64 px-4 bg-white appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-400 placeholder:text-sm
     }
     .flex-row-centered {
         @apply flex items-center justify-center
@@ -58,7 +58,7 @@
         @apply flex flex-col items-center justify-center
     }
     .button {
-        @apply uppercase border-2 border-primary hover:bg-primary hover:text-white text-black font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
+        @apply uppercase border-2 border-primary  hover:bg-primary  hover:text-white text-black font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
     }
     .answer_wrapper.open {
         height: auto;

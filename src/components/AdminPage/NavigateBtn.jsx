@@ -10,7 +10,7 @@ const NavigateBtn = ({ text, icon, destination,action }) => {
   return (
     <div
       className={`
-      capitalize flex flex-row text-secondary bg-primary  items-center justify-center rounded-md px-4 py-2 `}
+      capitalize flex flex-row text-secondary bg-primary   items-center justify-center rounded-md px-4 py-2 `}
     >
       <button
         // onClick={() => {

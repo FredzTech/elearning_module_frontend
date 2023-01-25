@@ -6,8 +6,8 @@ import cardImage from "../assets/course-display.png";
 const CoursePage = () => {
   return (
     <div className="w-full h-screen">
-      <main className="flex flex-row gap-5 w-full h-full border-2 border-primary py-5">
-        <article className="w-1/4 h-full py-1 flex flex-col gap-5 items-center rounded-lg m-2 justify-start shadow-lg shadow-primary bg-secondary ">
+      <main className="flex flex-row gap-5 w-full h-full border-2 border-primary  py-5">
+        <article className="w-1/4 h-full py-1 flex flex-col gap-5 items-center rounded-lg m-2 justify-start shadow-lg shadow-primary  bg-secondary ">
           <div className="w-full p-4 box-border ">
             <div className="w-full h-[200px]">
               <img className="w-full" src={cardImage} alt="" />
@@ -48,7 +48,7 @@ const CoursePage = () => {
             </div>
           </div>
           <Link to="/pricing">
-            <button className="px-10 py-2 my-5 bg-primary text-white capitalize">
+            <button className="px-10 py-2 my-5 bg-primary  text-white capitalize">
               <span>Enroll</span>
             </button>
           </Link>
@@ -63,7 +63,7 @@ const CoursePage = () => {
         <article className="w-3/4 flex px-2 flex-col  m-2 rounded-lg">
           <CourseHeading />
           <SubNav />
-          <div className="chaptersList w-full flex flex-col gap-3 mt-4 p-4 shadow-md shadow-primary   overflow-y-auto rounded-md">
+          <div className="chaptersList w-full flex flex-col gap-3 mt-4 p-4 shadow-md shadow-primary    overflow-y-auto rounded-md">
             <Chapter />
             <Chapter />
             <Chapter />

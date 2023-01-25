@@ -9,7 +9,7 @@ const AdminSideNav = () => {
         <div className="name capitalize mt-4 font-bold text-5xl">
           John Mwangi
         </div>
-        <div className="role capitalize m-4 text-center text-white bg-primary px-5 py-1 rounded-3xl font-bold text-lg">
+        <div className="role capitalize m-4 text-center text-white bg-primary  px-5 py-1 rounded-3xl font-bold text-lg">
           Admin
         </div>
       </div>

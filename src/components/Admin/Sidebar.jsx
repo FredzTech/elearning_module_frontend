@@ -31,14 +31,14 @@ export const Sidebar = () => {
         <div className="name capitalize mt-4 font-bold text-3xl">
           John Mwangi
         </div>
-        <div className="role capitalize m-4 text-center text-white bg-primary px-5 py-1 rounded-3xl font-bold text-lg">
+        <div className="role capitalize m-4 text-center text-white bg-primary  px-5 py-1 rounded-3xl font-bold text-lg">
           Admin
         </div>
       </div>
       <ul className="pt-2 pb-4 space-y-1 text-sm sm:flex gap-2 sm:flex-wrap sm:text-xs">
         {lists.map((list, index) => {
           return (
-            <li className=" hover:bg-primary hover:text-white text-dark border-2 border-primaryLight rounded-lg">
+            <li className=" hover:bg-primary  hover:text-white text-dark border-2 border-primary   rounded-lg">
               <Link
                 to={list.link}
                 key={index}
