@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { CustomNav,Button } from "../CustomForm";
+import { CustomNav, Button } from "../CustomForm";
 import AlertBox from "../AlertBox";
 import { Modal } from "../modals";
 import axios from "../../axios";
-import PasswordStrengthBar from 'react-password-strength-bar' 
+import PasswordStrengthBar from "react-password-strength-bar";
 const TutorRegistrationForm = () => {
   // DECLARATION OF OUR STATES
   //==========================
@@ -19,7 +19,6 @@ const TutorRegistrationForm = () => {
   const [statusTracker, setStatusTracker] = useState(false);
   const [response, setResponse] = useState("");
 
- 
   const registerTutor = async (e) => {
     e.preventDefault();
 
@@ -40,10 +39,11 @@ const TutorRegistrationForm = () => {
       };
 
       try {
+        console.log(tutorData);
         let { data } = await axios.post("/auth/register-tutor", tutorData);
         // Clearing out the inputs
         console.log(JSON.stringify(data));
-        setResponse("tutor Registered Successfully");
+        setResponse("Tutor Registered Successfully");
         setStatusTracker(true);
         setResponseTracker(true);
         setFName("");
@@ -96,96 +96,99 @@ const TutorRegistrationForm = () => {
                 required
               ></input>
 
-              <input
-                className="w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                id="lName"
-                type="Text"
-                placeholder="Last Name"
-                value={surname}
-                onChange={(e) => {
-                  setSurname(e.target.value);
-                }}
-                required
-              ></input>
-            </div>
-    
-          </div>
-          {/* CONTACT SECTION */}
-          <div className="flex flex-col   my-5">
-            <div className=" flex flex-col w-full  phone:my-1  phone:flex-col  ">
-              <label htmlFor="contact" className="mb-1 mr-3">
-                Contact
-              </label>
-              <div className="flex phone:w-full phone:">
                 <input
-                  className="px-4  w-1/4 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  className="w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  id="lName"
                   type="Text"
-                  required
-                  value="+254"
-                  readOnly
-                />
-                <input
-                  className="px-4 w-3/4 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                  id="contact"
-                  type="Number"
-                  placeholder="Safaricom No."
-                  value={contact}
+                  placeholder="Last Name"
+                  value={surname}
                   onChange={(e) => {
-                    setContact(e.target.value);
+                    setSurname(e.target.value);
+                  }}
+                  required
+                ></input>
+              </div>
+            </div>
+            {/* CONTACT SECTION */}
+            <div className="flex flex-col   my-5">
+              <div className=" flex flex-col w-full  phone:my-1  phone:flex-col  ">
+                <label htmlFor="contact" className="mb-1 mr-3">
+                  Contact
+                </label>
+                <div className="flex phone:w-full phone:">
+                  <input
+                    className="px-4  w-1/4 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                    type="Text"
+                    required
+                    value="+254"
+                    readOnly
+                  />
+                  <input
+                    className="px-4 w-3/4 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                    id="contact"
+                    type="Number"
+                    placeholder="Safaricom No."
+                    value={contact}
+                    onChange={(e) => {
+                      setContact(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+              </div>
+              <div className=" w-full  h-full phone:my-1  my-2  flex flex-col ">
+                <label
+                  htmlFor="email"
+                  className="phone:pl-0 pl-3 w-1/5 mr-2 h-full flex  py-1"
+                >
+                  Email
+                </label>
+                <input
+                  className="phone:w-full phone:my-1 px-4  w- bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  id="email"
+                  type="email"
+                  placeholder="E-mail Address"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
                   }}
                   required
                 />
               </div>
             </div>
-            <div className=" w-full  h-full phone:my-1  my-2  flex flex-col ">
+
+            {/* PASSWORD SECTION */}
+
+            <div className="flex flex-col  justify-start  my-2 w-full ">
               <label
-                htmlFor="email"
-                className="phone:pl-0 pl-3 w-1/5 mr-2 h-full flex  py-1"
+                htmlFor="password"
+                className="pl-3 w-24 mr-2 flex  phone:justify-start phone:pl-0 py-1 phone:w-full"
               >
-                Email
+                Password
               </label>
-              <input
-                className="phone:w-full phone:my-1 px-4  w- bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                id="email"
-                type="email"
-                placeholder="E-mail Address"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                required
-              />
-            </div>
-          </div>
-
-          {/* PASSWORD SECTION */}
-
-          <div className="flex flex-col  justify-start  my-2 w-full ">
-            <label
-              htmlFor="password"
-              className="pl-3 w-24 mr-2 flex  phone:justify-start phone:pl-0 py-1 phone:w-full"
-            >
-              Password
-            </label>
-            <div className="flex flex-col w-[300px] sm:w-full">
-              <div> 
-                <input
-                  className=" phone:mx-0 phone:w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                  id="password"
-                  type="password"
-                  placeholder="Enter Password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  required
-                  />
-                  
-                  <PasswordStrengthBar password={password} minLength={8} className="w-full"/>
-                </div>
-              
+              <div className="flex flex-col w-[300px] sm:w-full">
                 <div>
-                    <input
+                  <input
+                    className=" phone:mx-0 phone:w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                    id="password"
+                    type="password"
+                    placeholder="Enter Password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    required
+                  />
+
+                  <PasswordStrengthBar
+                    password={password}
+                    minLength={8}
+                    className="w-full"
+                  />
+                </div>
+
+                <div>
+                  <input
                     className="phone:w-full phone:mx-0 phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                     id="CPassword"
                     type="password"
@@ -197,26 +200,27 @@ const TutorRegistrationForm = () => {
                     required
                   />
                 </div>
-           
+              </div>
             </div>
-           
-          </div>
-          {/* THE ALERT BOX */}
-          <AlertBox responseTracker={responseTracker} statusTracker={statusTracker} response={response} />
-
-          <div className="flex flex-col justify-center items-center w-full mt-8 ">
-            <Button
-              type="button"
-              text="register"
-              onClick={(e) => {
-                registerTutor(e);
-              }}
+            {/* THE ALERT BOX */}
+            <AlertBox
+              responseTracker={responseTracker}
+              statusTracker={statusTracker}
+              response={response}
             />
-          
-          </div>
-        </form>
+
+            <div className="flex flex-col justify-center items-center w-full mt-8 ">
+              <Button
+                type="button"
+                text="register"
+                onClick={(e) => {
+                  registerTutor(e);
+                }}
+              />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </Modal>
   );
 };
