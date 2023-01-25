@@ -110,38 +110,8 @@ const TutorRegistrationForm = () => {
             </div>
     
           </div>
-          {/* CONTACT SECTION */}
-          <div className="flex flex-col   my-5">
-            <div className=" flex flex-col w-full  phone:my-1  phone:flex-col  ">
-              <label htmlFor="contact" className="mb-1 mr-3">
-                Contact
-              </label>
-              <div className="flex flex-col gap-2">
-                <input
-                  className="w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                  id="fName"
-                  type="Text"
-                  placeholder="First Name"
-                  value={fName}
-                  onChange={(e) => {
-                    setFName(e.target.value);
-                  }}
-                  required
-                ></input>
-
-                <input
-                  className="w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
-                  id="lName"
-                  type="Text"
-                  placeholder="Last Name"
-                  value={surname}
-                  onChange={(e) => {
-                    setSurname(e.target.value);
-                  }}
-                  required
-                ></input>
-              </div>
-            </div>
+          
+          
             {/* CONTACT SECTION */}
             <div className="flex flex-col   my-5">
               <div className=" flex flex-col w-full  phone:my-1  phone:flex-col  ">

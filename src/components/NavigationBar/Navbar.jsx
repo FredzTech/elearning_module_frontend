@@ -6,15 +6,7 @@ import {Bars3Icon,XMarkIcon,UserIcon,} from "@heroicons/react/24/outline";
 import LogInForm from "../Logins-Registration/AdminLoginPage";
 import studentRegistrationForm from "../Logins-Registration/StudentRegistrationForm";
 
-<<<<<<< HEAD
 import {UserContext , LogoutContext} from "../../Authentication/AuthContextProvider";
-=======
-import NavBtn from "./NavBtn";
-import {
-  UserContext,
-  LogoutContext,
-} from "../../Authentication/AuthContextProvider";
->>>>>>> 7fda6a2461a0bf1d7c266a81938f992fcc4655e8
 import CourseNav from "./CourseNav";
 import Subscription from "../../assets/subscription.png";
 import Search from "./Search";
