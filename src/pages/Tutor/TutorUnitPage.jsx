@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  UnitNav,
-  VideoComponent,
-  QuillEditorTutor,
-  TutorSideNav,
-} from "../../components";
-
+import { UnitNav, VideoComponent, QuillEditorTutor } from "../../components";
+import Accordion from "../../components/SideNav/Accordion";
 import "react-quill/dist/quill.snow.css";
 
 import sampleVideo from "../../assets/sample-video.mp4";
@@ -15,7 +10,7 @@ const TutorUnitPage = () => {
   return (
     <main className="flex flex-row w-full h-full">
       <article className="h-full flex flex-col rounded-lg ">
-        <TutorSideNav />
+        <Accordion />
       </article>
       <article className="h-screen overflow-y-scroll mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
         <VideoComponent
