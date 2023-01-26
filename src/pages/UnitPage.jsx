@@ -5,9 +5,9 @@ import {
   QuillEditorStudent,
   // SideNavNew,
 } from "../components";
-import { Accordion } from "../components";
+// import { Accordion } from "../components";
 import "react-quill/dist/quill.snow.css";
-
+import Accordion from "../components/SideNav Corrected/Accordion";
 import sampleVideo from "../assets/sample-video.mp4";
 import posterImage from "../assets/video-player.png";
 
