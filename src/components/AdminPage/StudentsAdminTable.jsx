@@ -4,7 +4,7 @@ import { StudentRegistrationForm } from "../Logins-Registration";
 import { ModalContext } from "../modals/ModalProvider";
 import axios from "../../axios";
 const StudentsAdminTable = () => {
-  const { openModal, isOpen } = useContext(ModalContext);
+  const { openModal } = useContext(ModalContext);
   const [studentsData, setStudentsData] = useState([
     {
       fName: "ANN",
@@ -74,7 +74,7 @@ const StudentsAdminTable = () => {
             text="Add student"
             icon="tenantIcon"
           />
-          {isOpen && <StudentRegistrationForm />}
+          <StudentRegistrationForm />
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">

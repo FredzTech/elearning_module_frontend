@@ -2,18 +2,20 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import {Bars3Icon,XMarkIcon,UserIcon,} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, UserIcon } from "@heroicons/react/24/outline";
 import LogInForm from "../Logins-Registration/AdminLoginPage";
-import studentRegistrationForm from "../Logins-Registration/StudentRegistrationForm";
-
-import {UserContext , LogoutContext} from "../../Authentication/AuthContextProvider";
+import { StudentRegistrationForm } from "../../components";
+import {
+  UserContext,
+  LogoutContext,
+} from "../../Authentication/AuthContextProvider";
 import CourseNav from "./CourseNav";
 import Subscription from "../../assets/subscription.png";
 import Search from "./Search";
 import { ModalContext } from "../modals/ModalProvider";
 import { UserdataContext } from "../../Authentication/AuthContextProvider";
 import { MdArrowDropDown } from "react-icons/md";
-import {FaUser,FaUserPlus} from 'react-icons/fa'
+import { FaUser, FaUserPlus } from "react-icons/fa";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -29,21 +31,21 @@ const Navbar = ({ content }) => {
   const userData = useContext(UserdataContext);
   const isAuthenticated = useContext(UserContext);
   const logout = useContext(LogoutContext);
-  const {isOpen, openModal} = useContext(ModalContext);
+  const { isOpen, openModal } = useContext(ModalContext);
   const [openLogin, setOpenLogin] = useState();
   const [openSignUp, setOpenSignUp] = useState();
 
-  const toggleLogin=()=>{
+  const toggleLogin = () => {
     openModal();
     setOpenLogin(true);
-  }
-  const toggleSignUp=()=>{
+  };
+  const toggleSignUp = () => {
     openModal();
     setOpenSignUp(true);
-  }
+  };
 
   const [navbarOpen, setNavbarOpen] = useState(false);
- 
+
   return (
     <Disclosure as="nav" className="bg-white text-black ">
       {({ open }) => (
@@ -63,10 +65,11 @@ const Navbar = ({ content }) => {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center sm:ml-16">
-                 
-                  <h3 className="text-4xl sm:text-2xl text-primary">E-Module</h3>
+                  <h3 className="text-4xl sm:text-2xl text-primary">
+                    E-Module
+                  </h3>
                 </div>
-                
+
                 <div className=" sm:ml-6 ml-8 sm:hidden">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
@@ -87,17 +90,17 @@ const Navbar = ({ content }) => {
                   </div>
                 </div>
               </div>
+              {/* {isOpen && <LogInForm />} */}
+
               <div className="absolute float-right  inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {!isAuthenticated ? (
-                   <button
-                   className="flex sm:flex-col items-center gap-2 text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
-                   onClick={toggleLogin}
-                 >
-                  {isOpen && <LogInForm />}
-                  <FaUser />
-                   Login
-                 </button>
-                 
+                  <button
+                    className="flex sm:flex-col items-center gap-2 text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
+                    onClick={toggleLogin}
+                  >
+                    <FaUser />
+                    Login
+                  </button>
                 ) : (
                   <div>Welcome</div>
                 )}
@@ -107,9 +110,9 @@ const Navbar = ({ content }) => {
                     className="flex sm:flex-col gap-2 items-center text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
                     onClick={toggleSignUp}
                   >
-                   {isOpen && <studentRegistrationForm />}
-                   <FaUserPlus />
-                    Register 
+                    <StudentRegistrationForm />
+                    <FaUserPlus />
+                    Register
                   </button>
                 ) : (
                   <Menu as="div" className="relative ml-3">
@@ -182,4 +185,3 @@ const Navbar = ({ content }) => {
 };
 
 export default Navbar;
-

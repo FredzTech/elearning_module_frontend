@@ -1,13 +1,12 @@
-import React, { useState,useContext } from "react";
+import React, { useState } from "react";
+import { MdCancel } from "react-icons/md";
 import { Link } from "react-router-dom";
-import axios from "../../axios"
-// import { useModal } from "../modals/ModalProvider";
-import { ModalContext } from "../modals/ModalProvider";
+import axios from "../../axios";
 import Validation from "./Validation";
 import { Modal } from "../modals";
-
+import { useModal } from "../modals/ModalProvider";
 const LogInForm = () => {
-  const { closeModal } = useContext(ModalContext);
+  const { closeModal } = useModal();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //  validating credentials
@@ -44,14 +43,17 @@ const LogInForm = () => {
   return (
     <Modal>
       <div>
-        <div
-          className=" bg-white flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm text-2xl"
-          
-        >
+        <div className=" bg-white flex flex-col justify-center  px-6 lg:px-8 py-5 border rounded-sm text-2xl">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <h2 className="lg: mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Log in
+              Log In
             </h2>
+            <button
+              className="close-modal float-right z-50 "
+              onClick={() => closeModal()}
+            >
+              <MdCancel className="text-black text-4xl" />
+            </button>
           </div>
 
           <div className="mt-8  w-full sm:mx-auto sm:w-full sm:max-w-md">

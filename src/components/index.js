@@ -47,6 +47,15 @@ import {
   UnitForm,
 } from "./TutorPage/Forms";
 
+// LOGINS-REGISTRATION COMPONENTS.
+import {
+  AdminLoginPage,
+  TutorLoginForm,
+  StudentLoginForm,
+  StudentRegistrationForm,
+  TutorRegistrationForm,
+} from "./Logins-Registration";
+
 import Footer from "./Footer";
 import {
   AdminButton,
@@ -119,4 +128,9 @@ export {
   CTAUnitButtonAdmin,
   AdminNavItem,
   RequireAuth,
+  AdminLoginPage,
+  TutorLoginForm,
+  StudentLoginForm,
+  StudentRegistrationForm,
+  TutorRegistrationForm,
 };

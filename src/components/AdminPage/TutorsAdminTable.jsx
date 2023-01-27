@@ -6,7 +6,7 @@ import { TutorRegistrationForm } from "../Logins-Registration";
 import { ModalContext } from "../modals/ModalProvider";
 
 const TutorsAdminTable = () => {
-  const { openModal, isOpen } = useContext(ModalContext);
+  const { openModal } = useContext(ModalContext);
   const [tutorsData, setTutorsData] = useState([
     {
       fName: "JANET",
@@ -89,7 +89,7 @@ const TutorsAdminTable = () => {
             icon="tenantIcon"
           />
 
-          {isOpen && <TutorRegistrationForm />}
+          <TutorRegistrationForm />
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
