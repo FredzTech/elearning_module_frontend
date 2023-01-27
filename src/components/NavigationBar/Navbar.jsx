@@ -32,16 +32,20 @@ const Navbar = ({ content }) => {
   const isAuthenticated = useContext(UserContext);
   const logout = useContext(LogoutContext);
   const { isOpen, openModal } = useContext(ModalContext);
-  const [openLogin, setOpenLogin] = useState();
-  const [openSignUp, setOpenSignUp] = useState();
+  const [login, setLogin] = useState();
+  const [signUp, setSignUp] = useState();
 
-  const toggleLogin = () => {
-    openModal();
-    setOpenLogin(true);
+  const showLogin = () => {
+    setLogin(true);
   };
-  const toggleSignUp = () => {
-    openModal();
-    setOpenSignUp(true);
+  const hideLogin = () => {
+    setLogin(false);
+  };
+  const showSignUp = () => {
+    setSignUp(true);
+  };
+  const hideSignUp = () => {
+    setSignUp(false);
   };
 
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -90,13 +94,17 @@ const Navbar = ({ content }) => {
                   </div>
                 </div>
               </div>
-              {/* {isOpen && <LogInForm />} */}
+              <LogInForm hideLogin={hideLogin} login={login} />
+              <StudentRegistrationForm
+                hideSignUp={hideSignUp}
+                signUp={signUp}
+              />
 
               <div className="absolute float-right  inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {!isAuthenticated ? (
                   <button
                     className="flex sm:flex-col items-center gap-2 text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
-                    onClick={toggleLogin}
+                    onClick={showLogin}
                   >
                     <FaUser />
                     Login
@@ -108,9 +116,8 @@ const Navbar = ({ content }) => {
                 {!isAuthenticated ? (
                   <button
                     className="flex sm:flex-col gap-2 items-center text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
-                    onClick={toggleSignUp}
+                    onClick={showSignUp}
                   >
-                    <StudentRegistrationForm />
                     <FaUserPlus />
                     Register
                   </button>
