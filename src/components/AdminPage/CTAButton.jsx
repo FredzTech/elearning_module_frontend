@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { BiMessageDetail } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AiFillEye } from "react-icons/ai";
-const CTAButton = ({ contact, _id }) => {
+const CTAButton = ({ contact, _id, fetchTutorsData }) => {
+  console.log(_id);
   let navigate = useNavigate();
   // My work in the front-end is simply to make the axios request to the backend ili ifanye haki
   const deleteTenant = async (_id) => {
@@ -14,6 +15,7 @@ const CTAButton = ({ contact, _id }) => {
         data: { _id },
       });
       //   After deleting, it should trigger a rerender.
+      fetchTutorsData();
       console.log("Tenant successfully deleted and put under archives.");
     } catch (error) {
       console.log(

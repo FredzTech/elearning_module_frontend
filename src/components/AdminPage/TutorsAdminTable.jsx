@@ -64,17 +64,16 @@ const TutorsAdminTable = () => {
       updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
     },
   ]);
+  let fetchTutorsData = async () => {
+    try {
+      let { data } = await axios.get("/auth/all-tutors");
+      console.log(data);
+      setTutorsData(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    let fetchTutorsData = async () => {
-      try {
-        let { data } = await axios.get("/auth/all-tutors");
-        console.log(data);
-        setTutorsData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchTutorsData();
   }, []);
 
@@ -147,7 +146,11 @@ const TutorsAdminTable = () => {
                     <StatusPill status={status} />
                   </td>
                   <td className="py-1 w-64 ">
-                    <CTAButton _id={_id} contact={email} />
+                    <CTAButton
+                      _id={_id}
+                      contact={email}
+                      fetchTutorsData={fetchTutorsData}
+                    />
                   </td>
                 </tr>
               );
