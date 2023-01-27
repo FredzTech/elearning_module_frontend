@@ -14,6 +14,10 @@ export const useModal = () => {
 export default function ModalProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignUp, setOpenSignUp] = useState(false);
+
+
 
   const openModal = (content) => {
     setIsOpen(true);
@@ -22,6 +26,8 @@ export default function ModalProvider({ children }) {
   const closeModal = () => {
     setIsOpen(false);
     setModalContent(null);
+    setOpenLogin(false);
+    setOpenSignUp(false)
 
     
   };
@@ -33,7 +39,7 @@ export default function ModalProvider({ children }) {
   }
 
   return (
-    <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <ModalContext.Provider value={{ isOpen, openModal, closeModal,setOpenLogin,setOpenSignUp ,openLogin,openSignUp}}>
       {children}
     </ModalContext.Provider>
   );

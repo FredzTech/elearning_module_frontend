@@ -51,7 +51,7 @@ const LandingSection = () => {
   return (
     <>
       <div className="bg-gradient-to-r from-white  to-blue-300   flex w-screen  py-10 pl-16 sm:p-4 h-auto sm:flex-col md:flex-col sm:gap-8 md:gap-10">
-        <div className="text-3xl font-serif h-full w-full z-20 sm:bg-silver sm:bg-opacity-50 sm:p-1 sm:-mb-96 md:-mr-28">
+        <div className="text-3xl font-serif h-full w-full  sm:bg-silver sm:bg-opacity-50 sm:p-1 sm:-mb-96 md:-mr-28">
           <h3 className="text-[3.2rem] text-bold mb-3">Studying Made Easier </h3>
           <p>With access to well curated study materials from :</p>
           <ul className="list-disc p-6">
@@ -61,7 +61,7 @@ const LandingSection = () => {
             <li>A chance to interact with qualified tutors</li>
           </ul>
           <p> Enrol to get access to this and so much more.</p>
-          <div className="mt-16 z-0 flex gap-20">
+          <div className="mt-16  flex gap-20">
             <button className="ml-10 bg-white border-primary text-primary ring-4 ring-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
               Try free
             </button>
@@ -71,7 +71,7 @@ const LandingSection = () => {
           </div>
 
         </div>
-          <img src={HomeImage} alt="" className="md:-mt-[80%]   z-10  object-right bg-cover mr-0 " />
+          <img src={HomeImage} alt="" className="md:-mt-[80%]     object-right bg-cover mr-0 " />
 
        
       </div>

@@ -3,13 +3,9 @@ import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {Bars3Icon,XMarkIcon,UserIcon,} from "@heroicons/react/24/outline";
-import LogInForm from "../Logins-Registration/AdminLoginPage";
-import studentRegistrationForm from "../Logins-Registration/StudentRegistrationForm";
-
+import { StudentLoginForm } from "../Logins-Registration";
 import {UserContext , LogoutContext} from "../../Authentication/AuthContextProvider";
-import CourseNav from "./CourseNav";
-import Subscription from "../../assets/subscription.png";
-import Search from "./Search";
+import studentRegistrationForm from "../Logins-Registration/StudentRegistrationForm";
 import { ModalContext } from "../modals/ModalProvider";
 import { UserdataContext } from "../../Authentication/AuthContextProvider";
 import { MdArrowDropDown } from "react-icons/md";
@@ -29,20 +25,19 @@ const Navbar = ({ content }) => {
   const userData = useContext(UserdataContext);
   const isAuthenticated = useContext(UserContext);
   const logout = useContext(LogoutContext);
-  const {isOpen, openModal} = useContext(ModalContext);
-  const [openLogin, setOpenLogin] = useState();
-  const [openSignUp, setOpenSignUp] = useState();
-
+  
+  const {openModal ,setOpenSignUp, setOpenLogin,openLogin,openSignUp} = useContext(ModalContext);
   const toggleLogin=()=>{
-    openModal();
+    openModal()
     setOpenLogin(true);
   }
   const toggleSignUp=()=>{
-    openModal();
     setOpenSignUp(true);
+    openModal()
   }
 
-  const [navbarOpen, setNavbarOpen] = useState(false);
+
+  
  
   return (
     <Disclosure as="nav" className="bg-white text-black ">
@@ -93,7 +88,8 @@ const Navbar = ({ content }) => {
                    className="flex sm:flex-col items-center gap-2 text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
                    onClick={toggleLogin}
                  >
-                  {isOpen && <LogInForm />}
+                   {openLogin && <StudentLoginForm/>}
+        
                   <FaUser />
                    Login
                  </button>
@@ -107,8 +103,7 @@ const Navbar = ({ content }) => {
                     className="flex sm:flex-col gap-2 items-center text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
                     onClick={toggleSignUp}
                   >
-                   {isOpen && <studentRegistrationForm />}
-                   <FaUserPlus />
+                   {openSignUp && <StudentRegistrationForm/>}
                     Register 
                   </button>
                 ) : (

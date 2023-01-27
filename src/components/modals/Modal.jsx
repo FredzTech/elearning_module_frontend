@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
-import { useContext } from 'react'
+import React, { useEffect ,useContext  } from 'react'
+
 import { ModalContext } from './ModalProvider'
-import { useNavigate } from 'react-router'
+
 import {MdCancel} from 'react-icons/md'
 
 export default function Modal ({children}) {
     
-    const {isOpen , modalContent , closeModal } = useContext(ModalContext);
+    const { closeModal } = useContext(ModalContext);
   
   return (
     <>
-      {isOpen && (
+     
         <div className="modal">
           <div className="overlay"></div>
           <div className="modal-content ">
@@ -24,7 +24,7 @@ export default function Modal ({children}) {
             {children}
           </div>
         </div>
-      )}
+      
     </>
   );
 }

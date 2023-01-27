@@ -36,7 +36,7 @@ body.active-modal {
     max-width: auto;
     min-width: 300px;
    
-    z-index: 50;
+    z-index: 40;
 }
 
 .close-modal {

@@ -40,18 +40,21 @@ import {
   TutorRegistrationForm,
 } from "./components/Logins-Registration";
 import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
-
-function App() {
+import { ModalContext } from "./components/modals/ModalProvider";
+import { useContext } from "react";
+const App=()=> {
   // AUTHENTICATION ROUTES
   // {
   //   student:"2000",
   //   admin :"2001",
   //   tutor:"2002",
   // }
+  // const {} = useContext(ModalContext);
   return (
     <div className="flex flex-col w-screen h-full ">
       <ModalProvider>
         {/* <IdleTimer> */}
+       
         <Routes>
           {/* Student Protected Routes */}
           <Route element={<RequireAuth allowedRoles={[2000, 2001, 2002]} />}>
