@@ -12,11 +12,11 @@ import {
   AdminDashboard,
   StudentsPageAdmin,
   TutorsPageAdmin,
-  
   TutorLayoutPage,
   AdminLayout,
   UsersLayout,
   UnitsPageDynamic,
+  UnitPageDynamic,
 } from "./pages";
 import {
   Footer,
@@ -71,6 +71,12 @@ function App() {
               ></Route>
               <Route exact path="/units" element={<ChapterPage />}></Route>
               <Route exact path="/unit" element={<UnitPage />}></Route>
+              <Route
+                exact
+                path="/unit/:unitId"
+                element={<UnitPageDynamic />}
+              ></Route>
+
               <Route exact path="/courses" element={<UnitsPage />}></Route>
               <Route
                 exact

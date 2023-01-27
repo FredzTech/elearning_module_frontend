@@ -127,7 +127,7 @@ const TutorsAdminTable = () => {
               return (
                 <tr
                   className={`${
-                    index % 2 == 0 ? "bg-primary  " : ""
+                    index % 2 == 0 ? "bg-cyan-100  " : ""
                   } flex w-full items-center justify-start px-2 cursor-pointer font-normal text-xl`}
                   key={`tutor-${index}`}
                 >

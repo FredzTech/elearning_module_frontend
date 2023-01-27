@@ -11,6 +11,7 @@ const UnitPage = () => {
       {/* <article className="h-full flex  flex-col rounded-lg "> */}
       {/* <SideNavNew /> */}
       <article className="h-full w-1/4  flex  flex-col rounded-lg ">
+        {/* CHAPTER & LESSON DATA NEEDS TO TRICKLE DOWN FROM HERE. */}
         <Accordion />
       </article>
       <article className="h-full overflow-y-scroll mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
