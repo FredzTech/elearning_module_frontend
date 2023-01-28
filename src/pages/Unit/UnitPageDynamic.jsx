@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { UnitNav, VideoComponent, QuillEditorStudent } from "../../components";
+import {
+  UnitNav,
+  VideoComponent,
+  QuillEditorStudent,
+  Accordion,
+} from "../../components";
 import "react-quill/dist/quill.snow.css";
 import axios from "../../axios";
-import Accordion from "../../components/SideNav/Accordion";
 import sampleVideo from "../../assets/sample-video.mp4";
 import posterImage from "../../assets/video-player.png";
 

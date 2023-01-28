@@ -8,7 +8,7 @@ const CTAButton = ({ contact, _id, fetchTutorsData }) => {
   console.log(_id);
   let navigate = useNavigate();
   // My work in the front-end is simply to make the axios request to the backend ili ifanye haki
-  const deleteTenant = async (_id) => {
+  const deleteTutor = async (_id) => {
     try {
       await axios.delete("/auth/tutor", {
         headers: {},
@@ -51,8 +51,7 @@ const CTAButton = ({ contact, _id, fetchTutorsData }) => {
       <button
         className="flex items-center justify-center w-full rounded-r-3xl border-none bg-rose-600 text-secondary py-1 px-2"
         onClick={() => {
-          console.log(_id);
-          deleteTenant(_id);
+          deleteTutor(_id);
         }}
       >
         <span>

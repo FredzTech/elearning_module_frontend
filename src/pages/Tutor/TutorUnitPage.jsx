@@ -1,6 +1,10 @@
 import React from "react";
-import { UnitNav, VideoComponent, QuillEditorTutor } from "../../components";
-import Accordion from "../../components/SideNav/Accordion";
+import {
+  UnitNav,
+  VideoComponent,
+  QuillEditorTutor,
+  TutorAccordion,
+} from "../../components";
 import "react-quill/dist/quill.snow.css";
 
 import sampleVideo from "../../assets/sample-video.mp4";
@@ -10,7 +14,7 @@ const TutorUnitPage = () => {
   return (
     <main className="flex flex-row w-full h-full">
       <article className="h-full flex flex-col rounded-lg ">
-        <Accordion />
+        <TutorAccordion />
       </article>
       <article className="h-screen overflow-y-scroll mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
         <VideoComponent
@@ -21,12 +25,21 @@ const TutorUnitPage = () => {
         <UnitNav />
         <div className="mb-10">
           <QuillEditorTutor />
+          {/* By default it should have the read only theme alafu ukipress edit ikuletee this theme with the editing tools */}
         </div>
-        <div className="controls flex gap-5 text-white ml-2">
-          <button className="py-3 w-36 bg-rose-600 border-none">
+        <div className="controls flex gap-5 text-white mx-auto">
+          <button
+            onClick={() => {}}
+            className="py-3 w-36 bg-rose-600 border-none rounded-3xl"
+          >
             Edit Notes
           </button>
-          <button className="py-3 w-36 bg-green-600  border-none ">Save</button>
+          <button
+            onClick={() => {}}
+            className="py-3 w-36 bg-green-600  border-none rounded-3xl"
+          >
+            Save
+          </button>
         </div>
       </article>
     </main>

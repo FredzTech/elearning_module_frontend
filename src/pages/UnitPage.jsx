@@ -1,15 +1,17 @@
 import React from "react";
-import { UnitNav, VideoComponent, QuillEditorStudent } from "../components";
+import {
+  UnitNav,
+  VideoComponent,
+  QuillEditorStudent,
+  Accordion,
+} from "../components";
 import "react-quill/dist/quill.snow.css";
-import Accordion from "../components/SideNav/Accordion";
 import sampleVideo from "../assets/sample-video.mp4";
 import posterImage from "../assets/video-player.png";
 
 const UnitPage = () => {
   return (
     <main className="flex flex-row w-full h-full overflow-y-scroll">
-      {/* <article className="h-full flex  flex-col rounded-lg "> */}
-      {/* <SideNavNew /> */}
       <article className="h-full w-1/4  flex  flex-col rounded-lg ">
         {/* CHAPTER & LESSON DATA NEEDS TO TRICKLE DOWN FROM HERE. */}
         <Accordion />

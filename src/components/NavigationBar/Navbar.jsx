@@ -9,12 +9,7 @@ import {
   UserContext,
   LogoutContext,
 } from "../../Authentication/AuthContextProvider";
-import CourseNav from "./CourseNav";
-import Subscription from "../../assets/subscription.png";
-import Search from "./Search";
-import { ModalContext } from "../modals/ModalProvider";
 import { UserdataContext } from "../../Authentication/AuthContextProvider";
-import { MdArrowDropDown } from "react-icons/md";
 import { FaUser, FaUserPlus } from "react-icons/fa";
 
 const navigation = [
@@ -27,11 +22,10 @@ const navigation = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const Navbar = ({ content }) => {
+const Navbar = () => {
   const userData = useContext(UserdataContext);
   const isAuthenticated = useContext(UserContext);
   const logout = useContext(LogoutContext);
-  const { isOpen, openModal } = useContext(ModalContext);
   const [login, setLogin] = useState();
   const [signUp, setSignUp] = useState();
 
@@ -47,8 +41,6 @@ const Navbar = ({ content }) => {
   const hideSignUp = () => {
     setSignUp(false);
   };
-
-  const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
     <Disclosure as="nav" className="bg-white text-black ">
@@ -138,7 +130,7 @@ const Navbar = ({ content }) => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-30 mt-2 w-48 origin-top-right rounded-md bg-grey py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-grey py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           <div className="px-4  text-sm text-black">
                             {userData.name}
@@ -151,10 +143,9 @@ const Navbar = ({ content }) => {
                         </Menu.Item>
                         <Menu.Item>
                           <div className="px-4 py-2 text-sm text-black">
-                            {" "}
                             <a href="#" onClick={logout}>
                               Sign out
-                            </a>{" "}
+                            </a>
                           </div>
                         </Menu.Item>
                       </Menu.Items>

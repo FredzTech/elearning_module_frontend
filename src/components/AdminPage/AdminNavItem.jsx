@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsChevronRight, BsChevronDown } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
 const AdminNavItem = ({ to, text }) => {
   return (
     <Link to={to}>

@@ -3,6 +3,8 @@
 import LogInForm from "./Logins-Registration/StudentLoginForm";
 import RequireAuth from "./RequireAuth";
 import AlertBox from "./AlertBox";
+import TutorAccordion from "./SideNav/TutorAccordion";
+import Accordion from "./SideNav/Accordion";
 // HOMEPAGE COMPONENTS
 
 // COURSE PAGE COMPONENTS
@@ -26,13 +28,7 @@ import {
 
 import { Button, CustomNav } from "./CustomForm";
 // TUTOR PAGE
-import {
-  ChapterModal,
-  CourseModal,
-  LessonModal,
-  ResourcesModal,
-  UnitModal,
-} from "./TutorPage/Modals";
+
 import {
   QuillEditorTutor,
   TutorCardHome,
@@ -90,11 +86,6 @@ export {
   CustomNav,
   ChapterCard,
   TutorCard,
-  ChapterModal,
-  CourseModal,
-  LessonModal,
-  ResourcesModal,
-  UnitModal,
   UnitsCard,
   UnitNav,
   QuillEditorTutor,
@@ -133,4 +124,6 @@ export {
   StudentLoginForm,
   StudentRegistrationForm,
   TutorRegistrationForm,
+  TutorAccordion,
+  Accordion,
 };

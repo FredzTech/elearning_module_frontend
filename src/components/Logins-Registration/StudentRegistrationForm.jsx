@@ -4,7 +4,7 @@ import AlertBox from "../AlertBox";
 import { Modal } from "../modals";
 import axios from "../../axios";
 import { MdCancel } from "react-icons/md";
-import PasswordStrengthBar from "react-password-strength-bar";
+// import PasswordStrengthBar from "react-password-strength-bar";
 const studentRegistrationForm = ({ hideSignUp, signUp }) => {
   // DECLARATION OF OUR STATES
   //==========================
@@ -78,13 +78,13 @@ const studentRegistrationForm = ({ hideSignUp, signUp }) => {
   return (
     <>
       {signUp && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-md flex flex-col items-center justify-center">
+        <div className="modal-overlay">
           <div className="flex flex-col   w-[400px] phone:w-[320px]  phone:border-none   rounded-lg shadow-md shadow-primary ">
             {/* <CustomNav text="student registration" /> */}
 
             {/* CUSTOM NAVIGATION. */}
             <div className="w-full flex justify-between items-center  text-sm font-normal text-white uppercase bg-primary  px-2 py-4 rounded-t-md">
-              SIGN UP
+              STUDENT REGISTRATION FORM
               <button onClick={() => hideSignUp()}>
                 <MdCancel className="text-white text-4xl" />
               </button>
@@ -194,7 +194,7 @@ const studentRegistrationForm = ({ hideSignUp, signUp }) => {
                       required
                     />
 
-                    <PasswordStrengthBar password={password} minLength={8} />
+                    {/* <PasswordStrengthBar password={password} minLength={8} /> */}
                   </div>
 
                   <div>

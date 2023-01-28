@@ -1,11 +1,10 @@
 import React from "react";
-import { BsCaretRightFill } from "react-icons/bs";
 import { IoIosAddCircleOutline, IoMdAdd } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 
 // I have the freedom to append props directly to icons.
-const NavigateBtn = ({ text, icon, destination,action }) => {
+const NavigateBtn = ({ text, icon, destination, action }) => {
   const navigate = useNavigate();
   return (
     <div
