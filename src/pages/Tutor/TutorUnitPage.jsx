@@ -13,11 +13,12 @@ import posterImage from "../../assets/video-player.png";
 
 const TutorUnitPage = () => {
   return (
-    <main className="flex flex-row w-full h-full">
+    <main className="flex w-full h-full">
       <article className="h-full flex flex-col rounded-lg ">
+        {/* TO TAKE THE CHAPTERS, */}
         <TutorAccordion />
       </article>
-      <article className="h-screen overflow-y-scroll mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
+      <article className="h-full overflow-y-scroll mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
         <VideoComponent
           poster={posterImage}
           src={sampleVideo}

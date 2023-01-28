@@ -49,7 +49,7 @@ function App() {
   //   tutor:"2002",
   // }
   return (
-    <div className="flex flex-col w-screen h-full ">
+    <div className="flex w-screen h-screen ">
       <ModalProvider>
         {/* <IdleTimer> */}
         <Routes>

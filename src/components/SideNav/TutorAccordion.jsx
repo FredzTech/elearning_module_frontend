@@ -5,6 +5,7 @@ import { ChapterForm } from "../../components";
 import { faqs } from "./AccordionData";
 import { IoMdAdd } from "react-icons/io";
 const TutorAccordion = () => {
+  // USING THE CHAPTER ID WE CAN SHOW THE LESSONS.
   const [chapterForm, setChapterForm] = useState(false);
   const [clicked, setClicked] = useState("0");
 

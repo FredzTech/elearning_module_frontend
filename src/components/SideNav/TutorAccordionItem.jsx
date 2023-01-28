@@ -4,7 +4,7 @@ import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import { LessonForm } from "../../components";
-import { useModal } from "../modals/ModalProvider";
+// It should be having the chapter name & the lessons.
 const TutorAccordionItem = ({ faq, onToggle, active }) => {
   // const { openModal } = useModal();
   const [lessonForm, setLessonForm] = useState(false);

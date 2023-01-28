@@ -4,8 +4,8 @@ import { TutorSideBar } from "../../components";
 
 const TutorLayout = () => {
   return (
-    <div className="flex w-screen h-screen sm:flex-col  ">
-      <div className="container h-full mx-3 mt-2 w-1/4 sm:w-screen">
+    <div className="flex w-screen h-screen sm:flex-col border-2 border-red-600  ">
+      <div className="container h-full mx-3 mt-2 w-1/4 sm:w-screen py-2">
         <TutorSideBar />
       </div>
       <div className="container w-3/4 h-full overflow-y-scroll sm:w-screen">
