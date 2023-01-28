@@ -12,15 +12,12 @@ export const useModal = () => {
 
 export default function ModalProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
-  // const [modalContent, setModalContent] = useState(null);
 
   const openModal = () => {
     setIsOpen(true);
-    // setModalContent(content);
   };
   const closeModal = () => {
     setIsOpen(false);
-    // setModalContent(null);
   };
 
   if (isOpen) {

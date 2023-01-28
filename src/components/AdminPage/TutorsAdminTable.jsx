@@ -1,69 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useContext } from "react";
 import axios from "../../axios";
-import { StatusPill, CTAButton, NavigateBtn } from "../../components";
-import { TutorRegistrationForm } from "../Logins-Registration";
-import { ModalContext } from "../modals/ModalProvider";
+import {
+  StatusPill,
+  CTAButton,
+  NavigateBtn,
+  TutorRegistrationForm,
+} from "../../components";
+import { useModal } from "../modals/ModalProvider";
 
 const TutorsAdminTable = () => {
-  const { openModal } = useContext(ModalContext);
-  const [tutorsData, setTutorsData] = useState([
-    {
-      fName: "JANET",
-      surname: "NDICHU",
-      contact: "254122657095",
-      email: "lorem5@gmail.com",
-      status: "active",
-      units: ["unit 1", "unit 2", "unit 3"],
-      _id: { $oid: "634513b7b32aff941eef9f46" },
-      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
-      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
-    },
-    {
-      fName: "JANET",
-      surname: "NDICHU",
-      contact: "254122657095",
-      email: "lorem5@gmail.com",
-      status: "active",
-      units: ["unit 1", "unit 2", "unit 3"],
-      _id: { $oid: "634513b7b32aff941eef9f46" },
-      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
-      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
-    },
-    {
-      fName: "JANET",
-      surname: "NDICHU",
-      contact: "254122657095",
-      email: "lorem5@gmail.com",
-      status: "active",
-      units: ["unit 1", "unit 2", "unit 3"],
-      _id: { $oid: "634513b7b32aff941eef9f46" },
-      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
-      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
-    },
-    {
-      fName: "JANET",
-      surname: "NDICHU",
-      contact: "254122657095",
-      email: "lorem5@gmail.com",
-      status: "suspended",
-      units: ["unit 1", "unit 2", "unit 3"],
-      _id: { $oid: "634513b7b32aff941eef9f46" },
-      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
-      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
-    },
-    {
-      fName: "JANET",
-      surname: "NDICHU",
-      contact: "254122657095",
-      email: "lorem5@gmail.com",
-      status: "suspended",
-      units: ["unit 1", "unit 2", "unit 3", "Unit 4"],
-      _id: { $oid: "634513b7b32aff941eef9f46" },
-      entryDate: { $date: "2022-10-11T06:56:55.877Z" },
-      updatedAt: { $date: "2022-10-11T06:56:55.877Z" },
-    },
-  ]);
+  const { openModal } = useModal();
+  const [tutorsData, setTutorsData] = useState([]);
   let fetchTutorsData = async () => {
     try {
       let { data } = await axios.get("/auth/all-tutors");

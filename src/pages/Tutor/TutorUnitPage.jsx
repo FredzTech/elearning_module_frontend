@@ -4,9 +4,10 @@ import {
   VideoComponent,
   QuillEditorTutor,
   TutorAccordion,
+  ChapterForm,
+  LessonForm,
 } from "../../components";
 import "react-quill/dist/quill.snow.css";
-
 import sampleVideo from "../../assets/sample-video.mp4";
 import posterImage from "../../assets/video-player.png";
 

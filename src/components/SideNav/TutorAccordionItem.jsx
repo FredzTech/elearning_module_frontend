@@ -1,10 +1,22 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
-
+import { LessonForm } from "../../components";
+import { useModal } from "../modals/ModalProvider";
 const TutorAccordionItem = ({ faq, onToggle, active }) => {
+  // const { openModal } = useModal();
+  const [lessonForm, setLessonForm] = useState(false);
+
+  const showLessonForm = () => {
+    setLessonForm(true);
+  };
+
+  const hideLessonForm = () => {
+    setLessonForm(false);
+  };
+
   const contentEl = useRef(); //Used to interact with the dom accordigly.
   const { question, answer } = faq; //We are destructuring the individual items and kinda like spreading them out here.
   return (
@@ -45,20 +57,20 @@ const TutorAccordionItem = ({ faq, onToggle, active }) => {
           );
         })}
         <li className="hover:bg-slate-500 text-white px-3 py-2 capitalize bg-primary rounded-lg w-48 ml-auto  mt-2">
-          <Link to="./content">
-            <button
-              onClick={() => {
-                console.log("Ready to add a new lesson");
-              }}
-              className="w-full h-full flex justify-between gap-5 items-center"
-            >
-              Add Lesson
-              <span className="text-sm">
-                <IoMdAdd className="text-secondary text-2xl " />
-              </span>
-            </button>
-          </Link>
+          <button
+            onClick={() => {
+              showLessonForm();
+              console.log(lessonForm);
+            }}
+            className="w-full h-full flex justify-between gap-5 items-center"
+          >
+            Add Lesson
+            <span className="text-sm">
+              <IoMdAdd className="text-secondary text-2xl " />
+            </span>
+          </button>
         </li>
+        <LessonForm hideLessonForm={hideLessonForm} lessonForm={lessonForm} />
       </ul>
     </li>
   );

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { AiOutlineAppstore } from "react-icons/ai";
 import TutorAccordionItem from "./TutorAccordionItem";
+import { ChapterForm } from "../../components";
 import { faqs } from "./AccordionData";
 import { IoMdAdd } from "react-icons/io";
-
 const TutorAccordion = () => {
+  const [chapterForm, setChapterForm] = useState(false);
   const [clicked, setClicked] = useState("0");
 
   const handleToggle = (index) => {
@@ -12,6 +13,14 @@ const TutorAccordion = () => {
       return setClicked("0");
     }
     setClicked(index);
+  };
+
+  const showChapterForm = () => {
+    setChapterForm(true);
+  };
+
+  const hideChapterForm = () => {
+    setChapterForm(false);
   };
 
   return (
@@ -36,7 +45,8 @@ const TutorAccordion = () => {
       <button
         className="button  bg-primary text-white mt-1 ml-1 rounded-md border-none "
         onClick={() => {
-          console.log("Ready to add a new chapter");
+          // console.log("Ready to add a new chapter");
+          showChapterForm();
         }}
       >
         Add Chapter
@@ -44,6 +54,10 @@ const TutorAccordion = () => {
           <IoMdAdd className="text-secondary text-2xl" />
         </span>
       </button>
+      <ChapterForm
+        chapterForm={chapterForm}
+        hideChapterForm={hideChapterForm}
+      />
     </div>
   );
 };

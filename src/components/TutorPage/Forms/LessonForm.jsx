@@ -5,7 +5,9 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Modal } from "../../modals";
 import LoadingBtn from "./LoadingBtn";
-const LessonForm = () => {
+import { MdCancel } from "react-icons/md";
+
+const LessonForm = ({ lessonForm, hideLessonForm }) => {
   // DECLARATION OF VARIABLES
   //=========================
   const [chapters, setChapters] = useState([]);
@@ -100,121 +102,131 @@ const LessonForm = () => {
     console.log(result); //Returns to as the response from backend manifested under the data object.
   };
 
-  const cancelRegistration = (e) => {
-    e.preventDefault();
-    closeModal();
-  };
-
   return (
-    <Modal>
-      <div className="">
-        <CustomNav />
-        {/* PROPOSED HEADER. */}
-        {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
-        <form
-          encType="multipart/form-data"
-          className="form-styling"
-          text="Lesson form"
-        >
-          {/* DROPDOWN */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="id"
-              className="w-full block my-2 text-sm font-medium text-gray-900"
+    <>
+      {lessonForm && (
+        <div className="modal-overlay">
+          <div className="bg-white rounded-md">
+            <div className="w-full flex justify-between items-center  text-sm font-normal text-white uppercase bg-primary  px-2 py-4 rounded-t-md">
+              LESSON FORM
+              <button onClick={() => hideLessonForm()}>
+                <MdCancel className="text-white text-4xl" />
+              </button>
+            </div>
+            {/* PROPOSED HEADER. */}
+            {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
+            <form
+              encType="multipart/form-data"
+              className="form-styling"
+              text="Lesson form"
             >
-              Select Chapter
-            </label>
-            <select
-              value={chapterName}
-              onChange={(e) => setChapterName(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
-            >
-              <option selected className="text-grey">
-                Choose the Chapter
-              </option>
-              {chapters.map((chapter, index) => {
-                return (
-                  <option key={index} value={chapter.chapterName}>
-                    {chapter.chapterName}
+              {/* DROPDOWN */}
+              <div className="flex flex-col">
+                <label
+                  htmlFor="id"
+                  className="w-full block my-2 text-sm font-medium text-gray-900"
+                >
+                  Select Chapter
+                </label>
+                <select
+                  value={chapterName}
+                  onChange={(e) => setChapterName(e.target.value)}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+                >
+                  <option selected className="text-grey">
+                    Choose the Chapter
                   </option>
-                );
-              })}
-            </select>
-          </div>
+                  {chapters.map((chapter, index) => {
+                    return (
+                      <option key={index} value={chapter.chapterName}>
+                        {chapter.chapterName}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
 
-          {/* FILE */}
-          <div className="input-wrap">
-            <label htmlFor="lNumber" className="w-full ">
-              Lesson Details
-            </label>
-            <input
-              className="input-styling"
-              id="lNumber"
-              type="number"
-              placeholder="Lesson Number"
-              value={lessonNumber}
-              onChange={(e) => {
-                setLessonNumber(e.target.value);
-              }}
-              required
-            ></input>
-            <input
-              className="input-styling"
-              id="lName"
-              type="Text"
-              placeholder="Lesson Name"
-              value={lessonName}
-              onChange={(e) => {
-                setLessonName(e.target.value);
-              }}
-              required
-            ></input>
-          </div>
+              {/* FILE */}
+              <div className="input-wrap">
+                <label htmlFor="lNumber" className="w-full ">
+                  Lesson Details
+                </label>
+                <input
+                  className="input-styling"
+                  id="lNumber"
+                  type="number"
+                  placeholder="Lesson Number"
+                  value={lessonNumber}
+                  onChange={(e) => {
+                    setLessonNumber(e.target.value);
+                  }}
+                  required
+                ></input>
+                <input
+                  className="input-styling"
+                  id="lName"
+                  type="Text"
+                  placeholder="Lesson Name"
+                  value={lessonName}
+                  onChange={(e) => {
+                    setLessonName(e.target.value);
+                  }}
+                  required
+                ></input>
+              </div>
 
-          <div className="input-wrap ">
-            <label htmlFor="file" className="w-full ">
-              File Details
-            </label>
-            <input
-              type="file"
-              name="file"
-              onChange={fileSelected}
-              className="input-styling mt-2"
-            />
-          </div>
+              <div className="input-wrap ">
+                <label htmlFor="file" className="w-full ">
+                  File Details
+                </label>
+                <input
+                  type="file"
+                  name="file"
+                  onChange={fileSelected}
+                  className="input-styling mt-2"
+                />
+              </div>
 
-          {/* <div className="input-wrap">
-          <label htmlFor="id" className="w-full">
-            Lecture Notes
-          </label>
-          <div className="mt-2 h-28">
-            <ReactQuill
-              readOnly={false}
-              // readOnly={true}
-              theme="snow"
-              // theme="bubble"
-              value={lessonNotes}
-              onChange={setLessonNotes}
-            />
+              {/* <div className="input-wrap">
+                <label htmlFor="id" className="w-full">
+                  Lecture Notes
+                </label>
+                <div className="mt-2 h-28">
+                  <ReactQuill
+                    readOnly={false}
+                    // readOnly={true}
+                    theme="snow"
+                    // theme="bubble"
+                    value={lessonNotes}
+                    onChange={setLessonNotes}
+                  />
+                </div>
+              </div> */}
+
+              {/* PREVIEWING THE CONTENT. */}
+              <h1>PREVIEW</h1>
+
+              <div
+                className="w-full debug"
+                dangerouslySetInnerHTML={{ __html: lessonNotes }}
+              ></div>
+              {/* CTA BUTTONS */}
+              <div className="cta-wrap">
+                {!submit ? (
+                  <Button
+                    type="button"
+                    text="Save"
+                    onClick={fileUploadHandler}
+                  />
+                ) : (
+                  <LoadingBtn action="Uploading" />
+                )}
+              </div>
+            </form>
           </div>
-        </div> */}
-          <h1>PREVIEW</h1>
-          {/* PREVIEWING THE CONTENT. */}
-          <div
-            className="w-full debug"
-            dangerouslySetInnerHTML={{ __html: lessonNotes }}
-          ></div>
-          {/* CTA BUTTONS */}
-          <div className="cta-wrap">
-            {!submit ? (
-              <Button type="button" text="Save" onClick={fileUploadHandler} />
-            ) : (
-              <LoadingBtn action="Uploading" />
-            )}
-          </div>
-        </form>
-      </div>
-    </Modal>
+        </div>
+      )}
+    </>
   );
 };
 
