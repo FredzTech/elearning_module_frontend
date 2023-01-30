@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  TutorSideBar,
-  TutorCardHome,
-  ChapterModal,
-  LessonModal,
-} from "../../components";
+import { TutorCardHome } from "../../components";
 
 const TutorPage = () => {
   return (

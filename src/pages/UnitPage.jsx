@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  UnitNav,
-  VideoComponent,
-  QuillEditorStudent,
-  // SideNavNew,
-} from "../components";
-import { Accordion } from "../components";
+import { UnitNav, VideoComponent, QuillEditorStudent } from "../components";
 import "react-quill/dist/quill.snow.css";
-
+import Accordion from "../components/SideNav/Accordion";
 import sampleVideo from "../assets/sample-video.mp4";
 import posterImage from "../assets/video-player.png";
 
