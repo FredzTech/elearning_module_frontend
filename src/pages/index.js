@@ -21,6 +21,7 @@ import CourseAdminPage from "./Admin/CourseAdminPage";
 import TutorLayoutPage from "./Tutor/TutorLayout";
 import UnitsPageDynamic from "./Unit/UnitsPageDynamic";
 import UnitPageDynamic from "./Unit/UnitPageDynamic";
+import AdminSection from "./Admin/AdminSection";
 export {
   HomePage,
   PricingPage,
@@ -43,4 +44,5 @@ export {
   UsersLayout,
   UnitsPageDynamic,
   UnitPageDynamic,
+  AdminSection,
 };

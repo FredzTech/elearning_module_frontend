@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { StatusPill, CTAButton, NavigateBtn } from "../../components";
-import { StudentRegistrationForm } from "../Logins-Registration";
+import { StudentRegistrationForm } from "../Credentials";
 import { ModalContext } from "../modals/ModalProvider";
 import axios from "../../axios";
 const StudentsAdminTable = () => {

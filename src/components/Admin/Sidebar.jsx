@@ -16,6 +16,7 @@ const lists = [
   { name: "Students", link: "/admin/students", icon: Students },
   { name: "Tutors", link: "/admin/tutors", icon: Tutors },
   { name: "Courses", link: "/admin/courses", icon: Courses },
+  { name: "Admin", link: "/admin/admins", icon: Tutors },
 ];
 
 export const Sidebar = () => {

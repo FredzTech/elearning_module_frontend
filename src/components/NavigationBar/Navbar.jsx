@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, UserIcon } from "@heroicons/react/24/outline";
-import LogInForm from "../Logins-Registration/AdminLoginPage";
-import { StudentRegistrationForm } from "../../components";
+// import LogInForm from "../Logins-Registration/Adme";
+import { StudentRegistrationForm, LogInForm } from "../../components";
 import {
   UserContext,
   LogoutContext,

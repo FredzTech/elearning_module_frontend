@@ -3,11 +3,10 @@ import { MdCancel } from "react-icons/md";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
 import Validation from "./Validation";
-import { Modal } from "../modals";
 import { useModal } from "../modals/ModalProvider";
 const LogInForm = ({ login, hideLogin }) => {
   const { closeModal } = useModal();
-  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
   //  validating credentials
   //  const [valid, setIsValid] = useState("")
@@ -20,10 +19,13 @@ const LogInForm = ({ login, hideLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors(Validation(email, password));
+    setErrors(Validation(firstName, password));
     try {
-      const user = { email, password };
-      const { data } = await axios.post("/login", user);
+      const user = { firstName, password };
+      const { data, status } = await axios.post("/auth/login", user);
+
+      console.log(data, status);
+
       if (data.status == "ok") {
         window.localStorage.setItem("token", data.data);
 
@@ -62,19 +64,19 @@ const LogInForm = ({ login, hideLogin }) => {
                 onSubmit={handleSubmit}
               >
                 <div className="mt-1">
-                  <label className="text-2xl" htmlFor="Email">
+                  <label className="text-2xl" htmlFor="surname">
                     Email
                   </label>
                   <input
                     id="email"
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    autoComplete="email"
+                    name="surname"
+                    placeholder="Enter first name"
+                    type="text"
+                    // autoComplete="email"
                     className="w-full border border-light-grey rounded-sm text-2xl shadow-sm px-3 py-0.5 
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 placeholder:capitalize"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                   />
                 </div>
                 {errors.email && (
@@ -90,7 +92,7 @@ const LogInForm = ({ login, hideLogin }) => {
                     name="password"
                     placeholder="Password"
                     type="password"
-                    autoComplete="new-password"
+                    // autoComplete="new-password"
                     className="w-full border border-light-grey rounded-sm text-2xl shadow-sm px-3 py-0.5 
             focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                     value={password}

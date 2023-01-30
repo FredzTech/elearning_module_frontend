@@ -1,6 +1,4 @@
 // GENERAL COMPONENTS
-
-import LogInForm from "./Logins-Registration/StudentLoginForm";
 import RequireAuth from "./RequireAuth";
 import AlertBox from "./AlertBox";
 import TutorAccordion from "./SideNav/TutorAccordion";
@@ -45,12 +43,11 @@ import {
 
 // LOGINS-REGISTRATION COMPONENTS.
 import {
-  AdminLoginPage,
-  TutorLoginForm,
-  StudentLoginForm,
+  LogInForm,
   StudentRegistrationForm,
   TutorRegistrationForm,
-} from "./Logins-Registration";
+  AdminRegistrationForm,
+} from "./Credentials";
 
 import Footer from "./Footer";
 import {
@@ -71,6 +68,7 @@ import {
   UnitsAdminTable,
   CTAUnitButtonAdmin,
   AdminNavItem,
+  AdminSectionTable,
 } from "./AdminPage";
 
 export {
@@ -119,11 +117,10 @@ export {
   CTAUnitButtonAdmin,
   AdminNavItem,
   RequireAuth,
-  AdminLoginPage,
-  TutorLoginForm,
-  StudentLoginForm,
   StudentRegistrationForm,
   TutorRegistrationForm,
   TutorAccordion,
   Accordion,
+  AdminSectionTable,
+  AdminRegistrationForm,
 };

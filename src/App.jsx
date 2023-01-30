@@ -17,9 +17,9 @@ import {
   UsersLayout,
   UnitsPageDynamic,
   UnitPageDynamic,
+  AdminSection,
 } from "./pages";
 import {
-  Footer,
   CourseForm,
   ChapterForm,
   LessonForm,
@@ -33,12 +33,10 @@ import { Routes, Route } from "react-router-dom";
 import IdleTimer from "./Authentication/IdleTimer";
 import Forbidden from "./pages/403";
 import {
-  AdminLoginPage,
-  TutorLoginForm,
-  StudentLoginForm,
+  LogInForm,
   StudentRegistrationForm,
   TutorRegistrationForm,
-} from "./components/Logins-Registration";
+} from "./components/Credentials";
 import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 
 function App() {
@@ -59,12 +57,8 @@ function App() {
               <Route exact path="/" element={<HomePage />}></Route>
               <Route exact path="pricing" element={<PricingPage />}></Route>
               <Route exact path="*" element={<NotFound />}></Route>
-              <Route
-                path="student-login"
-                element={<StudentLoginForm />}
-              ></Route>
-              <Route path="tutor-login" element={<TutorLoginForm />}></Route>
-              <Route path="admin-login" element={<AdminLoginPage />}></Route>
+              <Route path="tutor-login" element={<LogInForm />}></Route>
+              <Route path="admin-login" element={<LogInForm />}></Route>
               <Route
                 path="register"
                 element={<StudentRegistrationForm />}
@@ -94,6 +88,8 @@ function App() {
               <Route exact path="forbidden" element={<Forbidden />} />
               <Route exact path="course-form" element={<CourseForm />} />
               <Route exact path="unit-form" element={<UnitForm />} />
+              <Route exact path="admins" element={<AdminSection />} />
+
               <Route
                 exact
                 path="tutor-reg"
