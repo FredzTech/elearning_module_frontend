@@ -18,6 +18,8 @@ import {
   UnitsPageDynamic,
   UnitPageDynamic,
   AdminSection,
+  DraftPage,
+  ModalRenewed,
 } from "./pages";
 import {
   CourseForm,
@@ -29,7 +31,7 @@ import {
 } from "./components";
 import { ModalProvider } from "./components/modals";
 import Users from "./pages/UserPage";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import IdleTimer from "./Authentication/IdleTimer";
 import Forbidden from "./pages/403";
 import {
@@ -40,6 +42,9 @@ import {
 import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 
 function App() {
+  const location = useLocation();
+  console.log(location);
+  const background = location.state && location.state.background;
   // AUTHENTICATION ROUTES
   // {
   //   student:"2000",
@@ -50,7 +55,7 @@ function App() {
     <div className="flex w-screen h-screen ">
       <ModalProvider>
         {/* <IdleTimer> */}
-        <Routes>
+        <Routes location={background || location}>
           {/* Student Protected Routes */}
           <Route element={<RequireAuth allowedRoles={[2000, 2001, 2002]} />}>
             <Route path="/" element={<UsersLayout />}>
@@ -59,6 +64,9 @@ function App() {
               <Route exact path="*" element={<NotFound />}></Route>
               <Route path="tutor-login" element={<LogInForm />}></Route>
               <Route path="admin-login" element={<LogInForm />}></Route>
+              <Route path="draft-page" element={<DraftPage />}>
+                <Route path="modal" element={<ModalRenewed />}></Route>
+              </Route>
               <Route
                 path="register"
                 element={<StudentRegistrationForm />}
@@ -129,6 +137,12 @@ function App() {
           </Route>
           {/* <Route exact path="admin" element={<AdminPage />}></Route> */}
         </Routes>
+
+        {background && (
+          <Routes>
+            <Route path="draft-page/modal" element={<ModalRenewed />} />
+          </Routes>
+        )}
         {/* </IdleTimer> */}
       </ModalProvider>
     </div>

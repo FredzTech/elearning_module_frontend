@@ -22,6 +22,8 @@ import TutorLayoutPage from "./Tutor/TutorLayout";
 import UnitsPageDynamic from "./Unit/UnitsPageDynamic";
 import UnitPageDynamic from "./Unit/UnitPageDynamic";
 import AdminSection from "./Admin/AdminSection";
+import DraftPage from "./DraftPage";
+import ModalRenewed from "./ModalRenewed";
 export {
   HomePage,
   PricingPage,
@@ -45,4 +47,6 @@ export {
   UnitsPageDynamic,
   UnitPageDynamic,
   AdminSection,
+  DraftPage,
+  ModalRenewed,
 };
