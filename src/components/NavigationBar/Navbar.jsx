@@ -1,5 +1,7 @@
+// import { Link, useLocation } from "react-router-dom";
+// import { Link, useLocation } from "react-router-dom";
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, Outlet } from "react-router-dom";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, UserIcon } from "@heroicons/react/24/outline";
@@ -23,6 +25,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Navbar = () => {
+  const location = useLocation();
   const userData = useContext(UserdataContext);
   const isAuthenticated = useContext(UserContext);
   const logout = useContext(LogoutContext);
@@ -86,33 +89,35 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <LogInForm hideLogin={hideLogin} login={login} />
-              <StudentRegistrationForm
+              {/* <StudentRegistrationForm
                 hideSignUp={hideSignUp}
                 signUp={signUp}
-              />
+              /> */}
 
               <div className="absolute float-right  inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {!isAuthenticated ? (
-                  <button
-                    className="flex sm:flex-col items-center gap-2 text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
-                    onClick={showLogin}
-                  >
-                    <FaUser />
-                    Login
-                  </button>
+                  <>
+                    <Link to="/log-in" state={{ background: location }}>
+                      <FaUser />
+                      Login
+                    </Link>
+                  </>
                 ) : (
+                  // <button
+                  //   className="flex sm:flex-col items-center gap-2 text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
+                  //   onClick={showLogin}
+                  // >
+                  //   <FaUser />
+                  //   Login
+                  // </button>
                   <div>Welcome</div>
                 )}
                 {/* Profile dropdown */}
                 {!isAuthenticated ? (
-                  <button
-                    className="flex sm:flex-col gap-2 items-center text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
-                    onClick={showSignUp}
-                  >
-                    <FaUserPlus />
+                  <Link to="/register" state={{ background: location }}>
+                    <FaUser />
                     Register
-                  </button>
+                  </Link>
                 ) : (
                   <Menu as="div" className="relative ml-3">
                     <div>
@@ -183,3 +188,16 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// import React from "react";
+
+// const Navbar = () => {
+//   const location = useLocation();
+//   return (
+//     <Link to="/modal" state={{ background: location }}>
+//       Login
+//     </Link>
+//   );
+// };
+
+// export default Navbar;

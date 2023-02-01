@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { MdCancel } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axios";
 import Validation from "./Validation";
 import { useModal } from "../modals/ModalProvider";
 const LogInForm = ({ login, hideLogin }) => {
+  const navigate = useNavigate();
   const { closeModal } = useModal();
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
@@ -43,92 +44,93 @@ const LogInForm = ({ login, hideLogin }) => {
     }
   };
   return (
-    <>
-      {login && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-md flex flex-col items-center justify-center">
-          <div className="bg-white flex flex-col justify-center px-6 lg:px-8 py-5 border rounded-sm text-2xl">
-            <div className="flex w-full items-center justify-between sm:mx-auto sm:w-full sm:max-w-md">
-              <h2 className="lg: mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Log In
-              </h2>
-              <button onClick={() => hideLogin()}>
-                <MdCancel className="text-black text-4xl" />
+    <div className="modal-overlay">
+      <div className="bg-white flex flex-col justify-center px-6 lg:px-8 py-5 border rounded-sm text-2xl">
+        <div className="flex w-full items-center justify-between sm:mx-auto sm:w-full sm:max-w-md">
+          <h2 className="lg: mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Log In
+          </h2>
+          <button
+            onClick={() => {
+              console.log("Closing the form");
+              navigate(-1);
+            }}
+          >
+            <MdCancel className="text-black text-4xl" />
+          </button>
+        </div>
+
+        <div className="mt-8  w-full sm:mx-auto sm:w-full sm:max-w-md">
+          <form
+            className="mb-0 space-y-6"
+            action="login"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
+            <div className="mt-1">
+              <label className="text-2xl" htmlFor="surname">
+                Email
+              </label>
+              <input
+                id="email"
+                name="surname"
+                placeholder="Enter first name"
+                type="text"
+                // autoComplete="email"
+                className="w-full border border-light-grey rounded-sm text-2xl shadow-sm px-3 py-0.5 
+            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 placeholder:capitalize"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+            {errors.email && (
+              <p className="text-red-600 text-xs">*{errors.email}</p>
+            )}
+
+            <div className="mt-1">
+              <label className="text-2xl" htmlFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                placeholder="Password"
+                type="password"
+                // autoComplete="new-password"
+                className="w-full border border-light-grey rounded-sm text-2xl shadow-sm px-3 py-0.5 
+            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            {errors.password && (
+              <p className="text-red-600 text-xs">*{errors.password}</p>
+            )}
+
+            <div>
+              <button
+                type="submit"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-silver focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Log in
               </button>
             </div>
+          </form>
 
-            <div className="mt-8  w-full sm:mx-auto sm:w-full sm:max-w-md">
-              <form
-                className="mb-0 space-y-6"
-                action="login"
-                method="POST"
-                onSubmit={handleSubmit}
-              >
-                <div className="mt-1">
-                  <label className="text-2xl" htmlFor="surname">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="surname"
-                    placeholder="Enter first name"
-                    type="text"
-                    // autoComplete="email"
-                    className="w-full border border-light-grey rounded-sm text-2xl shadow-sm px-3 py-0.5 
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 placeholder:capitalize"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </div>
-                {errors.email && (
-                  <p className="text-red-600 text-xs">*{errors.email}</p>
-                )}
-
-                <div className="mt-1">
-                  <label className="text-2xl" htmlFor="password">
-                    Password
-                  </label>
-                  <input
-                    id="password"
-                    name="password"
-                    placeholder="Password"
-                    type="password"
-                    // autoComplete="new-password"
-                    className="w-full border border-light-grey rounded-sm text-2xl shadow-sm px-3 py-0.5 
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-
-                {errors.password && (
-                  <p className="text-red-600 text-xs">*{errors.password}</p>
-                )}
-
-                <div>
-                  <button
-                    type="submit"
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-silver focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Log in
-                  </button>
-                </div>
-              </form>
-
-              <p className="text-red-600">{message}</p>
-            </div>
-            <p className="mt-2 text-center text-sm text-gray-600 max-w">
-              Not registered?
-              <Link
-                to={"/register"}
-                className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              >
-                Sign up
-              </Link>
-            </p>
-          </div>
+          <p className="text-red-600">{message}</p>
         </div>
-      )}
-    </>
+        <p className="mt-2 text-center text-sm text-gray-600 max-w">
+          Not registered?
+          <Link
+            to={"/register"}
+            className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            Sign up
+          </Link>
+        </p>
+      </div>
+    </div>
   );
 };
 

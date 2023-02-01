@@ -28,6 +28,7 @@ import {
   ResourcesForm,
   UnitForm,
   RequireAuth,
+  LogInForm,
 } from "./components";
 import { ModalProvider } from "./components/modals";
 import Users from "./pages/UserPage";
@@ -35,7 +36,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import IdleTimer from "./Authentication/IdleTimer";
 import Forbidden from "./pages/403";
 import {
-  LogInForm,
   StudentRegistrationForm,
   TutorRegistrationForm,
 } from "./components/Credentials";
@@ -140,7 +140,9 @@ function App() {
 
         {background && (
           <Routes>
-            <Route path="draft-page/modal" element={<ModalRenewed />} />
+            <Route path="/modal" element={<ModalRenewed />} />
+            <Route path="/log-in" element={<LogInForm />} />
+            <Route path="/register" element={<TutorRegistrationForm />} />
           </Routes>
         )}
         {/* </IdleTimer> */}

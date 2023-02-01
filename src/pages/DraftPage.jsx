@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate, Outlet, useLocation, Link } from "react-router-dom";
 const DraftPage = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   return (
     <div className="w-full h-full bg-green-500">
       {/* Appends an object to the global state which is readable by the parent app component which manages our route. */}
