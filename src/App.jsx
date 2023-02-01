@@ -93,7 +93,7 @@ function App() {
             </Route>
           </Route>
           {/* Admin Protected routes */}
-          {/* <Route element={<RequireAuth allowedRoles={[2002]} />}>
+          <Route element={<RequireAuth allowedRoles={[2002]} />}>
             <Route exact path="/admin" element={<AdminLayout />}>
               <Route exact path="users" element={<Users />} />
               <Route exact path="dashboard" element={<AdminDashboard />} />
@@ -123,9 +123,9 @@ function App() {
                 element={<CoursesAdminPage />}
               ></Route>
             </Route>
-          </Route> */}
+          </Route>
           {/* Tutor Protected Routes */}
-          {/* <Route element={<RequireAuth allowedRoles={[2001]} />}>
+          <Route element={<RequireAuth allowedRoles={[2001]} />}>
             <Route exact path="/tutor" element={<TutorLayoutPage />}>
               <Route exact path="dashboard" element={<TutorPage />} />
               <Route exact path="units" element={<TutorUnitsPage />} />
@@ -136,7 +136,7 @@ function App() {
           </Route>
           <Route element={<RequireAuth allowedRoles={[2001]} />}>
             <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
-          </Route> */}
+          </Route>
         </Routes>
 
         {/* Whenever there is a background , this routes will kick in. */}
@@ -144,92 +144,8 @@ function App() {
 
         {background && (
           <Routes>
-            <Route path="/modal" element={<ModalRenewed />} />
             <Route path="/log-in" element={<LogInForm />} />
             <Route path="/register" element={<RegistrationForm />} />
-
-            <Route element={<RequireAuth allowedRoles={[2000, 2001, 2002]} />}>
-              <Route path="/" element={<UsersLayout />}>
-                <Route exact path="/" element={<HomePage />}></Route>
-                <Route exact path="pricing" element={<PricingPage />}></Route>
-                <Route exact path="*" element={<NotFound />}></Route>
-                <Route path="/log-in" element={<LogInForm />} />
-                <Route path="draft-page" element={<DraftPage />}>
-                  <Route path="modal" element={<ModalRenewed />}></Route>
-                </Route>
-                <Route
-                  path="register"
-                  element={<StudentRegistrationForm />}
-                ></Route>
-                <Route exact path="/units" element={<ChapterPage />}></Route>
-                <Route exact path="/unit" element={<UnitPage />}></Route>
-                <Route
-                  exact
-                  path="/unit/:unitId"
-                  element={<UnitPageDynamic />}
-                ></Route>
-
-                <Route exact path="/courses" element={<UnitsPage />}></Route>
-                <Route
-                  exact
-                  path="/courses/:courseId"
-                  element={<UnitsPageDynamic />}
-                ></Route>
-              </Route>
-            </Route>
-
-            {/* Tutor Protected Routes */}
-            <Route element={<RequireAuth allowedRoles={[2001]} />}>
-              <Route exact path="/tutor" element={<TutorLayoutPage />}>
-                <Route exact path="dashboard" element={<TutorPage />} />
-                <Route exact path="units" element={<TutorUnitsPage />} />
-                <Route exact path="chapter" element={<ChapterForm />} />
-                <Route exact path="lesson" element={<LessonForm />} />
-                <Route exact path="resources" element={<ResourcesForm />} />
-              </Route>
-            </Route>
-
-            <Route element={<RequireAuth allowedRoles={[2001]} />}>
-              <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
-            </Route>
-
-            {/* ADMIN PROTECTED ROUTES */}
-            <Route element={<RequireAuth allowedRoles={[2002]} />}>
-              <Route exact path="/admin" element={<AdminLayout />}>
-                <Route exact path="users" element={<Users />} />
-                <Route exact path="dashboard" element={<AdminDashboard />} />
-                <Route exact path="forbidden" element={<Forbidden />} />
-                <Route exact path="course-form" element={<CourseForm />} />
-                <Route exact path="unit-form" element={<UnitForm />} />
-                <Route exact path="admins" element={<AdminSection />} />
-
-                <Route
-                  exact
-                  path="tutor-reg"
-                  element={<TutorRegistrationForm />}
-                />
-                <Route
-                  exact
-                  path="dashboard"
-                  element={<AdminDashboard />}
-                ></Route>
-                <Route
-                  exact
-                  path="students"
-                  element={<StudentsPageAdmin />}
-                ></Route>
-                <Route
-                  exact
-                  path="tutors"
-                  element={<TutorsPageAdmin />}
-                ></Route>
-                <Route
-                  exact
-                  path="courses"
-                  element={<CoursesAdminPage />}
-                ></Route>
-              </Route>
-            </Route>
           </Routes>
         )}
         {/* </IdleTimer> */}
