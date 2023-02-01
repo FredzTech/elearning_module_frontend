@@ -61,9 +61,7 @@ function App() {
         {/* <IdleTimer> */}
         <Routes location={background || location}>
           {/* Student Protected Routes */}
-
           <Route exact path="forbidden" element={<Forbidden />} />
-
           <Route element={<RequireAuth allowedRoles={[2000, 2001, 2002]} />}>
             <Route path="/" element={<UsersLayout />}>
               <Route exact path="/" element={<HomePage />}></Route>
@@ -94,9 +92,8 @@ function App() {
               ></Route>
             </Route>
           </Route>
-
           {/* Admin Protected routes */}
-          <Route element={<RequireAuth allowedRoles={[2002]} />}>
+          {/* <Route element={<RequireAuth allowedRoles={[2002]} />}>
             <Route exact path="/admin" element={<AdminLayout />}>
               <Route exact path="users" element={<Users />} />
               <Route exact path="dashboard" element={<AdminDashboard />} />
@@ -126,10 +123,9 @@ function App() {
                 element={<CoursesAdminPage />}
               ></Route>
             </Route>
-          </Route>
-
+          </Route> */}
           {/* Tutor Protected Routes */}
-          <Route element={<RequireAuth allowedRoles={[2001]} />}>
+          {/* <Route element={<RequireAuth allowedRoles={[2001]} />}>
             <Route exact path="/tutor" element={<TutorLayoutPage />}>
               <Route exact path="dashboard" element={<TutorPage />} />
               <Route exact path="units" element={<TutorUnitsPage />} />
@@ -138,13 +134,13 @@ function App() {
               <Route exact path="resources" element={<ResourcesForm />} />
             </Route>
           </Route>
-
           <Route element={<RequireAuth allowedRoles={[2001]} />}>
             <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
-          </Route>
+          </Route> */}
         </Routes>
 
         {/* Whenever there is a background , this routes will kick in. */}
+        {/* The background is set pale kwa navbar */}
 
         {background && (
           <Routes>
