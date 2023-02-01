@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { MdCancel } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "../../axios";
 import Validation from "./Validation";
-import { useModal } from "../modals/ModalProvider";
-const LogInForm = ({ login, hideLogin }) => {
+const LogInForm = () => {
   const navigate = useNavigate();
-  const { closeModal } = useModal();
+  const location = useLocation();
+  const from = location.state?.background?.pathname || "/";
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
   //  validating credentials
@@ -21,23 +21,26 @@ const LogInForm = ({ login, hideLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors(Validation(firstName, password));
+    // try {
+    //   const user = { firstName, password };
+    //   const { data, status } = await axios.post("/auth/login", user);
+
+    //   console.log(data, status);
+
+    //   if (data.status == "ok") {
+    //     window.localStorage.setItem("token", data.data);
+
+    //     setMessage("Logging...");
+    //     const timeout = setTimeout(() => {
+    //       window.location.reload();
+    //       closeModal();
+    //     }, 3000);
+    //   } else {
+    //     setMessage(data.error);
+    //   }
+    // } catch (err) {
     try {
-      const user = { firstName, password };
-      const { data, status } = await axios.post("/auth/login", user);
-
-      console.log(data, status);
-
-      if (data.status == "ok") {
-        window.localStorage.setItem("token", data.data);
-
-        setMessage("Logging...");
-        const timeout = setTimeout(() => {
-          window.location.reload();
-          closeModal();
-        }, 3000);
-      } else {
-        setMessage(data.error);
-      }
+      navigate(from);
     } catch (err) {
       setMessage(err);
       console.log(err);

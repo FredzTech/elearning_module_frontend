@@ -25,25 +25,13 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Navbar = () => {
+  // "Navbar keeping track of our location in real time.THis is the value we inject into state as an object with background prop when we navigate elsewhere";
+
   const location = useLocation();
+  console.log(`Background location ${JSON.stringify(location)}`);
   const userData = useContext(UserdataContext);
   const isAuthenticated = useContext(UserContext);
   const logout = useContext(LogoutContext);
-  const [login, setLogin] = useState();
-  const [signUp, setSignUp] = useState();
-
-  const showLogin = () => {
-    setLogin(true);
-  };
-  const hideLogin = () => {
-    setLogin(false);
-  };
-  const showSignUp = () => {
-    setSignUp(true);
-  };
-  const hideSignUp = () => {
-    setSignUp(false);
-  };
 
   return (
     <Disclosure as="nav" className="bg-white text-black ">
@@ -89,11 +77,6 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              {/* <StudentRegistrationForm
-                hideSignUp={hideSignUp}
-                signUp={signUp}
-              /> */}
-
               <div className="absolute float-right  inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {!isAuthenticated ? (
                   <>
@@ -103,13 +86,6 @@ const Navbar = () => {
                     </Link>
                   </>
                 ) : (
-                  // <button
-                  //   className="flex sm:flex-col items-center gap-2 text-black text-1xl p-2 rounded-lg hover:bg-black hover:text-white"
-                  //   onClick={showLogin}
-                  // >
-                  //   <FaUser />
-                  //   Login
-                  // </button>
                   <div>Welcome</div>
                 )}
                 {/* Profile dropdown */}
@@ -188,16 +164,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-// import React from "react";
-
-// const Navbar = () => {
-//   const location = useLocation();
-//   return (
-//     <Link to="/modal" state={{ background: location }}>
-//       Login
-//     </Link>
-//   );
-// };
-
-// export default Navbar;

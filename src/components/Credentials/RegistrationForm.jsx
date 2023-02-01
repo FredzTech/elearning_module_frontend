@@ -1,168 +1,235 @@
-import React,{useState} from "react";
-import { Link } from "react-router-dom";
-import PasswordStrengthBar from 'react-password-strength-bar' 
-import Validation from "./Validation";
-import { ModalContext } from "../modals/ModalProvider";
-import { useContext } from "react";
-
+import React, { useState } from "react";
+import { CustomNav, Button } from "../CustomForm";
+import AlertBox from "../AlertBox";
+import { Modal } from "../modals";
+import { MdCancel } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import axios from "../../axios";
+import PasswordStrengthBar from "react-password-strength-bar";
 const RegistrationForm = () => {
-  const {closeModal }= useContext(ModalContext)
+  const navigate = useNavigate();
+  // DECLARATION OF OUR STATES
+  //==========================
+  const [fName, setFName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [contact, setContact] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cPassword, setCPassword] = useState("");
+  // For showing or hiding the alertbox
+  const [responseTracker, setResponseTracker] = useState(false);
+  // For changing color of alertbox.
+  const [statusTracker, setStatusTracker] = useState(false);
+  const [response, setResponse] = useState("");
 
-   const [name, setName] = useState('');
-   const [phone, setPhone] = useState('');
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
-   const [confirmpassword, setConfirmPassword] = useState('');
-   const [doNotMatch, setDoNotMatch] = useState();
-   const [doNotMatchResponse, setDoNotMatchResponse] = useState('');
-   const [role, setRole] = useState('Student');
-   const [errors , setErrors] = useState('');
-   const [message, setMessage] = useState('');
-   const[response,setResponse] = useState()
-  
-   //check the users password
-   const handleChange = (event)=>{
-    setPassword(event.target.value);
-   }
-   const handleConfirmPassword = (event)=>{
-    setConfirmPassword(event.target.value);
-    if(confirmpassword != password){
-      setDoNotMatch(true)
-      setDoNotMatchResponse('password does not match')
-    }else{
-      setDoNotMatch(false)
-      setDoNotMatchResponse('confirmed')
-    }
-    
-   }
-
-
-   const handleSubmit=(e)=>{
+  const registerTutor = async (e) => {
     e.preventDefault();
-    const user = {name,role,email,password};
-    setErrors(Validation(email,password));
-    try {
-      
-        fetch("http://localhost:5000/register",{
-      method: 'POST',
-      headers:{
-        "Content-type":"application/json",
-        Accept: "application/json",
-          "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(user)
-    })
-    .then((res)=> res.json())
-      .then((data)=> {
-        
-        if (data.status === "ok") {
-           console.log("Registered Successfully");
-           window.localStorage.setItem("token",data.data);
-           closeModal();
-        }else if(data.status === 400){
-          setResponse(data.error)
-        }
-      }).then(()=>{setMessage("Registered Successfully");});
-    } catch (error) {
-      console.log(error)
+
+    if (password != cPassword) {
+      setStatusTracker(false);
+      setResponse(`Passwords Entered do not match.`);
+      setResponseTracker(true);
+      setTimeout(() => {
+        setResponseTracker(false);
+      }, 4500);
+    } else {
+      let tutorData = {
+        firstName: fName,
+        surname,
+        password,
+        contact: `254${contact}`,
+        email,
+      };
+
+      try {
+        console.log(tutorData);
+        let { data } = await axios.post("/auth/register-tutor", tutorData);
+        // Clearing out the inputs
+        console.log(JSON.stringify(data));
+        setResponse("Tutor Registered Successfully");
+        setStatusTracker(true);
+        setResponseTracker(true);
+        setFName("");
+        setSurname("");
+        setEmail("");
+        setContact("");
+        setPassword("");
+        setCPassword("");
+
+        setTimeout(() => {
+          setResponseTracker(false);
+        }, 4500);
+      } catch (error) {
+        setStatusTracker(false);
+        console.log(error.response.data.message.message);
+        setResponse(
+          `[${error.response.data.message.name}] ${error.response.data.message.message}`
+        );
+        setResponseTracker(true);
+        setTimeout(() => {
+          setResponseTracker(false);
+        }, 4500);
+      }
     }
-  
-   }
+  };
+
   return (
-  <div>
-  <div className="max-h-screen bg-gray-100 flex flex-col justify-center  px-6 lg:px-8 py-6">
-  {/* <button className="text-center ml-96"><img src={Cancel}onClick={()=>closeModal()} alt="cancel" height={20} width={20}/></button> */}
-  <div className="sm:mx-auto sm:w-full sm:max-w-md">
-    
-    <h2 className="lg: mt-6 text-center text-3xl font-extrabold text-gray-900">Create an account</h2>
-    
-  </div>
- 
-  <div className="mt-8  w-full sm:mx-auto sm:w-full sm:max-w-md">
-    <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
-      <form className="mb-0 space-y-6" action="register" method="POST" onSubmit={handleSubmit}>
-       {response && <p className="text-red">weak password</p> }
-          <div className="mt-1">
-            <label htmlFor="name">Full Name</label>
-            <input id="name" name="name" placeholder="Enter your full name" type="text" autoComplete="name" required 
-            className="w-full border border-light-grey rounded-lg shadow-sm px-3 py-0.5 
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" 
-            value={name}
-            onChange={(e)=> setName(e.target.value)}
-            />
-           
-          </div>
-          <div className="mt-1">
-            <label htmlFor="email">Email</label>
-            <input id="email" name="email" placeholder="Example: name@gmail.com" type="email" autoComplete="email" required 
-            className="w-full border border-light-grey rounded-lg shadow-sm px-3 py-0.5 
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" 
-            value={email}
-            onChange={(e)=> setEmail(e.target.value)}
-            />
-            {errors.email && <p className="text-red-600 text-xs">*{errors.email}</p> }
-          </div>
-
-          <div className="mt-1">
-            <label htmlFor="password">Password</label>
-            <input id="password" name="password" placeholder="Enter password" type="password" autoComplete="new-password" className="w-full border border-light-grey rounded-lg shadow-sm px-3 py-0.5 
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-            value={password}
-            onChange={handleChange}
-            />
-            <PasswordStrengthBar password={password} minLength={8} />
-            {errors.password ? <p className="text-red-600 text-xs">*{errors.password}</p> :<p className="text-xs">*Atleast 8 characters</p>}
-            
-          </div>
-          <div className="mt-1">
-            <label htmlFor="password">Confirm Password</label>
-            <input id="password" name="password" placeholder="Confirm password" type="password" autoComplete="confirm-password" className="w-full border border-light-grey rounded-lg shadow-sm px-3 py-0.5 
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-            value={confirmpassword}
-            onChange={handleConfirmPassword}
-            />
-            
-            {doNotMatch ? <p className="text-red-600 text-xs">*{doNotMatchResponse}</p> :<p className="text-xs text-green-100">{doNotMatchResponse}</p>}
-            
-          </div>
-          
-
-         <div>
-         <label htmlFor="user-role" className="block text-sm font-medium text-gray-700">Role</label>
-          <div className="mt-1">
-            
-            <select name="user-role" id="user-role" className="w-full border border-light-grey rounded-lg shadow-sm px-3 py-0.5 
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-            value={role}
-            onChange={(e)=> setRole(e.target.value)}
-            >
-              <option value="Student">Student</option>
-              <option value="Tutor">Tutor</option>
-              <option value="Admin">Admin</option>
-             
-            </select>
-          </div>
-         </div>
-        <div>
-          <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-silver focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign up</button>
+    <div className="modal-overlay">
+      <div className="flex flex-col w-[400px] phone:w-[320px]  phone:border-none bg-white ">
+        <div className="w-full text-center font-normal text-black uppercase  px-2 py-2 rounded-t-md flex items-center justify-between text-xl">
+          <p className="ml-5"> registration form </p>
+          <button className="mr-1" onClick={() => navigate(-1)}>
+            <MdCancel className="text-black text-3xl" />
+          </button>
         </div>
-      </form>
-    </div>
-    <p className=" bg-primary  border rounded ">{message}</p>
-    
+        {/* PROPOSED HEADER. */}
+        {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
+        <form className="flex-col  px-5 phone:px-2 w-full phone:border-2  phone:rounded-b-md">
+          {/* NAMES SECTION */}
+          <div className="flex flex-col justify-around  my-2">
+            <label htmlFor="contact" className="mb-1">
+              Names
+            </label>
+            <div className="flex flex-col gap-2">
+              <input
+                className="w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                id="fName"
+                type="Text"
+                placeholder="First Name"
+                value={fName}
+                onChange={(e) => {
+                  setFName(e.target.value);
+                }}
+                required
+              ></input>
 
-  </div>
-  <p className="mt-2 text-center text-sm text-gray-600 max-w">
-      Already registered?
-      
-      <Link to={"/login"} 
-        className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >Sign In
-      </Link>
-    </p>
-</div>
-  </div>
-  )
+              <input
+                className="w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                id="lName"
+                type="Text"
+                placeholder="Last Name"
+                value={surname}
+                onChange={(e) => {
+                  setSurname(e.target.value);
+                }}
+                required
+              ></input>
+            </div>
+          </div>
+
+          {/* CONTACT SECTION */}
+          <div className="flex flex-col   my-5">
+            <div className=" flex flex-col w-full  phone:my-1  phone:flex-col  ">
+              <label htmlFor="contact" className="mb-1 mr-3">
+                Contact
+              </label>
+              <div className="flex phone:w-full phone:">
+                <input
+                  className="px-4  w-1/4 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  type="Text"
+                  required
+                  value="+254"
+                  readOnly
+                />
+                <input
+                  className="px-4 w-3/4 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  id="contact"
+                  type="Number"
+                  placeholder="Safaricom No."
+                  value={contact}
+                  onChange={(e) => {
+                    setContact(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+            </div>
+            <div className=" w-full  h-full phone:my-1  my-2  flex flex-col ">
+              <label
+                htmlFor="email"
+                className="phone:pl-0 pl-3 w-1/5 mr-2 h-full flex  py-1"
+              >
+                Email
+              </label>
+              <input
+                className="phone:w-full phone:my-1 px-4  w- bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                id="email"
+                type="email"
+                placeholder="E-mail Address"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                required
+              />
+            </div>
+          </div>
+
+          {/* PASSWORD SECTION */}
+
+          <div className="flex flex-col  justify-start  my-2 w-full ">
+            <label
+              htmlFor="password"
+              className="pl-3 w-24 mr-2 flex  phone:justify-start phone:pl-0 py-1 phone:w-full"
+            >
+              Password
+            </label>
+            <div className="flex flex-col w-[300px] sm:w-full">
+              <div>
+                <input
+                  className=" phone:mx-0 phone:w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  id="password"
+                  type="password"
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  required
+                />
+
+                <PasswordStrengthBar
+                  password={password}
+                  minLength={8}
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <input
+                  className="phone:w-full phone:mx-0 phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  id="CPassword"
+                  type="password"
+                  placeholder="Confirm Password"
+                  value={cPassword}
+                  onChange={(e) => {
+                    setCPassword(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          {/* THE ALERT BOX */}
+          <AlertBox
+            responseTracker={responseTracker}
+            statusTracker={statusTracker}
+            response={response}
+          />
+
+          <div className="flex flex-col justify-center items-center w-full mt-8 ">
+            <Button
+              type="button"
+              text="register"
+              onClick={(e) => {
+                registerTutor(e);
+              }}
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default RegistrationForm;

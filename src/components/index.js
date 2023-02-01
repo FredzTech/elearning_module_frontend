@@ -47,6 +47,7 @@ import {
   StudentRegistrationForm,
   TutorRegistrationForm,
   AdminRegistrationForm,
+  RegistrationForm,
 } from "./Credentials";
 
 import Footer from "./Footer";
@@ -123,4 +124,5 @@ export {
   Accordion,
   AdminSectionTable,
   AdminRegistrationForm,
+  RegistrationForm,
 };
