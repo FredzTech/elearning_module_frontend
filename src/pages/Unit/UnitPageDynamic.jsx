@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Outlet } from "react-router-dom";
 import { Accordion } from "../../components";
+import { unitData as rawData } from "../../components/SideNav/AccordionData";
 import axios from "../../axios";
 const UnitPageDynamic = () => {
   const { unitId } = useParams();
-  const [unitData, setUnitData] = useState({});
+  const [unitData, setUnitData] = useState(rawData);
+
+  console.log(unitData);
   const fetchUnitData = async (unitId) => {
     try {
       const { data } = await axios.get(`/unit/${unitId}`);
@@ -17,7 +20,7 @@ const UnitPageDynamic = () => {
   };
 
   useEffect(() => {
-    fetchUnitData(unitId);
+    // fetchUnitData(unitId);
   }, []);
   return (
     <main className="flex flex-row w-full h-full overflow-y-scroll">

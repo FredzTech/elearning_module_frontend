@@ -39,15 +39,22 @@ const SinglePage = ({ pdf }) => {
       >
         <Page pageNumber={pageNumber} />
       </Document>
-      <div>
-        <p>
-          Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
-        </p>
-        <button type="button" disabled={pageNumber <= 1} onClick={previousPage}>
-          Previous
-        </button>
+      <div className="debug flex flex-row items-center mx-auto">
         <button
           type="button"
+          className="button w-32"
+          disabled={pageNumber <= 1}
+          onClick={previousPage}
+        >
+          Previous
+        </button>
+        <p className=" mx-4">
+          Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
+        </p>
+
+        <button
+          type="button"
+          className="button w-32"
           disabled={pageNumber >= numPages}
           onClick={nextPage}
         >

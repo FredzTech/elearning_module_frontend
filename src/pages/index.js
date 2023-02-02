@@ -1,12 +1,7 @@
 import HomePage from "./HomePage";
 import UsersLayout from "./UsersPage/UsersLayout";
 import PricingPage from "./PricingPage";
-
 import CoursePage from "./CoursePage";
-import UnitPage from "./UnitPage";
-import ChapterPage from "./ChapterPage";
-
-import UnitsPage from "./UnitsPage";
 import TutorPage from "./Tutor/TutorPage";
 import TutorUnitPage from "./Tutor/TutorUnitPage";
 import TutorUnitsPage from "./Tutor/TutorUnitsPage";
@@ -23,14 +18,10 @@ import UnitsPageDynamic from "./Unit/UnitsPageDynamic";
 import UnitPageDynamic from "./Unit/UnitPageDynamic";
 import AdminSection from "./Admin/AdminSection";
 import DraftPage from "./DraftPage";
-import ModalRenewed from "./ModalRenewed";
 export {
   HomePage,
   PricingPage,
   CoursePage,
-  UnitPage,
-  ChapterPage,
-  UnitsPage,
   TutorPage,
   TutorUnitsPage,
   TutorUnitPage,
@@ -48,5 +39,4 @@ export {
   UnitPageDynamic,
   AdminSection,
   DraftPage,
-  ModalRenewed,
 };

@@ -4,6 +4,9 @@ GET http://localhost:4000/chapter/all-chapters
 ### CHAPTER ROUTE
 GET http://localhost:4000/chapter/63c6dcb384ed77a507aabe8a
 
+### CHAPTERS ROUTE
+GET http://localhost:4000/unit/63c6888fbe060cd90882d38c
+
 
 ### CHAPTERS ROUTE
 GET https://kapesha-warmup.herokuapp.com/unit/63c699d8ba70a7293a3fadca

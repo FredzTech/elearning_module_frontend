@@ -1,10 +1,7 @@
 import "./App.css";
 import {
   HomePage,
-  UnitPage,
   PricingPage,
-  ChapterPage,
-  UnitsPage,
   TutorPage,
   TutorUnitPage,
   TutorUnitsPage,
@@ -19,7 +16,6 @@ import {
   UnitPageDynamic,
   AdminSection,
   DraftPage,
-  ModalRenewed,
 } from "./pages";
 import {
   CourseForm,
@@ -46,9 +42,9 @@ import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 function App() {
   // App.jsx always rerenders.
   const location = useLocation();
-  console.log(`App Location ${JSON.stringify(location)}`);
+  // console.log(`App Location ${JSON.stringify(location)}`);
   const background = location.state && location.state.background; //If the first param is true , then the second param is assigned.
-  console.log(`Background will be : ${JSON.stringify(background)}`);
+  // console.log(`Background will be : ${JSON.stringify(background)}`);
   // FEW OBSERVATIONS.
   //===================
   //Always returns null if at all the redirect is not caused by a link somewhere with a state appendition.
@@ -73,39 +69,27 @@ function App() {
 
           {/* Student Protected Routes */}
           <Route exact path="forbidden" element={<Forbidden />} />
+          {/* Should trigger a redirect to the dashboard. */}
           <Route element={<RequireAuth allowedRoles={[2000, 2001, 2002]} />}>
             <Route element={<UsersLayout />}>
               {/* GENERAL ROUTES */}
               <Route exact path="/" element={<HomePage />}></Route>
               <Route exact path="pricing" element={<PricingPage />}></Route>
               <Route exact path="*" element={<NotFound />}></Route>
-
-              {/* THERE IS NO WAY WE CAN GO TO THE LOGIN / REGISTER PAGES DIRECTLY SO WE CAN CANCEL THEM OUT. */}
-              {/* <Route path="log-in" element={<LogInForm />} />
-              <Route
-                path="register"
-                element={<StudentRegistrationForm />}
-              ></Route> */}
-
-              {/* OPTION B IF THE SUMMARIZED VERSION OF THE CHAPTERS AND LESSONS PAGE IN A UNIT FAILS */}
-              {/* <Route exact path="/units" element={<ChapterPage />}></Route> */}
-              {/* <Route exact path="/unit" element={<UnitPage />}></Route> */}
-
               {/* COURSE VIEW [UNITS] */}
               <Route
                 exact
                 path="/course/:courseId"
                 element={<UnitsPageDynamic />}
               ></Route>
-            </Route>
-
-            {/* UNIT VIEW. [CHAPTERS & LESSONS] */}
-            <Route exact path="/unit/:unitId" element={<UnitPageDynamic />}>
-              <Route
-                exact
-                path=":lessonId"
-                element={<ContentSection />}
-              ></Route>
+              {/* UNIT VIEW. [CHAPTERS & LESSONS] */}
+              <Route exact path="/unit/:unitId" element={<UnitPageDynamic />}>
+                <Route
+                  exact
+                  path=":lessonId"
+                  element={<ContentSection />}
+                ></Route>
+              </Route>
             </Route>
           </Route>
 
@@ -147,8 +131,10 @@ function App() {
               <Route exact path="resources" element={<ResourcesForm />} />
             </Route>
           </Route>
-          <Route element={<RequireAuth allowedRoles={[2001]} />}>
-            <Route exact path="/tutor/unit" element={<TutorUnitPage />} />
+          <Route element={<RequireAuth allowedRoles={[2001, 2000, 2002]} />}>
+            <Route exact path="/tutor/unit" element={<TutorUnitPage />}>
+              <Route exact path=":lessonId" element={<ContentSection />} />
+            </Route>
           </Route>
         </Routes>
 
@@ -159,6 +145,12 @@ function App() {
           <Routes>
             <Route path="/log-in" element={<LogInForm />} />
             <Route path="/register" element={<RegistrationForm />} />
+            <Route
+              exact
+              path="/tutor/unit/new-chapter"
+              element={<ChapterForm />}
+            />
+            <Route exact path="/tutor/new-lesson" element={<LessonForm />} />
           </Routes>
         )}
         {/* </IdleTimer> */}
