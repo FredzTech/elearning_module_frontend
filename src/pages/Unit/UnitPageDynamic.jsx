@@ -1,25 +1,16 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import {
-  UnitNav,
-  VideoComponent,
-  QuillEditorStudent,
-  Accordion,
-} from "../../components";
-import "react-quill/dist/quill.snow.css";
+import React, { useEffect, useState } from "react";
+import { useParams, Outlet } from "react-router-dom";
+import { Accordion } from "../../components";
 import axios from "../../axios";
-import sampleVideo from "../../assets/sample-video.mp4";
-import posterImage from "../../assets/video-player.png";
-
 const UnitPageDynamic = () => {
   const { unitId } = useParams();
-
+  const [unitData, setUnitData] = useState({});
   const fetchUnitData = async (unitId) => {
     try {
-      console.log(unitId);
       const { data } = await axios.get(`/unit/${unitId}`);
       console.log("Unit data for distribution inside accordion");
       console.log(data);
+      setUnitData(data);
     } catch (error) {
       console.log(error);
     }
@@ -34,16 +25,12 @@ const UnitPageDynamic = () => {
       {/* <SideNavNew /> */}
       <article className="h-full w-1/4  flex  flex-col rounded-lg ">
         {/* CHAPTER & LESSON DATA NEEDS TO TRICKLE DOWN FROM HERE. */}
-        <Accordion />
+        {/* <Accordion chapters={unitData.chapters} /> */}
+        {unitData && <Accordion unitData={unitData} />}
       </article>
+
       <article className="h-full overflow-y-scroll mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
-        <VideoComponent
-          poster={posterImage}
-          src={sampleVideo}
-          title="Introduction to Discrete Mathematics"
-        />
-        <UnitNav />
-        <QuillEditorStudent />
+        <Outlet />
       </article>
     </main>
   );

@@ -33,9 +33,9 @@ const LandingSection = () => {
     const fetchCoursesData = async () => {
       try {
         const { data: coursesData } = await axios.get("/course/all-courses");
-        console.log(coursesData);
         setCoursesData(coursesData);
       } catch (error) {
+        // There is need to handle the network error accordingly.
         console.error(error);
       }
     };
@@ -56,7 +56,7 @@ const LandingSection = () => {
             <li>Quizzes and even </li>
             <li>A chance to interact with qualified tutors</li>
           </ul>
-          <p> Enrol to get access to this and so much more.</p>
+          <p> Enroll to get access to this and so much more.</p>
         </div>
         <img
           src={HomeImage}
@@ -84,7 +84,7 @@ const LandingSection = () => {
                     {course.courseTitle}
                   </div>
                   <div className="flex items-center justify-center py-2 px-3 bg-gray-400">
-                    <Link to={`courses/${course._id}`}>
+                    <Link to={`course/${course._id}`}>
                       {/* <Link to={`courses`}> */}
                       <button className=" bg-gray-800 text-xs text-white px-2 py-1 font-semibold rounded uppercase hover:bg-gray-700">
                         View the course

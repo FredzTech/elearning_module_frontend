@@ -12,7 +12,6 @@ const LessonForm = ({ lessonForm, hideLessonForm }) => {
   //=========================
   const [chapters, setChapters] = useState([]);
   const [chapterName, setChapterName] = useState("");
-  const [lessonNumber, setLessonNumber] = useState("");
   const [lessonName, setLessonName] = useState("");
   const [lessonNotes, setLessonNotes] = useState();
   const [lessonType, setLessonType] = useState("");
@@ -38,7 +37,6 @@ const LessonForm = ({ lessonForm, hideLessonForm }) => {
   //==========================================
   async function createPostObject({
     chapterName,
-    lessonNumber,
     lessonName,
     lessonNotes,
     lessonType,
@@ -49,7 +47,6 @@ const LessonForm = ({ lessonForm, hideLessonForm }) => {
     //=========================================================
     const formData = new FormData();
     formData.append("chapterName", chapterName);
-    formData.append("lessonNumber", lessonNumber);
     formData.append("lessonName", lessonName);
     formData.append("lessonNotes", lessonNotes);
     formData.append("lessonType", lessonType);
@@ -153,17 +150,6 @@ const LessonForm = ({ lessonForm, hideLessonForm }) => {
                 </label>
                 <input
                   className="input-styling"
-                  id="lNumber"
-                  type="number"
-                  placeholder="Lesson Number"
-                  value={lessonNumber}
-                  onChange={(e) => {
-                    setLessonNumber(e.target.value);
-                  }}
-                  required
-                ></input>
-                <input
-                  className="input-styling"
                   id="lName"
                   type="Text"
                   placeholder="Lesson Name"
@@ -173,6 +159,26 @@ const LessonForm = ({ lessonForm, hideLessonForm }) => {
                   }}
                   required
                 ></input>
+              </div>
+              <div className="flex flex-col">
+                <label
+                  htmlFor="id"
+                  className="w-full block my-2 text-sm font-medium text-gray-900"
+                >
+                  File Type
+                </label>
+                <select
+                  value={lessonType}
+                  onChange={(e) => setLessonType(e.target.value)}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+                >
+                  <option selected className="text-grey">
+                    File type
+                  </option>
+                  <option value="pdf">PDF</option>
+                  <option value="pdf">AUDIO</option>
+                  <option value="pdf">VIDEO</option>
+                </select>
               </div>
 
               <div className="input-wrap ">
@@ -186,30 +192,6 @@ const LessonForm = ({ lessonForm, hideLessonForm }) => {
                   className="input-styling mt-2"
                 />
               </div>
-
-              {/* <div className="input-wrap">
-                <label htmlFor="id" className="w-full">
-                  Lecture Notes
-                </label>
-                <div className="mt-2 h-28">
-                  <ReactQuill
-                    readOnly={false}
-                    // readOnly={true}
-                    theme="snow"
-                    // theme="bubble"
-                    value={lessonNotes}
-                    onChange={setLessonNotes}
-                  />
-                </div>
-              </div> */}
-
-              {/* PREVIEWING THE CONTENT. */}
-              <h1>PREVIEW</h1>
-
-              <div
-                className="w-full debug"
-                dangerouslySetInnerHTML={{ __html: lessonNotes }}
-              ></div>
               {/* CTA BUTTONS */}
               <div className="cta-wrap">
                 {!submit ? (

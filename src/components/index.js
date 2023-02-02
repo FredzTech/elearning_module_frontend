@@ -6,13 +6,20 @@ import Accordion from "./SideNav/Accordion";
 // HOMEPAGE COMPONENTS
 
 // COURSE PAGE COMPONENTS
+
 import HomePageCard from "./HomePage/HomePageCard";
 import HomePageGrid from "./HomePage/HomePageGrid";
 import LandingSection from "./HomePage/LandingSection";
-import Chapter from "./CoursePage/Chapter";
-import Pointer from "./CoursePage/Pointer";
-import SubNav from "./CoursePage/SubNav";
-import CourseHeading from "./CoursePage/CourseHeading";
+
+import {
+  ContentSection,
+  Chapter,
+  CourseHeading,
+  Pointer,
+  SubNav,
+  SinglePage,
+  AudioPlayer,
+} from "./CoursePage";
 
 // UNIT PAGE COMPONENTS
 import {
@@ -125,4 +132,7 @@ export {
   AdminSectionTable,
   AdminRegistrationForm,
   RegistrationForm,
+  ContentSection,
+  SinglePage,
+  AudioPlayer,
 };

@@ -30,6 +30,7 @@ import {
   RequireAuth,
   LogInForm,
   RegistrationForm,
+  ContentSection,
 } from "./components";
 import { ModalProvider } from "./components/modals";
 import Users from "./pages/UserPage";
@@ -43,12 +44,19 @@ import {
 import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 
 function App() {
+  // App.jsx always rerenders.
   const location = useLocation();
-  console.log("Current Location");
-  console.log(location);
-  const background = location.state && location.state.background;
-  console.log("Final Decision");
-  console.log(background);
+  console.log(`App Location ${JSON.stringify(location)}`);
+  const background = location.state && location.state.background; //If the first param is true , then the second param is assigned.
+  console.log(`Background will be : ${JSON.stringify(background)}`);
+  // FEW OBSERVATIONS.
+  //===================
+  //Always returns null if at all the redirect is not caused by a link somewhere with a state appendition.
+  // It is worth to note that this is the guy that keeps track of our real time location accross rereders.
+  // It is always in check or similar to the navbar location.
+  // Only differs if a link somewhere decides to append some state.
+  // When do we append this state??
+
   // AUTHENTICATION ROUTES
   // {
   //   student:"2000",
@@ -59,44 +67,53 @@ function App() {
     <div className="flex w-screen h-screen ">
       <ModalProvider>
         {/* <IdleTimer> */}
+        {/* When there is a background object in the state upon render/re-render of the app component,we imperatively declare the route/component to show for the first pair of routes. */}
         <Routes location={background || location}>
+          {/* By setting it to the previous page, we hinder any updates hence it still renders the previous page. */}
+
           {/* Student Protected Routes */}
           <Route exact path="forbidden" element={<Forbidden />} />
           <Route element={<RequireAuth allowedRoles={[2000, 2001, 2002]} />}>
-            <Route path="/" element={<UsersLayout />}>
+            <Route element={<UsersLayout />}>
+              {/* GENERAL ROUTES */}
               <Route exact path="/" element={<HomePage />}></Route>
               <Route exact path="pricing" element={<PricingPage />}></Route>
               <Route exact path="*" element={<NotFound />}></Route>
-              <Route path="/log-in" element={<LogInForm />} />
-              <Route path="draft-page" element={<DraftPage />}>
-                <Route path="modal" element={<ModalRenewed />}></Route>
-              </Route>
+
+              {/* THERE IS NO WAY WE CAN GO TO THE LOGIN / REGISTER PAGES DIRECTLY SO WE CAN CANCEL THEM OUT. */}
+              {/* <Route path="log-in" element={<LogInForm />} />
               <Route
                 path="register"
                 element={<StudentRegistrationForm />}
-              ></Route>
+              ></Route> */}
 
-              <Route exact path="/units" element={<ChapterPage />}></Route>
-              <Route exact path="/unit" element={<UnitPage />}></Route>
+              {/* OPTION B IF THE SUMMARIZED VERSION OF THE CHAPTERS AND LESSONS PAGE IN A UNIT FAILS */}
+              {/* <Route exact path="/units" element={<ChapterPage />}></Route> */}
+              {/* <Route exact path="/unit" element={<UnitPage />}></Route> */}
+
+              {/* COURSE VIEW [UNITS] */}
               <Route
                 exact
-                path="/unit/:unitId"
-                element={<UnitPageDynamic />}
-              ></Route>
-
-              <Route exact path="/courses" element={<UnitsPage />}></Route>
-              <Route
-                exact
-                path="/courses/:courseId"
+                path="/course/:courseId"
                 element={<UnitsPageDynamic />}
               ></Route>
             </Route>
+
+            {/* UNIT VIEW. [CHAPTERS & LESSONS] */}
+            <Route exact path="/unit/:unitId" element={<UnitPageDynamic />}>
+              <Route
+                exact
+                path=":lessonId"
+                element={<ContentSection />}
+              ></Route>
+            </Route>
           </Route>
-          {/* Admin Protected routes */}
-          <Route element={<RequireAuth allowedRoles={[2002]} />}>
+
+          {/* ADMIN ROUTES */}
+          <Route element={<RequireAuth allowedRoles={[2002, 2000]} />}>
             <Route exact path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
               <Route exact path="users" element={<Users />} />
-              <Route exact path="dashboard" element={<AdminDashboard />} />
               <Route exact path="course-form" element={<CourseForm />} />
               <Route exact path="unit-form" element={<UnitForm />} />
               <Route exact path="admins" element={<AdminSection />} />
@@ -106,11 +123,6 @@ function App() {
                 path="tutor-reg"
                 element={<TutorRegistrationForm />}
               />
-              <Route
-                exact
-                path="dashboard"
-                element={<AdminDashboard />}
-              ></Route>
               <Route
                 exact
                 path="students"
@@ -124,10 +136,11 @@ function App() {
               ></Route>
             </Route>
           </Route>
+
           {/* Tutor Protected Routes */}
-          <Route element={<RequireAuth allowedRoles={[2001]} />}>
+          <Route element={<RequireAuth allowedRoles={[2001, 2002, 2000]} />}>
             <Route exact path="/tutor" element={<TutorLayoutPage />}>
-              <Route exact path="dashboard" element={<TutorPage />} />
+              <Route index element={<TutorPage />} />
               <Route exact path="units" element={<TutorUnitsPage />} />
               <Route exact path="chapter" element={<ChapterForm />} />
               <Route exact path="lesson" element={<LessonForm />} />

@@ -25,10 +25,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Navbar = () => {
-  // "Navbar keeping track of our location in real time.THis is the value we inject into state as an object with background prop when we navigate elsewhere";
-
+  // This is the value we inject into state as an object with background prop when we navigate elsewhere
+  // Similar everywhere it is called.
   const location = useLocation();
-  console.log(`Background location ${JSON.stringify(location)}`);
   const userData = useContext(UserdataContext);
   const isAuthenticated = useContext(UserContext);
   const logout = useContext(LogoutContext);
@@ -81,6 +80,7 @@ const Navbar = () => {
                 {!isAuthenticated ? (
                   <>
                     <Link to="/log-in" state={{ background: location }}>
+                      {/* This is where the magic happens where we assign state. */}
                       <FaUser />
                       Login
                     </Link>
