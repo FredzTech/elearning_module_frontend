@@ -3,48 +3,39 @@ import { MdCancel } from "react-icons/md";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "../../axios";
 import Validation from "./Validation";
+import { useAuth } from "../../context/AuthContext";
 const LogInForm = ({ currentLocation }) => {
+  const { auth, setAuth } = useAuth();
   // console.log("Log In Location " + JSON.stringify(currentLocation));
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state && location.state.from;
+  // const location = useLocation();
+  // console.log(location);
+  const from = (location.state && location.state?.from?.pathname) || "/";
+  console.log(from);
   const background = location.state?.background || "/";
+  const [message, setMessage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
-  //  validating credentials
-  //  const [valid, setIsValid] = useState("")
-
-  //initialize error message
-  const [errors, setErrors] = useState("");
-
-  //login message to check the user data.
-  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors(Validation(firstName, password));
-    // try {
-    //   const user = { firstName, password };
-    //   const { data, status } = await axios.post("/auth/login", user);
-
-    //   console.log(data, status);
-
-    //   if (data.status == "ok") {
-    //     window.localStorage.setItem("token", data.data);
-
-    //     setMessage("Logging...");
-    //     const timeout = setTimeout(() => {
-    //       window.location.reload();
-    //       closeModal();
-    //     }, 3000);
-    //   } else {
-    //     setMessage(data.error);
-    //   }
-    // } catch (err) {
     try {
-      navigate(from);
+      const user = { firstName, password };
+      const { data, status } = await axios.post("/auth/login", user);
+      console.log(data, status);
+      setAuth(data);
+
+      if (status == 200) {
+        // navigate(pathname, { replace: true });
+        navigate("/", { replace: true });
+      }
     } catch (err) {
-      setMessage(err);
+      console.log(err);
+      console.log(err.response); //Contains all our response data.
+      const { message } = err.response.data;
+      console.log(message);
+      setMessage(message);
+
       console.log(err);
     }
   };
@@ -88,9 +79,6 @@ const LogInForm = ({ currentLocation }) => {
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
-            {errors.email && (
-              <p className="text-red-600 text-xs">*{errors.email}</p>
-            )}
 
             <div className="mt-1">
               <label className="text-2xl" htmlFor="password">
@@ -108,10 +96,6 @@ const LogInForm = ({ currentLocation }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-
-            {errors.password && (
-              <p className="text-red-600 text-xs">*{errors.password}</p>
-            )}
 
             <div>
               <button

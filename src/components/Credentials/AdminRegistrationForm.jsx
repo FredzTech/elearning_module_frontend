@@ -41,37 +41,36 @@ const AdminRegistrationForm = () => {
       };
 
       try {
-        console.log(adminData);
-        let { data, status } = await axios.post(
+        const { status, data } = await axios.post(
           "/auth/register-admin",
           adminData
         );
-        // Clearing out the inputs
-        console.log(JSON.stringify(data));
-        setResponse("Tutor Registered Successfully");
-        setStatusTracker(true);
-        setResponseTracker(true);
-        setFName("");
-        setSurname("");
-        setEmail("");
-        setContact("");
-        setPassword("");
-        setCPassword("");
-
-        setTimeout(() => {
-          setResponseTracker(false);
-          navigate(-1);
-        }, 4500);
+        console.log(status);
+        if (status === 201) {
+          // Clearing out the inputs
+          setResponse("Tutor Registered Successfully");
+          setStatusTracker(true);
+          setResponseTracker(true);
+          setFName("");
+          setSurname("");
+          setEmail("");
+          setContact("");
+          setPassword("");
+          setCPassword("");
+          setTimeout(() => {
+            setResponseTracker(false);
+            navigate(-1);
+          }, 4500);
+        }
       } catch (error) {
         setStatusTracker(false);
-        console.log(error.response.data.message.message);
-        setResponse(
-          `[${error.response.data.message.name}] ${error.response.data.message.message}`
-        );
-        setResponseTracker(true);
-        setTimeout(() => {
-          setResponseTracker(false);
-        }, 4500);
+        if (error.message === "Request failed with status code 409") {
+          setResponse("The admin has already been registered.");
+          setResponseTracker(true);
+          setTimeout(() => {
+            setResponseTracker(false);
+          }, 4500);
+        }
       }
     }
   };

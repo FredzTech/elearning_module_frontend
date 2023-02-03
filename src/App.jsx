@@ -40,6 +40,7 @@ import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 
 function App() {
   const location = useLocation();
+  console.log(`App location ${JSON.stringify(location)}`);
   const background = location.state && location.state.background; //If the first param is true , then the second param is assigned.Just like conditional operators.
   // AUTHENTICATION ROUTES
   // {
@@ -81,14 +82,7 @@ function App() {
           </Route>
 
           {/* ADMIN ROUTES */}
-          <Route
-            element={
-              <RequireAuth
-                currentLocation={location}
-                allowedRoles={[2002, 2001]}
-              />
-            }
-          >
+          <Route element={<RequireAuth allowedRoles={[2002]} />}>
             <Route exact path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route exact path="users" element={<Users />} />
@@ -116,7 +110,7 @@ function App() {
           </Route>
 
           {/* Tutor Protected Routes */}
-          <Route element={<RequireAuth allowedRoles={[2001, 2002, 2000]} />}>
+          <Route element={<RequireAuth allowedRoles={[2001, 2002]} />}>
             <Route exact path="/tutor" element={<TutorLayoutPage />}>
               <Route index element={<TutorPage />} />
               <Route exact path="units" element={<TutorUnitsPage />} />
@@ -125,7 +119,7 @@ function App() {
               <Route exact path="resources" element={<ResourcesForm />} />
             </Route>
           </Route>
-          <Route element={<RequireAuth allowedRoles={[2001, 2000, 2002]} />}>
+          <Route element={<RequireAuth allowedRoles={[2001, 2002]} />}>
             <Route exact path="/tutor/unit" element={<TutorUnitPage />}>
               <Route exact path=":lessonId" element={<ContentSection />} />
             </Route>
@@ -150,6 +144,11 @@ function App() {
               exact
               path="/admin/courses/new-course"
               element={<CourseForm />}
+            />
+            <Route
+              exact
+              path="/admin/students/new-student"
+              element={<StudentRegistrationForm />}
             />
             <Route
               exact

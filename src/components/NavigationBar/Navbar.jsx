@@ -79,7 +79,10 @@ const Navbar = () => {
               <div className="absolute float-right  inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {!isAuthenticated ? (
                   <>
-                    <Link to="/log-in" state={{ background: location }}>
+                    <Link
+                      to="/log-in"
+                      state={{ background: location, from: location }}
+                    >
                       {/* This is where the magic happens where we assign state. */}
                       <FaUser />
                       Login

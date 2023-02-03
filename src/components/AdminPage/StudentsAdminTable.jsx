@@ -1,10 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { StatusPill, CTAButton, NavigateBtn } from "../../components";
 import { StudentRegistrationForm } from "../Credentials";
-import { ModalContext } from "../modals/ModalProvider";
 import axios from "../../axios";
 const StudentsAdminTable = () => {
-  const { openModal } = useContext(ModalContext);
   const [studentsData, setStudentsData] = useState([
     {
       fName: "ANN",
@@ -70,11 +68,10 @@ const StudentsAdminTable = () => {
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
           <NavigateBtn
-            action={openModal}
+            destination="new-student"
             text="Add student"
             icon="tenantIcon"
           />
-          <StudentRegistrationForm />
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
