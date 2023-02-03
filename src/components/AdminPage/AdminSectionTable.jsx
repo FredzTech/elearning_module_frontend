@@ -29,13 +29,10 @@ const AdminSectionTable = () => {
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
           <NavigateBtn
-            // destination="/admin/tutor-reg"
-            action={openModal}
+            destination="new-admin"
             text="New Admin"
             icon="tenantIcon"
           />
-
-          <AdminRegistrationForm />
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">

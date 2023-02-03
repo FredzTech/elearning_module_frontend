@@ -12,6 +12,7 @@ const LessonForm = () => {
   // DECLARATION OF VARIABLES
   //=========================
   const [lessonName, setLessonName] = useState("");
+  const [lesonNumber, setLessonNumber] = useState("");
   const [lessonNotes, setLessonNotes] = useState();
   const [lessonType, setLessonType] = useState("");
   const [file, setFile] = useState();
@@ -19,13 +20,19 @@ const LessonForm = () => {
 
   //   A FUNCTION THAT CREATES OUR POST OBJECT
   //==========================================
-  async function createPostObject({ lessonName, lessonNotes, lessonType }) {
+  async function createPostObject({
+    lessonNumber,
+    lessonName,
+    lessonNotes,
+    lessonType,
+  }) {
     console.log("Creating post object via formData instance. ");
 
     // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
     //=========================================================
     const formData = new FormData();
     formData.append("chapterID", chapterID);
+    formData.append("lessonNumber", `${chapterID}-${lessonNumber}`);
     formData.append("lessonName", lessonName);
     formData.append("lessonNotes", lessonNotes);
     formData.append("lessonType", lessonType);
@@ -68,6 +75,7 @@ const LessonForm = () => {
 
     // Create our post object.
     const result = await createPostObject({
+      lessonNumber,
       lessonName,
       lessonNotes,
       lessonType,
@@ -97,6 +105,17 @@ const LessonForm = () => {
             <label htmlFor="lNumber" className="w-full ">
               Lesson Details
             </label>
+            <input
+              className="input-styling"
+              id="cNumber"
+              type="number"
+              placeholder="Lesson Number"
+              value={lessonNumber}
+              onChange={(e) => {
+                setLessonNumber(e.target.value);
+              }}
+              required
+            ></input>
             <input
               className="input-styling"
               id="lName"

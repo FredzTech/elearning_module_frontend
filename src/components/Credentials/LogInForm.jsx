@@ -3,10 +3,12 @@ import { MdCancel } from "react-icons/md";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "../../axios";
 import Validation from "./Validation";
-const LogInForm = () => {
+const LogInForm = ({ currentLocation }) => {
+  // console.log("Log In Location " + JSON.stringify(currentLocation));
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.background?.pathname || "/";
+  const from = location.state && location.state.from;
+  const background = location.state?.background || "/";
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
   //  validating credentials

@@ -19,7 +19,6 @@ const ChapterForm = () => {
   const [submit, setSubmit] = useState();
 
   //   A FUNCTION THAT CREATES OUR POST OBJECT
-
   async function createPostObject({
     chapterNumber,
     chapterName,
@@ -31,7 +30,7 @@ const ChapterForm = () => {
     //=========================================================
     const formData = new FormData();
     formData.append("unitID", unitID);
-    formData.append("chapterNumber", chapterNumber);
+    formData.append("chapterNumber", `${unitID}-${chapterNumber}`);
     formData.append("chapterName", chapterName);
     formData.append("chapterDescription", chapterDescription);
     const config = {

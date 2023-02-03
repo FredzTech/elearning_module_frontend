@@ -3,8 +3,9 @@ import { Outlet, Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 const RequireAuth = ({ allowedRoles }) => {
   const { auth } = useAuth();
+  // It can globally read our location b4 redirect.
   const location = useLocation();
-  const background = location.state?.background?.pathname || "/";
+  const background = "/";
 
   // console.log(`Middleware state ${JSON.stringify(location)}`);
   // const from = location.state?.background;
@@ -14,10 +15,18 @@ const RequireAuth = ({ allowedRoles }) => {
     <Outlet />
   ) : auth?.user ? (
     // <Navigate to="/login" state={{ from: location }} replace />
-    <Navigate to="/log-in" state={{ background: background }} replace />
+    <Navigate
+      to="/log-in"
+      state={{ background: background, from: location }}
+      replace
+    />
   ) : (
     // <Navigate to="/login" state={{ from: location }} replace />
-    <Navigate to="/log-in" state={{ background: background }} replace />
+    <Navigate
+      to="/log-in"
+      state={{ background: background, from: location }}
+      replace
+    />
   );
 };
 

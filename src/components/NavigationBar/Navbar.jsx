@@ -16,8 +16,8 @@ import { FaUser, FaUserPlus } from "react-icons/fa";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Courses", href: "courses", current: false },
-  { name: "Units", href: "units", current: false },
+  { name: "Tutor", href: "tutor", current: false },
+  { name: "Admin", href: "admin", current: false },
   { name: "Subscription", href: "pricing", current: false },
 ];
 

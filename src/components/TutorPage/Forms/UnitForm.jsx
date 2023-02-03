@@ -9,22 +9,6 @@ const UnitForm = () => {
 
   const [courses, setCourses] = useState([]);
 
-  useEffect(() => {
-    const fetchCourseData = async () => {
-      try {
-        console.log("useEffect kicked in ");
-        const { data } = await axios.get("/course/all-courses");
-        console.log(data);
-        setCourses(data);
-        console.log(courses);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchCourseData();
-  }, []);
-
   // DECLARATION OF VARIABLES
 
   // const [course, setCourse] = useState(`${courses[0].courseTitle}`);
@@ -51,8 +35,8 @@ const UnitForm = () => {
   };
 
   return (
-    <Modal>
-      <div className="">
+    <div className="modal-overlay">
+      <div className="w-3/5">
         <CustomNav text="unit form" />
         {/* PROPOSED HEADER. */}
         <form encType="multipart/form-data" className="form-styling">
@@ -137,7 +121,7 @@ const UnitForm = () => {
           </div>
         </form>
       </div>
-    </Modal>
+    </div>
   );
 };
 

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { CustomNav, Button } from "../../CustomForm";
 import { Modal } from "../../modals";
 import axios from "../../../axios";
+import { useNavigate } from "react-router-dom";
 const CourseForm = () => {
+  const navigate = useNavigate();
   // DECLARATION OF VARIABLES
   //=========================
   const [file, setFile] = useState();
@@ -50,65 +52,52 @@ const CourseForm = () => {
     e.preventDefault();
 
     // Create our post object.
-    const result = await createPostObject({ courseTitle, file });
+    const { status } = await createPostObject({ courseTitle, file });
 
-    console.log(result); //Returns to as the response from backend manifested under the data object.
-  };
-
-  const cancelRegistration = (e) => {
-    e.preventDefault();
-    console.log("Modal closed");
+    if (status === 201) navigate(-1);
   };
 
   return (
-    <>
-    <Modal>
-
-   
-    
-  <div className="flex flex-col justify-center items-center debug w-full">
-    <div className="">
-      <CustomNav text="Course form" />
-      <form encType="multipart/form-data" className="form-styling">
-        <div className="input-wrap">
-          <label htmlFor="course" className="w-full ">
-            Course Details
-          </label>
-          <input
-            className="input-styling"
-            id="course"
-            type="text"
-            placeholder="Course Title"
-            value={courseTitle}
-            onChange={(e) => {
-              setCourseTitle(e.target.value);
-            }}
-            required
-          ></input>
-        </div>
-        <div className="input-wrap">
-          <label htmlFor="file">Course Display Image</label>
-          <input
-            type="file"
-            name="file"
-            onChange={fileSelected}
-            className="input-styling mt-2"
-          />
-        </div>
-        {/* CTA BUTTONS */}
-        <div className="cta-wrap">
-          <Button
-            type="button"
-            text="Add Course"
-            onClick={fileUploadHandler}
-          />
-         
-        </div>
-      </form>
+    <div className="modal-overlay">
+      <div className="flex flex-col justify-center items-center debug w-2/5">
+        <CustomNav text="Course form" />
+        <form encType="multipart/form-data" className="form-styling">
+          <div className="input-wrap">
+            <label htmlFor="course" className="w-full ">
+              Course Details
+            </label>
+            <input
+              className="input-styling"
+              id="course"
+              type="text"
+              placeholder="Course Title"
+              value={courseTitle}
+              onChange={(e) => {
+                setCourseTitle(e.target.value);
+              }}
+              required
+            ></input>
+          </div>
+          <div className="input-wrap">
+            <label htmlFor="file">Course Display Image</label>
+            <input
+              type="file"
+              name="file"
+              onChange={fileSelected}
+              className="input-styling mt-2"
+            />
+          </div>
+          {/* CTA BUTTONS */}
+          <div className="cta-wrap">
+            <Button
+              type="button"
+              text="Add Course"
+              onClick={fileUploadHandler}
+            />
+          </div>
+        </form>
+      </div>
     </div>
-    </div>
-     </Modal>
-    </>
   );
 };
 

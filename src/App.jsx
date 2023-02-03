@@ -27,32 +27,20 @@ import {
   LogInForm,
   RegistrationForm,
   ContentSection,
+  AdminRegistrationForm,
+  TutorRegistrationForm,
+  StudentRegistrationForm,
 } from "./components";
 import { ModalProvider } from "./components/modals";
 import Users from "./pages/UserPage";
 import { Routes, Route, useLocation } from "react-router-dom";
 import IdleTimer from "./Authentication/IdleTimer";
 import Forbidden from "./pages/403";
-import {
-  StudentRegistrationForm,
-  TutorRegistrationForm,
-} from "./components/Credentials";
 import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 
 function App() {
-  // App.jsx always rerenders.
   const location = useLocation();
-  // console.log(`App Location ${JSON.stringify(location)}`);
-  const background = location.state && location.state.background; //If the first param is true , then the second param is assigned.
-  // console.log(`Background will be : ${JSON.stringify(background)}`);
-  // FEW OBSERVATIONS.
-  //===================
-  //Always returns null if at all the redirect is not caused by a link somewhere with a state appendition.
-  // It is worth to note that this is the guy that keeps track of our real time location accross rereders.
-  // It is always in check or similar to the navbar location.
-  // Only differs if a link somewhere decides to append some state.
-  // When do we append this state??
-
+  const background = location.state && location.state.background; //If the first param is true , then the second param is assigned.Just like conditional operators.
   // AUTHENTICATION ROUTES
   // {
   //   student:"2000",
@@ -66,7 +54,6 @@ function App() {
         {/* When there is a background object in the state upon render/re-render of the app component,we imperatively declare the route/component to show for the first pair of routes. */}
         <Routes location={background || location}>
           {/* By setting it to the previous page, we hinder any updates hence it still renders the previous page. */}
-
           {/* Student Protected Routes */}
           <Route exact path="forbidden" element={<Forbidden />} />
           {/* Should trigger a redirect to the dashboard. */}
@@ -94,13 +81,21 @@ function App() {
           </Route>
 
           {/* ADMIN ROUTES */}
-          <Route element={<RequireAuth allowedRoles={[2002, 2000]} />}>
+          <Route
+            element={
+              <RequireAuth
+                currentLocation={location}
+                allowedRoles={[2002, 2001]}
+              />
+            }
+          >
             <Route exact path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route exact path="users" element={<Users />} />
               <Route exact path="course-form" element={<CourseForm />} />
               <Route exact path="unit-form" element={<UnitForm />} />
               <Route exact path="admins" element={<AdminSection />} />
+              <Route exact path="tutors" element={<TutorsPageAdmin />}></Route>
 
               <Route
                 exact
@@ -112,7 +107,6 @@ function App() {
                 path="students"
                 element={<StudentsPageAdmin />}
               ></Route>
-              <Route exact path="tutors" element={<TutorsPageAdmin />}></Route>
               <Route
                 exact
                 path="courses"
@@ -150,7 +144,23 @@ function App() {
               path="/tutor/unit/new-chapter"
               element={<ChapterForm />}
             />
+            <Route exact path="/admin/new-unit" element={<UnitForm />} />
             <Route exact path="/tutor/new-lesson" element={<LessonForm />} />
+            <Route
+              exact
+              path="/admin/courses/new-course"
+              element={<CourseForm />}
+            />
+            <Route
+              exact
+              path="/admin/tutors/new-tutor"
+              element={<TutorRegistrationForm />}
+            />
+            <Route
+              exact
+              path="/admin/admins/new-admin"
+              element={<AdminRegistrationForm />}
+            />
           </Routes>
         )}
         {/* </IdleTimer> */}
