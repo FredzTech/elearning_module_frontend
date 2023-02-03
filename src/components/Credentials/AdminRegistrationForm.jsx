@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../CustomForm";
 import AlertBox from "../AlertBox";
-import { Modal } from "../modals";
 import axios from "../../axios";
 import PasswordStrengthBar from "react-password-strength-bar";
 import { useNavigate } from "react-router-dom";

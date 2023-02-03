@@ -30,7 +30,7 @@ const TutorAccordion = ({ unitData }) => {
         {unitData.unitChapters &&
           unitData.unitChapters.map((chapter, index) => (
             <TutorAccordionItem
-              key={index}
+              key={`chapter-${index}`}
               chapter={chapter}
               onToggle={() => handleToggle(index)}
               active={clicked === index}

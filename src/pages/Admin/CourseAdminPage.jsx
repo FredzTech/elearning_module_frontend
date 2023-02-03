@@ -28,7 +28,7 @@ const CoursesAdminPage = () => {
       </div>
       <div className="grid grid-cols-4 gap-5">
         {coursesData &&
-          coursesData.map((course, index) => {
+          coursesData.map((course) => {
             const { _id, courseTitle, courseImage } = course;
             // console.log(`Course ID course-${index} : ${_id}`);
             return (

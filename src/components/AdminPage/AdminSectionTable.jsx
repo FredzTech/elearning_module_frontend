@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../axios";
-import {
-  StatusPill,
-  CTAButton,
-  NavigateBtn,
-  AdminRegistrationForm,
-} from "../../components";
-import { useModal } from "../modals/ModalProvider";
+import { StatusPill, CTAButton, NavigateBtn } from "../../components";
 
 const AdminSectionTable = () => {
-  const { openModal } = useModal();
   const [adminsData, setAdminsData] = useState([]);
   let fetchAdminsData = async () => {
     try {

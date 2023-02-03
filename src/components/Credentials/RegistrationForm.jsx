@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { CustomNav, Button } from "../CustomForm";
+import { Button } from "../CustomForm";
 import AlertBox from "../AlertBox";
-import { Modal } from "../modals";
 import { MdCancel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from "../../axios";

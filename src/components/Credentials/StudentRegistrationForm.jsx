@@ -77,9 +77,7 @@ const studentRegistrationForm = () => {
 
   return (
     <div className="modal-overlay">
-      <div className="flex flex-col   w-[400px] phone:w-[320px]  phone:border-none   rounded-lg shadow-md shadow-primary ">
-        {/* <CustomNav text="student registration" /> */}
-
+      <div className="flex flex-col justify-center items-center debug w-2/5 phone:w-full">
         {/* CUSTOM NAVIGATION. */}
         <div className="w-full flex justify-between items-center  text-sm font-normal text-white uppercase bg-primary  px-2 py-4 rounded-t-md">
           STUDENT REGISTRATION FORM

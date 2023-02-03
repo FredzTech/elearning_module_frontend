@@ -5,16 +5,9 @@ import { Link, useLocation, Outlet } from "react-router-dom";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, UserIcon } from "@heroicons/react/24/outline";
-// import LogInForm from "../Logins-Registration/Adme";
-import { StudentRegistrationForm, LogInForm } from "../../components";
-import {
-  UserContext,
-  LogoutContext,
-} from "../../Authentication/AuthContextProvider";
-import { UserdataContext } from "../../Authentication/AuthContextProvider";
 import { FaUser, FaUserPlus } from "react-icons/fa";
-
-const navigation = [
+import { useAuth } from "../../context/AuthContext";
+const navigationLinks = [
   { name: "Home", href: "/", current: false },
   { name: "Tutor", href: "tutor", current: false },
   { name: "Admin", href: "admin", current: false },
@@ -27,10 +20,11 @@ function classNames(...classes) {
 const Navbar = () => {
   // This is the value we inject into state as an object with background prop when we navigate elsewhere
   // Similar everywhere it is called.
+  const { auth: isAuthenticated } = useAuth;
   const location = useLocation();
-  const userData = useContext(UserdataContext);
-  const isAuthenticated = useContext(UserContext);
-  const logout = useContext(LogoutContext);
+  const logout = () => {
+    console.log("Logging out");
+  };
 
   return (
     <Disclosure as="nav" className="bg-white text-black ">
@@ -58,9 +52,9 @@ const Navbar = () => {
 
                 <div className=" sm:ml-6 ml-8 sm:hidden">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
+                    {navigationLinks.map((item, index) => (
                       <Link
-                        key={item.name}
+                        key={`${item.name}-${index}`}
                         to={item.href}
                         className={classNames(
                           item.current
@@ -115,14 +109,14 @@ const Navbar = () => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-grey py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
+                        {/* <Menu.Item>
                           <div className="px-4  text-sm text-black">
                             {userData.name}
                           </div>
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item>
                           <div className="px-4 py-2 text-xs text-black">
-                            {userData.role}
+                            {auth.role}
                           </div>
                         </Menu.Item>
                         <Menu.Item>
@@ -142,9 +136,9 @@ const Navbar = () => {
 
           <Disclosure.Panel className="hidden sm:block items-center mr-4">
             <div className="space-y-1 px-2 pt-2 pb-3">
-              {navigation.map((item) => (
+              {navigationLinks.map((item, index) => (
                 <Disclosure.Button
-                  key={item.name}
+                  key={`${item.name}-${index}`}
                   as="a"
                   href={item.href}
                   className={classNames(

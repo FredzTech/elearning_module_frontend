@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../../CustomForm";
-import { Modal } from "../../modals";
 import axios from "../../../axios";
 import { useNavigate } from "react-router-dom";
 const CourseForm = () => {

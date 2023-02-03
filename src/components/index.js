@@ -41,10 +41,8 @@ import {
 } from "./TutorPage/General";
 import {
   CourseForm,
-  TestForm,
   ChapterForm,
   LessonForm,
-  ResourcesForm,
   UnitForm,
 } from "./TutorPage/Forms";
 
@@ -101,10 +99,8 @@ export {
   LandingSection,
   Footer,
   CourseForm,
-  TestForm,
   ChapterForm,
   LessonForm,
-  ResourcesForm,
   UnitForm,
   AlertBox,
   AdminButton,

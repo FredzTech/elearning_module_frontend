@@ -1,10 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import React from "react";
 import { StatusPill, CTAUnitButtonAdmin, NavigateBtn } from "../../components";
-import { ModalContext } from "../modals/ModalProvider";
-import { UnitForm } from "../../components";
 const UnitsAdminTable = () => {
-  const { openModal, isOpen } = useContext(ModalContext);
-
   const unitsData = [
     {
       unitCode: "SMA 2173",

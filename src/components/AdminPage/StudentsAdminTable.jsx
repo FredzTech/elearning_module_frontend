@@ -110,7 +110,7 @@ const StudentsAdminTable = () => {
                   className={`${
                     index % 2 == 0 ? "bg-cyan-100  " : ""
                   } flex w-full items-center justify-start px-2 cursor-pointer font-normal text-xl`}
-                  key={`${index}`}
+                  key={`student-${index}`}
                 >
                   <td className="py-1 px-2 w-28 justify-center">{`${
                     index + 1

@@ -85,7 +85,6 @@ const LandingSection = () => {
                   </div>
                   <div className="flex items-center justify-center py-2 px-3 bg-gray-400">
                     <Link to={`course/${course._id}`}>
-                      {/* <Link to={`courses`}> */}
                       <button className=" bg-gray-800 text-xs text-white px-2 py-1 font-semibold rounded uppercase hover:bg-gray-700">
                         View the course
                       </button>

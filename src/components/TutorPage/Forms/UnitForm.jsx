@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CustomNav, Button } from "../../../components";
-import { postObject } from "../../../Modules/postUnitObject";
-import axios from "../../../axios";
-import { Modal } from "../../modals";
+import { postObject } from "../../../modules/postUnitObject";
 import LoadingBtn from "./LoadingBtn";
 const UnitForm = () => {
   // LOADS COURSES DATA WHEN COMPONENT LOADS.
@@ -59,7 +57,7 @@ const UnitForm = () => {
               </option>
               {courses.map((course, index) => {
                 return (
-                  <option key={index} value={course.courseTitle}>
+                  <option key={`course-${index}`} value={course.courseTitle}>
                     {course.courseTitle}
                   </option>
                 );

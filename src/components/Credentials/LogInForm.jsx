@@ -2,32 +2,29 @@ import React, { useState } from "react";
 import { MdCancel } from "react-icons/md";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "../../axios";
-import Validation from "./Validation";
 import { useAuth } from "../../context/AuthContext";
-const LogInForm = ({ currentLocation }) => {
-  const { auth, setAuth } = useAuth();
-  // console.log("Log In Location " + JSON.stringify(currentLocation));
+const LogInForm = () => {
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
-  // const location = useLocation();
-  // console.log(location);
-  const from = (location.state && location.state?.from?.pathname) || "/";
+  const location = useLocation();
+  console.log(`login  ${JSON.stringify(location)}`);
+  // Saves where we are coming from.
+  const from = (location.state && location.state?.from) || "/";
   console.log(from);
-  const background = location.state?.background || "/";
   const [message, setMessage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
+    console.log("Handle submit is running");
     e.preventDefault();
     try {
       const user = { firstName, password };
       const { data, status } = await axios.post("/auth/login", user);
-      console.log(data, status);
+      console.log(`Response Received ${JSON.stringify(data)}, ${status}`);
       setAuth(data);
-
       if (status == 200) {
-        // navigate(pathname, { replace: true });
-        navigate("/", { replace: true });
+        navigate(from, { replace: true });
       }
     } catch (err) {
       console.log(err);
@@ -48,7 +45,6 @@ const LogInForm = ({ currentLocation }) => {
           </h2>
           <button
             onClick={() => {
-              console.log("Closing the form");
               navigate(-1);
             }}
           >
@@ -57,12 +53,7 @@ const LogInForm = ({ currentLocation }) => {
         </div>
 
         <div className="mt-8  w-full sm:mx-auto sm:w-full sm:max-w-md">
-          <form
-            className="mb-0 space-y-6"
-            action="login"
-            method="POST"
-            onSubmit={handleSubmit}
-          >
+          <form className="mb-0 space-y-6">
             <div className="mt-1">
               <label className="text-2xl" htmlFor="surname">
                 Email
@@ -89,7 +80,6 @@ const LogInForm = ({ currentLocation }) => {
                 name="password"
                 placeholder="Password"
                 type="password"
-                // autoComplete="new-password"
                 className="w-full border border-light-grey rounded-sm text-2xl shadow-sm px-3 py-0.5 
             focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                 value={password}
@@ -97,14 +87,14 @@ const LogInForm = ({ currentLocation }) => {
               />
             </div>
 
-            <div>
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-silver focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Log in
-              </button>
-            </div>
+            <button
+              onClick={(e) => {
+                handleSubmit(e);
+              }}
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-silver focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Log in
+            </button>
           </form>
 
           <p className="text-red-600">{message}</p>

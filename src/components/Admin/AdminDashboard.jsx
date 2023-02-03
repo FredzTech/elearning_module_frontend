@@ -9,9 +9,9 @@ const data = [
 export const AdminDashboard = () => {
   return (
     <div className="flex gap-20 m-10 flex-wrap  sm:gap-8">
-      {data.map((data) => {
+      {data.map((data, index) => {
         return (
-          <div className="bg-silver h-28 rounded-md">
+          <div key={`data-${index}`} className="bg-silver h-28 rounded-md">
             <div className="bg-grey text-white  p-3" key={data.title}>
               {data.title}
             </div>

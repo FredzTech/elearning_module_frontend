@@ -24,7 +24,7 @@ const Accordion = ({ unitData }) => {
       {unitData.unitChapters &&
         unitData.unitChapters.map((chapter, index) => (
           <AccordionItem
-            key={index}
+            key={`accordion-item-${index}`}
             chapter={chapter}
             onToggle={() => handleToggle(index)}
             active={clicked === index}

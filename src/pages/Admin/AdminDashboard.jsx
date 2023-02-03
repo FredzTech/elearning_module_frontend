@@ -1,7 +1,6 @@
 import React from "react";
 import {
   AdminCard,
-  TutorsAdminTable,
   UnitsAdminTable,
   PageTitle,
   Footer,
