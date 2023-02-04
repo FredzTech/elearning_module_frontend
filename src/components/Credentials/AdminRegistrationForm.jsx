@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { CustomNav, Button } from "../CustomForm";
+import { CustomNav, Button } from "../../components";
+
 import AlertBox from "../AlertBox";
 import axios from "../../axios";
 import PasswordStrengthBar from "react-password-strength-bar";

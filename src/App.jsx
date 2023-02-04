@@ -24,7 +24,6 @@ import {
   UnitForm,
   RequireAuth,
   LogInForm,
-  RegistrationForm,
   ContentSection,
   AdminRegistrationForm,
   TutorRegistrationForm,
@@ -53,27 +52,34 @@ function App() {
       <Routes location={background || location}>
         {/* By setting it to the previous page, we hinder any updates hence it still renders the previous page. */}
         {/* Student Protected Routes */}
+        <Route exact path="*" element={<Forbidden />}></Route>
         <Route exact path="forbidden" element={<Forbidden />} />
-        {/* Should trigger a redirect to the dashboard. */}
-        <Route element={<RequireAuth allowedRoles={["GUEST"]} />}>
-          <Route element={<UsersLayout />}>
-            {/* GENERAL ROUTES */}
-            <Route exact path="/" element={<HomePage />}></Route>
-            <Route exact path="pricing" element={<PricingPage />}></Route>
-            <Route exact path="*" element={<NotFound />}></Route>
-          </Route>
-        </Route>
 
-        <Route element={<RequireAuth allowedRoles={["STUDENT"]} />}>
-          {/* COURSE VIEW [UNITS] */}
+        {/* Should trigger a redirect to the dashboard. */}
+        <Route element={<UsersLayout />}>
+          {/* GENERAL ROUTES */}
+          <Route exact path="/" element={<HomePage />}></Route>
+          <Route exact path="pricing" element={<PricingPage />}></Route>
           <Route
             exact
-            path="/course/:courseId"
-            element={<UnitsPageDynamic />}
-          ></Route>
-          {/* UNIT VIEW. [CHAPTERS & LESSONS] */}
-          <Route exact path="/unit/:unitId" element={<UnitPageDynamic />}>
-            <Route exact path=":lessonId" element={<ContentSection />}></Route>
+            path="new-student"
+            element={<StudentRegistrationForm />}
+          />
+          <Route element={<RequireAuth allowedRoles={["STUDENT"]} />}>
+            {/* COURSE VIEW [UNITS] */}
+            <Route
+              exact
+              path="/course/:courseId"
+              element={<UnitsPageDynamic />}
+            ></Route>
+            {/* UNIT VIEW. [CHAPTERS & LESSONS] */}
+            <Route exact path="/unit/:unitId" element={<UnitPageDynamic />}>
+              <Route
+                exact
+                path=":lessonId"
+                element={<ContentSection />}
+              ></Route>
+            </Route>
           </Route>
         </Route>
 
@@ -86,8 +92,6 @@ function App() {
             <Route exact path="unit-form" element={<UnitForm />} />
             <Route exact path="admins" element={<AdminSection />} />
             <Route exact path="tutors" element={<TutorsPageAdmin />}></Route>
-
-            <Route exact path="tutor-reg" element={<TutorRegistrationForm />} />
             <Route
               exact
               path="students"
@@ -119,7 +123,11 @@ function App() {
       {background && (
         <Routes>
           <Route path="/log-in" element={<LogInForm />} />
-          <Route path="/register" element={<RegistrationForm />} />
+          <Route
+            exact
+            path="/new-student"
+            element={<StudentRegistrationForm />}
+          />
           <Route
             exact
             path="/tutor/unit/new-chapter"

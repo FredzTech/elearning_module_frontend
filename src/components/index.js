@@ -31,7 +31,6 @@ import {
   TutorCard,
 } from "./UnitPage";
 
-import { Button, CustomNav } from "./CustomForm";
 // TUTOR PAGE
 
 import {
@@ -44,6 +43,8 @@ import {
   ChapterForm,
   LessonForm,
   UnitForm,
+  CustomNav,
+  Button,
 } from "./TutorPage/Forms";
 
 // LOGINS-REGISTRATION COMPONENTS.
@@ -52,7 +53,6 @@ import {
   StudentRegistrationForm,
   TutorRegistrationForm,
   AdminRegistrationForm,
-  RegistrationForm,
 } from "./Credentials";
 
 import Footer from "./Footer";
@@ -86,7 +86,6 @@ export {
   SubNav,
   CourseHeading,
   VideoComponent,
-  Button,
   CustomNav,
   ChapterCard,
   TutorCard,
@@ -116,6 +115,7 @@ export {
   StudentsAdminTable,
   CoursesAdminTable,
   PageTitle,
+  Button,
   UnitsAdminTable,
   CourseAdminCard,
   CTAUnitButtonAdmin,
@@ -127,7 +127,6 @@ export {
   Accordion,
   AdminSectionTable,
   AdminRegistrationForm,
-  RegistrationForm,
   ContentSection,
   SinglePage,
   AudioPlayer,

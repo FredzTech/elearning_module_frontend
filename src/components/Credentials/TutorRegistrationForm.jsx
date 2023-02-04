@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../CustomForm";
+import { Button } from "../../components";
 import AlertBox from "../AlertBox";
 import { MdCancel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";

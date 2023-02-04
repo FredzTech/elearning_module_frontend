@@ -2,38 +2,49 @@ import React, { useState } from "react";
 import { MdCancel } from "react-icons/md";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "../../axios";
+import { AlertBox } from "../../components";
 import { useAuth } from "../../context/AuthContext";
 const LogInForm = () => {
-  const { setAuth } = useAuth();
   const navigate = useNavigate();
+  // Updating Context
+  const { setAuth } = useAuth();
+  // Consuming state.
   const location = useLocation();
-  console.log(`login  ${JSON.stringify(location)}`);
-  // Saves where we are coming from.
-  const from = (location.state && location.state?.from) || "/";
-  console.log(from);
-  const [message, setMessage] = useState("");
+  const from = location.state ? location.state?.background?.pathname : "/";
+  console.log(`Detailed location ${JSON.stringify(location)}`);
+
+  console.log(`This is where we came from ${from}`);
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
+  // AlertBox Config
+  const [statusTracker, setStatusTracker] = useState(false);
+  const [responseTracker, setResponseTracker] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     console.log("Handle submit is running");
     e.preventDefault();
     try {
-      const user = { firstName, password };
-      const { data, status } = await axios.post("/auth/login", user);
+      const credentials = { firstName, password };
+      const { data, status } = await axios.post("/auth/login", credentials);
       console.log(`Response Received ${JSON.stringify(data)}, ${status}`);
       setAuth(data);
       if (status == 200) {
         navigate(from, { replace: true });
       }
     } catch (err) {
+      // Destructuring any errors.
       console.log(err);
       console.log(err.response); //Contains all our response data.
       const { message } = err.response.data;
       console.log(message);
+      setStatusTracker(false);
       setMessage(message);
-
-      console.log(err);
+      setResponseTracker(true);
+      setTimeout(() => {
+        setResponseTracker(false);
+      }, 3000);
+      navigate(from);
     }
   };
   return (
@@ -87,6 +98,12 @@ const LogInForm = () => {
               />
             </div>
 
+            <AlertBox
+              responseTracker={responseTracker}
+              statusTracker={statusTracker}
+              response={message}
+            />
+
             <button
               onClick={(e) => {
                 handleSubmit(e);
@@ -97,7 +114,7 @@ const LogInForm = () => {
             </button>
           </form>
 
-          <p className="text-red-600">{message}</p>
+          <p className="bg-red-600">{message}</p>
         </div>
         <p className="mt-2 text-center text-sm text-gray-600 max-w">
           Not registered?

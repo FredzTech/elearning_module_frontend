@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { CustomNav, Button } from "../../CustomForm";
+import { CustomNav, Button } from "../../../components";
 import axios from "../../../axios";
 import LoadingBtn from "./LoadingBtn";
 import { MdCancel } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
 const ChapterForm = () => {
-  // Reading state to get the chapter ID
+  // A link will be used to redirect us to this particular point.
   const navigate = useNavigate();
   const location = useLocation();
   const unitID = location.state && location.state.unitID;

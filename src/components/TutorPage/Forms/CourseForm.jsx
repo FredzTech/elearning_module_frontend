@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CustomNav, Button } from "../../CustomForm";
+import { CustomNav, Button } from "../../../components";
 import axios from "../../../axios";
 import { useNavigate } from "react-router-dom";
 const CourseForm = () => {

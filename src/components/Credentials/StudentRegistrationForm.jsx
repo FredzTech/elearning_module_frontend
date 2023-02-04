@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { CustomNav, Button } from "../CustomForm";
+import { CustomNav, Button } from "../../components";
 import AlertBox from "../AlertBox";
 import axios from "../../axios";
 import { MdCancel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 const studentRegistrationForm = () => {
   const navigate = useNavigate();
+
   // DECLARATION OF OUR STATES
   //==========================
   const [fName, setFName] = useState("");
@@ -14,17 +15,10 @@ const studentRegistrationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
-  // For showing or hiding the alertbox
+
   const [responseTracker, setResponseTracker] = useState(false);
-  // For changing color of alertbox.
   const [statusTracker, setStatusTracker] = useState(true);
   const [response, setResponse] = useState("");
-
-  const cancelRegistation = (e) => {
-    e.preventDefault();
-    console.log("Modal should be closed.");
-  };
-
   const registerStudent = async (e) => {
     e.preventDefault();
 

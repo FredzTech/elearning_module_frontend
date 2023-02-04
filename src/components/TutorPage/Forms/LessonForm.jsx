@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CustomNav, Button } from "../../CustomForm";
+import { CustomNav, Button } from "../../../components";
 import axios from "../../../axios";
 import LoadingBtn from "./LoadingBtn";
 import { MdCancel } from "react-icons/md";
@@ -12,7 +12,7 @@ const LessonForm = () => {
   // DECLARATION OF VARIABLES
   //=========================
   const [lessonName, setLessonName] = useState("");
-  const [lesonNumber, setLessonNumber] = useState("");
+  const [lessonNumber, setLessonNumber] = useState("");
   const [lessonNotes, setLessonNotes] = useState();
   const [lessonType, setLessonType] = useState("");
   const [file, setFile] = useState();
@@ -141,11 +141,11 @@ const LessonForm = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
             >
               <option selected className="text-grey">
-                File type
+                --File type--
               </option>
               <option value="pdf">PDF</option>
-              <option value="pdf">AUDIO</option>
-              <option value="pdf">VIDEO</option>
+              <option value="audio">AUDIO</option>
+              <option value="video">VIDEO</option>
             </select>
           </div>
 
