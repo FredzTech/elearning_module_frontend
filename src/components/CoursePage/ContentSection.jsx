@@ -28,7 +28,9 @@ const ContentSection = ({ contentData }) => {
   console.log(location);
   const lessonUrl = (location.state && location.state.lessonUrl) || null;
   const lessonType = (location.state && location.state.lessonType) || null;
-
+  const videoUrl =
+    "https://kapesha001-demo.s3.ap-south-1.amazonaws.com/45b1f269541bf014a6ebc76666f22590.mp4";
+  const audioUrl = "";
   // I want this section to come prefilled with the data.
   // let { lessonId } = useParams();
   // THe content data should be bearing the content type and the url to access the resource.

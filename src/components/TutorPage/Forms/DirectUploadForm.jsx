@@ -8,79 +8,100 @@ const DirectUploadForm = () => {
   //=========================
   const [file, setFile] = useState();
   const [courseTitle, setCourseTitle] = useState("");
-  //   This will be set after successfully receiving the data
-  const [courseUrl, setCourseUrl] = useState(null);
+  const [signedUrl, setSignedUrl] = useState(null);
+  const [key, setKey] = useState(null);
 
-  //   A FUNCTION THAT CREATES OUR POST OBJECT
-  //==========================================
-  //   async function createPostObject({ courseTitle, file }) {
-  //     // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
-  //     //=========================================================
-  //     const formData = new FormData();
-  //     formData.append("courseUrl", courseUrl);
-  //     formData.append("course", file);
+  async function getSignedUrl({ file }) {
+    // Generating our req body.
+    const formData = new FormData();
+    const { type } = file;
+    formData.append("fileType", type);
 
-  //     const config = {
-  //       headers: { "Content-Type": "multipart/form-data" },
-  //     };
-  //     try {
-  //       const response = await axios.post("/course/new-course", formData, config);
-  //       console.log("After everything is said and done.");
-  //       console.log(JSON.stringify(response));
-  //       return response;
-  //     } catch (err) {
-  //       console.log(err);
-  //       let { data } = err.response;
-  //       console.log(JSON.stringify(data));
-  //       // Display the error as you will
-  //       return err;
-  //     }
-  //   }
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
 
-  async function createPostObject({ file }) {
+    try {
+      const { data, status: urlCreationStatus } = await axios.post(
+        "/s3Direct/",
+        formData,
+        config
+      );
+      console.log(`Signed url ${JSON.stringify(data)}, ${urlCreationStatus}`);
+      const { signedUrl: url, Key } = data;
+      console.log(`Destructured data ${url}, ${Key}`);
+      setSignedUrl(url);
+      setKey(Key);
+      return urlCreationStatus;
+    } catch (err) {
+      console.log("Something went wrong when creating the signed url");
+      console.log(err);
+      return err;
+    }
+  }
+
+  async function uploadFile({ file }) {
     // We upload file directly to s3
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
+    console.log(signedUrl);
     try {
-      console.log(`Confirm Course Url b4 Putting : ${courseUrl}`);
-      const response = await axios.put(courseUrl, file, config);
       console.log("Commencing file upload");
-      console.log(JSON.stringify(response));
-      console.log("File upload completed successfully.");
-      return response;
+      const success = await axios.put(signedUrl, file, config);
+      console.log(success);
+      return success;
     } catch (err) {
-      console.log("Error occured during actual file upload");
-      console.log(err);
-      return err;
+      console.log(
+        `Error occured during actual file upload ${JSON.stringify(err)}`
+      );
+      const { message } = err;
+
+      if (message === "Request failed with status code 403") {
+        console.log("We can try uploading one more time.");
+        return err;
+      }
+      return "This error is beyond the scope of uploading file.";
     }
   }
 
-  //==========================================
-  async function generatePutUrl({ file }) {
-    // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
-    //=========================================================
-    // Creating a new object instance
-    const formData = new FormData();
-    formData.append("course-image", file);
+  const savingFileToDB = async (urlCreationStatus) => {
+    if (urlCreationStatus === 201) {
+      // Uploading file to server.
+      try {
+        const uploadResponse = await uploadFile({ file: file });
+        let uploadResponseStatus = uploadResponse.status;
+        console.log(`File upload status ${uploadResponseStatus}`);
+        if (uploadResponseStatus === 200) {
+          // Saving data to the status
+          console.log("All is a go. We can save coursedata to the DB");
+          console.log(`file Name to be stored ${key}`);
+          let courseData = {
+            courseTitle,
+            courseImage: key,
+          };
 
-    const config = {
-      headers: { "Content-Type": "multipart/form-data" },
-    };
+          const config = {
+            headers: { "Content-Type": "application/json" },
+          };
 
-    try {
-      const response = await axios.get("/s3Direct/", formData, config);
-      //   Space to set the courseUrl
-      //   console.log(JSON.stringify(response));
-      return response;
-    } catch (err) {
-      console.log(err);
-      //   let { data } = err.response;
-      //   console.log(JSON.stringify(data));
-      // Display the error as you will
-      return err;
+          const saveCourse = await axios.post(
+            "/course/new-course",
+            courseData,
+            config
+          );
+          console.log(
+            `Course Data saved successfully ${JSON.stringify(saveCourse)} `
+          );
+        }
+      } catch (err) {
+        console.log(
+          "Error occurred while trying to save course data to the db"
+        );
+        console.log(err);
+      }
     }
-  }
+  };
 
   //   TAKES THE FILE SELECTED(OBJECT) FROM FILE INSTANCE.
   //=======================================================
@@ -88,32 +109,15 @@ const DirectUploadForm = () => {
   const fileSelected = (e) => {
     const file = e.target.files[0];
     setFile(file);
-    console.log(file);
   };
 
   const fileUploadHandler = async (e) => {
+    // Prevents default behaviour of our form
     e.preventDefault();
-
-    // Create our post object.
-    // const { status } = await createPostObject({ courseTitle, file });
-    const response = await generatePutUrl({ file });
-    console.log(`Response Received ${JSON.stringify(response)}`);
-    const { data, status } = response;
-    const { url } = data;
-    console.log(`Our put url ${url} : status ${status}`);
-    setCourseUrl(url);
-
-    if (status === 201) {
-      // We proceed to saving this data via the url provided.
-      console.log(`Our update url: ${url} vs CourseUrl ${courseUrl}`);
-      const response2 = await createPostObject({ file });
-      console.log(
-        `What we get after uploading our file ${JSON.stringify(response2)}`
-      );
-      //   navigate(-1);
-    }
-
-    // console.log("Tackle the first error first.");
+    // Fetches a signedUrl
+    const urlCreationStatus = await getSignedUrl({ file: file });
+    console.log(`url creation status ${urlCreationStatus}`); //Always comes through for us.
+    savingFileToDB(urlCreationStatus);
   };
 
   return (
@@ -145,6 +149,28 @@ const DirectUploadForm = () => {
               onChange={fileSelected}
               className="input-styling mt-2"
             />
+          </div>
+          <div className="w-full ">
+            {/* TESTING OUR VARIOUS RESOURCES. */}
+            <p className="text-center uppercase">Testing out media uploaded</p>
+            {/* <img
+              src="https://kapesha001-demo.s3.ap-south-1.amazonaws.com/8971c58c10477574c893137f292ea2cf.jpeg"
+              alt="image"
+            /> */}
+
+            {/* <img
+              src="http://localhost:4000/s3Direct/8614f51246cde029ea9e432be8b9ff5d.png"
+              alt="image"
+            /> */}
+
+            {/* <video
+              className=" mt-2 w-[850px]  h-auto flex rounded-lg shadow-xl shadow-slate-500 "
+              src="http://localhost:4000/s3Direct/45b1f269541bf014a6ebc76666f22590.mp4"
+              poster="http://localhost:4000/s3Direct/8614f51246cde029ea9e432be8b9ff5d.png"
+              controls
+            >
+              This video is not supported by your browser.
+            </video> */}
           </div>
           {/* CTA BUTTONS */}
           <div className="cta-wrap">
