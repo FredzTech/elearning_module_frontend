@@ -5,7 +5,7 @@ const CourseAdminCard = ({ courseID, courseImage, courseTitle }) => {
   return (
     <div className="flex flex-col justify-center items-center max-w-sm mx-auto hover:scale-105 ease-in-out duration-300">
       <img
-        src={`http://localhost:4000/s3Direct/${courseImage}`}
+        src={`https://kapesha-warmup.herokuapp.com/s3Direct/${courseImage}`}
         alt="course image"
         className="bg-gray-300 h-48 lg:w-56 w-48 rounded-lg shadow-md bg-cover bg-center"
       ></img>
