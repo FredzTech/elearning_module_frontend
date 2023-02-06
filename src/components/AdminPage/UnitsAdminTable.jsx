@@ -1,10 +1,6 @@
-import React,{useContext,useState,useEffect} from "react";
+import React from "react";
 import { StatusPill, CTAUnitButtonAdmin, NavigateBtn } from "../../components";
-import { ModalContext } from "../modals/ModalProvider";
-import {UnitForm} from "../../components";
 const UnitsAdminTable = () => {
-  const{ openModal, isOpen} = useContext(ModalContext);
-
   const unitsData = [
     {
       unitCode: "SMA 2173",
@@ -210,8 +206,11 @@ const UnitsAdminTable = () => {
     <>
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full py-2 ">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
-          <NavigateBtn action={openModal} text="New Unit" icon="tenantIcon" />
-          {isOpen && <UnitForm /> }
+          <NavigateBtn
+            destination="new-unit"
+            text="New Unit"
+            icon="tenantIcon"
+          />
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-slate-100">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
@@ -254,7 +253,7 @@ const UnitsAdminTable = () => {
               return (
                 <tr
                   className={`${
-                    index % 2 == 0 ? "bg-primary  " : ""
+                    index % 2 == 0 ? "bg-cyan-100  " : ""
                   } flex w-full items-center justify-start px-2 cursor-pointer font-normal text-xl`}
                   key={`tutor-${index}`}
                 >

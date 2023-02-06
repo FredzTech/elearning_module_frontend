@@ -15,6 +15,7 @@ import UnitsAdminTable from "./UnitsAdminTable";
 import PageTitle from "./PageTitle";
 import CTAUnitButtonAdmin from "./CTAUnitButtonAdmin";
 import AdminNavItem from "./AdminNavItem";
+import AdminSectionTable from "./AdminSectionTable";
 export {
   AdminButton,
   AdminCard,
@@ -33,4 +34,5 @@ export {
   UnitsAdminTable,
   CTAUnitButtonAdmin,
   AdminNavItem,
+  AdminSectionTable,
 };

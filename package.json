@@ -21,6 +21,7 @@
         "react-icons": "^4.7.1",
         "react-password-strength": "^2.4.0",
         "react-password-strength-bar": "^0.4.1",
+        "react-pdf": "^6.2.2",
         "react-quill": "^2.0.0",
         "react-redux": "^8.0.5",
         "react-router": "^6.6.1",

@@ -13,8 +13,6 @@ const AdminLayout = () => {
           NAVBAR WITH ICONS
         </div>
         <Outlet />
-
-        {/* <Footer className="w-full" /> */}
       </div>
     </div>
   );

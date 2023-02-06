@@ -2,14 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "../../axios";
 import { Link } from "react-router-dom";
 import HomeImage from "../../assets/homeimage.png";
-import Mechatronic from "../../assets/courses/mechatronic.jpeg";
-import Mechanical from "../../assets/courses/mechanical.jpeg";
-import CompScience from "../../assets/courses/computer-science.jpeg";
-import Electrical from "../../assets/courses/electrical.jpeg";
 import Tutor1 from "../../assets/Screenshot from 2023-01-13 04-58-06 .png";
 import Tutor2 from "../../assets/Screenshot from 2023-01-13 04-58-49.png";
-import { FaTwitter, FaWhatsapp, FaLinkedin } from "react-icons/fa";
-
+import { FaTwitter, FaLinkedin } from "react-icons/fa";
 
 const tutors = [
   {
@@ -38,10 +33,9 @@ const LandingSection = () => {
     const fetchCoursesData = async () => {
       try {
         const { data: coursesData } = await axios.get("/course/all-courses");
-        console.log(coursesData);
         setCoursesData(coursesData);
-       
       } catch (error) {
+        // There is need to handle the network error accordingly.
         console.error(error);
       }
     };
@@ -60,6 +54,7 @@ const LandingSection = () => {
             <li>Quizzes and even </li>
             <li>A chance to interact with qualified tutors</li>
           </ul>
+          <p> Enroll to get access to this and so much more.</p>
           <p> Enrol to get access to this and so much more.</p>
           <div className="mt-16  flex gap-20">
             <button className="ml-10 bg-white border-primary text-primary ring-4 ring-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
@@ -95,8 +90,7 @@ const LandingSection = () => {
                     {course.courseTitle}
                   </div>
                   <div className="flex items-center justify-center py-2 px-3 bg-gray-400">
-                    <Link to={`courses/${course._id}`}>
-                      {/* <Link to={`courses`}> */}
+                    <Link to={`course/${course._id}`}>
                       <button className=" bg-gray-800 text-xs text-white px-2 py-1 font-semibold rounded uppercase hover:bg-gray-700">
                         View the course
                       </button>

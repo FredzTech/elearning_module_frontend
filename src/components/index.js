@@ -1,18 +1,25 @@
 // GENERAL COMPONENTS
-
-import LogInForm from "./Logins-Registration/StudentLoginForm";
 import RequireAuth from "./RequireAuth";
 import AlertBox from "./AlertBox";
+import TutorAccordion from "./SideNav/TutorAccordion";
+import Accordion from "./SideNav/Accordion";
 // HOMEPAGE COMPONENTS
 
 // COURSE PAGE COMPONENTS
+
 import HomePageCard from "./HomePage/HomePageCard";
 import HomePageGrid from "./HomePage/HomePageGrid";
 import LandingSection from "./HomePage/LandingSection";
-import Chapter from "./CoursePage/Chapter";
-import Pointer from "./CoursePage/Pointer";
-import SubNav from "./CoursePage/SubNav";
-import CourseHeading from "./CoursePage/CourseHeading";
+
+import {
+  ContentSection,
+  Chapter,
+  CourseHeading,
+  Pointer,
+  SubNav,
+  SinglePage,
+  AudioPlayer,
+} from "./CoursePage";
 
 // UNIT PAGE COMPONENTS
 import {
@@ -24,15 +31,8 @@ import {
   TutorCard,
 } from "./UnitPage";
 
-import { Button, CustomNav } from "./CustomForm";
 // TUTOR PAGE
-import {
-  ChapterModal,
-  CourseModal,
-  LessonModal,
-  ResourcesModal,
-  UnitModal,
-} from "./TutorPage/Modals";
+
 import {
   QuillEditorTutor,
   TutorCardHome,
@@ -40,12 +40,20 @@ import {
 } from "./TutorPage/General";
 import {
   CourseForm,
-  TestForm,
   ChapterForm,
   LessonForm,
-  ResourcesForm,
   UnitForm,
+  CustomNav,
+  Button,
 } from "./TutorPage/Forms";
+
+// LOGINS-REGISTRATION COMPONENTS.
+import {
+  LogInForm,
+  StudentRegistrationForm,
+  TutorRegistrationForm,
+  AdminRegistrationForm,
+} from "./Credentials";
 
 import Footer from "./Footer";
 import {
@@ -66,6 +74,7 @@ import {
   UnitsAdminTable,
   CTAUnitButtonAdmin,
   AdminNavItem,
+  AdminSectionTable,
 } from "./AdminPage";
 
 export {
@@ -77,15 +86,9 @@ export {
   SubNav,
   CourseHeading,
   VideoComponent,
-  Button,
   CustomNav,
   ChapterCard,
   TutorCard,
-  ChapterModal,
-  CourseModal,
-  LessonModal,
-  ResourcesModal,
-  UnitModal,
   UnitsCard,
   UnitNav,
   QuillEditorTutor,
@@ -95,10 +98,8 @@ export {
   LandingSection,
   Footer,
   CourseForm,
-  TestForm,
   ChapterForm,
   LessonForm,
-  ResourcesForm,
   UnitForm,
   AlertBox,
   AdminButton,
@@ -114,9 +115,19 @@ export {
   StudentsAdminTable,
   CoursesAdminTable,
   PageTitle,
+  Button,
   UnitsAdminTable,
   CourseAdminCard,
   CTAUnitButtonAdmin,
   AdminNavItem,
   RequireAuth,
+  StudentRegistrationForm,
+  TutorRegistrationForm,
+  TutorAccordion,
+  Accordion,
+  AdminSectionTable,
+  AdminRegistrationForm,
+  ContentSection,
+  SinglePage,
+  AudioPlayer,
 };

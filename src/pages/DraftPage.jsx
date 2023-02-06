@@ -1,52 +1,28 @@
-import React, { useState } from "react";
-import { CourseForm } from "../components";
-import { ModalWrapper } from "../Wrappers";
-import "../components/TutorPage/Accordion/accordion.css";
+import React from "react";
+import { useNavigate, Outlet, useLocation, Link } from "react-router-dom";
 const DraftPage = () => {
-  const [view, setView] = useState(false);
-
-  const showModal = () => {
-    setView(true);
-  };
-  const hideModal = () => {
-    setView(false);
-  };
-
-  // Used to treat event bubbling.
-  const handleClose = (e) => {
-    if (e.target.id === "container") {
-      hideModal();
-    }
-  };
-
+  const location = useLocation();
   return (
-    <>
-      <CourseForm
-        showModal={showModal}
-        hideModal={hideModal}
-        handleClose={handleClose}
-        view={view}
-      />
-
-      <div
-        className="bg-primary  px-4 py-2 text-white rounded-md"
-        onClick={() => {
-          showModal();
-        }}
-      >
-        Button
+    <div className="w-full h-full bg-green-500 flex ">
+      <div id="nav">
+        <Link to="modal" state={{ background: location }}>
+          <div className="button">Open Modal</div>
+        </Link>
+        <Link to="homepage" state={{ background: location }}>
+          <div className="button">Home Page</div>
+        </Link>
+        <Link to="newpage" state={{ background: location }}>
+          <div className="button">New Page</div>
+        </Link>
       </div>
-    </>
+      <div id="nav"></div>
+      {/* Appends an object to the global state which is readable by the parent app component which manages our route. */}
+      <Link to="modal" state={{ background: location }}>
+        Open Modal
+      </Link>
+      <Outlet />
+    </div>
   );
-
-  // return ModalWrapper(CourseForm, view);
-
-  // <CourseForm //Is already a modal.
-  //   view={view}
-  //   showModal={showModal}
-  //   hideModal={hideModal}
-  //   handleClose={handleClose}
-  // />
 };
 
 export default DraftPage;

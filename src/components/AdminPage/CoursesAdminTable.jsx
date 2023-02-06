@@ -1,13 +1,7 @@
-import React,{ useContext }  from "react";
-
+import React from "react";
 import { StatusPill, CTAButton, NavigateBtn } from "..";
-import {CourseForm} from "..";
-import { useModal } from "../modals/ModalProvider";
-import { ModalContext } from "../modals/ModalProvider";
-const CoursesAdminTable = () => {
-  // const {isOpen , openModal} = useModal();
-  const{ openModal, isOpen} = useContext(ModalContext);
 
+const CoursesAdminTable = () => {
   // LIST OF CARDS.
   const tutorsData = [
     {
@@ -22,14 +16,11 @@ const CoursesAdminTable = () => {
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
           <NavigateBtn
-            // destination="/Form"
-            action={openModal}
+            destination="/new-course"
             text="New Tenant"
             icon="tenantIcon"
           />
-          {isOpen && <CourseForm/>}
         </div>
-        
 
         {/* SHOULD DISPLAY A LIST OF CARDS. */}
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">

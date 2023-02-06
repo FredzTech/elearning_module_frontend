@@ -1,10 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { StatusPill, CTAButton, NavigateBtn } from "../../components";
-import { StudentRegistrationForm } from "../Logins-Registration";
-import { ModalContext } from "../modals/ModalProvider";
+import { StudentRegistrationForm } from "../Credentials";
 import axios from "../../axios";
 const StudentsAdminTable = () => {
-  const { openModal, isOpen } = useContext(ModalContext);
   const [studentsData, setStudentsData] = useState([
     {
       fName: "ANN",
@@ -70,11 +68,10 @@ const StudentsAdminTable = () => {
       <div className="flex flex-col align-center relative shadow-md sm:rounded-lg w-full h-full pt-2 px-4">
         <div className="flex w-full items-center justify-end mb-3 pr-1">
           <NavigateBtn
-            action={openModal}
+            destination="new-student"
             text="Add student"
             icon="tenantIcon"
           />
-          {isOpen && <StudentRegistrationForm />}
         </div>
         <table className="flex flex-col items-start justify-center w-full text-md text-left bg-cyan-50">
           <thead className="text-secondary flex w-full items-center justify-center uppercase h-full">
@@ -111,9 +108,9 @@ const StudentsAdminTable = () => {
               return (
                 <tr
                   className={`${
-                    index % 2 == 0 ? "bg-primary  " : ""
+                    index % 2 == 0 ? "bg-cyan-100  " : ""
                   } flex w-full items-center justify-start px-2 cursor-pointer font-normal text-xl`}
-                  key={`${index}`}
+                  key={`student-${index}`}
                 >
                   <td className="py-1 px-2 w-28 justify-center">{`${
                     index + 1

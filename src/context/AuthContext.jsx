@@ -11,7 +11,9 @@ export const useAuth = () => {
 
 // GIVING CONTEXT MEANING. (PARENT)
 export const AuthContextProvider = ({ children }) => {
-  const [auth, setAuth] = useState({ roles: [2000] });
+  const [auth, setAuth] = useState({ roles: ["GUEST"] });
+  // const [auth, setAuth] = useState({});
+
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}

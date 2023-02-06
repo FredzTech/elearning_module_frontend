@@ -3,7 +3,7 @@ import { AiOutlineAppstore } from "react-icons/ai";
 import AccordionItem from "./AccordionItem";
 import { faqs } from "./AccordionData";
 
-const Accordion = () => {
+const Accordion = ({ unitData }) => {
   const [clicked, setClicked] = useState("0");
 
   const handleToggle = (index) => {
@@ -19,16 +19,17 @@ const Accordion = () => {
         <span className="text-white text-3xl">
           <AiOutlineAppstore />
         </span>
-        <h1>DISCRETE MATHEMATICS</h1>
+        <h1>{unitData.unitName}</h1>
       </div>
-      {faqs.map((faq, index) => (
-        <AccordionItem
-          key={index}
-          faq={faq}
-          onToggle={() => handleToggle(index)}
-          active={clicked === index}
-        />
-      ))}
+      {unitData.unitChapters &&
+        unitData.unitChapters.map((chapter, index) => (
+          <AccordionItem
+            key={`accordion-item-${index}`}
+            chapter={chapter}
+            onToggle={() => handleToggle(index)}
+            active={clicked === index}
+          />
+        ))}
     </div>
   );
 };

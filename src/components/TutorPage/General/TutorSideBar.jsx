@@ -12,7 +12,7 @@ const TutorSideBar = () => {
         <div className="name capitalize mt-4 font-bold text-3xl">
           Amos Einstein
         </div>
-        <div className="role capitalize m-4 text-center text-white bg-primary  px-7 py-0.5 rounded-3xl font-bold text-lg">
+        <div className="capitalize flex-col-centered  text-white bg-primary px-6 py-0.5 rounded-3xl font-bold text-lg">
           tutor
         </div>
       </div>
@@ -43,7 +43,11 @@ const TutorSideBar = () => {
       <div id="Navigation" className="w-full h-full flex flex-col gap-1 mt-10">
         {/* <AdminAccordion /> */}
         {lists.map((list, index) => {
-          <AdminNavItem to={list.link} text={list.name} />;
+          <AdminNavItem
+            key={`list-${index}`}
+            to={list.link}
+            text={list.name}
+          />;
         })}
       </div>
     </div>

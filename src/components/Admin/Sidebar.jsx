@@ -9,13 +9,13 @@ import Dashboard from "../../assets/dashboard.png";
 import Students from "../../assets/Students.png";
 import Tutors from "../../assets/Tutors.png";
 import Courses from "../../assets/Courses.jpeg";
-import { BsChevronRight, BsChevronDown } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
 
 const lists = [
-  { name: "Dashboard", link: "/admin/dashboard", icon: Dashboard },
   { name: "Students", link: "/admin/students", icon: Students },
   { name: "Tutors", link: "/admin/tutors", icon: Tutors },
   { name: "Courses", link: "/admin/courses", icon: Courses },
+  { name: "Admin", link: "/admin/admins", icon: Tutors },
 ];
 
 export const Sidebar = () => {
