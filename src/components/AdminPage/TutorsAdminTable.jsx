@@ -4,7 +4,7 @@ import { StatusPill, CTAButton, NavigateBtn } from "../../components";
 
 const TutorsAdminTable = () => {
   const [tutorsData, setTutorsData] = useState([]);
-  let fetchTutorsData = async () => {
+  let fetchUsersData = async () => {
     try {
       let { data } = await axios.get("/auth/all-tutors");
       console.log(data);
@@ -14,7 +14,7 @@ const TutorsAdminTable = () => {
     }
   };
   useEffect(() => {
-    fetchTutorsData();
+    fetchUsersData();
   }, []);
 
   return (
@@ -86,7 +86,7 @@ const TutorsAdminTable = () => {
                     <CTAButton
                       _id={_id}
                       contact={email}
-                      fetchTutorsData={fetchTutorsData}
+                      fetchUsersData={fetchUsersData}
                     />
                   </td>
                 </tr>

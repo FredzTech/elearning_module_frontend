@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 const navigationLinks = [
   { name: "Home", destination: "/", current: false },
-  { name: "Tutor", destination: "tutor", current: false },
+  { name: "EM-202", destination: "EM-202", current: false },
   { name: "Admin", destination: "admin", current: false },
   { name: "Subscription", destination: "pricing", current: false },
 ];

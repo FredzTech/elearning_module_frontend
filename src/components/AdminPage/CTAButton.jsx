@@ -4,18 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { BiMessageDetail } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AiFillEye } from "react-icons/ai";
-const CTAButton = ({ contact, _id, fetchTutorsData }) => {
-  console.log(_id);
+const CTAButton = ({ contact, _id, fetchUsersData: fetchUsersData }) => {
+  console.log(`Users ID ${_id}`);
   let navigate = useNavigate();
   // My work in the front-end is simply to make the axios request to the backend ili ifanye haki
-  const deleteTutor = async (_id) => {
+  const deleteUser = async (_id) => {
     try {
-      await axios.delete("/auth/tutor", {
+      await axios.delete("/auth/student", {
         headers: {},
         data: { _id },
       });
       //   After deleting, it should trigger a rerender.
-      fetchTutorsData();
+      fetchUsersData();
       console.log("Tenant successfully deleted and put under archives.");
     } catch (error) {
       console.log(
@@ -51,7 +51,7 @@ const CTAButton = ({ contact, _id, fetchTutorsData }) => {
       <button
         className="flex items-center justify-center w-full rounded-r-3xl border-none bg-rose-600 text-secondary py-1 px-2"
         onClick={() => {
-          deleteTutor(_id);
+          deleteUser(_id);
         }}
       >
         <span>

@@ -9,12 +9,12 @@ const AdminRegistrationForm = () => {
   const navigate = useNavigate();
   // DECLARATION OF OUR STATES
   //==========================
-  const [fName, setFName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [contact, setContact] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [cPassword, setCPassword] = useState("");
+  const [fName, setFName] = useState(null);
+  const [surname, setSurname] = useState(null);
+  const [contact, setContact] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [cPassword, setCPassword] = useState(null);
   // For showing or hiding the alertbox
   const [responseTracker, setResponseTracker] = useState(false);
   // For changing color of alertbox.
@@ -48,7 +48,7 @@ const AdminRegistrationForm = () => {
         console.log(status);
         if (status === 201) {
           // Clearing out the inputs
-          setResponse("Tutor Registered Successfully");
+          setResponse("Admin Registered Successfully");
           setStatusTracker(true);
           setResponseTracker(true);
           setFName("");

@@ -45,6 +45,7 @@ import {
   UnitForm,
   CustomNav,
   Button,
+  DirectUploadForm,
 } from "./TutorPage/Forms";
 
 // LOGINS-REGISTRATION COMPONENTS.
@@ -130,4 +131,5 @@ export {
   ContentSection,
   SinglePage,
   AudioPlayer,
+  DirectUploadForm,
 };

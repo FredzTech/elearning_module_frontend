@@ -5,6 +5,7 @@ import UnitForm from "./UnitForm";
 import LoadingBtn from "./LoadingBtn";
 import CustomNav from "./CustomNav";
 import Button from "./Button";
+import DirectUploadForm from "./DirectUploadForm";
 export {
   ChapterForm,
   CourseForm,
@@ -13,4 +14,5 @@ export {
   LoadingBtn,
   CustomNav,
   Button,
+  DirectUploadForm,
 };

@@ -1,57 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusPill, CTAButton, NavigateBtn } from "../../components";
-import { StudentRegistrationForm } from "../Credentials";
 import axios from "../../axios";
 const StudentsAdminTable = () => {
-  const [studentsData, setStudentsData] = useState([
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-    {
-      fName: "ANN",
-      surname: "MWANGI",
-      email: "lorem5@gmail.com",
-      status: "free",
-      _id: "634513b7b32aff941eef9f46",
-      entryDate: "2022-10-11",
-      updatedAt: "2022-10-11",
-    },
-  ]);
+  const [studentsData, setStudentsData] = useState([]);
+
   useEffect(() => {
-    let fetchStudentsData = async () => {
+    let fetchUsersData = async () => {
       try {
         let { data } = await axios.get("/auth/all-students");
         console.log(data);
@@ -61,7 +15,7 @@ const StudentsAdminTable = () => {
       }
     };
 
-    fetchStudentsData();
+    fetchUsersData();
   }, []);
   return (
     <>
@@ -96,43 +50,44 @@ const StudentsAdminTable = () => {
           </thead>
 
           <tbody className="flex flex-col w-full items-center justify-start">
-            {studentsData.map((student, index) => {
-              let {
-                firstName: fName,
-                surname: lName,
-                email,
-                status,
-                _id,
-                updatedAt: dateOfRegistration,
-              } = student;
-              return (
-                <tr
-                  className={`${
-                    index % 2 == 0 ? "bg-cyan-100  " : ""
-                  } flex w-full items-center justify-start px-2 cursor-pointer font-normal text-xl`}
-                  key={`student-${index}`}
-                >
-                  <td className="py-1 px-2 w-28 justify-center">{`${
-                    index + 1
-                  }`}</td>
-                  <td className="py-1 w-64  flex justify-center items-center">
-                    {fName}
-                  </td>
-                  <td className="py-1 w-64  flex justify-center items-center">
-                    {lName}
-                  </td>
-                  <td className="py-1 w-64   flex justify-center items-center">
-                    {dateOfRegistration}
-                  </td>
-                  <td className="py-1 w-48  flex justify-center items-center ">
-                    <StatusPill status={status} />
-                  </td>
-                  <td className="py-1 w-64 ">
-                    <CTAButton _id={_id} contact={email} />
-                  </td>
-                </tr>
-              );
-            })}
+            {studentsData &&
+              studentsData.map((student, index) => {
+                let {
+                  firstName: fName,
+                  surname: lName,
+                  email,
+                  status,
+                  _id,
+                  updatedAt: dateOfRegistration,
+                } = student;
+                return (
+                  <tr
+                    className={`${
+                      index % 2 == 0 ? "bg-cyan-100  " : ""
+                    } flex w-full items-center justify-start px-2 cursor-pointer font-normal text-xl`}
+                    key={`student-${index}`}
+                  >
+                    <td className="py-1 px-2 w-28 justify-center">{`${
+                      index + 1
+                    }`}</td>
+                    <td className="py-1 w-64  flex justify-center items-center">
+                      {fName}
+                    </td>
+                    <td className="py-1 w-64  flex justify-center items-center">
+                      {lName}
+                    </td>
+                    <td className="py-1 w-64   flex justify-center items-center">
+                      {dateOfRegistration}
+                    </td>
+                    <td className="py-1 w-48  flex justify-center items-center ">
+                      <StatusPill status={status} />
+                    </td>
+                    <td className="py-1 w-64 ">
+                      <CTAButton _id={_id} contact={email} />
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>

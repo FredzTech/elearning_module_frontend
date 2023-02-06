@@ -9,12 +9,12 @@ const studentRegistrationForm = () => {
 
   // DECLARATION OF OUR STATES
   //==========================
-  const [fName, setFName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [contact, setContact] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [cPassword, setCPassword] = useState("");
+  const [fName, setFName] = useState(null);
+  const [surname, setSurname] = useState(null);
+  const [contact, setContact] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [cPassword, setCPassword] = useState(null);
 
   const [responseTracker, setResponseTracker] = useState(false);
   const [statusTracker, setStatusTracker] = useState(true);
@@ -22,50 +22,72 @@ const studentRegistrationForm = () => {
   const registerStudent = async (e) => {
     e.preventDefault();
 
-    if (password != cPassword) {
+    if (password !== null && cPassword !== null) {
+      if (password == cPassword) {
+        if (password.length() >= 8) {
+          let studentData = {
+            firstName: fName,
+            surname,
+            password,
+            contact: `254${contact}`,
+            email,
+          };
+
+          try {
+            let { data } = await axios.post(
+              "/auth/register-student",
+              studentData
+            );
+            // Clearing out the inputs
+            console.log(JSON.stringify(data));
+            setResponse("Student Registered Successfully");
+            setStatusTracker(true);
+            setResponseTracker(true);
+            setFName("");
+            setSurname("");
+            setEmail("");
+            setContact("");
+            setPassword("");
+            setCPassword("");
+
+            setTimeout(() => {
+              setResponseTracker(false);
+              navigate(-1);
+            }, 2000);
+          } catch (error) {
+            setStatusTracker(false);
+            console.log(error.response.data.message.message);
+            setResponse(
+              `[${error.response.data.message.name}] ${error.response.data.message.message}`
+            );
+            setResponseTracker(true);
+            setTimeout(() => {
+              setResponseTracker(false);
+            }, 4500);
+          }
+        } else {
+          setStatusTracker(false);
+          setResponse(`Passwords Entered do not match.`);
+          setResponseTracker(true);
+          setTimeout(() => {
+            setResponseTracker(false);
+          }, 4500);
+        }
+      } else {
+        setStatusTracker(false);
+        setResponse(`The passwords entered do not match!`);
+        setResponseTracker(true);
+        setTimeout(() => {
+          setResponseTracker(false);
+        }, 3000);
+      }
+    } else {
       setStatusTracker(false);
-      setResponse(`Passwords Entered do not match.`);
+      setResponse(`Password fields cannot be left blank!`);
       setResponseTracker(true);
       setTimeout(() => {
         setResponseTracker(false);
-      }, 4500);
-    } else {
-      let studentData = {
-        firstName: fName,
-        surname,
-        password,
-        contact: `254${contact}`,
-        email,
-      };
-
-      try {
-        let { data } = await axios.post("/auth/register-student", studentData);
-        // Clearing out the inputs
-        console.log(JSON.stringify(data));
-        setResponse("Student Registered Successfully");
-        setStatusTracker(true);
-        setResponseTracker(true);
-        setFName("");
-        setSurname("");
-        setEmail("");
-        setContact("");
-        setPassword("");
-        setCPassword("");
-
-        setTimeout(() => {
-          setResponseTracker(false);
-        }, 4500);
-      } catch (error) {
-        setStatusTracker(false);
-        console.log(error.response.data.message.message);
-        setResponse(
-          `[${error.response.data.message.name}] ${error.response.data.message.message}`
-        );
-        setResponseTracker(true);
-        setTimeout(() => {
-          setResponseTracker(false);
-        }, 4500);
-      }
+      }, 3000);
     }
   };
 
@@ -114,7 +136,7 @@ const studentRegistrationForm = () => {
             </div>
           </div>
           {/* CONTACT SECTION */}
-          <div className="flex flex-col   my-5">
+          <div className="flex flex-col my-5">
             <div className=" flex flex-col w-full  phone:my-1  phone:flex-col  ">
               <label htmlFor="contact" className="mb-1 mr-3">
                 Contact

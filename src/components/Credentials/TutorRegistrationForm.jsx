@@ -9,12 +9,12 @@ const TutorRegistrationForm = () => {
   const navigate = useNavigate();
   // DECLARATION OF OUR STATES
   //==========================
-  const [fName, setFName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [contact, setContact] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [cPassword, setCPassword] = useState("");
+  const [fName, setFName] = useState(null);
+  const [surname, setSurname] = useState(null);
+  const [contact, setContact] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [cPassword, setCPassword] = useState(null);
   // For showing or hiding the alertbox
   const [responseTracker, setResponseTracker] = useState(false);
   // For changing color of alertbox.
@@ -57,7 +57,8 @@ const TutorRegistrationForm = () => {
 
         setTimeout(() => {
           setResponseTracker(false);
-        }, 4500);
+          navigate(-1);
+        }, 2000);
       } catch (error) {
         setStatusTracker(false);
         console.log(error.response.data.message.message);

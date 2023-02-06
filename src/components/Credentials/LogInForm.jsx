@@ -15,7 +15,7 @@ const LogInForm = () => {
 
   console.log(`This is where we came from ${from}`);
   const [firstName, setFirstName] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(null);
   // AlertBox Config
   const [statusTracker, setStatusTracker] = useState(false);
   const [responseTracker, setResponseTracker] = useState(false);

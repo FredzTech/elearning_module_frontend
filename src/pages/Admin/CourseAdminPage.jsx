@@ -25,6 +25,12 @@ const CoursesAdminPage = () => {
           text="New Course"
           icon="tenantIcon"
         />
+
+        <NavigateBtn
+          destination="direct-upload"
+          text="Express Course"
+          icon="tenantIcon"
+        />
       </div>
       <div className="grid grid-cols-4 gap-5">
         {coursesData &&
