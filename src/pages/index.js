@@ -11,6 +11,7 @@ import AdminLayout from "./Admin/AdminLayout";
 import AdminPage from "./AdminPage";
 import AdminDashboard from "./Admin/AdminDashboard";
 import StudentsPageAdmin from "./Admin/StudentsPageAdmin";
+import UnitsPageDynamicAdmin from "./Admin/UnitsPageDynamicAdmin";
 import TutorsPageAdmin from "./Admin/TutorsPageAdmin";
 import CourseAdminPage from "./Admin/CourseAdminPage";
 import TutorLayoutPage from "./Tutor/TutorLayout";
@@ -39,4 +40,5 @@ export {
   UnitPageDynamic,
   AdminSection,
   DraftPage,
+  UnitsPageDynamicAdmin,
 };

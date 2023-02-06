@@ -16,6 +16,7 @@ import {
   UnitPageDynamic,
   AdminSection,
   DraftPage,
+  UnitsPageDynamicAdmin,
 } from "./pages";
 import {
   CourseForm,
@@ -115,7 +116,14 @@ function App() {
               path="students"
               element={<StudentsPageAdmin />}
             ></Route>
-            <Route exact path="courses" element={<CoursesAdminPage />}></Route>
+            <Route exact path="courses">
+              <Route index element={<CoursesAdminPage />}></Route>
+              <Route
+                exact
+                path=":courseId"
+                element={<UnitsPageDynamicAdmin />}
+              ></Route>
+            </Route>
           </Route>
         </Route>
       </Routes>
@@ -134,7 +142,7 @@ function App() {
             path="/tutor/unit/new-chapter"
             element={<ChapterForm />}
           />
-          <Route exact path="/admin/new-unit" element={<UnitForm />} />
+          {/* <Route exact path="/admin/new-unit" element={<UnitForm />} /> */}
           <Route exact path="/tutor/new-lesson" element={<LessonForm />} />
           <Route
             exact
@@ -145,6 +153,11 @@ function App() {
             exact
             path="/admin/courses/direct-upload"
             element={<DirectUploadForm />}
+          />
+          <Route
+            exact
+            path="/admin/courses/:courseId/new-unit"
+            element={<UnitForm />}
           />
           <Route
             exact

@@ -2,15 +2,22 @@ import axios from "../axios";
 
 //   A FUNCTION THAT CREATES OUR POST OBJECT
 //==========================================
-const postObject = async ({ course, unitCode, unitName, unitDescription }) => {
+
+const postObject = async ({
+  course,
+  tutor,
+  unitCode,
+  unitName,
+  unitDescription,
+}) => {
   const formData = {
-    courseTitle: course,
+    courseId: course,
+    tutorId: tutor,
     unitCode: unitCode,
     unitName: unitName,
     unitDescription: unitDescription,
   };
 
-  console.log(formData);
   // REQUEST CONFIG.
   const config = {
     headers: { "Content-Type": "application/json" },

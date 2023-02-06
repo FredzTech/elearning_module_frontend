@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "../../../axios";
 import { CustomNav, Button } from "../../../components";
 import { postObject } from "../../../modules/postUnitObject";
 import LoadingBtn from "./LoadingBtn";
 const UnitForm = () => {
+  const navigate = useNavigate();
+  const [tutors, setTutors] = useState([]);
+
   // LOADS COURSES DATA WHEN COMPONENT LOADS.
+  const fetchTutorsData = async () => {
+    try {
+      const { data } = await axios.get("/auth/all-tutors");
+      setTutors(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const [courses, setCourses] = useState([]);
-
+  useEffect(() => {
+    fetchTutorsData();
+  }, []);
   // DECLARATION OF VARIABLES
-
+  const { courseId } = useParams();
   // const [course, setCourse] = useState(`${courses[0].courseTitle}`);
-  const [course, setCourse] = useState();
+  const [tutor, setTutor] = useState();
   const [unitCode, setUnitCode] = useState("");
   const [unitName, setUnitName] = useState("");
   const [unitDescription, setUnitDescription] = useState("");
@@ -22,12 +36,17 @@ const UnitForm = () => {
     e.preventDefault();
     setSubmit(true);
     // Create our post object.
-    const result = await postObject({
-      course,
+    const { status } = await postObject({
+      course: courseId,
+      tutor: tutor,
       unitCode,
       unitName,
       unitDescription,
     });
+
+    {
+      status == 201 && navigate(-1);
+    }
 
     console.log(result); //Returns to as the response from backend manifested under the data object.
   };
@@ -44,24 +63,26 @@ const UnitForm = () => {
               htmlFor="id"
               className="w-full block my-2 text-sm font-medium text-gray-900"
             >
-              Select Course
+              Select Tutor
             </label>
 
             <select
-              value={course}
-              onChange={(e) => setCourse(e.target.value)}
+              value={tutor}
+              onChange={(e) => setTutor(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
             >
               <option selected className="text-grey">
-                Choose a course
+                Choose a tutor
               </option>
-              {courses.map((course, index) => {
-                return (
-                  <option key={`course-${index}`} value={course.courseTitle}>
-                    {course.courseTitle}
-                  </option>
-                );
-              })}
+              {tutors &&
+                tutors.map((tutor, index) => {
+                  const { _id: tutorId, firstName, surname } = tutor;
+                  return (
+                    <option key={`tutor-${index}`} value={tutorId}>
+                      {`${firstName} ${surname}`}
+                    </option>
+                  );
+                })}
             </select>
           </div>
           {/* FILE */}

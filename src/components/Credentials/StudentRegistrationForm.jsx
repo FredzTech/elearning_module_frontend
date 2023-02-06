@@ -21,10 +21,13 @@ const studentRegistrationForm = () => {
   const [response, setResponse] = useState("");
   const registerStudent = async (e) => {
     e.preventDefault();
-
+    // Check if inputs are blank
     if (password !== null && cPassword !== null) {
-      if (password == cPassword) {
-        if (password.length() >= 8) {
+      console.log(`${password} vs ${cPassword}`);
+      // Check if they match
+      if (password === cPassword) {
+        // Check for length,
+        if (password.length >= 8) {
           let studentData = {
             firstName: fName,
             surname,
@@ -67,7 +70,7 @@ const studentRegistrationForm = () => {
           }
         } else {
           setStatusTracker(false);
-          setResponse(`Passwords Entered do not match.`);
+          setResponse(`Passwords do not react eight digits.`);
           setResponseTracker(true);
           setTimeout(() => {
             setResponseTracker(false);
