@@ -4,7 +4,7 @@ import AlertBox from "../AlertBox";
 import axios from "../../axios";
 import { MdCancel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-const studentRegistrationForm = () => {
+const TutorRegistrationForm = () => {
   const navigate = useNavigate();
 
   // DECLARATION OF OUR STATES
@@ -67,7 +67,7 @@ const studentRegistrationForm = () => {
           }
         } else {
           setStatusTracker(false);
-          setResponse(`Passwords do not react eight digits.`);
+          setResponse(`Password should be eight digits.`);
           setResponseTracker(true);
           setTimeout(() => {
             setResponseTracker(false);
@@ -244,4 +244,4 @@ const studentRegistrationForm = () => {
   );
 };
 
-export default studentRegistrationForm;
+export default TutorRegistrationForm;

@@ -39,13 +39,13 @@ import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 
 function App() {
   const location = useLocation();
-  console.log(`App location ${JSON.stringify(location)}`);
+  console.log(`App reloaded. ${JSON.stringify(location)}`);
   const background = location.state && location.state.background; //If the first param is true , then the second param is assigned.Just like conditional operators.
   // AUTHENTICATION ROUTES
   // {
   //   student:"EM-201",
-  //   admin :"EM-202",
-  //   tutor:"EM-203",
+  //   tutor:"EM-202",
+  //   admin :"EM-203",
   // }
 
   return (
@@ -57,6 +57,7 @@ function App() {
         {/* Student Protected Routes */}
         <Route exact path="*" element={<Forbidden />}></Route>
         <Route exact path="forbidden" element={<Forbidden />} />
+        <Route path="/log-in" element={<LogInForm />} />
 
         {/* Should trigger a redirect to the dashboard. */}
         <Route element={<UsersLayout />}>
@@ -69,7 +70,7 @@ function App() {
             element={<StudentRegistrationForm />}
           />
           {/* STUDENT ROUTES */}
-          <Route element={<RequireAuth allowedRoles={["EM-201", "EM-203"]} />}>
+          <Route element={<RequireAuth allowedRoles={["EM-201"]} />}>
             {/* COURSE VIEW [UNITS] */}
             <Route
               exact
@@ -88,7 +89,7 @@ function App() {
         </Route>
 
         {/* TUTOR ROUTES */}
-        <Route element={<RequireAuth allowedRoles={["EM-202", "EM-203"]} />}>
+        <Route element={<RequireAuth allowedRoles={["EM-202"]} />}>
           <Route exact path="/tutor" element={<TutorLayoutPage />}>
             <Route index element={<TutorPage />} />
             <Route exact path="units" element={<TutorUnitsPage />} />
@@ -96,7 +97,7 @@ function App() {
             <Route exact path="lesson" element={<LessonForm />} />
           </Route>
         </Route>
-        <Route element={<RequireAuth allowedRoles={["EM-202", "EM-203"]} />}>
+        <Route element={<RequireAuth allowedRoles={["EM-202"]} />}>
           <Route exact path="/tutor/unit" element={<TutorUnitPage />}>
             <Route exact path=":lessonId" element={<ContentSection />} />
           </Route>

@@ -70,7 +70,7 @@ const studentRegistrationForm = () => {
           }
         } else {
           setStatusTracker(false);
-          setResponse(`Passwords do not react eight digits.`);
+          setResponse(`Password should be eight digits.`);
           setResponseTracker(true);
           setTimeout(() => {
             setResponseTracker(false);

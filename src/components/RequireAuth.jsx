@@ -5,7 +5,6 @@ import { useAuth } from "../context/AuthContext";
 const RequireAuth = ({ allowedRoles }) => {
   const { auth } = useAuth();
   const location = useLocation();
-  console.log(`Context verification ${JSON.stringify(auth)}`);
   console.log(`Location verification ${JSON.stringify(location)}`);
 
   return auth?.roles?.find((role) => allowedRoles?.includes(role)) ? (

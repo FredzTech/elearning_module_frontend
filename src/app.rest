@@ -52,8 +52,8 @@ Content-Type: application/json
 GET http://localhost:4000/auth/all-admins
 Content-Type: application/json
 
-
-
+### CREATE TOKEN SCHEMA.
+POST http://localhost:4000/auth/create-token
 
 
 ### CREATE TOKEN

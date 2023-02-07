@@ -10,7 +10,7 @@ const navigationLinks = [
 const Navbar = () => {
   const auth = useAuth();
   const location = useLocation();
-  console.log("Navbar intercept");
+  console.log("Navbar reloaded");
   return (
     <nav className="w-full h-20 flex items-center justify-between bg-primary text-white px-2">
       <div id="section-1">E-LEARNING</div>

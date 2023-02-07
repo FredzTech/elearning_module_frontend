@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { CustomNav, Button } from "../../components";
-
 import AlertBox from "../AlertBox";
 import axios from "../../axios";
-import PasswordStrengthBar from "react-password-strength-bar";
+import { MdCancel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 const AdminRegistrationForm = () => {
   const navigate = useNavigate();
+
   // DECLARATION OF OUR STATES
   //==========================
   const [fName, setFName] = useState(null);
@@ -15,81 +15,103 @@ const AdminRegistrationForm = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [cPassword, setCPassword] = useState(null);
-  // For showing or hiding the alertbox
+
   const [responseTracker, setResponseTracker] = useState(false);
-  // For changing color of alertbox.
-  const [statusTracker, setStatusTracker] = useState(false);
+  const [statusTracker, setStatusTracker] = useState(true);
   const [response, setResponse] = useState("");
-
-  const registerAdmin = async (e) => {
+  const registerTutor = async (e) => {
     e.preventDefault();
+    // Check if inputs are blank
+    if (password !== null && cPassword !== null) {
+      console.log(`${password} vs ${cPassword}`);
+      // Check if they match
+      if (password === cPassword) {
+        // Check for length,
+        if (password.length >= 8) {
+          let adminData = {
+            firstName: fName,
+            surname,
+            password,
+            contact: `254${contact}`,
+            email,
+          };
 
-    if (password != cPassword) {
+          try {
+            let { data } = await axios.post("/auth/register-admin", adminData);
+            // Clearing out the inputs
+            console.log(JSON.stringify(data));
+            setResponse("Tutor Registered Successfully");
+            setStatusTracker(true);
+            setResponseTracker(true);
+            setFName("");
+            setSurname("");
+            setEmail("");
+            setContact("");
+            setPassword("");
+            setCPassword("");
+
+            setTimeout(() => {
+              setResponseTracker(false);
+              navigate(-1);
+            }, 2000);
+          } catch (error) {
+            setStatusTracker(false);
+            console.log(error.response.data.message.message);
+            setResponse(
+              `[${error.response.data.message.name}] ${error.response.data.message.message}`
+            );
+            setResponseTracker(true);
+            setTimeout(() => {
+              setResponseTracker(false);
+            }, 4500);
+          }
+        } else {
+          setStatusTracker(false);
+          setResponse(`Password should be eight digits.`);
+          setResponseTracker(true);
+          setTimeout(() => {
+            setResponseTracker(false);
+          }, 4500);
+        }
+      } else {
+        setStatusTracker(false);
+        setResponse(`The passwords entered do not match!`);
+        setResponseTracker(true);
+        setTimeout(() => {
+          setResponseTracker(false);
+        }, 3000);
+      }
+    } else {
       setStatusTracker(false);
-      setResponse(`Passwords Entered do not match.`);
+      setResponse(`Password fields cannot be left blank!`);
       setResponseTracker(true);
       setTimeout(() => {
         setResponseTracker(false);
-      }, 4500);
-    } else {
-      let adminData = {
-        firstName: fName,
-        surname,
-        password,
-        contact: `254${contact}`,
-        email,
-      };
-
-      try {
-        const { status, data } = await axios.post(
-          "/auth/register-admin",
-          adminData
-        );
-        console.log(status);
-        if (status === 201) {
-          // Clearing out the inputs
-          setResponse("Admin Registered Successfully");
-          setStatusTracker(true);
-          setResponseTracker(true);
-          setFName("");
-          setSurname("");
-          setEmail("");
-          setContact("");
-          setPassword("");
-          setCPassword("");
-          setTimeout(() => {
-            setResponseTracker(false);
-            navigate(-1);
-          }, 4500);
-        }
-      } catch (error) {
-        setStatusTracker(false);
-        if (error.message === "Request failed with status code 409") {
-          setResponse("The admin has already been registered.");
-          setResponseTracker(true);
-          setTimeout(() => {
-            setResponseTracker(false);
-          }, 4500);
-        }
-      }
+      }, 3000);
     }
   };
 
   return (
     <div className="modal-overlay">
-      <div className="flex flex-col justify-center items-center debug w-2/5">
-        <CustomNav text="admin registration" />
+      <div className="flex flex-col justify-center items-center debug w-2/5 phone:w-full">
+        {/* CUSTOM NAVIGATION. */}
+        <div className="w-full flex justify-between items-center  text-sm font-normal text-white uppercase bg-primary  px-2 py-4 rounded-t-md">
+          ADMIN REGISTRATION FORM
+          <button onClick={() => navigate(-1)}>
+            <MdCancel className="text-white text-4xl" />
+          </button>
+        </div>
         {/* PROPOSED HEADER. */}
         {/* We are doing it the react style. How then do we handle the multipart.form data from our form to our server? */}
-        <form className="form-styling">
+        <form className=" bg-white flex-col px-5 phone:px-2 w-full phone:border-2  phone:rounded-b-md">
           {/* NAMES SECTION */}
           <div className="flex flex-col justify-around  my-2">
             <label htmlFor="contact" className="mb-1">
               Names
             </label>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
               <input
-                className="w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                className=" phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                 id="fName"
                 type="Text"
                 placeholder="First Name"
@@ -101,7 +123,7 @@ const AdminRegistrationForm = () => {
               ></input>
 
               <input
-                className="w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                className=" phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                 id="lName"
                 type="Text"
                 placeholder="Last Name"
@@ -113,9 +135,8 @@ const AdminRegistrationForm = () => {
               ></input>
             </div>
           </div>
-
           {/* CONTACT SECTION */}
-          <div className="flex flex-col   my-5">
+          <div className="flex flex-col my-5">
             <div className=" flex flex-col w-full  phone:my-1  phone:flex-col  ">
               <label htmlFor="contact" className="mb-1 mr-3">
                 Contact
@@ -171,10 +192,10 @@ const AdminRegistrationForm = () => {
             >
               Password
             </label>
-            <div className="flex flex-col w-[300px] sm:w-full">
+            <div className="flex flex-col w-full">
               <div>
                 <input
-                  className=" phone:mx-0 phone:w-full phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  className=" phone:mx-0 w-full phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                   id="password"
                   type="password"
                   placeholder="Enter Password"
@@ -184,17 +205,11 @@ const AdminRegistrationForm = () => {
                   }}
                   required
                 />
-
-                <PasswordStrengthBar
-                  password={password}
-                  minLength={8}
-                  className="w-full"
-                />
               </div>
 
               <div>
                 <input
-                  className="phone:w-full phone:mx-0 phone:my-1 px-4   bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
+                  className="w-full phone:mx-0 phone:my-1 px-4  w-1/2 bg-white-200 appearance-none py-2 border-2 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple placeholder:text-sm"
                   id="CPassword"
                   type="password"
                   placeholder="Confirm Password"
@@ -219,7 +234,7 @@ const AdminRegistrationForm = () => {
               type="button"
               text="register"
               onClick={(e) => {
-                registerAdmin(e);
+                registerTutor(e);
               }}
             />
           </div>

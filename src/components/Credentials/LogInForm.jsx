@@ -7,15 +7,15 @@ import { useAuth } from "../../context/AuthContext";
 const LogInForm = () => {
   const navigate = useNavigate();
   // Updating Context
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
   // Consuming state.
   const location = useLocation();
-  const from = location.state ? location.state?.background?.pathname : "/";
+  const from = location.state?.background?.pathname || "/";
   console.log(`Detailed location ${JSON.stringify(location)}`);
 
   console.log(`This is where we came from ${from}`);
   const [firstName, setFirstName] = useState("");
-  const [password, setPassword] = useState(null);
+  const [password, setPassword] = useState("");
   // AlertBox Config
   const [statusTracker, setStatusTracker] = useState(false);
   const [responseTracker, setResponseTracker] = useState(false);
@@ -29,7 +29,8 @@ const LogInForm = () => {
       const { data, status } = await axios.post("/auth/login", credentials);
       console.log(`Response Received ${JSON.stringify(data)}, ${status}`);
       setAuth(data);
-      if (status == 200) {
+      console.log(auth);
+      if (status === 200) {
         navigate(from, { replace: true });
       }
     } catch (err) {
@@ -44,7 +45,6 @@ const LogInForm = () => {
       setTimeout(() => {
         setResponseTracker(false);
       }, 3000);
-      navigate(from);
     }
   };
   return (
