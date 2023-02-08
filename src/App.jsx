@@ -58,6 +58,7 @@ function App() {
         <Route exact path="*" element={<Forbidden />}></Route>
         <Route exact path="forbidden" element={<Forbidden />} />
         <Route path="/log-in" element={<LogInForm />} />
+        <Route path="/draft" element={<DraftPage />} />
 
         {/* Should trigger a redirect to the dashboard. */}
         <Route element={<UsersLayout />}>

@@ -38,7 +38,7 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
         }
       >
         {chapterLessons.map((lesson, index) => {
-          const { lessonType, lessonUrl, lessonName } = lesson;
+          const { lessonType, _id: lessonID } = lesson;
 
           return (
             <li
@@ -47,11 +47,9 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
             >
               <Link
                 // To should be something like a number.
-                to={lesson.lessonType}
+                to={lessonID}
                 state={{
-                  lessonUrl: lessonUrl,
                   lessonType: lessonType,
-                  lessonName: lessonName,
                 }}
               >
                 <div className="w-72 h-full flex gap-5 items-center">

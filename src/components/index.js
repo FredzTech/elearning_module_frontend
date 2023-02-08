@@ -15,10 +15,10 @@ import {
   ContentSection,
   Chapter,
   CourseHeading,
-  Pointer,
   SubNav,
   SinglePage,
   AudioPlayer,
+  PdfViewer,
 } from "./CoursePage";
 
 // UNIT PAGE COMPONENTS
@@ -83,7 +83,6 @@ export {
   HomePageCard,
   HomePageGrid,
   Chapter,
-  Pointer,
   SubNav,
   CourseHeading,
   VideoComponent,
@@ -132,4 +131,5 @@ export {
   SinglePage,
   AudioPlayer,
   DirectUploadForm,
+  PdfViewer,
 };

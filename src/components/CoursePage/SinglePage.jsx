@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
-
+import { GrNext, GrPrevious } from "react-icons/gr";
+import "./SinglePage.css";
 const SinglePage = ({ pdf }) => {
   // USING AN EXTERNAL WORKER FILE
   // pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -39,26 +40,25 @@ const SinglePage = ({ pdf }) => {
       >
         <Page pageNumber={pageNumber} />
       </Document>
-      <div className="debug flex flex-row items-center mx-auto">
+      <div className="mt-3 flex flex-row items-center mx-auto">
         <button
           type="button"
-          className="button w-32"
+          className="button hover:bg-primary hover:text-white w-12 h-12 rounded-full flex-row-centered"
           disabled={pageNumber <= 1}
           onClick={previousPage}
         >
-          Previous
+          <GrPrevious />
         </button>
         <p className=" mx-4">
           Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
         </p>
 
         <button
-          type="button"
-          className="button w-32"
+          className="button hover:bg-primary hover:text-white w-12 h-12 rounded-full flex-row-centered"
           disabled={pageNumber >= numPages}
           onClick={nextPage}
         >
-          Next
+          <GrNext />
         </button>
       </div>
     </>
