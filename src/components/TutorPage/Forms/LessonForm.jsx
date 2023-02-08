@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CustomNav, Button } from "../../../components";
+import { CustomNav, Button, AlertBox } from "../../../components";
 import axios from "../../../axios";
 import LoadingBtn from "./LoadingBtn";
 import { MdCancel } from "react-icons/md";
@@ -18,6 +18,99 @@ const LessonForm = () => {
   const [file, setFile] = useState();
   const [submit, setSubmit] = useState(false);
 
+  // Alert Box Config
+  const [response, setResponse] = useState(null);
+  const [responseTracker, setResponseTracker] = useState(null);
+  const [statusTracker, setStatusTracker] = useState(null);
+
+  // Step 1 : Get signed Url
+
+  async function getSignedUrl({ file }) {
+    // Generating our req body.
+    const formData = new FormData();
+    // Only sending the filetype to the server.
+    const { type } = file;
+    formData.append("fileType", type);
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    try {
+      const { data, status: urlCreationStatus } = await axios.post(
+        "/s3Direct/",
+        formData,
+        config
+      );
+      console.log(`Signed url ${JSON.stringify(data)}, ${urlCreationStatus}`);
+      const { signedUrl: url, Key } = data;
+      console.log(`Destructured data ${url}, ${Key}`);
+      return { urlCreationStatus, Key, url };
+    } catch (err) {
+      console.log("Something went wrong when creating the signed url");
+      console.log(err);
+      return err;
+    }
+  }
+
+  // Step 2 : Actual file upload to s3 bucket
+  async function uploadFile({ file, url: signedUrl }) {
+    // We upload file directly to s3
+    const config = {
+      headers: { "Content-Type": "multipart/form-data" },
+    };
+    console.log(signedUrl);
+    try {
+      console.log("Commencing file upload");
+      const success = await axios.put(signedUrl, file, config);
+      console.log(success);
+      return success;
+    } catch (err) {
+      console.log(
+        `Error occured during actual file upload ${JSON.stringify(err)}`
+      );
+      const { message } = err;
+
+      if (message === "Request failed with status code 403") {
+        console.log("We can try uploading one more time.");
+        return err;
+      }
+      return "This error is beyond the scope of uploading file.";
+    }
+  }
+
+  // Step 3 Saving all info to the DB
+  const savingFileToDB = async ({ urlCreationStatus, Key, url }) => {
+    if (urlCreationStatus === 201) {
+      // Uploading file to server.
+      try {
+        const uploadResponse = await uploadFile({ file: file, url: url });
+        let uploadResponseStatus = uploadResponse.status;
+        console.log(`File upload status ${uploadResponseStatus}`);
+        if (uploadResponseStatus === 200) {
+          // Saving data to the status
+          createPostObject({
+            lessonNumber,
+            lessonName,
+            lessonNotes,
+            lessonType,
+            Key,
+          });
+        }
+      } catch (err) {
+        if (err.message === "Request failed with status code 409") {
+          setResponse("This record already exists.");
+          setStatusTracker(false);
+          setResponseTracker(true);
+          setTimeout(() => {
+            setResponseTracker(false);
+          }, 2500);
+        } else {
+          console.log(err);
+        }
+      }
+    }
+  };
   //   A FUNCTION THAT CREATES OUR POST OBJECT
   //==========================================
   async function createPostObject({
@@ -25,38 +118,44 @@ const LessonForm = () => {
     lessonName,
     lessonNotes,
     lessonType,
+    Key,
   }) {
-    console.log("Creating post object via formData instance. ");
-
-    // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
-    //=========================================================
     const formData = new FormData();
     formData.append("chapterID", chapterID);
     formData.append("lessonNumber", `${chapterID}-${lessonNumber}`);
     formData.append("lessonName", lessonName);
     formData.append("lessonNotes", lessonNotes);
     formData.append("lessonType", lessonType);
-    formData.append("video", file); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
+    formData.append("lessonUrl", Key); //Jackpot. Defines our fieldname which is crawled by multer to pick out this file for upload.
 
-    // ALTERNATIVE B : OUR GOOD OLD METHOD CAN ALSO WORK BUT WE USE WHAT IS RECOMMENDED.
-    //==================================================================================
-    // const formData = { fName, lName, video: file };
-    console.log(formData);
     const config = {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { "Content-Type": "application/json" },
     };
 
     try {
       setSubmit(true);
       const response = await axios.post("/lesson/new-lesson", formData, config);
-      console.log(JSON.stringify(response));
-      return response;
+      const { status } = response;
+
+      if (status === 201) {
+        setResponse("Data saved successfully to DB.");
+        setStatusTracker(true);
+        setResponseTracker(true);
+        setTimeout(() => {
+          setResponseTracker(false);
+        }, 2500);
+      }
     } catch (err) {
-      setSubmit(false);
-      let { data } = err.response;
-      console.log(JSON.stringify(data));
-      // Display the error as you will
-      return err;
+      if (err.message === "Request failed with status code 409") {
+        setResponse("This record already exists.");
+        setStatusTracker(false);
+        setResponseTracker(true);
+        setTimeout(() => {
+          setResponseTracker(false);
+        }, 2500);
+      } else {
+        console.log(err);
+      }
     }
   }
 
@@ -65,24 +164,50 @@ const LessonForm = () => {
   const fileSelected = (e) => {
     const file = e.target.files[0];
     setFile(file);
-    console.log(file);
+  };
+
+  const validateForm = () => {
+    if (
+      lessonName !== null &&
+      lessonNumber !== null &&
+      lessonType !== null &&
+      file !== null
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   const fileUploadHandler = async (e) => {
     e.preventDefault();
+    const validation = validateForm();
+
+    if (validation == true) {
+      const urlCreationStatus = await getSignedUrl({ file: file });
+      savingFileToDB(urlCreationStatus);
+    } else {
+      console.log("Error!Error during validation");
+      setResponse("Kindly fill all details correctly.");
+      setStatusTracker(false);
+      setResponseTracker(true);
+      setTimeout(() => {
+        setResponseTracker(false);
+      }, 2500);
+    }
 
     // Create our post object.
-    const result = await createPostObject({
-      lessonNumber,
-      lessonName,
-      lessonNotes,
-      lessonType,
-    });
-    const { status } = result;
-    if (status == 201) {
-      setSubmit(true);
-      navigate(-1);
-    }
+    // const result = await createPostObject({
+    //   lessonNumber,
+    //   lessonName,
+    //   lessonNotes,
+    //   lessonType,
+    // });
+    // const { status } = result;
+    // if (status == 201) {
+    //   setSubmit(true);
+    //   navigate(-1);
+    // }
   };
 
   return (
@@ -101,6 +226,11 @@ const LessonForm = () => {
           className="form-styling"
           text="Lesson form"
         >
+          <AlertBox
+            responseTracker={responseTracker}
+            statusTracker={statusTracker}
+            response={response}
+          />
           {/* FILE */}
           <div className="input-wrap">
             <label htmlFor="lNumber" className="w-full ">

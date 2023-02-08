@@ -44,7 +44,7 @@ const ContentSection = () => {
   // Reading our state.
   const location = useLocation();
   console.log(location);
-  console.log(lessonData);
+  console.log(`Current Lesson data ${JSON.stringify(lessonData)}`);
   // const lessonUrl = (location.state && location.state.lessonUrl) || null;
   const lessonType = (location.state && location.state.lessonType) || null;
   switch (lessonType) {
@@ -53,8 +53,11 @@ const ContentSection = () => {
         <div className="w-full h-full text-center text-white flex flex-col justify-start border-2 border-black text-3xl font-extrabold">
           <VideoComponent
             poster={posterImage}
-            src={lessonData && lessonData.lessonUrl}
-            title={lessonData.lessonName}
+            src={
+              lessonData &&
+              `http://localhost:4000/s3Direct/${lessonData.lessonUrl}`
+            }
+            title={lessonData && lessonData.lessonName}
           />
           {/* <UnitNav /> */}
           {/* <QuillEditorStudent /> */}
@@ -65,8 +68,11 @@ const ContentSection = () => {
       return (
         <div className="w-full h-full text-center text-dark flex-row-centered text-3xl font-extrabold">
           <AudioPlayer
-            url={lessonData && lessonData.lessonUrl}
-            lessonName={lessonData.lessonName}
+            url={
+              lessonData &&
+              `http://localhost:4000/s3Direct/${lessonData.lessonUrl}`
+            }
+            lessonName={lessonData && lessonData.lessonName}
           />
         </div>
       );
@@ -74,7 +80,12 @@ const ContentSection = () => {
     case "pdf":
       return (
         <div className=" flex flex-col w-full  h-full text-dark">
-          <SinglePageViewer pdf={lessonData && lessonData.lessonUrl} />
+          <SinglePageViewer
+            pdf={
+              lessonData &&
+              `http://localhost:4000/s3Direct/${lessonData.lessonUrl}`
+            }
+          />
         </div>
       );
       break;
