@@ -27,6 +27,7 @@ const ContentSection = () => {
   const { lessonId } = useParams();
   const [lessonData, setLessonData] = useState(null);
   const fetchLesson = async () => {
+    console.log(`Lesson ID with which I want its data ${lessonId}`);
     const { data, status } = await axios.get(`/lesson/${lessonId}`);
     try {
       if (status == 200) {
