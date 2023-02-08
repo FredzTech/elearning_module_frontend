@@ -10,27 +10,26 @@ const LogInForm = () => {
   const { auth, setAuth } = useAuth();
   // Consuming state.
   const location = useLocation();
-  const from = location.state?.background?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
   console.log(`Detailed location ${JSON.stringify(location)}`);
 
   console.log(`This is where we came from ${from}`);
+  // Login Credentials.
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
-  // AlertBox Config
+  // Alert Box Configurations
   const [statusTracker, setStatusTracker] = useState(false);
   const [responseTracker, setResponseTracker] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
-    console.log("Handle submit is running");
     e.preventDefault();
     try {
       const credentials = { firstName, password };
       const { data, status } = await axios.post("/auth/login", credentials);
-      console.log(`Response Received ${JSON.stringify(data)}, ${status}`);
-      setAuth(data);
-      console.log(auth);
       if (status === 200) {
+        setAuth(data);
+        console.log(`Auth Context set to ${auth}`);
         navigate(from, { replace: true });
       }
     } catch (err) {
