@@ -27,7 +27,7 @@ const ContentSection = () => {
   const { lessonId } = useParams();
   const [lessonData, setLessonData] = useState(null);
   const fetchLesson = async () => {
-    const { data, status } = await axios.get(`lesson/${lessonId}`);
+    const { data, status } = await axios.get(`/lesson/${lessonId}`);
     try {
       if (status == 200) {
         console.log(data);
