@@ -55,7 +55,7 @@ const ContentSection = () => {
             poster={posterImage}
             src={
               lessonData &&
-              `http://localhost:4000/s3Direct/${lessonData.lessonUrl}`
+              `https://kapesha-warmup.herokuapp.com/s3Direct/${lessonData.lessonUrl}`
             }
             title={lessonData && lessonData.lessonName}
           />
@@ -70,7 +70,7 @@ const ContentSection = () => {
           <AudioPlayer
             url={
               lessonData &&
-              `http://localhost:4000/s3Direct/${lessonData.lessonUrl}`
+              `https://kapesha-warmup.herokuapp.com/s3Direct/${lessonData.lessonUrl}`
             }
             lessonName={lessonData && lessonData.lessonName}
           />
@@ -83,7 +83,7 @@ const ContentSection = () => {
           <SinglePageViewer
             pdf={
               lessonData &&
-              `http://localhost:4000/s3Direct/${lessonData.lessonUrl}`
+              `https://kapesha-warmup.herokuapp.com/s3Direct/${lessonData.lessonUrl}`
             }
           />
         </div>
