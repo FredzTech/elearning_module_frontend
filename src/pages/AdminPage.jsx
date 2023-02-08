@@ -4,7 +4,7 @@ import { AdminSideNav } from "../components";
 import { AdminDashboard } from "../pages";
 const AdminPage = () => {
   return (
-    <div className="flex w-screen  h-screen">
+    <div className="flex w-full  h-full">
       <div id="sidebar" className="w-1/4 h-full">
         <AdminSideNav />
       </div>

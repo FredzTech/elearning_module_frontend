@@ -39,9 +39,9 @@ import CoursesAdminPage from "./pages/Admin/CourseAdminPage";
 
 function App() {
   const location = useLocation();
-  console.log(`App reloaded. ${JSON.stringify(location)}`);
+  console.log(`App reloaded.`);
   const background = location.state && location.state.background; //If the first param is true , then the second param is assigned.Just like conditional operators.
-  // AUTHENTICATION ROUTES
+  // AUTHENTICATION REFERENCE.
   // {
   //   student:"EM-201",
   //   tutor:"EM-202",

@@ -11,9 +11,7 @@ const LogInForm = () => {
   // Consuming state.
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log(`Detailed location ${JSON.stringify(location)}`);
-
-  console.log(`This is where we came from ${from}`);
+  console.log(`Login kicked in. Will go back to ${from}`);
   // Login Credentials.
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
@@ -34,10 +32,7 @@ const LogInForm = () => {
       }
     } catch (err) {
       // Destructuring any errors.
-      console.log(err);
-      console.log(err.response); //Contains all our response data.
-      const { message } = err.response.data;
-      console.log(message);
+      console.log(`Login Error : ${JSON.stringify(err)}`);
       setStatusTracker(false);
       setMessage(message);
       setResponseTracker(true);

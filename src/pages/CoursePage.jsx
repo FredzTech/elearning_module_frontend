@@ -5,7 +5,7 @@ import cardImage from "../assets/course-display.png";
 
 const CoursePage = () => {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-full">
       <main className="flex flex-row gap-5 w-full h-full border-2 border-primary  py-5">
         <article className="w-1/4 h-full py-1 flex flex-col gap-5 items-center rounded-lg m-2 justify-start shadow-lg shadow-primary  bg-secondary ">
           <div className="w-full p-4 box-border ">
@@ -52,7 +52,7 @@ const CoursePage = () => {
               <span>Enroll</span>
             </button>
           </Link>
-          
+
           <div className="w-full text-center description px-2">
             <p className="w-full truncate">
               Discrete mathematics is the study of mathematical structures that

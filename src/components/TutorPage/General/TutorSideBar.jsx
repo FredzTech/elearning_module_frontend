@@ -1,9 +1,7 @@
 import React from "react";
-import { AdminNavItem } from "../../../components";
 const TutorSideBar = () => {
-  const lists = [{ name: "Dashboard", link: "/tutor/dashboard" }];
   return (
-    <div className="h-full rounded-lg  p-3 space-y-2 w-full bg-slate-200 sm:w-full sm:text-center">
+    <div className="h-full rounded-lg w-full bg-slate-200">
       <div className="flex-col-centered pt-5">
         <img
           src="https://source.unsplash.com/100x100/?portrait"
@@ -16,7 +14,7 @@ const TutorSideBar = () => {
           tutor
         </div>
       </div>
-      <div className="additionalInfo flex-col-centered w-full mt-10 gap-5">
+      <div className="flex-col-centered w-full mt-10 gap-5">
         <div className="flex-row-centered justify-evenly w-full">
           <div className="group flex-col-centered">
             <div className="sub text-sm font-light text-slate-500 capitalize">
@@ -39,16 +37,6 @@ const TutorSideBar = () => {
             Active
           </div>
         </div>
-      </div>
-      <div id="Navigation" className="w-full h-full flex flex-col gap-1 mt-10">
-        {/* <AdminAccordion /> */}
-        {lists.map((list, index) => {
-          <AdminNavItem
-            key={`list-${index}`}
-            to={list.link}
-            text={list.name}
-          />;
-        })}
       </div>
     </div>
   );

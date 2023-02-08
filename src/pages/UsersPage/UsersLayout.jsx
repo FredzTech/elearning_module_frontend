@@ -5,7 +5,7 @@ import { Footer } from "../../components";
 
 const UsersLayout = () => {
   return (
-    <div className="flex flex-col w-screen h-screen sm:flex-col overflow-auto ">
+    <div className="flex flex-col w-full h-full sm:flex-col overflow-auto ">
       <Navbar />
       <Outlet />
       <Footer />
