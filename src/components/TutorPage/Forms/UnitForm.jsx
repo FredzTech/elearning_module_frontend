@@ -30,6 +30,11 @@ const UnitForm = () => {
   const [unitDescription, setUnitDescription] = useState("");
   const [submit, setSubmit] = useState();
 
+  // Alert Box Configs
+  const [response, setResponse] = useState(null);
+  const [responseTracker, setResponseTracker] = useState(null);
+  const [statusTracker, setStatusTracker] = useState(null);
+
   // SUBMITS INFO.
   //==============
   const fileUploadHandler = async (e) => {

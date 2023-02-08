@@ -63,8 +63,6 @@ const LessonForm = () => {
   //   TAKES THE FILE SELECTED(OBJECT) FROM FILE INSTANCE.
   //=======================================================
   const fileSelected = (e) => {
-    // console.log(e.target); //Will just display the attribute that causes the event to occur.
-    // console.log(e.target.files); // Returns a file list which is an object
     const file = e.target.files[0];
     setFile(file);
     console.log(file);
