@@ -98,7 +98,7 @@ function App() {
           </Route>
         </Route>
         <Route element={<RequireAuth allowedRoles={["EM-202"]} />}>
-          <Route exact path="/tutor/unit" element={<TutorUnitPage />}>
+          <Route exact path="/tutor/unit/:unitID" element={<TutorUnitPage />}>
             <Route exact path=":lessonId" element={<ContentSection />} />
           </Route>
         </Route>
@@ -140,11 +140,15 @@ function App() {
           />
           <Route
             exact
-            path="/tutor/unit/new-chapter"
+            path="/tutor/new-chapter/:unitID"
             element={<ChapterForm />}
           />
           {/* <Route exact path="/admin/new-unit" element={<UnitForm />} /> */}
-          <Route exact path="/tutor/new-lesson" element={<LessonForm />} />
+          <Route
+            exact
+            path="/tutor/new-lesson/:chapterID"
+            element={<LessonForm />}
+          />
           <Route
             exact
             path="/admin/courses/new-course"

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { AiOutlineAppstore } from "react-icons/ai";
 import TutorAccordionItem from "./TutorAccordionItem";
-import { ChapterForm } from "../../components";
 import { IoMdAdd } from "react-icons/io";
 import { useLocation, Link } from "react-router-dom";
 const TutorAccordion = ({ unitData }) => {
+  console.log(unitData);
   const location = useLocation();
   // USING THE CHAPTER ID WE CAN SHOW THE LESSONS.
-  const { _id: unitID } = unitData;
+  const unitID = unitData && unitData._id;
   const [clicked, setClicked] = useState("0");
 
   const handleToggle = (index) => {
@@ -24,22 +24,23 @@ const TutorAccordion = ({ unitData }) => {
           <span className="text-white text-3xl">
             <AiOutlineAppstore />
           </span>
-          <h1>{unitData.unitName}</h1>
+          <h1>{unitData && unitData.unitName}</h1>
         </div>
 
-        {unitData.unitChapters &&
-          unitData.unitChapters.map((chapter, index) => (
-            <TutorAccordionItem
-              key={`chapter-${index}`}
-              chapter={chapter}
-              onToggle={() => handleToggle(index)}
-              active={clicked === index}
-            />
-          ))}
+        {unitData && unitData.unitChapters
+          ? unitData.unitChapters.map((chapter, index) => (
+              <TutorAccordionItem
+                key={`chapter-${index}`}
+                chapter={chapter}
+                onToggle={() => handleToggle(index)}
+                active={clicked === index}
+              />
+            ))
+          : ""}
       </div>
       <Link
-        to="new-chapter"
-        state={{ unitID: unitID, background: location }}
+        to={`/tutor/new-chapter/${unitID}`}
+        state={{ background: location }}
         className="button  bg-primary text-white mt-1 ml-1 rounded-md border-none"
       >
         Add Chapter

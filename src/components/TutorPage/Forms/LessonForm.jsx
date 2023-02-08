@@ -3,12 +3,12 @@ import { CustomNav, Button } from "../../../components";
 import axios from "../../../axios";
 import LoadingBtn from "./LoadingBtn";
 import { MdCancel } from "react-icons/md";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const LessonForm = () => {
-  const navigate = useNavigate(-1);
-  const location = useLocation();
-  const chapterID = location.useState && location.useState.chapterID;
+  const navigate = useNavigate();
+  const { chapterID } = useParams();
+  console.log(chapterID);
   // DECLARATION OF VARIABLES
   //=========================
   const [lessonName, setLessonName] = useState("");
@@ -16,7 +16,7 @@ const LessonForm = () => {
   const [lessonNotes, setLessonNotes] = useState();
   const [lessonType, setLessonType] = useState("");
   const [file, setFile] = useState();
-  const [submit, setSubmit] = useState();
+  const [submit, setSubmit] = useState(false);
 
   //   A FUNCTION THAT CREATES OUR POST OBJECT
   //==========================================
@@ -80,8 +80,11 @@ const LessonForm = () => {
       lessonNotes,
       lessonType,
     });
-
-    console.log(result); //Returns to as the response from backend manifested under the data object.
+    const { status } = result;
+    if (status == 201) {
+      setSubmit(true);
+      navigate(-1);
+    }
   };
 
   return (
@@ -137,12 +140,11 @@ const LessonForm = () => {
             </label>
             <select
               value={lessonType}
+              type="select"
               onChange={(e) => setLessonType(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+              // className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
             >
-              <option selected className="text-grey">
-                --File type--
-              </option>
+              <option className="text-grey">--File type--</option>
               <option value="pdf">PDF</option>
               <option value="audio">AUDIO</option>
               <option value="video">VIDEO</option>

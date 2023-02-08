@@ -80,8 +80,8 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
           );
         })}
         <Link
-          to="/tutor/new-lesson"
-          state={{ chapterID: chapterID, background: location }}
+          to={`/tutor/new-lesson/${chapterID}`}
+          state={{ background: location }}
         >
           <li className="hover:bg-slate-500 text-white px-3 py-2 capitalize bg-primary rounded-lg w-48 ml-auto  mt-2">
             Add Lesson

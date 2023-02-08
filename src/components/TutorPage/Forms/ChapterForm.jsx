@@ -3,20 +3,15 @@ import { CustomNav, Button } from "../../../components";
 import axios from "../../../axios";
 import LoadingBtn from "./LoadingBtn";
 import { MdCancel } from "react-icons/md";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const ChapterForm = () => {
   // A link will be used to redirect us to this particular point.
   const navigate = useNavigate();
-  const location = useLocation();
-  const unitID = location.state && location.state.unitID;
-  // Appending the chapterID on the accordion link.... Just like the background.
-  // DECLARATION OF VARIABLES
-  // const [units, setUnits] = useState([]);
-  // const [unitName, setUnitName] = useState("select unit");
+  const { unitID } = useParams();
   const [chapterNumber, setChapterNumber] = useState("");
   const [chapterName, setChapterName] = useState("");
   const [chapterDescription, setChapterDescription] = useState("");
-  const [submit, setSubmit] = useState();
+  const [submit, setSubmit] = useState(false);
 
   //   A FUNCTION THAT CREATES OUR POST OBJECT
   async function createPostObject({
@@ -24,8 +19,6 @@ const ChapterForm = () => {
     chapterName,
     chapterDescription,
   }) {
-    console.log("Creating post object via formData instance. ");
-
     // ALTERNATIVE A : FANCY WAY OF CREATING OUR NORMAL OBJECT
     //=========================================================
     const formData = new FormData();
@@ -65,8 +58,11 @@ const ChapterForm = () => {
       chapterName,
       chapterDescription,
     });
-
-    console.log(result); //Returns to as the response from backend manifested under the data object.
+    const { status } = result;
+    if (status == 201) {
+      setSubmit(true);
+      navigate(-1);
+    }
   };
 
   return (

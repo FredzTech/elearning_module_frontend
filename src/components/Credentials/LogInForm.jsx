@@ -11,7 +11,7 @@ const LogInForm = () => {
   // Consuming state.
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log(`Login kicked in. Will go back to ${from}`);
+  // console.log(`Login kicked in. Will go back to ${from}`);
   // Login Credentials.
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");

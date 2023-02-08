@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiClock } from "react-icons/fi";
-import chapter from "../../../assets/chapter.png";
-import LessonIcon from "../../../assets/lesson_icon.png";
-import TimeIcon from "../../../assets/time_icon.png";
+
 const TutorCard = ({ unit }) => {
+  console.log(unit);
   return (
     <div className="flex-col-centered justify-start w-[300px] h-[300px] rounded-md shadow-md shadow-slate-400">
       <div className="h-1/3 w-full bg-primary flex-row-centered rounded-t-md">
@@ -29,7 +27,7 @@ const TutorCard = ({ unit }) => {
         </div>
       </div>
       <div className="cta flex flex-row-centered">
-        <Link to="/tutor/unit">
+        <Link to={`/tutor/unit/${unit._id}`}>
           <div className="button">Go to Unit</div>
         </Link>
       </div>
