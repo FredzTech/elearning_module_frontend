@@ -24,6 +24,7 @@ const lessonName =
   "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, nostrum!";
 const ContentSection = () => {
   // Fetch lesson given its id.
+  const location = useLocation();
   const { lessonId } = useParams();
   const [lessonData, setLessonData] = useState(null);
   const fetchLesson = async () => {
@@ -38,14 +39,12 @@ const ContentSection = () => {
       console.log(err);
     }
   };
-
+  // Every time a rerender occurs.
   useEffect(() => {
     fetchLesson();
-  }, []);
+  }, [lessonId]);
   // Reading our state.
-  const location = useLocation();
-  console.log(location);
-  console.log(`Current Lesson data ${JSON.stringify(lessonData)}`);
+  // console.log(`Current Lesson data ${JSON.stringify(lessonData)}`);
   // const lessonUrl = (location.state && location.state.lessonUrl) || null;
   const lessonType = (location.state && location.state.lessonType) || null;
   switch (lessonType) {
@@ -54,10 +53,7 @@ const ContentSection = () => {
         <div className="w-full h-full text-center text-white flex flex-col justify-start border-2 border-black text-3xl font-extrabold">
           <VideoComponent
             poster={posterImage}
-            src={
-              lessonData &&
-              `https://kapesha-warmup.herokuapp.com/s3Direct/${lessonData.lessonUrl}`
-            }
+            src={lessonData && lessonData.lessonUrl}
             title={lessonData && lessonData.lessonName}
           />
           {/* <UnitNav /> */}
@@ -69,10 +65,7 @@ const ContentSection = () => {
       return (
         <div className="w-full h-full text-center text-dark flex-row-centered text-3xl font-extrabold">
           <AudioPlayer
-            url={
-              lessonData &&
-              `https://kapesha-warmup.herokuapp.com/s3Direct/${lessonData.lessonUrl}`
-            }
+            url={lessonData && lessonData.lessonUrl}
             lessonName={lessonData && lessonData.lessonName}
           />
         </div>
@@ -84,7 +77,7 @@ const ContentSection = () => {
           <SinglePageViewer
             pdf={
               lessonData &&
-              `https://kapesha-warmup.herokuapp.com/s3Direct/${lessonData.lessonUrl}`
+              `http://localhost:4000/s3Direct/${lessonData.lessonUrl}`
             }
           />
         </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import "./SinglePage.css";
+import axios from "../../axios";
 const SinglePage = ({ pdf }) => {
   // USING AN EXTERNAL WORKER FILE
   // pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;

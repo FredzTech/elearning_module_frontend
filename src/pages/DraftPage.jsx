@@ -2,6 +2,8 @@ import React from "react";
 import { SinglePage } from "../components";
 // Sample resources
 // import samplePDF from "../assets/Tensile_Test.pdf";
+import ReactPlayer from "react-player";
+
 const samplePDF =
   "https://kapesha001-demo.s3.ap-south-1.amazonaws.com/pol-1675866174132.pdf";
 const sampleVideo =
@@ -25,7 +27,11 @@ import {
 
 const DraftPage = () => {
   return (
-    <div className="">
+    <div className="flex w-full h-full flex-col-centered">
+      <ReactPlayer
+        playing
+        url="http://localhost:4000/s3Direct/7ed5ac756e8b27710ec96585232a7a2a.mp4"
+      />
       {/* <SinglePage pdf={samplePDF} /> */}
       {/* <PdfViewer pdf={samplePDF} /> */}
       {/* <VideoComponent
@@ -34,7 +40,7 @@ const DraftPage = () => {
         title="Introduction to Discrete Mathematics"
       /> */}
 
-      <AudioPlayer url={sampleAudio} lessonName={lessonName} />
+      {/* <AudioPlayer url={sampleAudio} lessonName={lessonName} /> */}
     </div>
   );
 };
