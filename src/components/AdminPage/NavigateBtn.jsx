@@ -9,7 +9,7 @@ const NavigateBtn = ({ text, icon, destination, action }) => {
     <Link to={destination} state={{ background: location }}>
       <div
         className={`
-      capitalize flex text-secondary bg-primary w-32   items-center justify-between rounded-md px-1 py-2 `}
+      capitalize flex text-secondary bg-primary w-32 mx-2  items-center justify-between rounded-md px-1 py-2 `}
       >
         <p className=" ml-2">{text}</p>
 

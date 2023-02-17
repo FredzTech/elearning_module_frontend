@@ -33,6 +33,8 @@ const LogInForm = () => {
     } catch (err) {
       // Destructuring any errors.
       console.log(`Login Error : ${JSON.stringify(err)}`);
+      const { message } = err;
+      setMessage(message);
       setStatusTracker(false);
       setMessage(message);
       setResponseTracker(true);
@@ -107,8 +109,8 @@ const LogInForm = () => {
               Log in
             </button>
           </form>
-
-          <p className="bg-red-600">{message}</p>
+          {/* 
+          <p className="bg-red-600">{message}</p> */}
         </div>
         <p className="mt-2 text-center text-sm text-gray-600 max-w">
           Not registered?

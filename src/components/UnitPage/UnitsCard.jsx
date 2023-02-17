@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const UnitsCard = ({ number, heading, summary, unitId }) => {
   return (
-    <article className="hover:cursor-pointer chapter w-[510px] bg-white h-[200px] flex flex-col gap-2  pt-3 rounded-md shadow-lg shadow-slate-400">
+    <article className="hover:cursor-pointer chapter w-[450px] bg-white h-[200px] flex flex-col gap-2  pt-3 rounded-md shadow-lg shadow-slate-400 ">
       <section className=" pl-4 px-2 flex items-center justify-start gap-3 ">
         <div className="w-12 h-12  rounded-full bg-primary  flex-row-centered text-white ">
           <span className="font-extraLight">{number}</span>

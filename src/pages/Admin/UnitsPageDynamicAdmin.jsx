@@ -20,25 +20,27 @@ const UnitsPageDynamicAdmin = () => {
   }, []);
 
   return (
-    <div className="w-full relative h-full flex flex-col ">
-      <header className="bg-slate-400 h-[300px] relative flex items-center justify-center">
+    <div className="w-full h-full flex flex-col ">
+      <header className="bg-slate-400 h-[250px] relative flex items-center justify-center">
         <h1 className="text-white font-bold text-center text-4xl uppercase">
           {JSON.stringify(courseData) !== "{}" && courseData.courseTitle}
         </h1>
       </header>
-      <div className="flex w-full items-center justify-end mb-3 mt-2 px-5 z-10">
-        <div className="z-10">
+      <div className="relative flex flex-col">
+        <div className="flex w-full items-center justify-end mb-3 mt-2 px-5">
           <NavigateBtn
             destination="new-unit"
             text="New Unit"
             icon="tenantIcon"
           />
+          <NavigateBtn
+            destination="assign-unit"
+            text="Assign Unit"
+            icon="tenantIcon"
+          />
         </div>
-      </div>
-      <section className="relative w-full h-full bg-secondary">
-        {/* When this is absolute the parent collapses. */}
-        <div className="relative top-[-70px] w-full h-full px-20 ">
-          <main className="relative main-content grid grid-cols-2 gap-10">
+        <section className="absolute px-10 ">
+          <main className=" grid grid-cols-2 gap-10">
             {JSON.stringify(courseData) !== "{}" &&
               courseData.units.map((unit, index) => {
                 const { unitName, unitDescription, _id } = unit;
@@ -53,8 +55,10 @@ const UnitsPageDynamicAdmin = () => {
                 );
               })}
           </main>
-        </div>
-      </section>
+        </section>
+      </div>
+
+      {/* When this is absolute the parent collapses. */}
     </div>
   );
 };

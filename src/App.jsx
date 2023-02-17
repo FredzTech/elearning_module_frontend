@@ -71,7 +71,7 @@ function App() {
             element={<StudentRegistrationForm />}
           />
           {/* STUDENT ROUTES */}
-          <Route element={<RequireAuth allowedRoles={["EM-201"]} />}>
+          <Route element={<RequireAuth allowedRoles={["EM-201", "EM-202"]} />}>
             {/* COURSE VIEW [UNITS] */}
             <Route
               exact
@@ -105,7 +105,7 @@ function App() {
         </Route>
 
         {/* ADMIN ROUTES */}
-        <Route element={<RequireAuth allowedRoles={["EM-203"]} />}>
+        <Route element={<RequireAuth allowedRoles={["EM-203", "EM-202"]} />}>
           <Route exact path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route exact path="users" element={<Users />} />
