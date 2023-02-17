@@ -23,6 +23,7 @@ const sampleAudio =
 const lessonName =
   "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, nostrum!";
 const ContentSection = () => {
+  // Used to direct the traffic. Data is passed via the router.
   // Fetch lesson given its id.
   const location = useLocation();
   const { lessonId } = useParams();
@@ -32,7 +33,9 @@ const ContentSection = () => {
     const { data, status } = await axios.get(`/lesson/${lessonId}`);
     try {
       if (status == 200) {
-        console.log(data);
+        console.log(
+          `Lesson Data returned during fetch ${JSON.stringify(data)}`
+        );
         setLessonData(data);
       }
     } catch (err) {

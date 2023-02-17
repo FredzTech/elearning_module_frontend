@@ -7,6 +7,7 @@ const useAudio = (url) => {
   const [playing, setPlaying] = useState(false);
 
   const toggle = () => setPlaying(!playing);
+  // Toggles the playing state.
 
   useEffect(() => {
     playing ? audio.play() : audio.pause();
@@ -23,6 +24,7 @@ const useAudio = (url) => {
 };
 
 const AudioPlayer = ({ url, lessonName }) => {
+  // It is not a must to run a function via the useEffect.
   const [playing, toggle] = useAudio(url);
 
   return (
