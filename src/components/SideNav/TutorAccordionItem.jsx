@@ -24,9 +24,20 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
         onClick={onToggle}
       >
         {chapterName}
-        <span className="text-xl">
-          {active ? <BsChevronDown /> : <BsChevronRight />}
-        </span>
+        <div className="flex gap-3 items-center justify-between">
+          <Link
+            to={`/tutor/new-lesson/${chapterID}`}
+            state={{ background: location }}
+          >
+            <span className="text-2xl">
+              <IoMdAdd />
+            </span>
+          </Link>
+
+          <span className="text-xl">
+            {active ? <BsChevronDown /> : <BsChevronRight />}
+          </span>
+        </div>
       </button>
       <ul
         ref={contentEl}
@@ -46,13 +57,7 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
               key={index}
               className="hover:bg-slate-500 bg-slate-300 text-black w-full px-3 py-2 my-0.5 capitalize rounded-md"
             >
-              <Link
-                // To should be something like a number.
-                to={lessonUrl}
-                state={{
-                  lessonType: lessonType,
-                }}
-              >
+              <Link to={lessonUrl}>
                 <div className="w-72 h-full flex gap-5 items-center">
                   {lesson.lessonType === "video" ? (
                     <span className="text-sm">
@@ -78,17 +83,6 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
             </li>
           );
         })}
-        <Link
-          to={`/tutor/new-lesson/${chapterID}`}
-          state={{ background: location }}
-        >
-          <li className="hover:bg-slate-500 text-white px-3 py-2 capitalize bg-primary rounded-lg w-48 ml-auto  mt-2">
-            Add Lesson
-            <span className="text-sm">
-              <IoMdAdd className="text-secondary text-2xl " />
-            </span>
-          </li>
-        </Link>
       </ul>
     </li>
   );

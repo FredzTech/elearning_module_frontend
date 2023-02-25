@@ -8,7 +8,6 @@ import { useParams, useNavigate } from "react-router-dom";
 const LessonForm = () => {
   const navigate = useNavigate();
   const { chapterID } = useParams();
-  console.log(chapterID);
   // DECLARATION OF VARIABLES
   //=========================
   const [lessonName, setLessonName] = useState("");
@@ -28,6 +27,7 @@ const LessonForm = () => {
   async function getSignedUrl({ file }) {
     // Generating our req body.
     const formData = new FormData();
+    console.log(JSON.stringify(file));
     // Only sending the filetype to the server.
     const { type } = file;
     formData.append("fileType", type);
@@ -143,11 +143,13 @@ const LessonForm = () => {
         setResponseTracker(true);
         setTimeout(() => {
           setResponseTracker(false);
-        }, 2500);
+          navigate(-1);
+        }, 1200);
       }
     } catch (err) {
       if (err.message === "Request failed with status code 409") {
         setResponse("This record already exists.");
+        setSubmit(true);
         setStatusTracker(false);
         setResponseTracker(true);
         setTimeout(() => {
@@ -184,6 +186,7 @@ const LessonForm = () => {
     const validation = validateForm();
 
     if (validation == true) {
+      setSubmit(false);
       const urlCreationStatus = await getSignedUrl({ file: file });
       savingFileToDB(urlCreationStatus);
     } else {
@@ -195,19 +198,6 @@ const LessonForm = () => {
         setResponseTracker(false);
       }, 2500);
     }
-
-    // Create our post object.
-    // const result = await createPostObject({
-    //   lessonNumber,
-    //   lessonName,
-    //   lessonNotes,
-    //   lessonType,
-    // });
-    // const { status } = result;
-    // if (status == 201) {
-    //   setSubmit(true);
-    //   navigate(-1);
-    // }
   };
 
   return (
