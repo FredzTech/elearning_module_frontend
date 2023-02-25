@@ -3,7 +3,7 @@ import sampleVideo from "../../assets/sample-video.mp4";
 import axios from "../../axios";
 const VideoComponent = ({ src, title, poster }) => {
   const [videoData, setVideoData] = useState();
-  console.log(`Video source passed ${src}`);
+  console.log(`Video Player activated ${src}`);
   // Should happen on load of this component.
   // The fallback is on to explain the concept.
   const fetchVideoData = async () => {
@@ -34,7 +34,7 @@ const VideoComponent = ({ src, title, poster }) => {
 
       <video
         className=" mt-2 w-[850px]  h-auto flex rounded-lg shadow-xl shadow-slate-500 "
-        src={`http://localhost:4000/s3Direct/${src}`}
+        src={src}
         poster={poster}
         controls
       >

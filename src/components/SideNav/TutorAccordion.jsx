@@ -4,7 +4,6 @@ import TutorAccordionItem from "./TutorAccordionItem";
 import { IoMdAdd } from "react-icons/io";
 import { useLocation, Link } from "react-router-dom";
 const TutorAccordion = ({ unitData }) => {
-  console.log(unitData);
   const location = useLocation();
   // USING THE CHAPTER ID WE CAN SHOW THE LESSONS.
   const unitID = unitData && unitData._id;

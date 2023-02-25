@@ -38,7 +38,8 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
         }
       >
         {chapterLessons.map((lesson, index) => {
-          const { lessonType, _id: lessonID } = lesson;
+          console.log(lesson);
+          const { lessonType, _id: lessonID, lessonUrl } = lesson;
 
           return (
             <li
@@ -47,7 +48,7 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
             >
               <Link
                 // To should be something like a number.
-                to={lessonID}
+                to={lessonUrl}
                 state={{
                   lessonType: lessonType,
                 }}

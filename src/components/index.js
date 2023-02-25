@@ -37,6 +37,7 @@ import {
   QuillEditorTutor,
   TutorCardHome,
   TutorSideBar,
+  TutorCoverPage,
 } from "./TutorPage/General";
 import {
   CourseForm,
@@ -132,4 +133,5 @@ export {
   AudioPlayer,
   DirectUploadForm,
   PdfViewer,
+  TutorCoverPage,
 };

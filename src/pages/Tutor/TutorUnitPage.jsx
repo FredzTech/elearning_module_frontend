@@ -8,7 +8,7 @@ const TutorUnitPage = () => {
   console.log(unitID);
   useEffect(() => {
     fetchUnitData();
-  }, []);
+  }, [unitID]);
   const fetchUnitData = async () => {
     try {
       const { data, status } = await axios.get(`/unit/${unitID}`);
