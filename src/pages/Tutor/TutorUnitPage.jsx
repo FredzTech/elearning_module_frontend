@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { TutorAccordion } from "../../components";
+import { TutorAccordion, Button } from "../../components";
 import { Outlet, useParams } from "react-router-dom";
 import axios from "../../axios";
 const TutorUnitPage = () => {
   const { unitID } = useParams();
   const [unitData, setUnitData] = useState(null);
-  console.log(unitID);
   useEffect(() => {
     fetchUnitData();
-  }, []);
+  }, [unitID]);
   const fetchUnitData = async () => {
     try {
       const { data, status } = await axios.get(`/unit/${unitID}`);
@@ -30,8 +29,14 @@ const TutorUnitPage = () => {
       </article>
       <article className="h-full overflow-y-scroll mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
         <div className="w-full text-lg text-center text-white my-2 py-2 bg-primary rounded-lg">
-          NAVBAR WITH ICONS
+          NAVBAR WITH ICONZ
         </div>
+        <button
+          className="button"
+          onClick={() => {
+            fetchUnitData();
+          }}
+        ></button>
         <Outlet />
       </article>
     </main>

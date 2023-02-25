@@ -1,4 +1,5 @@
 import QuillEditorTutor from "./QuillEditorTutor";
 import TutorCardHome from "./TutorCardHome";
 import TutorSideBar from "./TutorSideBar";
-export { QuillEditorTutor, TutorCardHome, TutorSideBar };
+import TutorCoverPage from "./TutorCoverPage";
+export { QuillEditorTutor, TutorCardHome, TutorSideBar, TutorCoverPage };

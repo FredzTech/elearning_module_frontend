@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import musicLogo from "../../assets/music-logo.jpg";
 const useAudio = (url) => {
-  console.log(url);
-  const [audio] = useState(new Audio(`http://localhost:4000/s3Direct/${url}`));
+  console.log(`Audio Player activated ${url}`);
+  const [audio] = useState(new Audio(url));
   const [playing, setPlaying] = useState(false);
-
   const toggle = () => setPlaying(!playing);
   // Toggles the playing state.
-
   useEffect(() => {
     playing ? audio.play() : audio.pause();
   }, [playing]);

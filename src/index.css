@@ -66,4 +66,4 @@
     .modal-overlay{
         @apply fixed inset-0 bg-black bg-opacity-60 backdrop-blur-lg flex flex-col items-center justify-center z-10
     }
-}
+} 

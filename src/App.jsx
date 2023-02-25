@@ -30,6 +30,7 @@ import {
   TutorRegistrationForm,
   StudentRegistrationForm,
   DirectUploadForm,
+  TutorCoverPage,
 } from "./components";
 import Users from "./pages/UserPage";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -100,7 +101,8 @@ function App() {
         </Route>
         <Route element={<RequireAuth allowedRoles={["EM-202"]} />}>
           <Route exact path="/tutor/unit/:unitID" element={<TutorUnitPage />}>
-            <Route exact path=":lessonId" element={<ContentSection />} />
+            <Route index element={<TutorCoverPage />} />
+            <Route exact path=":lessonUrl" element={<ContentSection />} />
           </Route>
         </Route>
 
