@@ -10,6 +10,11 @@ const NavigateBtn = ({ text, icon, destination, action }) => {
       <div
         className={`
       capitalize flex text-secondary bg-primary w-32 mx-2  items-center justify-between rounded-md px-1 py-2 `}
+        onClick={() => {
+          console.log(
+            "I am the navigate button component and I have been clicked."
+          );
+        }}
       >
         <p className=" ml-2">{text}</p>
 

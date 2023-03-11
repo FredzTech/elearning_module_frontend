@@ -22,95 +22,7 @@ const LessonForm = () => {
   const [responseTracker, setResponseTracker] = useState(null);
   const [statusTracker, setStatusTracker] = useState(null);
 
-  // Step 1 : Get signed Url
-
-  async function getSignedUrl({ file }) {
-    // Generating our req body.
-    const formData = new FormData();
-    console.log(JSON.stringify(file));
-    // Only sending the filetype to the server.
-    const { type } = file;
-    formData.append("fileType", type);
-
-    const config = {
-      headers: { "Content-Type": "application/json" },
-    };
-
-    try {
-      const { data, status: urlCreationStatus } = await axios.post(
-        "/s3Direct/",
-        formData,
-        config
-      );
-      console.log(`Signed url ${JSON.stringify(data)}, ${urlCreationStatus}`);
-      const { signedUrl: url, Key } = data;
-      console.log(`Destructured data ${url}, ${Key}`);
-      return { urlCreationStatus, Key, url };
-    } catch (err) {
-      console.log("Something went wrong when creating the signed url");
-      console.log(err);
-      return err;
-    }
-  }
-
-  // Step 2 : Actual file upload to s3 bucket
-  async function uploadFile({ file, url: signedUrl }) {
-    // We upload file directly to s3
-    const config = {
-      headers: { "Content-Type": "multipart/form-data" },
-    };
-    console.log(signedUrl);
-    try {
-      console.log("Commencing file upload");
-      const success = await axios.put(signedUrl, file, config);
-      console.log(success);
-      return success;
-    } catch (err) {
-      console.log(
-        `Error occured during actual file upload ${JSON.stringify(err)}`
-      );
-      const { message } = err;
-
-      if (message === "Request failed with status code 403") {
-        console.log("We can try uploading one more time.");
-        return err;
-      }
-      return "This error is beyond the scope of uploading file.";
-    }
-  }
-
-  // Step 3 Saving all info to the DB
-  const savingFileToDB = async ({ urlCreationStatus, Key, url }) => {
-    if (urlCreationStatus === 201) {
-      // Uploading file to server.
-      try {
-        const uploadResponse = await uploadFile({ file: file, url: url });
-        let uploadResponseStatus = uploadResponse.status;
-        console.log(`File upload status ${uploadResponseStatus}`);
-        if (uploadResponseStatus === 200) {
-          // Saving data to the status
-          createPostObject({
-            lessonNumber,
-            lessonName,
-            lessonNotes,
-            lessonType,
-            Key,
-          });
-        }
-      } catch (err) {
-        if (err.message === "Request failed with status code 409") {
-          setResponse("This record already exists.");
-          setStatusTracker(false);
-          setResponseTracker(true);
-          setTimeout(() => {
-            setResponseTracker(false);
-          }, 2500);
-        } else {
-          console.log(err);
-        }
-      }
-    }
-  };
+  //Config functions.
   //   A FUNCTION THAT CREATES OUR POST OBJECT
   //==========================================
   async function createPostObject({
@@ -164,9 +76,118 @@ const LessonForm = () => {
   //   TAKES THE FILE SELECTED(OBJECT) FROM FILE INSTANCE.
   //=======================================================
   const fileSelected = (e) => {
-    const file = e.target.files[0];
-    setFile(file);
+    const fileUpload = e.target.files[0];
+    setFile(fileUpload);
+    console.log(file);
   };
+
+  //FILE UPLOAD FUNCTIONS.
+  //======================
+  // Step 1 : Get signed Url
+  async function getSignedUrl({ file }) {
+    // Generating our req body.
+    const formData = new FormData();
+    console.log(file);
+    // Only sending the filetype to the server.
+    const { type } = file;
+    console.log(`File type ${type}`);
+    formData.append("fileType", type);
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    try {
+      const { data, status: urlCreationStatus } = await axios.post(
+        "/s3Direct/",
+        formData,
+        config
+      );
+      console.log(`Signed url ${JSON.stringify(data)}, ${urlCreationStatus}`);
+      const { signedUrl: url, Key } = data;
+      console.log(`Destructured data ${url}, ${Key}`);
+      return { urlCreationStatus, Key, url };
+    } catch (err) {
+      console.log("Something went wrong when creating the signed url");
+      console.log(err);
+      return err;
+    }
+  }
+
+  // Step 2 : Uploading file & Saving all info to DB
+  const savingFileToDB = async ({ urlCreationStatus, Key, url }) => {
+    if (urlCreationStatus === 201) {
+      try {
+        const uploadResponse = await uploadFile({ url: url });
+        let uploadResponseStatus = uploadResponse.status;
+        console.log(`File upload status ${uploadResponseStatus}`);
+        if (uploadResponseStatus === 200) {
+          // Saving data to the status
+          createPostObject({
+            lessonNumber,
+            lessonName,
+            lessonNotes,
+            lessonType,
+            Key,
+          });
+        }
+      } catch (err) {
+        if (err.message === "Request failed with status code 409") {
+          setResponse("This record already exists.");
+          setStatusTracker(false);
+          setResponseTracker(true);
+          setTimeout(() => {
+            setResponseTracker(false);
+          }, 2500);
+        } else {
+          console.log(err);
+        }
+      }
+    }
+  };
+
+  // Step 2 : Actual file upload to s3 bucket
+  async function uploadFile({ url: signedUrl }) {
+    // We upload file directly to s3
+    console.log(`File being passed around`);
+    console.log(file);
+    const { type: fileType } = file;
+    const contentType = () => {
+      if (fileType === "image/jpeg" || fileType === "image/png") {
+        return "image/jpeg";
+      } else if (fileType === "video/mp4") {
+        return "video/mp4";
+      } else if (fileType === "video/webm") {
+        return "video/webm";
+      } else if (fileType === "application/pdf") {
+        return "application/pdf";
+      } else if (fileType === "audio/mpeg") {
+        return "audio/mpeg";
+      } else {
+        return "undefined";
+      }
+    };
+    const config = {
+      headers: { "Content-Type": contentType() },
+    };
+    try {
+      console.log("Commencing file upload");
+      const success = await axios.put(signedUrl, file, config);
+      console.log(success);
+      return success;
+    } catch (err) {
+      console.log(
+        `Error occured during actual file upload ${JSON.stringify(err)}`
+      );
+      const { message } = err;
+
+      if (message === "Request failed with status code 403") {
+        console.log("We can try uploading one more time.");
+        return err;
+      }
+      return "This error is beyond the scope of uploading file.";
+    }
+  }
 
   const validateForm = () => {
     if (
@@ -187,8 +208,8 @@ const LessonForm = () => {
 
     if (validation == true) {
       setSubmit(false);
-      const urlCreationStatus = await getSignedUrl({ file: file });
-      savingFileToDB(urlCreationStatus);
+      const urlCreationData = await getSignedUrl({ file: file });
+      savingFileToDB(urlCreationData);
     } else {
       console.log("Error!Error during validation");
       setResponse("Kindly fill all details correctly.");
