@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import sampleVideo from "../../assets/sample-video.mp4";
-import axios from "../../axios";
+import React from "react";
 const VideoComponent = ({ src, title, poster }) => {
+<<<<<<< HEAD
   const [videoData, setVideoData] = useState();
   console.log(`Video Player activated ${src}`);
   // Should happen on load of this component.
@@ -25,6 +24,9 @@ const VideoComponent = ({ src, title, poster }) => {
   useEffect(() => {
     // fetchVideoData();
   }, []);
+=======
+  console.log(`Video Player activated ${src}`);
+>>>>>>> polish_6
   return (
     <div className="flex flex-col items-center justify-center pt-2 p-2">
       <h1 className="font-bold text-xl  uppercase">{title}</h1>

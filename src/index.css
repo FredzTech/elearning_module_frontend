@@ -30,9 +30,6 @@
     .cta-wrap {
         @apply flex flex-col justify-center items-center w-full mt-8 debug
     }
-    /* .select-parent {
-        @apply mt-1 relative w-64 debug sm:m-1
-    } */
     .select-input {
         @apply relative appearance-none debug py-2 justify-center rounded text-gray-700 focus:outline-none focus:border-purple placeholder:text-sm px-0 w-full
     }
@@ -61,7 +58,7 @@
         @apply flex flex-col items-center justify-center
     }
     .button {
-        @apply uppercase border-2 border-primary  hover:bg-primary  hover:text-white text-black font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
+        @apply uppercase outline-none  hover:bg-primary  hover:text-white text-black font-bold flex justify-between w-full items-center py-3 px-4 cursor-pointer
     }
     .modal-overlay{
         @apply fixed inset-0 bg-black bg-opacity-60 backdrop-blur-lg flex flex-col items-center justify-center z-10
