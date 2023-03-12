@@ -8,10 +8,6 @@ const TutorUnitPage = () => {
   useEffect(() => {
     fetchUnitData();
   }, [unitID]);
-<<<<<<< HEAD
-=======
-
->>>>>>> polish_6
   const fetchUnitData = async () => {
     try {
       const { data, status } = await axios.get(`/unit/${unitID}`);

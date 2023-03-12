@@ -1,32 +1,6 @@
 import React from "react";
 const VideoComponent = ({ src, title, poster }) => {
-<<<<<<< HEAD
-  const [videoData, setVideoData] = useState();
   console.log(`Video Player activated ${src}`);
-  // Should happen on load of this component.
-  // The fallback is on to explain the concept.
-  const fetchVideoData = async () => {
-    try {
-      const { data, status } = await axios.get(`s3Direct/${src}`);
-      console.log(
-        "Video data fetch has commenced successfully on load of component."
-      );
-
-      if (status == 200) {
-        setVideoData(data);
-      }
-    } catch (error) {
-      console.log(
-        `Error occured while fetching video data. ${JSON.stringify(error)}`
-      );
-    }
-  };
-  useEffect(() => {
-    // fetchVideoData();
-  }, []);
-=======
-  console.log(`Video Player activated ${src}`);
->>>>>>> polish_6
   return (
     <div className="flex flex-col items-center justify-center pt-2 p-2">
       <h1 className="font-bold text-xl  uppercase">{title}</h1>

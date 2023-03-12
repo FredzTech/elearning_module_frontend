@@ -13,7 +13,7 @@ const LessonForm = () => {
   const [lessonName, setLessonName] = useState("");
   const [lessonNumber, setLessonNumber] = useState("");
   const [lessonNotes, setLessonNotes] = useState();
-  const [lessonType, setLessonType] = useState("");
+  // const [lessonType, setLessonType] = useState("");
   const [file, setFile] = useState();
   const [submit, setSubmit] = useState(false);
 
@@ -81,17 +81,63 @@ const LessonForm = () => {
     console.log(file);
   };
 
+  const contentType = (fileType) => {
+    if (fileType === "image/jpeg" || fileType === "image/png") {
+      return "image/jpeg";
+    } else if (fileType === "video/mp4") {
+      return "video/mp4";
+    } else if (fileType === "video/webm") {
+      return "video/webm";
+    } else if (fileType === "video/ogg") {
+      return "video/ogg";
+    } else if (fileType === "video/avi") {
+      return "video/avi";
+    } else if (fileType === "application/pdf") {
+      return "application/pdf";
+    } else if (fileType === "audio/mpeg") {
+      return "audio/mpeg";
+    } else if (fileType === "audio/mp3") {
+      return "audio/mp3";
+    } else if (fileType === "audio/ogg") {
+      return "audio/ogg";
+    } else if (fileType === "audio/wav") {
+      return "audio/wav";
+    } else {
+      return "undefined";
+    }
+  };
+
+  const lessonType = (fileType) => {
+    if (fileType === "image/jpeg" || fileType === "image/png") {
+      return "image";
+    } else if (
+      fileType === "video/mp4" ||
+      fileType === "video/webm" ||
+      fileType === "video/ogg" ||
+      fileType === "video/avi"
+    ) {
+      return "video";
+    } else if (fileType === "application/pdf") {
+      return "pdf";
+    } else if (
+      fileType === "audio/mpeg" ||
+      fileType === "audio/mp3" ||
+      fileType === "audio/ogg" ||
+      fileType === "audio/wav"
+    ) {
+      return "audio";
+    } else {
+      return "undefined";
+    }
+  };
+
   //FILE UPLOAD FUNCTIONS.
   //======================
   // Step 1 : Get signed Url
-  async function getSignedUrl({ file }) {
+  async function getSignedUrl() {
     // Generating our req body.
     const formData = new FormData();
-    console.log(file);
-    // Only sending the filetype to the server.
-    const { type } = file;
-    console.log(`File type ${type}`);
-    formData.append("fileType", type);
+    formData.append("fileType", file.type);
 
     const config = {
       headers: { "Content-Type": "application/json" },
@@ -103,7 +149,9 @@ const LessonForm = () => {
         formData,
         config
       );
-      console.log(`Signed url ${JSON.stringify(data)}, ${urlCreationStatus}`);
+      console.log(
+        `Signed url ${JSON.stringify(data)},Status: ${urlCreationStatus}`
+      );
       const { signedUrl: url, Key } = data;
       console.log(`Destructured data ${url}, ${Key}`);
       return { urlCreationStatus, Key, url };
@@ -115,11 +163,11 @@ const LessonForm = () => {
   }
 
   // Step 2 : Uploading file & Saving all info to DB
-  const savingFileToDB = async ({ urlCreationStatus, Key, url }) => {
+  const savingFileToDB = async () => {
+    const { urlCreationStatus, Key, url } = await getSignedUrl();
     if (urlCreationStatus === 201) {
       try {
-        const uploadResponse = await uploadFile({ url: url });
-        let uploadResponseStatus = uploadResponse.status;
+        const { status: uploadResponseStatus } = await uploadFile({ url: url });
         console.log(`File upload status ${uploadResponseStatus}`);
         if (uploadResponseStatus === 200) {
           // Saving data to the status
@@ -127,7 +175,7 @@ const LessonForm = () => {
             lessonNumber,
             lessonName,
             lessonNotes,
-            lessonType,
+            lessonType: lessonType(file.type),
             Key,
           });
         }
@@ -149,26 +197,8 @@ const LessonForm = () => {
   // Step 2 : Actual file upload to s3 bucket
   async function uploadFile({ url: signedUrl }) {
     // We upload file directly to s3
-    console.log(`File being passed around`);
-    console.log(file);
-    const { type: fileType } = file;
-    const contentType = () => {
-      if (fileType === "image/jpeg" || fileType === "image/png") {
-        return "image/jpeg";
-      } else if (fileType === "video/mp4") {
-        return "video/mp4";
-      } else if (fileType === "video/webm") {
-        return "video/webm";
-      } else if (fileType === "application/pdf") {
-        return "application/pdf";
-      } else if (fileType === "audio/mpeg") {
-        return "audio/mpeg";
-      } else {
-        return "undefined";
-      }
-    };
     const config = {
-      headers: { "Content-Type": contentType() },
+      headers: { "Content-Type": contentType(file.type) },
     };
     try {
       console.log("Commencing file upload");
@@ -190,12 +220,7 @@ const LessonForm = () => {
   }
 
   const validateForm = () => {
-    if (
-      lessonName !== null &&
-      lessonNumber !== null &&
-      lessonType !== null &&
-      file !== null
-    ) {
+    if (lessonName !== null && lessonNumber !== null && file !== null) {
       return true;
     } else {
       return false;
@@ -208,8 +233,8 @@ const LessonForm = () => {
 
     if (validation == true) {
       setSubmit(false);
-      const urlCreationData = await getSignedUrl({ file: file });
-      savingFileToDB(urlCreationData);
+      // const urlCreationData = await getSignedUrl({ file: file });
+      savingFileToDB();
     } else {
       console.log("Error!Error during validation");
       setResponse("Kindly fill all details correctly.");
@@ -270,7 +295,7 @@ const LessonForm = () => {
               required
             ></input>
           </div>
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <label
               htmlFor="id"
               className="w-full block my-2 text-sm font-medium text-gray-900"
@@ -288,7 +313,7 @@ const LessonForm = () => {
               <option value="audio">AUDIO</option>
               <option value="video">VIDEO</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="input-wrap ">
             <label htmlFor="file" className="w-full ">

@@ -57,17 +57,7 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
               key={index}
               className="hover:bg-slate-500 bg-slate-300 text-black w-full px-3 py-2 my-0.5 capitalize rounded-md"
             >
-<<<<<<< HEAD
-              <Link
-                // To should be something like a number.
-                to={lessonUrl}
-                state={{
-                  lessonType: lessonType,
-                }}
-              >
-=======
               <Link to={lessonUrl}>
->>>>>>> polish_6
                 <div className="w-72 h-full flex gap-5 items-center">
                   {lesson.lessonType === "video" ? (
                     <span className="text-sm">

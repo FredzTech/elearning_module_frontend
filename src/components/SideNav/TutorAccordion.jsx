@@ -4,11 +4,7 @@ import TutorAccordionItem from "./TutorAccordionItem";
 import { IoMdAdd } from "react-icons/io";
 import { BiRefresh } from "react-icons/bi";
 import { useLocation, Link } from "react-router-dom";
-<<<<<<< HEAD
-const TutorAccordion = ({ unitData }) => {
-=======
 const TutorAccordion = ({ unitData, fetchUnitData }) => {
->>>>>>> polish_6
   const location = useLocation();
   // USING THE CHAPTER ID WE CAN SHOW THE LESSONS.
   const unitID = unitData && unitData._id;
