@@ -9,7 +9,7 @@ const TutorPage = () => {
   const tutorData = useOutletContext();
   return (
     <div className="flex flex-col items-start justify-start w-full h-full ">
-      <article className="w-full max-h-full overflow-y-scroll  py-3 px-4 grid grid-cols-3 gap-4  ">
+      <article className="w-full max-h-full overflow-y-auto  py-3 px-4 grid grid-cols-3 gap-4  ">
         {tutorData &&
           tutorData.units.map((unit, index) => {
             return (

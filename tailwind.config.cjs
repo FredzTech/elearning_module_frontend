@@ -3,13 +3,31 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
 
   theme: {
+    screens: {
+      sm: { min: "300px", max: "767px" },
+      md: { min: "768px", max: "1023px" },
+      lg: { min: "1024px", max: "1279px" },
+      xl: { min: "1280px", max: "1535px" },
+      "2xl": { min: "1536px" },
+
+      // phone: { min: "300px", max: "767px" },
+      // tablet: { min: "768px", max: "1023px" },
+      // laptop: { min: "1024px", max: "1279px" },
+      // desktop: { min: "1280px", max: "1535px" },
+
+      phone: "640px",
+      tablet: "767px",
+      laptop: "1024px",
+      desktop: "1280px",
+      "2xl": "1536px",
+    },
     extend: {
       colors: {
         transparent: "transparent",
         current: "currentColor",
         white: "#ffffff",
         silver: "#ecebff",
-        
+
         bermuda: "#78dcca",
         "light-grey": "#CDCDCD",
         "dark-grey": "#617A70",
@@ -27,18 +45,7 @@ module.exports = {
         "dark-blue ": "#00008B",
         zaffre: "#0818A8",
       },
-      screens: {
-        sm: { min: "300px", max: "767px" },
-        md: { min: "768px", max: "1023px" },
-        lg: { min: "1024px", max: "1279px" },
-        xl: { min: "1280px", max: "1535px" },
-        "2xl": { min: "1536px" },
 
-        phone: { min: "300px", max: "767px" },
-        tablet: { min: "768px", max: "1023px" },
-        laptop: { min: "1024px", max: "1279px" },
-        desktop: { min: "1280px", max: "1535px" },
-      },
       height: {
         "h-auto": "auto",
         "h-1/2": " 50%",

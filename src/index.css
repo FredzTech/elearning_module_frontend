@@ -21,6 +21,10 @@
         /*Directive to use tailwincss utilities inside css extended.  */
         @apply m-0 p-0 box-border
     }
+
+    p{
+        @apply text-sm font-thin
+    }
     .navbar-link {
         @apply text-white w-full h-12 flex-row-centered px-4 hover:bg-white hover:text-black
     }

@@ -29,7 +29,7 @@ const TutorLayout = () => {
       <div className="container h-full px-2 w-1/4 sm:w-full">
         <TutorSideBar tutor={tutorData} />
       </div>
-      <div className="container w-3/4 max-h-full overflow-y-scroll sm:w-screen ">
+      <div className="container w-3/4 max-h-full overflow-y-auto sm:w-screen ">
         <div className="w-full text-lg text-center text-white my-2 py-2 bg-primary rounded-lg">
           NAVBAR WITH ICONS
         </div>

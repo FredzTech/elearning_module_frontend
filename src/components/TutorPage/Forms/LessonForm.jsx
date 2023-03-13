@@ -7,6 +7,10 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const LessonForm = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "unset");
+  }, []);
   const { chapterID } = useParams();
   // DECLARATION OF VARIABLES
   //=========================

@@ -23,15 +23,14 @@ const TutorUnitPage = () => {
   };
 
   return (
-    <main className="flex w-full h-full">
-      <article className="h-full flex w-1/4 flex-col rounded-lg ">
+    <main className="grid phone:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 w-full h-full">
+      <article className="col-span-1 order-2 tablet:order-1  h-full flex flex-col rounded-lg laptop:overflow-y-auto px-2 ">
         <TutorAccordion unitData={unitData} fetchUnitData={fetchUnitData} />
       </article>
-      <article className="h-full overflow-y-scroll mt-2 w-3/4 flex px-2 flex-col gap-5  m-2 rounded-lg pb-2">
+      <article className="phone:col-span-1 order-1 tablet:order-2 laptop:col-span-3 tablet:col-span-2 h-full laptop:overflow-y-auto flex px-2 flex-col rounded-lg pb-2">
         <div className="w-full text-lg text-center text-white my-2 py-2 bg-primary rounded-lg">
           NAVBAR WITH ICONS
         </div>
-
         <Outlet />
       </article>
     </main>

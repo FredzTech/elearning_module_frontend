@@ -5,6 +5,10 @@ import LoadingBtn from "./LoadingBtn";
 import { MdCancel } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 const ChapterForm = () => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "unset");
+  }, []);
   // A link will be used to redirect us to this particular point.
   const navigate = useNavigate();
   const { unitID } = useParams();

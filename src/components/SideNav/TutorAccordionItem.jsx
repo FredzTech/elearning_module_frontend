@@ -49,7 +49,7 @@ const TutorAccordionItem = ({ chapter, onToggle, active }) => {
         }
       >
         {chapterLessons.map((lesson, index) => {
-          console.log(lesson);
+          // console.log(lesson);
           const { lessonType, _id: lessonID, lessonUrl } = lesson;
 
           return (

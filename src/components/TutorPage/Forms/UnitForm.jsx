@@ -17,9 +17,10 @@ const UnitForm = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     fetchTutorsData();
+    return () => (document.body.style.overflow = "unset");
   }, []);
   // DECLARATION OF VARIABLES
   const { courseId } = useParams();
